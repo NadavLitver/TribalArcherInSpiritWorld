@@ -45,7 +45,6 @@ public class BowHandler : MonoBehaviour
         var arrow = objectPool.GetPooledObject();
         arrow.transform.position = UXArrow.position;
         arrow.transform.rotation = UXArrow.rotation;
-      
 
         var arrowProj = arrow.GetComponent<Projectile>();
         arrowProj.direction = ShootDirection().normalized;

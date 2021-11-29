@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     public Rigidbody rb;
     [SerializeField]
     private float rotationSpeed;
+    public TrailRenderer m_trail;
 
     private void OnEnable()
     {
@@ -21,14 +22,10 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         if (direction != Vector3.zero)
-        {
-          // Vector3 force = new Vector3( 0,0, rb.velocity.y);
-            // rb.rotation = Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(force), Time.deltaTime * rotationSpeed);
-            // transform.LookAt(rb.position + new Vector3(0,0, rb.velocity.y));
             transform.up = rb.velocity;           
-          //  rb.AddTorque(force, ForceMode.Impulse);
 
-        }
+
+
     }
     private void OnDisable()
     {
@@ -37,5 +34,6 @@ public class Projectile : MonoBehaviour
         isRelease = false;
         velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
+        m_trail.Clear();
     }
 }

@@ -9,7 +9,10 @@ public class VFXManager : MonoBehaviour
     public VFXData[] VFXArray;
     public enum Effect
     {
-        TestEffect
+        EnemyHit,
+        HeadshotEffect,
+        TerrainHitEffect,
+
     }
     public static VFXManager instance
     {

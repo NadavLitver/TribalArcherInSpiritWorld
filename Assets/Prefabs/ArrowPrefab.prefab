@@ -2359,6 +2359,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   rb: {fileID: -6353808596742050730}
   rotationSpeed: 90
+  m_trail: {fileID: 6475746163361501365}
 --- !u!114 &6431718613141987510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2376,6 +2377,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnHitLiveBody:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLivebodyHeadshot:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &-6353808596742050730
