@@ -10,7 +10,7 @@ public class BowHandler : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool objectPool;
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private  Camera cam;
-    [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool isShooting;
+    [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool isShooting;
     [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float uxArrowStartingZ;
     [SerializeField, FoldoutGroup("Properties")] private float arrowForce;
     [FoldoutGroup("Properties"), ReadOnly] public float shootHoldTime;
