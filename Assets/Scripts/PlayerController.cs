@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField, FoldoutGroup("Refrences")] private InputManager input;
-    [SerializeField, FoldoutGroup("Refrences")] private Transform camTransform;
+    [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
+    [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Transform camTransform;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private CharacterController controller;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private Vector3 playerVelocity;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool groundedPlayer;

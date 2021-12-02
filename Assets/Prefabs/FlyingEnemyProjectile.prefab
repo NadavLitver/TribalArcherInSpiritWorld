@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8896425748160422380}
   - component: {fileID: 5968747309267881207}
   - component: {fileID: 1901957622149643264}
-  - component: {fileID: 3840986754958727089}
+  - component: {fileID: 5216673155524138609}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -96,7 +96,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3840986754958727089
+--- !u!114 &5216673155524138609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,19 +105,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558637605032293188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e59305646ba0349bb26f296dba1c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: c8c4be01a171a12468850880ef7b2294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls: []
-  OnHitLiveBody:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLivebodyHeadshot:
-    m_PersistentCalls:
-      m_Calls: []
+  damage: 15
 --- !u!1 &7109183572625793370
 GameObject:
   m_ObjectHideFlags: 0
