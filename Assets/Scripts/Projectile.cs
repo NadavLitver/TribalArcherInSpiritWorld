@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
         isRelease = false;
         velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
-        m_trail.Clear();
+        if(m_trail!= null)
+         m_trail.Clear();
     }
 }
