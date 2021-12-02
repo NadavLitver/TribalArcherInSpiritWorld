@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Transform camTransform;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private CharacterController controller;
-    [SerializeField, FoldoutGroup("Properties"), ReadOnly] private Vector3 playerVelocity;
+    [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool groundedPlayer;
     [SerializeField, FoldoutGroup("Properties")] private float playerSpeed = 2.0f;
     [SerializeField, FoldoutGroup("Properties")] private float jumpHeight = 1.0f;
