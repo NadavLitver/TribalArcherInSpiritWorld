@@ -41,10 +41,10 @@ public class BowHandler : MonoBehaviour
 
     private void ReleaseArrow()
     {
-        UXArrow.gameObject.SetActive(false);
         var arrow = objectPool.GetPooledObject();
         arrow.transform.position = UXArrow.position;
         arrow.transform.rotation = UXArrow.rotation;
+        UXArrow.gameObject.SetActive(false);
 
         var arrowProj = arrow.GetComponent<Projectile>();
         arrowProj.direction = ShootDirection().normalized;

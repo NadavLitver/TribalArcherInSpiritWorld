@@ -2359,7 +2359,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   rb: {fileID: -6353808596742050730}
   rotationSpeed: 90
-  m_trail: {fileID: 4477820740816303098}
+  m_trails:
+  - {fileID: 4477820741530667670}
+  - {fileID: 4477820740816303098}
 --- !u!114 &6431718613141987510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4317,7 +4319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 278617713003247439, guid: 6d5599802a4b43f43933664e8175fb39, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.534
+      value: 0.552
       objectReference: {fileID: 0}
     - target: {fileID: 278617713003247439, guid: 6d5599802a4b43f43933664e8175fb39, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4361,5 +4363,10 @@ Transform:
 --- !u!96 &4477820740816303098 stripped
 TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 278617713003247438, guid: 6d5599802a4b43f43933664e8175fb39, type: 3}
+  m_PrefabInstance: {fileID: 4465797765637326004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!96 &4477820741530667670 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 278617712559918626, guid: 6d5599802a4b43f43933664e8175fb39, type: 3}
   m_PrefabInstance: {fileID: 4465797765637326004}
   m_PrefabAsset: {fileID: 0}

@@ -13,10 +13,16 @@ public class Projectile : MonoBehaviour
     public Rigidbody rb;
     [SerializeField]
     private float rotationSpeed;
-    public  TrailRenderer m_trail;
+    public  TrailRenderer[] m_trails;
+    private float[] trailTimes;
 
     private void OnEnable()
     {
+        trailTimes = new float[m_trails.Length];
+        for (int i = 0; i < m_trails.Length; i++)
+        {
+            trailTimes[i] = m_trails[i].time;
+        }
         velocity = direction * force;
         rb.AddForce(velocity, ForceMode.Force);
        
@@ -32,13 +38,19 @@ public class Projectile : MonoBehaviour
     }
     IEnumerator ActivateTrail()
     {
-        if (m_trail == null)
-            yield break;
-        m_trail.enabled = false;
-        yield return new WaitForSeconds(0.05f);
-        m_trail.enabled = true;
-        m_trail.Clear();
-
+        for (int i = 0; i < m_trails.Length; i++)
+        {
+            if (m_trails[i] == null)
+            {
+                yield break;
+            }
+            m_trails[i].enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            m_trails[i].enabled = true;
+            m_trails[i].time = 0;
+            m_trails[i].Clear();
+            m_trails[i].time = trailTimes[i];
+        }
     }
     private void OnDisable()
     {
@@ -47,7 +59,12 @@ public class Projectile : MonoBehaviour
         isRelease = false;
         velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
-        if(m_trail!= null)
-         m_trail.Clear();
+        foreach (TrailRenderer trail in m_trails)
+        {
+            if (trail != null)
+            {
+                trail.Clear();
+            }
+        }
     }
 }
