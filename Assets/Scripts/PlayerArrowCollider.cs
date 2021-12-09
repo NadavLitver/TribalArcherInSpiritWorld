@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ProjectileCollider : MonoBehaviour
+public class PlayerArrowCollider : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Properties")]
     int damage;

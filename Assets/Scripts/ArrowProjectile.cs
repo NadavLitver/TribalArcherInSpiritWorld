@@ -2,19 +2,18 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour
+public class ArrowProjectile : MonoBehaviour
 {
     public float force;
     public float startingForce;
     public Vector3 direction;
-    public bool isRelease;
     [ReadOnly,SerializeField]
     private Vector3 velocity;
     public Rigidbody rb;
     [SerializeField]
-    private float rotationSpeed;
     public  TrailRenderer[] m_trails;
     private float[] trailTimes;
+
 
     private void OnEnable()
     {
@@ -56,7 +55,6 @@ public class Projectile : MonoBehaviour
     {
         force = 0;
         direction = Vector3.zero;
-        isRelease = false;
         velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
         foreach (TrailRenderer trail in m_trails)

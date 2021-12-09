@@ -19,6 +19,10 @@ public class FlyingPatrolState : State
 
     protected override void OnStateEnabled()
     {
+        // agent.updateRotation = true;
+        agent.isStopped = false;
+
+
     }
     private void Update()
     {
