@@ -46,10 +46,9 @@ public class BowHandler : MonoBehaviour
         arrow.transform.rotation = UXArrow.rotation;
         UXArrow.gameObject.SetActive(false);
 
-        var arrowProj = arrow.GetComponent<Projectile>();
+        var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
-        arrowProj.isRelease = true;
         arrow.SetActive(true);
         shootHoldTime = 0;
 

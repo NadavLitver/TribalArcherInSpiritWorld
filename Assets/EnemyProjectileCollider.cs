@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FlyingEnemyProjectileCollider : MonoBehaviour
+public class EnemyProjectileCollider : MonoBehaviour
 {
     [FoldoutGroup("Events")]
     public UnityEvent OnPlayerHit;
