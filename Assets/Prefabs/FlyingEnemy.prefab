@@ -23,8 +23,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6072534155411886864}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.55, z: 0}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 0, y: 3.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6279340190576889873}
@@ -42,7 +42,7 @@ Transform:
   - {fileID: 6279340190576889901}
   m_Father: {fileID: 6279340190576889875}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!1 &6072534155734360004
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6072534155734360004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.44}
+  m_LocalPosition: {x: 0, y: -0.351, z: 0.741}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6072534156265737085}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6072534156265737086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.2, z: 0}
+  m_LocalPosition: {x: 0, y: 3.9129999, z: 0.346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6072534155734360003}
@@ -116,8 +116,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.33237648}
-  m_Center: {x: 0, y: 0, z: 0.2053175}
+  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0.3}
 --- !u!1 &6072534156915436480
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 6072534156915436494}
   - component: {fileID: 6072534156915436490}
   - component: {fileID: 6072534156915436491}
+  - component: {fileID: 298908480}
   m_Layer: 0
   m_Name: StateHolder
   m_TagString: Untagged
@@ -170,7 +171,8 @@ MonoBehaviour:
   - {fileID: 6072534156915436493}
   - {fileID: 6072534156915436494}
   - {fileID: 6072534156915436490}
-  hitState: {fileID: 0}
+  - {fileID: 298908480}
+  hitState: {fileID: 298908480}
 --- !u!114 &6072534156915436493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
-  canExitToHit: 0
+  canExitToHit: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -214,7 +216,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436490}
-  canExitToHit: 0
+  canExitToHit: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -239,18 +241,20 @@ MonoBehaviour:
   _animator: {fileID: 0}
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
-  canExitToHit: 0
+  canExitToHit: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   agent: {fileID: 6279340190576987184}
   timeBetweenAttacks: 1
+  BackStepLength: 20
   pool: {fileID: 6072534156915436491}
   shootPoint: {fileID: 6072534155734360003}
   projectileForce: 1500
+  faceTargetSpeed: 20
 --- !u!114 &6072534156915436491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +269,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pooledObjects: []
   objectToPool: {fileID: 7109183572625793370, guid: 724c465a88f6c7f479aaa551265251c3, type: 3}
-  amountToPool: 10
+  amountToPool: 20
+--- !u!114 &298908480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072534156915436480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ec83a2c800507449d982970f15a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  stateHandler: {fileID: 0}
+  nextState: {fileID: 6072534156915436494}
+  canExitToHit: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  agent: {fileID: 6279340190576987184}
+  hitStateLength: 1
 --- !u!1 &6072534157048039973
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6072534157048039973}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.2, z: 0.17}
+  m_LocalPosition: {x: 0, y: 3.9129999, z: 0.51599973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6279340190576889875}
@@ -308,8 +336,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.415411}
-  m_Center: {x: 0, y: 0, z: -0.2922945}
+  m_Size: {x: 1, y: 1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: -0.35}
 --- !u!1 &6279340190576987169
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +695,7 @@ GameObject:
   - component: {fileID: 6279340190576889875}
   - component: {fileID: 6279340190576987186}
   - component: {fileID: 6279340190576987184}
+  - component: {fileID: 534542240}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: Enemy
@@ -683,7 +712,7 @@ Transform:
   m_GameObject: {fileID: 6279340190576987187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -31.6, y: 1.15, z: 24.6}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 6072534156265737085}
   - {fileID: 6072534157048039972}
@@ -705,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 200
   isVulnerable: 1
   timeBackToVulnerable: 0.1
   DeadBody: {fileID: 0}
@@ -724,6 +753,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Take Damage
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6072534156915436492}
+        m_TargetAssemblyTypeName: LivebodyStateHandler, Assembly-CSharp
+        m_MethodName: SwapToHitState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   HealEvent:
@@ -748,6 +789,18 @@ MonoBehaviour:
           m_StringArgument: Die
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6279340190576987187}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!195 &6279340190576987184
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -758,10 +811,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 140
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -770,6 +823,25 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &534542240
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279340190576987187}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ab49f3cef633f1d4c84f8c46ec6c0b74, type: 3}
+  m_Controller: {fileID: 9100000, guid: cad4cd74f41924a4bbcbe916d2f9cb9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6279340190576987189
 GameObject:
   m_ObjectHideFlags: 0

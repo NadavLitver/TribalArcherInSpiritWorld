@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties")] private float jumpHeight = 1.0f;
     [SerializeField, FoldoutGroup("Properties")] private float gravityValue = -9.81f;
     public static Transform playerTransform;
+    public static bool canMove;
     private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        canMove = true;
 
     }
     private void Start()
@@ -31,8 +33,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetGrounded();
-        Move();
-        Jump();
+        if (canMove)
+        {
+            Move();
+            Jump();
+        }
+        
     }
 
   
