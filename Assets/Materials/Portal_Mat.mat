@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GhostMat
-  m_Shader: {fileID: -6465566751694194690, guid: ce70369dd4f7df74f8e14baa4442c4f3, type: 3}
+  m_Name: Portal_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 2f2bb5d273068d2458d220360849d1fc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,8 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_0a3ac30cb18643f2a1d3973c5294f160:
-        m_Texture: {fileID: 2800000, guid: 9511609b258ef6e49881a6f1749cbc92, type: 3}
+    - Texture2D_15ee9e28955f45bbbb94be7ebe00ddba:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -36,15 +36,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_296ddcff4a284ecba879b6ba21dd172b: 5
-    - Vector1_2cf7c810b3d84ee8ac50afc5e9de5048: 0.021
-    - Vector1_30cca513ea31443f8e44af49684ae63d: 1
-    - Vector1_90c25a19436a426caa9b496ab50a0717: 3
-    - Vector1_cc341b7cd58541ea9b86754c501aaa6b: 1.44
-    - Vector1_dfaf7a903a49445caaa33e60b238b4fc: 1.19
+    - Vector1_76f645783cda4dac9727e10d0fb28f84: 3.5
+    - Vector1_7ede301032b24ad2823bd46d793d42ed: 0.5
+    - Vector1_8f74654923044603935abd3063570609: 2
+    - Vector1_b0572083e42f4403a10850057e7c990f: 28.7
     m_Colors:
-    - Color_beeae2cca5fc439eab0c90d326dc2d79: {r: 0.07618539, g: 0.66538745, b: 0.65837497, a: 0}
-    - Color_d02b805b14c74dd9b8a7cae8c265ce02: {r: 0.0060488326, g: 0.13563336, b: 0.27889434, a: 1}
-    - Vector3_b0fe8847fa7347a1b9d75b16648d6c73: {r: 0, g: -0.21, b: 0, a: 0}
-    - Vector3_fb05ad29191e48b3b84b3e652eb5c0fe: {r: 0.05, g: 0, b: 0, a: 0}
+    - Color_3789521f7f0b4b22816f3e072bc2a9bf: {r: 8.774835, g: 1.0648197, b: 33.89676, a: 0}
   m_BuildTextureStacks: []
