@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     private static InputManager _instace;
     public UnityEvent OnPlayerStartShoot;
     public UnityEvent OnPlayerReleaseShoot;
+    public UnityEvent OnPlayerFinishCharge;
+
 
     public static InputManager Instance
     {
@@ -33,10 +35,15 @@ public class InputManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         inputActions.PlayerMap.Shoot.started += PlayerStartedShootThisFrame;
-        inputActions.PlayerMap.Shoot.performed += PlayerReleaseShootThisFrame;
+        inputActions.PlayerMap.Shoot.performed += PlayerFinishCharging; 
         inputActions.PlayerMap.Shoot.canceled += PlayerReleaseShootThisFrame;
 
 
+    }
+
+    private void PlayerFinishCharging(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnPlayerFinishCharge?.Invoke();
     }
 
     private void PlayerReleaseShootThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -48,6 +55,7 @@ public class InputManager : MonoBehaviour
     {
         OnPlayerStartShoot?.Invoke();
     }
+
 
     private void OnDisable()
     {

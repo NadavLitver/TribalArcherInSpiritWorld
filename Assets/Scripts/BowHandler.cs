@@ -35,11 +35,11 @@ public class BowHandler : MonoBehaviour
         if (!isShooting)
             return;
         isShooting = false;
-        ReleaseArrow();
+       StartCoroutine(ReleaseArrow());
 
     }
 
-    private void ReleaseArrow()
+    private IEnumerator ReleaseArrow()
     {
         var arrow = objectPool.GetPooledObject();
         arrow.transform.position = UXArrow.position;
@@ -51,6 +51,9 @@ public class BowHandler : MonoBehaviour
         arrowProj.force = arrowForce * shootHoldTime;
         arrow.SetActive(true);
         shootHoldTime = 0;
+        yield return new WaitForSeconds(0.1f);
+        UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, uxArrowStartingZ);
+        UXArrow.gameObject.SetActive(true);
 
 
     }
