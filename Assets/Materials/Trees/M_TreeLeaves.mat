@@ -121,7 +121,7 @@ Material:
     m_Colors:
     - Vector2_727021747bce43709428a9fc0909b07f: {r: 3, g: 2, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.07618539, g: 0.66538745, b: 0.65837497, a: 1}
+    - _Color: {r: 0.014443844, g: 0.088655606, b: 0.13013652, a: 1}
     - _Direction: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
