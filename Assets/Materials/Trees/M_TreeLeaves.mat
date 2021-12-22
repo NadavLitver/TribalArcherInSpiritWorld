@@ -115,7 +115,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 1.59
+    - _Speed: 2.65
     - _SrcBlend: 1
     - _Strength: 0.5
     - _Surface: 0
@@ -124,7 +124,7 @@ Material:
     m_Colors:
     - Vector2_727021747bce43709428a9fc0909b07f: {r: 3, g: 2, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.014443844, g: 0.09084173, b: 0.13013652, a: 1}
+    - _Color: {r: 0.010960094, g: 0.028426038, b: 0.05951124, a: 1}
     - _Color_1: {r: 0.00699541, g: 0.004024717, b: 0.022173883, a: 1}
     - _Direction: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
