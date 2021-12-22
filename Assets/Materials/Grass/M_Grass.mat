@@ -106,10 +106,10 @@ Material:
     - _BladeBendCurve: 2
     - _BladeBendDistance: 0.38
     - _BladeHeightMax: 0.2
-    - _BladeHeightMin: 0.1
+    - _BladeHeightMin: 0.31
     - _BladeSegments: 3
-    - _BladeWidthMax: 0.05
-    - _BladeWidthMin: 0.02
+    - _BladeWidthMax: 0.0808
+    - _BladeWidthMin: 0.0644
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -124,7 +124,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GrassFalloff: 0.05
-    - _GrassThreshold: 0.5
+    - _GrassThreshold: -0.1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -136,14 +136,14 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _TessellationGrassDistance: 0.01
-    - _WindFrequency: 0.01
+    - _WindFrequency: 0.375
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.121568635, g: 0.32941177, b: 0.39607847, a: 1}
+    - _BaseColor: {r: 0.12156858, g: 0.32941175, b: 0.39607844, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TipColor: {r: 0.14901961, g: 0.43921572, b: 0.43137258, a: 1}
+    - _TipColor: {r: 0.14901957, g: 0.4392157, b: 0.43137255, a: 1}
     - _WindVelocity: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
