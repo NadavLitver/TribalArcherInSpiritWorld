@@ -115,17 +115,17 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0
+    - _Speed: 0.78
     - _SrcBlend: 1
-    - _Strength: 0
+    - _Strength: 0.76
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Vector2_727021747bce43709428a9fc0909b07f: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.7877358, g: 0.7877358, b: 1, a: 1}
-    - _Color_1: {r: 0, g: 0.10613208, b: 0.2830189, a: 1}
+    - _Color: {r: 0.09794411, g: 0.24269484, b: 0.2924528, a: 1}
+    - _Color_1: {r: 0.02985938, g: 0.036009077, b: 0.103773594, a: 1}
     - _Direction: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
