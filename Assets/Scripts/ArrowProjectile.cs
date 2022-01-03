@@ -12,6 +12,9 @@ public class ArrowProjectile : MonoBehaviour
     public Rigidbody rb;
     [SerializeField]
     public  TrailRenderer[] m_trails;
+    public int maxDamage;
+    [ReadOnly]
+    public int appliedDamage;
     private float[] trailTimes;
 
 

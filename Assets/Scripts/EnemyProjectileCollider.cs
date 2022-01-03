@@ -23,14 +23,17 @@ public class EnemyProjectileCollider : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHit(currentLivebody);
+            PlayerHit(currentLivebody, other.ClosestPointOnBounds(transform.position));
         }
     }
-    private void PlayerHit(Livebody currentLivebody)
+    private void PlayerHit(Livebody currentLivebody,Vector3 hitPoint)
     {
         OnPlayerHit?.Invoke();
         Debug.Log(" Player Hit For " + " " + damage);
         currentLivebody.TakeDamage(damage);
+        VFXManager.Play(VFXManager.Effect.HeadshotEffect, hitPoint);
+        this.gameObject.SetActive(false);
+
 
     }
 }

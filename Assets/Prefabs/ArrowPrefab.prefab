@@ -2352,7 +2352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e59305646ba0349bb26f296dba1c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls: []
@@ -2362,6 +2361,7 @@ MonoBehaviour:
   OnLivebodyHeadshot:
     m_PersistentCalls:
       m_Calls: []
+  ArrowProj: {fileID: 3607663050196930741}
 --- !u!54 &-6353808596742050730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2393,13 +2393,13 @@ MonoBehaviour:
   force: 1
   startingForce: 0
   direction: {x: 0, y: 0, z: 0}
-  isRelease: 0
   velocity: {x: 0, y: 0, z: 0}
   rb: {fileID: -6353808596742050730}
-  rotationSpeed: 0
   m_trails:
   - {fileID: 4477820740816303098}
   - {fileID: 4477820741530667670}
+  maxDamage: 60
+  appliedDamage: 0
 --- !u!1 &6201991230671492262
 GameObject:
   m_ObjectHideFlags: 0
