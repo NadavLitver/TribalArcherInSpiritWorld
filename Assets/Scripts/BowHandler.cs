@@ -49,6 +49,7 @@ public class BowHandler : MonoBehaviour
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
         arrow.SetActive(true);
         shootHoldTime = 0;
         yield return new WaitForSeconds(0.1f);
