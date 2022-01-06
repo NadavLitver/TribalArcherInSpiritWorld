@@ -1034,10 +1034,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingEnemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6279340190576987187, guid: 88849ada94c54454b90c3cb11a8c7fde, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88849ada94c54454b90c3cb11a8c7fde, type: 3}
 --- !u!1001 &1449195970
@@ -1631,6 +1627,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6072534156915436493, guid: 88849ada94c54454b90c3cb11a8c7fde, type: 3}
+      propertyPath: walkPointRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6072534156915436494, guid: 88849ada94c54454b90c3cb11a8c7fde, type: 3}
       propertyPath: canExitToHit
       value: 1
