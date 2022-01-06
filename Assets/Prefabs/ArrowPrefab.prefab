@@ -2396,8 +2396,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   rb: {fileID: -6353808596742050730}
   m_trails:
-  - {fileID: 1900223810081135526}
-  - {fileID: 1900223810512397002}
+  - {fileID: 8369072124138256223}
+  - {fileID: 8369072124138256223}
   maxDamage: 60
   appliedDamage: 0
 --- !u!1 &6201991230671492262
@@ -4360,13 +4360,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4316891125134075255, guid: 84f101b258c6d174d95515a8f7b8f2f8, type: 3}
   m_PrefabInstance: {fileID: 2480225221412998216}
   m_PrefabAsset: {fileID: 0}
---- !u!96 &1900223810081135526 stripped
+--- !u!96 &8369072124138256223 stripped
 TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 4050271870097381358, guid: 84f101b258c6d174d95515a8f7b8f2f8, type: 3}
-  m_PrefabInstance: {fileID: 2480225221412998216}
-  m_PrefabAsset: {fileID: 0}
---- !u!96 &1900223810512397002 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 4050271869446516354, guid: 84f101b258c6d174d95515a8f7b8f2f8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6219309954460498711, guid: 84f101b258c6d174d95515a8f7b8f2f8, type: 3}
   m_PrefabInstance: {fileID: 2480225221412998216}
   m_PrefabAsset: {fileID: 0}
