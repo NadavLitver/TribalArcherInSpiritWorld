@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6072534156915436490}
   - component: {fileID: 6072534156915436491}
   - component: {fileID: 298908480}
+  - component: {fileID: 2486890781247201281}
   m_Layer: 0
   m_Name: StateHolder
   m_TagString: Untagged
@@ -129,6 +130,7 @@ MonoBehaviour:
   - {fileID: 6072534156915436494}
   - {fileID: 6072534156915436490}
   - {fileID: 298908480}
+  - {fileID: 2486890781247201281}
   hitState: {fileID: 298908480}
 --- !u!114 &6072534156915436493
 MonoBehaviour:
@@ -183,6 +185,9 @@ MonoBehaviour:
   agent: {fileID: 6279340190576987184}
   sightRange: 15
   playerInSight: 0
+  timeInState: 0
+  timeInSecondsToSideJump: 3
+  SideStep: {fileID: 2486890781247201281}
 --- !u!114 &6072534156915436490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
   stateHandler: {fileID: 0}
-  nextState: {fileID: 6072534156915436494}
+  nextState: {fileID: 2486890781247201281}
   canExitToHit: 1
   groundLayer:
     serializedVersion: 2
@@ -251,6 +256,31 @@ MonoBehaviour:
     m_Bits: 64
   agent: {fileID: 6279340190576987184}
   hitStateLength: 1
+--- !u!114 &2486890781247201281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072534156915436480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe61b3cb0ada3743bad814e3e200819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  stateHandler: {fileID: 0}
+  nextState: {fileID: 6072534156915436494}
+  canExitToHit: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  agent: {fileID: 6279340190576987184}
+  speed: 10
+  Range: 5
 --- !u!1 &6072534157048039973
 GameObject:
   m_ObjectHideFlags: 0
