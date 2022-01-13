@@ -12,6 +12,9 @@ public class ArrowProjectile : MonoBehaviour
     public Rigidbody rb;
     [SerializeField]
     public  TrailRenderer[] m_trails;
+    public int maxDamage;
+    [ReadOnly]
+    public int appliedDamage;
     private float[] trailTimes;
 
 
@@ -44,7 +47,7 @@ public class ArrowProjectile : MonoBehaviour
                 yield break;
             }
             m_trails[i].enabled = false;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
             m_trails[i].enabled = true;
             m_trails[i].time = 0;
             m_trails[i].Clear();
