@@ -21,13 +21,13 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _AmbientStrength: 0.5
-    - _BladeCurve: 1.56
+    - _BladeCurve: 2.62
     - _BladeForward: 0.25
-    - _GrassHeight: 0.7
-    - _GrassWidth: 0.18
+    - _GrassHeight: 1.18
+    - _GrassWidth: 0.09
     - _MaxDist: 300
     - _MinDist: 40
-    - _Rad: 0.55
+    - _Rad: 0.51
     - _Radius: 1.5
     - _RandomHeight: 0.25
     - _Strength: 2
