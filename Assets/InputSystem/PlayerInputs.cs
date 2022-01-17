@@ -57,6 +57,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""AbilityF"",
+                    ""type"": ""Button"",
+                    ""id"": ""d52bd369-f4f9-42e4-bfae-83d37b7ccbb6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +166,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b5de100-0a1c-4220-95a6-7da3444c025d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbilityF"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +190,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Look = m_PlayerMap.FindAction("Look", throwIfNotFound: true);
         m_PlayerMap_Shoot = m_PlayerMap.FindAction("Shoot", throwIfNotFound: true);
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerMap_AbilityF = m_PlayerMap.FindAction("AbilityF", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +245,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMap_Look;
     private readonly InputAction m_PlayerMap_Shoot;
     private readonly InputAction m_PlayerMap_Interact;
+    private readonly InputAction m_PlayerMap_AbilityF;
     public struct PlayerMapActions
     {
         private @PlayerInputs m_Wrapper;
@@ -234,6 +255,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_PlayerMap_Look;
         public InputAction @Shoot => m_Wrapper.m_PlayerMap_Shoot;
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
+        public InputAction @AbilityF => m_Wrapper.m_PlayerMap_AbilityF;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +280,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnInteract;
+                @AbilityF.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityF;
+                @AbilityF.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityF;
+                @AbilityF.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityF;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,6 +302,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @AbilityF.started += instance.OnAbilityF;
+                @AbilityF.performed += instance.OnAbilityF;
+                @AbilityF.canceled += instance.OnAbilityF;
             }
         }
     }
@@ -288,5 +316,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnAbilityF(InputAction.CallbackContext context);
     }
 }
