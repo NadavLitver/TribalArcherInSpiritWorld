@@ -4417,7 +4417,7 @@ Transform:
   m_GameObject: {fileID: 7795163103774826667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 1.3, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7795163102422760087}
   - {fileID: 7795163103655438844}
@@ -4442,8 +4442,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   playerVelocity: {x: 0, y: 0, z: 0}
   groundedPlayer: 0
-  playerSpeed: 8
-  jumpHeight: 0.7
+  playerSpeed: 9
+  jumpHeight: 0.8
   gravityValue: -20
 --- !u!143 &7795163103774826666
 CharacterController:
@@ -4459,7 +4459,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.45
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -4625,7 +4625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8221350060279703167}
   m_LocalRotation: {x: -0.7071068, y: 0.000000029802322, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0035908476, y: 0.027290499, z: 0.23555967}
+  m_LocalPosition: {x: -0.0053, y: 0.0458, z: 0.2397}
   m_LocalScale: {x: 2.0167623, y: 2.016762, z: 2.0167615}
   m_Children:
   - {fileID: 4357313924676518958}
