@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerReleaseShoot;
     public UnityEvent OnPlayerFinishCharge;
     public UnityEvent OnPlayerStartInteract;
+    public UnityEvent OnPlayerClickAbilityE;
+
 
 
     public static InputManager Instance
@@ -40,6 +42,7 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Shoot.performed += PlayerFinishCharging; 
         inputActions.PlayerMap.Shoot.canceled += PlayerReleaseShootThisFrame;
         inputActions.PlayerMap.Interact.started += PlayerStartedInteractThisFrame;
+        inputActions.PlayerMap.AbilityF.started += PlayerStartedAbilityEThisFrame;
 
     }
 
@@ -60,6 +63,10 @@ public class InputManager : MonoBehaviour
     private void PlayerStartedInteractThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPlayerStartInteract?.Invoke();
+    }
+    private void PlayerStartedAbilityEThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnPlayerClickAbilityE?.Invoke();
     }
 
     
