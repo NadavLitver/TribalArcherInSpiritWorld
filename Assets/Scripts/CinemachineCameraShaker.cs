@@ -26,10 +26,13 @@ public class CinemachineCameraShaker : MonoBehaviour
 	/// <summary>
 	/// On awake we grab our components
 	/// </summary>
-	protected virtual void Awake()
+	private void Awake()
 	{
 		if (instance == null)
 			instance = this;
+	}
+	protected virtual void OnEnable()
+	{
 		_virtualCamera = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
 		_perlin = _virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
 	}
@@ -82,6 +85,10 @@ public class CinemachineCameraShaker : MonoBehaviour
 	/// </summary>
 	public virtual void CameraReset()
 	{
+		if (_perlin == null)
+		{
+			return;
+		}
 		_perlin.m_AmplitudeGain = IdleAmplitude;
 		_perlin.m_FrequencyGain = IdleFrequency;
 	}

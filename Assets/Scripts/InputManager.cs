@@ -73,7 +73,14 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.PlayerMap.Jump.triggered;
     }
-  
+
+    public bool IsHoldingSprint()
+    {
+        Debug.Log(inputActions.PlayerMap.Sprint.ReadValue<float>());
+        bool pressingSprintKey = inputActions.PlayerMap.Sprint.ReadValue<float>() > 0;
+        bool movingForward = inputActions.PlayerMap.Movement.ReadValue<Vector2>().y > 0;
+        return pressingSprintKey && movingForward;
+    }
   
 
 

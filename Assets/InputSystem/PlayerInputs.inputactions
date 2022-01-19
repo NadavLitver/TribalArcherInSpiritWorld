@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=1)"
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "9b2445c1-fe10-44f8-805c-a82fd571610a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.5)"
                 }
             ],
             "bindings": [
@@ -124,6 +132,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2146ab0c-be80-4c76-944c-bfbf412a8c82",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
