@@ -1,24 +1,22 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerArrowCollider : MonoBehaviour
 {
-    [SerializeField, FoldoutGroup("Properties")]
-    int damage;
     [FoldoutGroup("Events")]
     public UnityEvent OnPlayerHit;
     [FoldoutGroup("Events")]
     public UnityEvent OnHitLiveBody;
     [FoldoutGroup("Events")]
     public UnityEvent OnLivebodyHeadshot;
+    [FoldoutGroup("Refrences")]
+    public ArrowProjectile ArrowProj;
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Arrow Hit" + other.gameObject.name);
         Livebody currentLivebody = other.GetComponent<Livebody>() ?? other.GetComponentInParent<Livebody>() ?? other.GetComponentInChildren<Livebody>();
-      //  Quaternion effectRotation = (other.ClosestPointOnBounds(transform.position) - PlayerController.playerTransform);
+        //  Quaternion effectRotation = (other.ClosestPointOnBounds(transform.position) - PlayerController.playerTransform);
         if (currentLivebody == null)
         {
             this.gameObject.SetActive(false);
@@ -29,14 +27,14 @@ public class PlayerArrowCollider : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHit(currentLivebody);
+            return;
         }
         else
         {
             if (other.gameObject.CompareTag("Head"))
             {
-             OnLivebodyHeadshot?.Invoke();
-             currentLivebody.TakeDamage((damage * 2));
+                OnLivebodyHeadshot?.Invoke();
+                currentLivebody.TakeDamage(ArrowProj.appliedDamage * 2);
                 VFXManager.Play(VFXManager.Effect.HeadshotEffect, other.ClosestPointOnBounds(transform.position));
                 HitMarkHandler.instance.PlayHeadShotHitMark();
 
@@ -44,7 +42,7 @@ public class PlayerArrowCollider : MonoBehaviour
             }
             else
             {
-             currentLivebody.TakeDamage(damage);
+                currentLivebody.TakeDamage(ArrowProj.appliedDamage);
                 VFXManager.Play(VFXManager.Effect.EnemyHit, other.ClosestPointOnBounds(transform.position));
                 HitMarkHandler.instance.PlayNormalHitMark();
 
@@ -54,10 +52,5 @@ public class PlayerArrowCollider : MonoBehaviour
         }
         this.gameObject.SetActive(false);
     }
-    private void PlayerHit(Livebody currentLivebody)
-    {
-        OnPlayerHit?.Invoke();
-        currentLivebody.TakeDamage(damage);
 
-    }
 }

@@ -8,12 +8,14 @@ public class BowHandler : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
+    [SerializeField, FoldoutGroup("Refrences")] private QuickShotAbility QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool objectPool;
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private  Camera cam;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool isShooting;
-    [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float uxArrowStartingZ;
+    [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float UXArrowStartingZ;
     [SerializeField, FoldoutGroup("Properties")] private float arrowForce;
     [FoldoutGroup("Properties"), ReadOnly] public float shootHoldTime;
+
     
 
     private void Start()
@@ -22,7 +24,7 @@ public class BowHandler : MonoBehaviour
         input = InputManager.Instance;
         input.OnPlayerStartShoot.AddListener(OnShoot);
         input.OnPlayerReleaseShoot.AddListener(OnRelease);
-        uxArrowStartingZ = UXArrow.localPosition.z;
+        UXArrowStartingZ = UXArrow.localPosition.z;
 
     }
     private void Update()
@@ -39,7 +41,7 @@ public class BowHandler : MonoBehaviour
 
     }
 
-    private IEnumerator ReleaseArrow()
+    public IEnumerator ReleaseArrow()
     {
         var arrow = objectPool.GetPooledObject();
         arrow.transform.position = UXArrow.position;
@@ -49,14 +51,20 @@ public class BowHandler : MonoBehaviour
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
         arrow.SetActive(true);
         shootHoldTime = 0;
         yield return new WaitForSeconds(0.1f);
-        UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, uxArrowStartingZ);
-        UXArrow.gameObject.SetActive(true);
-
+        PlaceNewArrow();
 
     }
+
+    private void PlaceNewArrow()
+    {
+        UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, UXArrowStartingZ);
+        UXArrow.gameObject.SetActive(true);
+    }
+
     private Vector3 ShootDirection()
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -76,17 +84,21 @@ public class BowHandler : MonoBehaviour
 
     private void OnShoot()
     {
+        if(QuickShotAbiliyRef.AbilityToggle)
+        {
+            QuickShot();
+            return;
+        }
         isShooting = true;
-        UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y,uxArrowStartingZ);
-        UXArrow.gameObject.SetActive(true);
-        //  uxArrowLerpT = 0;
+       
+
     }
     private void Shoot()
     {
         if (isShooting)
         {
             shootHoldTime += Time.deltaTime;
-            UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, Mathf.Lerp(uxArrowStartingZ, uxArrowStartingZ - 0.2f, shootHoldTime /1));
+            UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, Mathf.Lerp(UXArrowStartingZ, UXArrowStartingZ + 0.1f, shootHoldTime /1));
         }
     }
     private void OnDisable()
@@ -94,9 +106,18 @@ public class BowHandler : MonoBehaviour
         input.OnPlayerStartShoot.RemoveListener(OnShoot);
         input.OnPlayerReleaseShoot.RemoveListener(OnRelease);
     }
+    
     private void OnDrawGizmos()  
     {
         //if(Application.isPlaying)
         //Gizmos.DrawRay(UXArrow.position, ShootDirection().normalized * arrowForce);
+    }
+    void QuickShot()
+    {
+        shootHoldTime = 1;
+        StartCoroutine(ReleaseArrow());
+        QuickShotAbiliyRef.AbilityToggle = false;
+        QuickShotAbiliyRef.ResetArrowToSpin();
+        AbilityStackHandler.instance.DecreaseStackCount();
     }
 }
