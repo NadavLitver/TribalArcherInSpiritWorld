@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PowersHandler : MonoBehaviour
 {
-    public float PowerBuffer;
     public int CurrPower;
     const int MAX_POWER = 3;
     void Start()

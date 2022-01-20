@@ -211,7 +211,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.95
+  m_fontSize: 32.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.759
+  m_FillAmount: 0.746
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.35
+  m_fontSize: 63.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -947,9 +947,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0.759
+  m_Value: 74.6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 959888059738885668}
   - component: {fileID: 959888059738885671}
   m_Layer: 5
-  m_Name: One-Shot
+  m_Name: Spread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a54e3156fcf8ea948bd6a241ff4cfdce, type: 2}
   m_sharedMaterial: {fileID: -7586367705380245718, guid: a54e3156fcf8ea948bd6a241ff4cfdce, type: 2}
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.25
+  m_fontSize: 32.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1142,6 +1142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 959888060065031781}
+  - component: {fileID: 1645775612}
   m_Layer: 5
   m_Name: Powers
   m_TagString: Untagged
@@ -1174,6 +1175,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1645775612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959888060065031802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb39c59916e99e3468eefe5e1d82318d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrPower: 0
 --- !u!1 &959888060177426922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1548,7 @@ GameObject:
   - component: {fileID: 959888060332360339}
   - component: {fileID: 959888060332360338}
   m_Layer: 5
-  m_Name: Spread
+  m_Name: One-shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1634,7 +1648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a54e3156fcf8ea948bd6a241ff4cfdce, type: 2}
   m_sharedMaterial: {fileID: -7586367705380245718, guid: a54e3156fcf8ea948bd6a241ff4cfdce, type: 2}
@@ -1661,7 +1675,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.95
+  m_fontSize: 32.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1757,14 +1771,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBodyRef: {fileID: 0}
+  breathRef: {fileID: 0}
   healthBar: {fileID: 959888059649944630}
-  staminaBar: {fileID: 959888060514046477}
+  breathBar: {fileID: 959888060514046477}
   PowerPoints: []
   counter: {fileID: 959888059362341714}
   powerBuffer: {fileID: 4975855232948066253}
-  powersHandlerRef: {fileID: 0}
-  healthUpdateSpeed: 0
-  powerDecay: 0
+  powersHandlerRef: {fileID: 1645775612}
+  slidersFillSpeed: 50
+  powerDecay: 1
 --- !u!225 &1727070675954213732
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1788,7 +1803,7 @@ GameObject:
   - component: {fileID: 959888060514046466}
   - component: {fileID: 959888060514046477}
   m_Layer: 5
-  m_Name: StaminaBar
+  m_Name: BreathBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1860,9 +1875,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0.656
+  m_Value: 68.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2047,7 +2062,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.656
+  m_FillAmount: 0.682
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2278,7 +2293,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.535
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2443,7 +2458,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.535
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

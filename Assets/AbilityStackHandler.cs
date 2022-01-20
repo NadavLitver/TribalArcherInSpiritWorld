@@ -1,18 +1,22 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class AbilityStackHandler : MonoBehaviour
 {
     [FoldoutGroup("Properties"),ShowInInspector,ReadOnly]
-    const int maxStacks = 3;
+    const int MAX_STACKS = 3;
     [FoldoutGroup("Properties"), SerializeField, ReadOnly]
     int currentStackAmount;
     public static AbilityStackHandler instance;
     [FoldoutGroup("Events")]
     public UnityEvent onStackChange;
     [FoldoutGroup("Refrences")]
-    public GameObject[] UIStackObjects;
+    public Button[] UIStackObjects;
+    [FoldoutGroup("Refrences")]
+    public Slider Buffer;
+
     public void Awake()
     {
         if(instance == null)
@@ -24,23 +28,23 @@ public class AbilityStackHandler : MonoBehaviour
         {
             Debug.LogError("singelton instance populated");
         }
-        currentStackAmount = maxStacks;
+        currentStackAmount = MAX_STACKS;
     }
     public  void IncreaseStackCount()
     {
         currentStackAmount++;
-        if (currentStackAmount > maxStacks)
-            currentStackAmount = maxStacks;
+        if (currentStackAmount > MAX_STACKS)
+            currentStackAmount = MAX_STACKS;
 
         onStackChange?.Invoke();
         UpdateUIElements();
 
     }
-    public  void IncreaseStackCount(int _amountToIncrease)
+    public void IncreaseStackCount(int _amountToIncrease)
     {
         currentStackAmount += _amountToIncrease;
-        if (currentStackAmount > maxStacks)
-            currentStackAmount = maxStacks;
+        if (currentStackAmount > MAX_STACKS)
+            currentStackAmount = MAX_STACKS;
 
         onStackChange?.Invoke();
         UpdateUIElements();
@@ -72,11 +76,11 @@ public class AbilityStackHandler : MonoBehaviour
         {
             if(i+1 > currentStackAmount)
             {
-                UIStackObjects[i].SetActive(false);
+                UIStackObjects[i].interactable = false;
             }
             else
             {
-                UIStackObjects[i].SetActive(true);
+                UIStackObjects[i].interactable = true;
 
             }
         }

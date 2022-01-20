@@ -10,9 +10,11 @@ public class HUD : MonoBehaviour
     [FoldoutGroup("Refrences"), SerializeField]
     private PlayerLivebody playerBodyRef;
     [FoldoutGroup("Refrences"), SerializeField]
+    private Breath breathRef;
+    [FoldoutGroup("Refrences"), SerializeField]
     private Slider healthBar;
     [FoldoutGroup("Refrences"), SerializeField]
-    private Slider staminaBar;
+    private Slider breathBar;
     [FoldoutGroup("Refrences"), SerializeField]
     private Button[] PowerPoints;
     [FoldoutGroup("Refrences"), SerializeField]
@@ -23,14 +25,29 @@ public class HUD : MonoBehaviour
     private PowersHandler powersHandlerRef;
 
     [FoldoutGroup("Parameters"), SerializeField]
-    private float healthUpdateSpeed;
+    private float slidersFillSpeed;
     [FoldoutGroup("Parameters"), SerializeField]
     private float powerDecay;
+    private void Start()
+    {
+        healthBar.maxValue = playerBodyRef.maxHealth;
+        breathBar.maxValue = breathRef.maxBreath;
+    }
 
     private void LateUpdate()
     {
-        healthBar.value = Mathf.MoveTowards(healthBar.value, playerBodyRef.health / playerBodyRef.maxHealth, Time.deltaTime * healthUpdateSpeed);
-        powerBuffer.value -= powerDecay * Time.deltaTime; 
+        UpdateHealth();
+        UpdateBreath();
+        powerBuffer.value -= powerDecay * Time.deltaTime;
+    }
+
+    private void UpdateHealth()
+    {
+        healthBar.value = Mathf.MoveTowards(healthBar.value, playerBodyRef.health, slidersFillSpeed * Time.deltaTime);
+    }
+    private void UpdateBreath()
+    {
+        breathBar.value = Mathf.MoveTowards(breathBar.value, breathRef.current, slidersFillSpeed * Time.deltaTime);
     }
     public void PowerBufferOnUpdate()
     {

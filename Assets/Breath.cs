@@ -22,7 +22,6 @@ public class Breath : MonoBehaviour
     [SerializeField] public float timeSinceLastBreath;
     private void OnEnable()
     {
-        maxBreath = 100;
         current = maxBreath;
         isOutOfBreath = false;
     }
