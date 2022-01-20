@@ -39,16 +39,17 @@ public class Breath : MonoBehaviour
     }
     public void LoseBreath(float breathLost)
     {
-        if (current <= 0.01f)
+        current -= breathLost;
+        timeSinceLastBreath = 0;
+        if (current < 0)
         {
+                current = 0.01f;
             if (!isOutOfBreath)
             {
-                current = 0.01f;
                 EnterOutOfBreath();
             }
         }
-        current -= breathLost;
-        timeSinceLastBreath = 0;
+        
     }
     public void GainBreath()
     {

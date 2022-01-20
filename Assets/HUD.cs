@@ -49,28 +49,6 @@ public class HUD : MonoBehaviour
     {
         breathBar.value = Mathf.MoveTowards(breathBar.value, breathRef.current, slidersFillSpeed * Time.deltaTime);
     }
-    public void PowerBufferOnUpdate()
-    {
-        if (powerBuffer.value >= 1)
-        {
-            powerBuffer.value = 0;
-            powersHandlerRef.AddPower();
-            counter.text = powersHandlerRef.CurrPower.ToString();
-            updatePowerPoints();
-        }
-    }
-    private void updatePowerPoints()
-    {
-        for (int i = 0; i < PowerPoints.Length; i++)
-        {
-            if (powersHandlerRef.CurrPower >= i)
-            {
-                PowerPoints[i].interactable = true;
-            }
-            else
-            {
-                PowerPoints[i].interactable = false;
-            }
-        }
-    }
+  
+   
 }

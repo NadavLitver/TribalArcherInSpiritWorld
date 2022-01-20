@@ -4401,6 +4401,7 @@ GameObject:
   - component: {fileID: 7795163103774826666}
   - component: {fileID: 2136584921}
   - component: {fileID: 2136584922}
+  - component: {fileID: 453187471}
   m_Layer: 6
   m_Name: UpdatedPlayer
   m_TagString: Untagged
@@ -4440,11 +4441,21 @@ MonoBehaviour:
   input: {fileID: 0}
   camTransform: {fileID: 0}
   controller: {fileID: 0}
+  m_breath: {fileID: 0}
+  groundedLayers:
+    serializedVersion: 2
+    m_Bits: 128
   playerVelocity: {x: 0, y: 0, z: 0}
   groundedPlayer: 0
   playerSpeed: 9
-  jumpHeight: 0.8
+  jumpHeight: 8
   gravityValue: -20
+  GroundCheckLength: 2.2
+  sprintSpeed: 1.5
+  doSprint: 0
+  sprintMod: 1
+  sprintBreathCost: 20
+  jumpBreathCost: 15
 --- !u!143 &7795163103774826666
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4462,7 +4473,7 @@ CharacterController:
   m_StepOffset: 0.45
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.01, z: 0}
 --- !u!114 &2136584921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,6 +4531,33 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &453187471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795163103774826667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4022c3ee092594dbefd58834788e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBreath: 100
+  current: 100
+  gain: 15
+  weakerGain: 10
+  ReBreathThreshHold: 0.33
+  isOutOfBreath: 0
+  doGain: 0
+  disableDuration: 1.5
+  OnEnterOutOfBreath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitOutOfBreath:
+    m_PersistentCalls:
+      m_Calls: []
+  timeSinceLastBreath: 0
 --- !u!1 &8181522826361245350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,7 +5021,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1001 &2034915513353550296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5076,14 +5114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b460e5683eb424d9affbc11f98015b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7007115882499504058 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9008112011883564642, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
-  m_PrefabInstance: {fileID: 2034915513353550296}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7671202920407313664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8523324568311403736, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
+  m_PrefabInstance: {fileID: 2034915513353550296}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7007115882499504058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9008112011883564642, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
   m_PrefabInstance: {fileID: 2034915513353550296}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2366011480530661940 stripped

@@ -137,6 +137,14 @@ MonoBehaviour:
   onStackChange:
     m_PersistentCalls:
       m_Calls: []
+  UIStackObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Buffer: {fileID: 0}
+  BufferMaxValue: 100
+  BufferConstantDecreaseSpeed: 100
+  BufferCombatDelay: 1
 --- !u!1 &5429089753126200212
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,11 +190,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXArray:
   - m_effect: 0
-    m_prefab: {fileID: 1651363388222792, guid: a32d87b33cadfed4b83eeaa564eb7724, type: 3}
+    m_prefab: {fileID: 7759716067522917870, guid: c61e83e11a7d26146823366f94516b87, type: 3}
   - m_effect: 1
-    m_prefab: {fileID: 1651363388222792, guid: 06598d3f0d938834fa2f7666fc994199, type: 3}
+    m_prefab: {fileID: 2175872922164089343, guid: 0a647fe19e5d7a042aed06896f59c201, type: 3}
   - m_effect: 2
-    m_prefab: {fileID: 1651363388222792, guid: 55874e56b5751c64b985ac1f9c8bc177, type: 3}
+    m_prefab: {fileID: 2605924497512792530, guid: 8db90ec1d179b434694a5c44b136e9d8, type: 3}
 --- !u!1 &7599429657606171109
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +272,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnPlayerStartInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerClickAbilityF:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerStartedSprint:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerCanceledSprint:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7599429658302137125

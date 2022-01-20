@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Transform camTransform;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private CharacterController controller;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Breath m_breath;
-
+    [FoldoutGroup("Properties")] public LayerMask groundedLayers;
     [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool groundedPlayer;
     [SerializeField, FoldoutGroup("Properties")] private float playerSpeed = 2.0f;
     [SerializeField, FoldoutGroup("Properties")] private float jumpHeight = 1.0f;
     [SerializeField, FoldoutGroup("Properties")] private float gravityValue = -9.81f;
+    [SerializeField, FoldoutGroup("Properties")] private float GroundCheckLength = -9.81f;
     [SerializeField, FoldoutGroup("Properties_Breath")] private float sprintSpeed = 1.5f;
     [SerializeField, FoldoutGroup("Properties_Breath"), ReadOnly] private bool doSprint = false;
     [SerializeField, FoldoutGroup("Properties_Breath"), ReadOnly] private float sprintMod = 1f;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public static bool canMove;
     private void Awake()
     {
+        m_breath = GetComponent<Breath>();
         controller = gameObject.GetComponent<CharacterController>();
         canMove = true;
     }
@@ -34,7 +36,6 @@ public class PlayerController : MonoBehaviour
         input = InputManager.Instance;
         camTransform = Camera.main.transform;
         playerTransform = transform;
-        m_breath = GetComponent<Breath>();
         input.OnPlayerStartedSprint.AddListener(FlipDoSprint);
         input.OnPlayerCanceledSprint.AddListener(FlipDoSprint);
     }
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            sprintMod = 0;
+            sprintMod = 1;
         }
     }
     private void DoSprint()
@@ -76,10 +77,15 @@ public class PlayerController : MonoBehaviour
     {
         if (input.PlayerJumpedThisFrame() && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            playerVelocity.y = jumpHeight;
             m_breath.LoseBreath(jumpBreathCost);
         }
 
+        Gravity();
+    }
+
+    private void Gravity()
+    {
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
@@ -95,11 +101,13 @@ public class PlayerController : MonoBehaviour
 
     private void SetGrounded()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
+        groundedPlayer = Physics.Raycast(transform.position,Vector3.down, GroundCheckLength, groundedLayers);
+        
+      
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawRay(transform.position, Vector3.down * GroundCheckLength);
     }
     private void FlipDoSprint()
     {

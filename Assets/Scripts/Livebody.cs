@@ -96,7 +96,7 @@ public class Livebody : MonoBehaviour
         if (DeadBody != null)
             Instantiate(DeadBody, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
 
-        AbilityStackHandler.instance.IncreaseStackCount();
+        
     }
     bool isResetingVulnerable;
     protected IEnumerator SetVulnerablelFalse()
