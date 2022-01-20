@@ -2,6 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
@@ -13,29 +14,45 @@ public class HUD : MonoBehaviour
     [FoldoutGroup("Refrences"), SerializeField]
     private Slider staminaBar;
     [FoldoutGroup("Refrences"), SerializeField]
-    private Slider[] PowerBars;
-    public int currPowerBar { private get; set; }
+    private Button[] PowerPoints;
+    [FoldoutGroup("Refrences"), SerializeField]
+    private TextMeshProUGUI counter;
+    [FoldoutGroup("Refrences"), SerializeField]
+    private Slider powerBuffer;
+    [FoldoutGroup("Refrences"), SerializeField]
+    private PowersHandler powersHandlerRef;
 
-    void Start()
-    {
-        currPowerBar = 0;
-    }
+    [FoldoutGroup("Parameters"), SerializeField]
+    private float healthUpdateSpeed;
+    [FoldoutGroup("Parameters"), SerializeField]
+    private float powerDecay;
+
     private void LateUpdate()
     {
-        healthBar.value = playerBodyRef.health / playerBodyRef.maxHealth;
-        for (int i = 0; i < PowerBars.Length; i++)
+        healthBar.value = Mathf.MoveTowards(healthBar.value, playerBodyRef.health / playerBodyRef.maxHealth, Time.deltaTime * healthUpdateSpeed);
+        powerBuffer.value -= powerDecay * Time.deltaTime; 
+    }
+    public void PowerBufferOnUpdate()
+    {
+        if (powerBuffer.value >= 1)
         {
-            if (currPowerBar == i)
+            powerBuffer.value = 0;
+            powersHandlerRef.AddPower();
+            counter.text = powersHandlerRef.CurrPower.ToString();
+            updatePowerPoints();
+        }
+    }
+    private void updatePowerPoints()
+    {
+        for (int i = 0; i < PowerPoints.Length; i++)
+        {
+            if (powersHandlerRef.CurrPower >= i)
             {
-                //PowerBars[i].value = currVal
+                PowerPoints[i].interactable = true;
             }
-            else if (currPowerBar < i)
+            else
             {
-                PowerBars[i].value = 0;
-            }
-            else if (currPowerBar > i)
-            {
-                PowerBars[i].value = 1;
+                PowerPoints[i].interactable = false;
             }
         }
     }
