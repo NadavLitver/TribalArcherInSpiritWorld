@@ -34,8 +34,7 @@ public class InputManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             _instace = this;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+       
     }
     private void OnEnable()
     {

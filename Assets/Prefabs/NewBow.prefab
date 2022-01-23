@@ -682,6 +682,71 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6803620044544205673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4533718482705028829}
+  - component: {fileID: 9055949225721611936}
+  - component: {fileID: 8725206629455544242}
+  m_Layer: 0
+  m_Name: QuickshotAbility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4533718482705028829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803620044544205673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9008112011883564642}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9055949225721611936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803620044544205673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e9fa50e4896ce41b82f655f9eea62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityToggle: 0
+  ArrowToSpin: {fileID: 0}
+  ChainLightingArrowPool: {fileID: 8725206629455544242}
+  OnQuickShotToggle:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8725206629455544242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803620044544205673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b460e5683eb424d9affbc11f98015b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 8366887437970108331, guid: 967cdd047802a004992f9deb0b8a0c26, type: 3}
+  amountToPool: 25
 --- !u!1 &8125359597446273531
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +926,7 @@ Transform:
   m_LocalScale: {x: 1.39243, y: 1.39243, z: 1.39243}
   m_Children:
   - {fileID: 2650178912161469535}
+  - {fileID: 4533718482705028829}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
@@ -894,7 +960,7 @@ MonoBehaviour:
   input: {fileID: 0}
   UXArrow: {fileID: 0}
   QuickShotAbiliyRef: {fileID: 0}
-  objectPool: {fileID: 0}
+  NormalArrowPool: {fileID: 0}
   cam: {fileID: 0}
   isShooting: 0
   UXArrowStartingZ: 0

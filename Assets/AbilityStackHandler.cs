@@ -8,8 +8,8 @@ public class AbilityStackHandler : MonoBehaviour
 {
     [FoldoutGroup("Properties"), ShowInInspector, ReadOnly]
     const int MAX_STACKS = 3;
-    [FoldoutGroup("Properties"), SerializeField, ReadOnly]
-    int currentStackAmount;
+    [FoldoutGroup("Properties"), ReadOnly]
+    public int currentStackAmount;
     public static AbilityStackHandler instance;
     [FoldoutGroup("Events")]
     public UnityEvent onStackChange;

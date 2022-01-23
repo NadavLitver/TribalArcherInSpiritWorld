@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class QuickShotAbility : MonoBehaviour
+public class ChainLightingShot : MonoBehaviour
 {
     public bool AbilityToggle;
     public GameObject ArrowToSpin;
+    public ObjectPool ChainLightingArrowPool;
     public UnityEvent OnQuickShotToggle;
-    private Quaternion arrowToSpinStartingRotation;
+    //private Quaternion arrowToSpinStartingRotation;
     private void Awake()
     {
         AbilityToggle = false;
@@ -26,8 +27,11 @@ public class QuickShotAbility : MonoBehaviour
         //{
         //    AbilityToggle = true;
         //}
+        if (!AbilityToggle && AbilityStackHandler.instance.currentStackAmount < 1)
+            return;
         AbilityToggle = !AbilityToggle;
     }
+  
     public void ResetArrowToSpin()
     {
         ArrowToSpin.transform.localEulerAngles = Quaternion.Euler(Vector3.zero).eulerAngles;

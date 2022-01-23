@@ -39,7 +39,7 @@ public class Breath : MonoBehaviour
     }
     public void LoseBreath(float breathLost)
     {
-
+        
         current -= breathLost;
         timeSinceLastBreath = 0;
         if (current <= 0)
@@ -50,7 +50,7 @@ public class Breath : MonoBehaviour
                 EnterOutOfBreath();
             }
         }
-
+        
     }
     public void GainBreath()
     {
@@ -60,12 +60,10 @@ public class Breath : MonoBehaviour
             if (isOutOfBreath)
             {
                 current += weakerGain * Time.deltaTime; // out of breath gain
-                Debug.Log("Weaker Gain(Breath)");
             }
             else
             {
                 current += gain * Time.deltaTime; // regular gain
-                Debug.Log("Normal Gain(Breath)");
 
             }
         }
