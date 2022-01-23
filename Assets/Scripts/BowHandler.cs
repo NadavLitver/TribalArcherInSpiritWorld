@@ -8,8 +8,8 @@ public class BowHandler : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
-    [SerializeField, FoldoutGroup("Refrences")] private QuickShotAbility QuickShotAbiliyRef;
-    [SerializeField, FoldoutGroup("Refrences")] private ObjectPool objectPool;
+    [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
+    [SerializeField, FoldoutGroup("Refrences")] private ObjectPool NormalArrowPool;
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private  Camera cam;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool isShooting;
     [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float UXArrowStartingZ;
@@ -20,6 +20,8 @@ public class BowHandler : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         cam = Camera.main;
         input = InputManager.Instance;
         input.OnPlayerStartShoot.AddListener(OnShoot);
@@ -37,27 +39,11 @@ public class BowHandler : MonoBehaviour
         if (!isShooting)
             return;
         isShooting = false;
-       StartCoroutine(ReleaseArrow());
+       StartCoroutine(ReleaseNormalArrow());
 
     }
 
-    public IEnumerator ReleaseArrow()
-    {
-        var arrow = objectPool.GetPooledObject();
-        arrow.transform.position = UXArrow.position;
-        arrow.transform.rotation = UXArrow.rotation;
-        UXArrow.gameObject.SetActive(false);
-
-        var arrowProj = arrow.GetComponent<ArrowProjectile>();
-        arrowProj.direction = ShootDirection().normalized;
-        arrowProj.force = arrowForce * shootHoldTime;
-        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
-        arrow.SetActive(true);
-        shootHoldTime = 0;
-        yield return new WaitForSeconds(0.1f);
-        PlaceNewArrow();
-
-    }
+  
 
     private void PlaceNewArrow()
     {
@@ -115,9 +101,43 @@ public class BowHandler : MonoBehaviour
     void QuickShot()
     {
         shootHoldTime = 1;
-        StartCoroutine(ReleaseArrow());
+        StartCoroutine(ReleaseChainLightingArrow());
         QuickShotAbiliyRef.AbilityToggle = false;
         QuickShotAbiliyRef.ResetArrowToSpin();
         AbilityStackHandler.instance.DecreaseStackCount();
+    }
+    public IEnumerator ReleaseNormalArrow()
+    {
+        var arrow = NormalArrowPool.GetPooledObject();
+        arrow.transform.position = UXArrow.position;
+        arrow.transform.rotation = UXArrow.rotation;
+        UXArrow.gameObject.SetActive(false);
+
+        var arrowProj = arrow.GetComponent<ArrowProjectile>();
+        arrowProj.direction = ShootDirection().normalized;
+        arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
+        arrow.SetActive(true);
+        shootHoldTime = 0;
+        yield return new WaitForSeconds(0.1f);
+        PlaceNewArrow();
+
+    }
+    public IEnumerator ReleaseChainLightingArrow()
+    {
+        var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();
+        arrow.transform.position = UXArrow.position;
+        arrow.transform.rotation = UXArrow.rotation;
+        UXArrow.gameObject.SetActive(false);
+
+        var arrowProj = arrow.GetComponent<ArrowProjectile>();
+        arrowProj.direction = ShootDirection().normalized;
+        arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
+        arrow.SetActive(true);
+        shootHoldTime = 0;
+        yield return new WaitForSeconds(0.1f);
+        PlaceNewArrow();
+
     }
 }

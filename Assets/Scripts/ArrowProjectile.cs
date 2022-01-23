@@ -1,17 +1,17 @@
 using Sirenix.OdinInspector;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class ArrowProjectile : MonoBehaviour
 {
     public float force;
     public float startingForce;
     public Vector3 direction;
-    [ReadOnly,SerializeField]
+    [ReadOnly, SerializeField]
     private Vector3 velocity;
     public Rigidbody rb;
     [SerializeField]
-    public  TrailRenderer[] m_trails;
+    public TrailRenderer[] m_trails;
     public int maxDamage;
     [ReadOnly]
     public int appliedDamage;
@@ -20,20 +20,23 @@ public class ArrowProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-        trailTimes = new float[m_trails.Length];
-        for (int i = 0; i < m_trails.Length; i++)
-        {
-            trailTimes[i] = m_trails[i].time;
-        }
+
         velocity = direction * force;
         rb.AddForce(velocity, ForceMode.Force);
-       
+        if (m_trails.Length > 0)
+        {
+            trailTimes = new float[m_trails.Length];
+            for (int i = 0; i < m_trails.Length; i++)
+            {
+                trailTimes[i] = m_trails[i].time;
+            }
             StartCoroutine(ActivateTrail());
+        }
     }
     private void Update()
     {
         if (direction != Vector3.zero)
-            transform.up = rb.velocity;           
+            transform.up = rb.velocity;
 
 
 
