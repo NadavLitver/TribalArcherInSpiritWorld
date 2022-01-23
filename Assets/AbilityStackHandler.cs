@@ -1,21 +1,33 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class AbilityStackHandler : MonoBehaviour
 {
-    [FoldoutGroup("Properties"),ShowInInspector,ReadOnly]
-    const int maxStacks = 3;
+    [FoldoutGroup("Properties"), ShowInInspector, ReadOnly]
+    const int MAX_STACKS = 3;
     [FoldoutGroup("Properties"), SerializeField, ReadOnly]
     int currentStackAmount;
     public static AbilityStackHandler instance;
     [FoldoutGroup("Events")]
     public UnityEvent onStackChange;
     [FoldoutGroup("Refrences")]
-    public GameObject[] UIStackObjects;
+    public Button[] UIStackObjects;
+    [FoldoutGroup("Refrences")]
+    public Slider Buffer;
+    [FoldoutGroup("Refrences"), ReadOnly, SerializeField]
+    private float BufferMaxValue = 100;
+    [FoldoutGroup("Refrences"), ReadOnly, SerializeField]
+    private float BufferConstantDecreaseSpeed = 100;
+    private bool canBufferChange = false;
+    [FoldoutGroup("Properties"), SerializeField]
+    private float BufferCombatDelay = 1;
+
     public void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
 
@@ -24,29 +36,50 @@ public class AbilityStackHandler : MonoBehaviour
         {
             Debug.LogError("singelton instance populated");
         }
-        currentStackAmount = maxStacks;
+        currentStackAmount = MAX_STACKS;
+        Buffer.maxValue = BufferMaxValue;
+        UpdateUIElements();
     }
-    public  void IncreaseStackCount()
+    public void IncreaseBufferValue(float _amountToIncrease)
+    {
+        Buffer.value += _amountToIncrease;
+        if(Buffer.value >= Buffer.maxValue)
+        {
+            IncreaseStackCount(); 
+        }
+        StartCoroutine(CanBufferRoutine());
+    }
+    private void LateUpdate()
+    {
+        ConstantlyDecreaseBuffer();
+    }
+    private void ConstantlyDecreaseBuffer()
+    {
+        
+        if (canBufferChange && Buffer.value > 0)
+            Buffer.value -= BufferConstantDecreaseSpeed * Time.deltaTime;
+    }
+    private void IncreaseStackCount()
     {
         currentStackAmount++;
-        if (currentStackAmount > maxStacks)
-            currentStackAmount = maxStacks;
+        if (currentStackAmount > MAX_STACKS)
+            currentStackAmount = MAX_STACKS;
 
         onStackChange?.Invoke();
         UpdateUIElements();
 
     }
-    public  void IncreaseStackCount(int _amountToIncrease)
+    private void IncreaseStackCount(int _amountToIncrease)
     {
         currentStackAmount += _amountToIncrease;
-        if (currentStackAmount > maxStacks)
-            currentStackAmount = maxStacks;
+        if (currentStackAmount > MAX_STACKS)
+            currentStackAmount = MAX_STACKS;
 
         onStackChange?.Invoke();
         UpdateUIElements();
 
     }
-    public  void DecreaseStackCount()
+    public void DecreaseStackCount()
     {
         currentStackAmount--;
         if (currentStackAmount < 0)
@@ -56,7 +89,7 @@ public class AbilityStackHandler : MonoBehaviour
         UpdateUIElements();
 
     }
-    public  void DecreaseStackCount(int _amountToDecrease)
+    public void DecreaseStackCount(int _amountToDecrease)
     {
         currentStackAmount -= _amountToDecrease;
         if (currentStackAmount < 0)
@@ -70,15 +103,21 @@ public class AbilityStackHandler : MonoBehaviour
     {
         for (int i = 0; i < UIStackObjects.Length; i++)
         {
-            if(i+1 > currentStackAmount)
+            if (i + 1 > currentStackAmount)
             {
-                UIStackObjects[i].SetActive(false);
+                UIStackObjects[i].interactable = false;
             }
             else
             {
-                UIStackObjects[i].SetActive(true);
+                UIStackObjects[i].interactable = true;
 
             }
         }
+    }
+    IEnumerator CanBufferRoutine()
+    {
+        canBufferChange = false;
+        yield return new WaitForSeconds(BufferCombatDelay);
+        canBufferChange = true;
     }
 }

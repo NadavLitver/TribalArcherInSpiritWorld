@@ -37,6 +37,8 @@ public class PlayerArrowCollider : MonoBehaviour
                 currentLivebody.TakeDamage(ArrowProj.appliedDamage * 2);
                 VFXManager.Play(VFXManager.Effect.HeadshotEffect, other.ClosestPointOnBounds(transform.position));
                 HitMarkHandler.instance.PlayHeadShotHitMark();
+                AbilityStackHandler.instance.IncreaseBufferValue(80);
+
 
 
             }
@@ -45,6 +47,7 @@ public class PlayerArrowCollider : MonoBehaviour
                 currentLivebody.TakeDamage(ArrowProj.appliedDamage);
                 VFXManager.Play(VFXManager.Effect.EnemyHit, other.ClosestPointOnBounds(transform.position));
                 HitMarkHandler.instance.PlayNormalHitMark();
+                AbilityStackHandler.instance.IncreaseBufferValue(40);
 
             }
 

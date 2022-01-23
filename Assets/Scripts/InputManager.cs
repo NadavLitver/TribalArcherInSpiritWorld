@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-10)]
 public class InputManager : MonoBehaviour
@@ -13,7 +14,9 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerReleaseShoot;
     public UnityEvent OnPlayerFinishCharge;
     public UnityEvent OnPlayerStartInteract;
-    public UnityEvent OnPlayerClickAbilityE;
+    public UnityEvent OnPlayerClickAbilityF;
+    public UnityEvent OnPlayerStartedSprint;
+    public UnityEvent OnPlayerCanceledSprint;
 
 
 
@@ -43,7 +46,20 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Shoot.canceled += PlayerReleaseShootThisFrame;
         inputActions.PlayerMap.Interact.started += PlayerStartedInteractThisFrame;
         inputActions.PlayerMap.AbilityF.started += PlayerStartedAbilityEThisFrame;
+        inputActions.PlayerMap.Sprint.started += PlayerStartedSprint;
+        inputActions.PlayerMap.Sprint.canceled += PlayerCanceledSprint;
 
+
+    }
+
+    private void PlayerCanceledSprint(InputAction.CallbackContext obj)
+    {
+        OnPlayerCanceledSprint?.Invoke();
+    }
+
+    private void PlayerStartedSprint(InputAction.CallbackContext obj)
+    {
+        OnPlayerStartedSprint?.Invoke();
     }
 
     private void PlayerFinishCharging(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -66,7 +82,7 @@ public class InputManager : MonoBehaviour
     }
     private void PlayerStartedAbilityEThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        OnPlayerClickAbilityE?.Invoke();
+        OnPlayerClickAbilityF?.Invoke();
     }
 
     
@@ -89,8 +105,4 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.PlayerMap.Jump.triggered;
     }
-  
-  
-
-
 }

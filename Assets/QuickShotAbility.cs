@@ -12,7 +12,7 @@ public class QuickShotAbility : MonoBehaviour
     private void Awake()
     {
         AbilityToggle = false;
-        InputManager.Instance.OnPlayerClickAbilityE.AddListener(ToggleAbility);
+        InputManager.Instance.OnPlayerClickAbilityF.AddListener(ToggleAbility);
     }
     private void ToggleAbility()
     {

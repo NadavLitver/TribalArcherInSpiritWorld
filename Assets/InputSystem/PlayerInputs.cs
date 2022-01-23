@@ -65,6 +65,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""734d6a00-54d7-41bb-8c55-3adae9fd1bca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -177,6 +185,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""AbilityF"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c3bc088-caf6-40c1-b56b-130a44621c4d"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -191,6 +210,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Shoot = m_PlayerMap.FindAction("Shoot", throwIfNotFound: true);
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_AbilityF = m_PlayerMap.FindAction("AbilityF", throwIfNotFound: true);
+        m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -246,6 +266,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMap_Shoot;
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_AbilityF;
+    private readonly InputAction m_PlayerMap_Sprint;
     public struct PlayerMapActions
     {
         private @PlayerInputs m_Wrapper;
@@ -256,6 +277,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Shoot => m_Wrapper.m_PlayerMap_Shoot;
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @AbilityF => m_Wrapper.m_PlayerMap_AbilityF;
+        public InputAction @Sprint => m_Wrapper.m_PlayerMap_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +305,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @AbilityF.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityF;
                 @AbilityF.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityF;
                 @AbilityF.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityF;
+                @Sprint.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +330,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @AbilityF.started += instance.OnAbilityF;
                 @AbilityF.performed += instance.OnAbilityF;
                 @AbilityF.canceled += instance.OnAbilityF;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
         }
     }
@@ -317,5 +345,6 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnAbilityF(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
 }
