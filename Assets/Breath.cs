@@ -10,7 +10,7 @@ public class Breath : MonoBehaviour
     [SerializeField] public float current = 100; // running breath
     [SerializeField] public float gain; // per second
     [SerializeField] public float weakerGain; // per second
-    [SerializeField] public float ReBreathThreshHold = 0.33f; // precent between 0-1
+    [SerializeField] public float ReBreathThreshHold = 40; // precent between 0-1
     [SerializeField] public bool isOutOfBreath = false;
     [SerializeField] public bool doGain = false;
     [SerializeField] public float disableDuration = 1.5f;
@@ -39,11 +39,12 @@ public class Breath : MonoBehaviour
     }
     public void LoseBreath(float breathLost)
     {
+        
         current -= breathLost;
         timeSinceLastBreath = 0;
-        if (current < 0)
+        if (current <= 0)
         {
-                current = 0.01f;
+            current = 0f;
             if (!isOutOfBreath)
             {
                 EnterOutOfBreath();
@@ -59,10 +60,13 @@ public class Breath : MonoBehaviour
             if (isOutOfBreath)
             {
                 current += weakerGain * Time.deltaTime; // out of breath gain
+                Debug.Log("Weaker Gain(Breath)");
             }
             else
             {
                 current += gain * Time.deltaTime; // regular gain
+                Debug.Log("Normal Gain(Breath)");
+
             }
         }
         if (current >= maxBreath)
