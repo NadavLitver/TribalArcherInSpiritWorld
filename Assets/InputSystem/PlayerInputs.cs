@@ -198,6 +198,33 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GeneralMap"",
+            ""id"": ""62c07b62-1225-4895-bc5a-35eedf49aa6a"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""f208d728-2797-4dab-9ae1-6a6a62c571a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""491290ae-dfc5-4960-ab61-fe7d6da4d556"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -211,6 +238,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_AbilityF = m_PlayerMap.FindAction("AbilityF", throwIfNotFound: true);
         m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
+        // GeneralMap
+        m_GeneralMap = asset.FindActionMap("GeneralMap", throwIfNotFound: true);
+        m_GeneralMap_Pause = m_GeneralMap.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,6 +367,39 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         }
     }
     public PlayerMapActions @PlayerMap => new PlayerMapActions(this);
+
+    // GeneralMap
+    private readonly InputActionMap m_GeneralMap;
+    private IGeneralMapActions m_GeneralMapActionsCallbackInterface;
+    private readonly InputAction m_GeneralMap_Pause;
+    public struct GeneralMapActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public GeneralMapActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_GeneralMap_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_GeneralMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GeneralMapActions set) { return set.Get(); }
+        public void SetCallbacks(IGeneralMapActions instance)
+        {
+            if (m_Wrapper.m_GeneralMapActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_GeneralMapActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GeneralMapActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GeneralMapActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_GeneralMapActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public GeneralMapActions @GeneralMap => new GeneralMapActions(this);
     public interface IPlayerMapActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -346,5 +409,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAbilityF(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+    }
+    public interface IGeneralMapActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

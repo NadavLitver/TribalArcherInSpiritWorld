@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerStartedSprint;
     public UnityEvent OnPlayerCanceledSprint;
 
-
+    public UnityEvent OnPause;
 
     public static InputManager Instance
     {
@@ -49,7 +49,12 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Sprint.started += PlayerStartedSprint;
         inputActions.PlayerMap.Sprint.canceled += PlayerCanceledSprint;
 
+        inputActions.GeneralMap.Pause.started += StartPause;
+    }
 
+    private void StartPause(InputAction.CallbackContext obj)
+    {
+        OnPause?.Invoke();
     }
 
     private void PlayerCanceledSprint(InputAction.CallbackContext obj)
