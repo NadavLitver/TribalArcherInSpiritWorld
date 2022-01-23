@@ -16,8 +16,10 @@ public class LivebodyStateHandler : MonoBehaviour
 
     }
 
-    public void Start()
+    public void OnEnable()
     {
+        body.health = body.maxHealth;
+        body.isVulnerable = true;
         SwapState(states[0]);
     }
  

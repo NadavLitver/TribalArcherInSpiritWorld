@@ -3969,7 +3969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 15
-  damage: 200
+  damage: 100
   HitMask:
     serializedVersion: 2
     m_Bits: 512

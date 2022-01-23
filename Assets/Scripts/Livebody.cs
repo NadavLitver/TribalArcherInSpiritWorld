@@ -44,11 +44,11 @@ public class Livebody : MonoBehaviour
             OnDeath = new UnityEvent();
 
         isVulnerable = true;
-        isPlayer = gameObject.tag == "Player";
+        isPlayer = gameObject.CompareTag("Player");
         health = maxHealth;
 
     }
-   
+    
 
     public virtual void TakeDamage(int damage)
     {
