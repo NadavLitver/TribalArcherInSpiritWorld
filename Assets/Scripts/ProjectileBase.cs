@@ -10,6 +10,8 @@ public class ProjectileBase : MonoBehaviour
     [ReadOnly, SerializeField]
     protected Vector3 velocity;
     public Rigidbody rb;
+    [SerializeField]
+    private float gravityScale;
 
 
     private void OnEnable()
@@ -27,7 +29,11 @@ public class ProjectileBase : MonoBehaviour
 
 
     }
-  
+    private void FixedUpdate()
+    {
+        rb.velocity += Vector3.down * gravityScale;
+    }
+
     private void OnDisable()
     {
         force = 0;

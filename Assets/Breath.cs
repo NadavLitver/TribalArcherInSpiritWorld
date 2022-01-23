@@ -60,12 +60,10 @@ public class Breath : MonoBehaviour
             if (isOutOfBreath)
             {
                 current += weakerGain * Time.deltaTime; // out of breath gain
-                Debug.Log("Weaker Gain(Breath)");
             }
             else
             {
                 current += gain * Time.deltaTime; // regular gain
-                Debug.Log("Normal Gain(Breath)");
 
             }
         }

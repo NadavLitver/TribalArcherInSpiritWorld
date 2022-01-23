@@ -12,7 +12,7 @@ public class PlayerArrowCollider : MonoBehaviour
     public UnityEvent OnLivebodyHeadshot;
     [FoldoutGroup("Refrences")]
     public ArrowProjectile ArrowProj;
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         Debug.Log("Arrow Hit" + other.gameObject.name);
         Livebody currentLivebody = other.GetComponent<Livebody>() ?? other.GetComponentInParent<Livebody>() ?? other.GetComponentInChildren<Livebody>();
