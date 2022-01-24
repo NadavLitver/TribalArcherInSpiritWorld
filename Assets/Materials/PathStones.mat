@@ -7,24 +7,21 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ToonGround_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: ae34dadabdf2c2f49aafd489a1e9ad86, type: 3}
+  m_Name: PathStones
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_252e722d409b4804a6d10f742d52dd89:
-        m_Texture: {fileID: 2800000, guid: 15297e213ee20d042bc887b8c97401f4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 15297e213ee20d042bc887b8c97401f4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -48,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 15297e213ee20d042bc887b8c97401f4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -80,11 +77,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: -0.67
-    - Vector1_4C850B07: 0
-    - Vector1_64B788AD: 0
-    - Vector1_67744406: 0
-    - Vector1_a199e3e12f1b49049100eb4a71d02f18: 8.53
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -112,19 +104,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_057304138c224518a29f9a1f6a929faf: {r: 0.38679248, g: 0, b: 0.040267214, a: 1}
-    - Color_4B4CE890: {r: 0, g: 0, b: 0, a: 0}
-    - Color_4B9AABFA: {r: 1, g: 1, b: 1, a: 0}
-    - Color_A96C309B: {r: 1, g: 0.8499565, b: 0, a: 0}
-    - Color_F150E237: {r: 0.9775864, g: 1, b: 0.6084906, a: 1}
-    - Vector2_2553fda076bc44af8070f71c3ea8d1bd: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_92dfca70ac92439bbefd20338d48ec6d: {r: 1, g: 1, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8046836611666990107
+--- !u!114 &6091637101273563710
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

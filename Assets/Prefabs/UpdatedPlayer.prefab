@@ -4528,18 +4528,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBreath: 100
   current: 100
-  gain: 15
-  weakerGain: 10
+  gain: 25
+  weakerGain: 15
   ReBreathThreshHold: 40
   isOutOfBreath: 0
   doGain: 0
-  disableDuration: 1.5
+  disableDuration: 1
   OnEnterOutOfBreath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BreathEffects, Assembly-CSharp
+        m_MethodName: EnterOutOfBreath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExitOutOfBreath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BreathEffects, Assembly-CSharp
+        m_MethodName: ExitOutOfBreath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BreathEffects, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   timeSinceLastBreath: 0
 --- !u!1 &8181522826361245350
 GameObject:
