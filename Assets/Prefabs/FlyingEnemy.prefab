@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6072534156265737085}
   - component: {fileID: 6072534156265737084}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HeadColldier
   m_TagString: Head
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   agent: {fileID: 6279340190576987184}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  sightRange: 30
+  sightRange: 45
   playerInSight: 0
   GroundInSight: 0
 --- !u!114 &6072534156915436494
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6072534157048039972}
   - component: {fileID: 6072534157048039971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BodyColldier
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 6279340190576987186}
   - component: {fileID: 6279340190576987184}
   - component: {fileID: 534542240}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FlyingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
