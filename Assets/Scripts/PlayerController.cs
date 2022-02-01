@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Transform camTransform;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private CharacterController controller;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Breath m_breath;
+    [SerializeField, FoldoutGroup("Refrences")] private CinemachinePOVExtension m_CinematicCamera;
     [FoldoutGroup("Properties")] public LayerMask groundedLayers;
     [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool groundedPlayer;
@@ -21,15 +23,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties_Breath"), ReadOnly] private float sprintMod = 1f;
     [SerializeField, FoldoutGroup("Properties_Breath")] private float sprintBreathCost = 20f;
     [SerializeField, FoldoutGroup("Properties_Breath")] private float jumpBreathCost = 15f;
+    [SerializeField, FoldoutGroup("Properties_Breath")] private float SprintFOV = 55f;
 
 
     public static Transform playerTransform;
     public static bool canMove;
+    private bool changeFOVNoInput;
     private void Awake()
     {
         m_breath = GetComponent<Breath>();
         controller = gameObject.GetComponent<CharacterController>();
         canMove = true;
+     
     }
     private void Start()
     {
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
         playerTransform = transform;
         input.OnPlayerStartedSprint.AddListener(FlipDoSprint);
         input.OnPlayerCanceledSprint.AddListener(FlipDoSprint);
+
     }
     void Update()
     {
@@ -57,6 +63,13 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+
+            if (!changeFOVNoInput)
+            {
+                StartCoroutine(FOVScalingRoutine(m_CinematicCamera.StartingFov));
+                changeFOVNoInput = true;
+
+            }
             sprintMod = 1;
         }
     }
@@ -69,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            
             sprintMod = 1f;
         }
     }
@@ -112,5 +126,22 @@ public class PlayerController : MonoBehaviour
     private void FlipDoSprint()
     {
         doSprint = !doSprint;
+        float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFov;
+
+        if(m_CinematicCamera.FOV != FOVToSet)
+            StartCoroutine(FOVScalingRoutine(FOVToSet));
+
+
+
+    }
+    IEnumerator FOVScalingRoutine(float goal)
+    {
+        while (m_CinematicCamera.FOV != goal)
+        {
+             m_CinematicCamera.FOV = Mathf.MoveTowards(m_CinematicCamera.FOV, goal, Time.deltaTime * 20);
+             yield return new WaitForEndOfFrame();
+
+        }
+        changeFOVNoInput = false;
     }
 }

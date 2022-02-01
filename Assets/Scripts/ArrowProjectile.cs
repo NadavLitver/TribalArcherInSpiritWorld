@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ArrowProjectile : MonoBehaviour
 {
+    [ReadOnly]
     public float force;
+    [ReadOnly]
     public float startingForce;
     public Vector3 direction;
     [ReadOnly, SerializeField]
@@ -16,7 +18,8 @@ public class ArrowProjectile : MonoBehaviour
     [ReadOnly]
     public int appliedDamage;
     private float[] trailTimes;
-
+    [SerializeField]
+    private float gravityScale;
 
     private void OnEnable()
     {
@@ -40,6 +43,10 @@ public class ArrowProjectile : MonoBehaviour
 
 
 
+    }
+    private void FixedUpdate()
+    {
+        rb.velocity += Vector3.down * gravityScale;
     }
     IEnumerator ActivateTrail()
     {

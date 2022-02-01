@@ -56,7 +56,7 @@ public class Breath : MonoBehaviour
     {
         if (current < maxBreath)
         {
-            Debug.Log("cur: " + (current < maxBreath) + "; IsOOB: " + isOutOfBreath);
+            //Debug.Log("cur: " + (current < maxBreath) + "; IsOOB: " + isOutOfBreath);
             if (isOutOfBreath)
             {
                 current += weakerGain * Time.deltaTime; // out of breath gain
