@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         while (m_CinematicCamera.FOV != goal)
         {
-             m_CinematicCamera.FOV = Mathf.MoveTowards(m_CinematicCamera.FOV, goal, Time.deltaTime * 20);
+             m_CinematicCamera.FOV = Mathf.MoveTowards(m_CinematicCamera.FOV, goal, Time.deltaTime * 30);
              yield return new WaitForEndOfFrame();
 
         }
