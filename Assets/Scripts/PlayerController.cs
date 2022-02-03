@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
@@ -13,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences")] private CinemachinePOVExtension m_CinematicCamera;
     [FoldoutGroup("Properties")] public LayerMask groundedLayers;
     [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
-    [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool groundedPlayer;
+    [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool isGrounded;
     [SerializeField, FoldoutGroup("Properties")] private float playerSpeed = 2.0f;
     [SerializeField, FoldoutGroup("Properties")] private float jumpHeight = 1.0f;
     [SerializeField, FoldoutGroup("Properties")] private float gravityValue = -9.81f;
@@ -24,17 +23,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties_Breath")] private float sprintBreathCost = 20f;
     [SerializeField, FoldoutGroup("Properties_Breath")] private float jumpBreathCost = 15f;
     [SerializeField, FoldoutGroup("Properties_Breath")] private float SprintFOV = 55f;
-
+    [SerializeField, FoldoutGroup("Properties_Leap"), ReadOnly] private bool canLeap;
+    [SerializeField, FoldoutGroup("Properties_Leap")] private float leapForce;
+    [SerializeField, FoldoutGroup("Properties_Leap")] public float LeapCD;
 
     public static Transform playerTransform;
     public static bool canMove;
     private bool OnBreathDepletedFlag;
+
+
+
     private void Awake()
     {
         m_breath = GetComponent<Breath>();
         controller = gameObject.GetComponent<CharacterController>();
         canMove = true;
-     
+        canLeap = true;
     }
     private void Start()
     {
@@ -51,10 +55,21 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             Jump();
-            Move();
+            Leap();
+            Move(GetMoveInput());
             BreathboundMovement();
         }
     }
+
+    private Vector3 GetMoveInput()
+    {
+        Vector2 Inputmovement = input.GetPlayerMovement();
+        Vector3 move = new Vector3(Inputmovement.x, 0, Inputmovement.y);
+        move = camTransform.forward * move.z + camTransform.right * move.x;
+        move.y = 0;
+        return move;
+    }
+
     private void BreathboundMovement()
     {
         if (m_breath.current > 0)
@@ -82,14 +97,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            
+
             sprintMod = 1f;
         }
     }
 
     private void Jump()
     {
-        if (input.PlayerJumpedThisFrame() && groundedPlayer)
+        if (input.PlayerJumpedThisFrame() && isGrounded)
         {
             playerVelocity.y = jumpHeight;
             m_breath.LoseBreath(jumpBreathCost);
@@ -97,27 +112,55 @@ public class PlayerController : MonoBehaviour
 
         Gravity();
     }
+    private void Leap()
+    {
+        if (input.PlayerJumpedThisFrame() && !isGrounded && canLeap)
+        {
+            if (GetMoveInput() != Vector3.zero)
+                playerVelocity =  GetMoveInput() + (Vector3.up * 0.25f) * leapForce;
 
+            else
+                playerVelocity = camTransform.forward +(Vector3.up * 0.25f) * leapForce;
+
+            canLeap = false;
+            StartCoroutine(cooldown());
+        }
+        IEnumerator cooldown()
+        {
+            yield return new WaitForSecondsRealtime(LeapCD);
+            canLeap = true;
+        }
+    }
     private void Gravity()
     {
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        // controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    private void Move()
+    private void Move(Vector3 move)
     {
-        Vector2 Inputmovement = input.GetPlayerMovement();
-        Vector3 move = new Vector3(Inputmovement.x, 0, Inputmovement.y);
-        move = camTransform.forward * move.z + camTransform.right * move.x;
-        move.y = 0;
-        controller.Move(move * Time.deltaTime * playerSpeed * sprintMod);
+
+       
+        controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
     }
 
     private void SetGrounded()
     {
-        groundedPlayer = Physics.Raycast(transform.position,Vector3.down, GroundCheckLength, groundedLayers);
-        
-      
+
+        if (Physics.Raycast(transform.position, Vector3.down, GroundCheckLength, groundedLayers))
+        {
+            if (!isGrounded)
+            {
+                isGrounded = true;
+                playerVelocity = Vector3.zero;
+            }
+        }
+        else
+        {
+            if (isGrounded)
+                isGrounded = false;
+        }
+
     }
     private void OnDrawGizmosSelected()
     {
@@ -128,7 +171,7 @@ public class PlayerController : MonoBehaviour
         doSprint = !doSprint;
         float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFOV;
 
-        if(m_CinematicCamera.FOV != FOVToSet)
+        if (m_CinematicCamera.FOV != FOVToSet)
         {
             StartCoroutine(m_CinematicCamera.FOVScalingRoutine(FOVToSet));
             OnBreathDepletedFlag = false;
@@ -137,5 +180,6 @@ public class PlayerController : MonoBehaviour
 
 
     }
-  
+
+
 }

@@ -108,7 +108,7 @@ public class BowHandler : MonoBehaviour
     }
     void QuickShot()
     {
-        shootHoldTime = 1;
+        shootHoldTime = maxHoldTime;
         StartCoroutine(ReleaseChainLightingArrow());
         QuickShotAbiliyRef.AbilityToggle = false;
         QuickShotAbiliyRef.ResetArrowToSpin();

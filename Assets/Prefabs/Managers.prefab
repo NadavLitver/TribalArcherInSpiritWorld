@@ -47,6 +47,68 @@ MonoBehaviour:
   IdleFrequency: 0
   DefaultShakeAmplitude: 1
   DefaultShakeFrequency: 10
+--- !u!1 &1234329347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234329348}
+  - component: {fileID: 1234329350}
+  - component: {fileID: 1234329349}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1234329348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234329347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7599429658302137126}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1234329350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234329347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d9f6c38826b754a82e988be700016d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips: []
+  DeactivateAudioObjectsTime: 10
+  m_pool: {fileID: 1234329349}
+--- !u!114 &1234329349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234329347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b460e5683eb424d9affbc11f98015b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 3788447522010275410, guid: 3a75b669954319e41b7cf662fa89652e, type: 3}
+  amountToPool: 100
 --- !u!1 &2076866539
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXArray:
   - m_effect: 0
-    m_prefab: {fileID: 7759716067522917870, guid: c61e83e11a7d26146823366f94516b87, type: 3}
+    m_prefab: {fileID: 2175872922164089343, guid: 0a647fe19e5d7a042aed06896f59c201, type: 3}
   - m_effect: 1
     m_prefab: {fileID: 2175872922164089343, guid: 0a647fe19e5d7a042aed06896f59c201, type: 3}
   - m_effect: 2
@@ -283,6 +345,7 @@ MonoBehaviour:
   OnPlayerCanceledSprint:
     m_PersistentCalls:
       m_Calls: []
+  shootHoldTime: 0
 --- !u!1 &7599429658302137125
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +378,7 @@ Transform:
   - {fileID: 2076866540}
   - {fileID: 334569549}
   - {fileID: 3961185787806211656}
+  - {fileID: 1234329348}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
