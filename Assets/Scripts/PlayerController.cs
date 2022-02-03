@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public static Transform playerTransform;
     public static bool canMove;
-    private bool changeFOVNoInput;
+    private bool OnBreathDepletedFlag;
     private void Awake()
     {
         m_breath = GetComponent<Breath>();
@@ -64,10 +64,10 @@ public class PlayerController : MonoBehaviour
         else
         {
 
-            if (!changeFOVNoInput)
+            if (!OnBreathDepletedFlag)
             {
-                StartCoroutine(FOVScalingRoutine(m_CinematicCamera.StartingFov));
-                changeFOVNoInput = true;
+                StartCoroutine(m_CinematicCamera.FOVScalingRoutine(m_CinematicCamera.StartingFOV));
+                OnBreathDepletedFlag = true;
 
             }
             sprintMod = 1;
@@ -126,22 +126,16 @@ public class PlayerController : MonoBehaviour
     private void FlipDoSprint()
     {
         doSprint = !doSprint;
-        float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFov;
+        float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFOV;
 
         if(m_CinematicCamera.FOV != FOVToSet)
-            StartCoroutine(FOVScalingRoutine(FOVToSet));
-
-
-
-    }
-    IEnumerator FOVScalingRoutine(float goal)
-    {
-        while (m_CinematicCamera.FOV != goal)
         {
-             m_CinematicCamera.FOV = Mathf.MoveTowards(m_CinematicCamera.FOV, goal, Time.deltaTime * 20);
-             yield return new WaitForEndOfFrame();
-
+            StartCoroutine(m_CinematicCamera.FOVScalingRoutine(FOVToSet));
+            OnBreathDepletedFlag = false;
         }
-        changeFOVNoInput = false;
+
+
+
     }
+  
 }
