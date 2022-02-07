@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -17,8 +18,8 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerClickAbilityF;
     public UnityEvent OnPlayerStartedSprint;
     public UnityEvent OnPlayerCanceledSprint;
+    public float shootHoldTime;
 
-    public UnityEvent OnPause;
 
     public static InputManager Instance
     {
@@ -34,12 +35,27 @@ public class InputManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             _instace = this;
-       
     }
     private void OnEnable()
     {
         inputActions.Enable();
-       
+        string interactionInfo = inputActions.PlayerMap.Shoot.interactions;
+        StringBuilder holdTime = new StringBuilder("",3);
+        foreach (char c in interactionInfo)
+        {
+            if(c == '.')
+            {
+                holdTime.Append(c);
+                continue;
+            }
+            if (char.IsNumber(c))
+            {
+                holdTime.Append(c);
+                continue;
+            }
+        }
+        shootHoldTime = float.Parse(holdTime.ToString());
+        Debug.Log("max hold time for arrow is  " + shootHoldTime);
         inputActions.PlayerMap.Shoot.started += PlayerStartedShootThisFrame;
         inputActions.PlayerMap.Shoot.performed += PlayerFinishCharging; 
         inputActions.PlayerMap.Shoot.canceled += PlayerReleaseShootThisFrame;
@@ -48,12 +64,7 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Sprint.started += PlayerStartedSprint;
         inputActions.PlayerMap.Sprint.canceled += PlayerCanceledSprint;
 
-        inputActions.GeneralMap.Pause.started += StartPause;
-    }
 
-    private void StartPause(InputAction.CallbackContext obj)
-    {
-        OnPause?.Invoke();
     }
 
     private void PlayerCanceledSprint(InputAction.CallbackContext obj)
@@ -69,10 +80,12 @@ public class InputManager : MonoBehaviour
     private void PlayerFinishCharging(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPlayerFinishCharge?.Invoke();
+       
     }
 
     private void PlayerReleaseShootThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        
         OnPlayerReleaseShoot?.Invoke();
     }
 

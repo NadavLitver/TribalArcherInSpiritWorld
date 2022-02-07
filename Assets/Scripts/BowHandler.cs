@@ -7,6 +7,7 @@ using UnityEngine;
 public class BowHandler : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private InputManager input;
+    [SerializeField, FoldoutGroup("Refrences")] private BowString bowString;
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
     [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool NormalArrowPool;
@@ -15,8 +16,10 @@ public class BowHandler : MonoBehaviour
     [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float UXArrowStartingZ;
     [SerializeField, FoldoutGroup("Properties")] private float arrowForce;
     [FoldoutGroup("Properties"), ReadOnly] public float shootHoldTime;
+    [FoldoutGroup("Properties"), ReadOnly] private float maxHoldTime;
 
-    
+
+
 
     private void Start()
     {
@@ -26,6 +29,8 @@ public class BowHandler : MonoBehaviour
         input = InputManager.Instance;
         input.OnPlayerStartShoot.AddListener(OnShoot);
         input.OnPlayerReleaseShoot.AddListener(OnRelease);
+        input.OnPlayerFinishCharge.AddListener(OnChargeMaxed);
+        maxHoldTime = input.shootHoldTime;
         UXArrowStartingZ = UXArrow.localPosition.z;
 
     }
@@ -36,13 +41,14 @@ public class BowHandler : MonoBehaviour
     }
     private void OnRelease()
     {
-        if (!isShooting)
-            return;
-        isShooting = false;
+
+       isShooting = false;
        StartCoroutine(ReleaseNormalArrow());
-
     }
-
+    private void OnChargeMaxed()
+    {
+        isShooting = false;
+    }
   
 
     private void PlaceNewArrow()
@@ -84,7 +90,9 @@ public class BowHandler : MonoBehaviour
         if (isShooting)
         {
             shootHoldTime += Time.deltaTime;
-            UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, Mathf.Lerp(UXArrowStartingZ, UXArrowStartingZ + 0.1f, shootHoldTime /1));
+            float lerpT = shootHoldTime / maxHoldTime;
+            UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, Mathf.Lerp(UXArrowStartingZ, UXArrowStartingZ + 0.1f, lerpT));
+            bowString.SetBowStringPos(lerpT);
         }
     }
     private void OnDisable()
@@ -100,7 +108,7 @@ public class BowHandler : MonoBehaviour
     }
     void QuickShot()
     {
-        shootHoldTime = 1;
+        shootHoldTime = maxHoldTime;
         StartCoroutine(ReleaseChainLightingArrow());
         QuickShotAbiliyRef.AbilityToggle = false;
         QuickShotAbiliyRef.ResetArrowToSpin();
@@ -119,10 +127,13 @@ public class BowHandler : MonoBehaviour
         arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
         arrow.SetActive(true);
         shootHoldTime = 0;
+        bowString.ResetBowStringPos();
+        bowString.PlayStringVFX();
         yield return new WaitForSeconds(0.1f);
         PlaceNewArrow();
 
     }
+    
     public IEnumerator ReleaseChainLightingArrow()
     {
         var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();

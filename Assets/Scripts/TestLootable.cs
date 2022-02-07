@@ -4,33 +4,26 @@ using UnityEngine;
 
 public class TestLootable : InteractableBase
 {
-    public MeshRenderer renderer;
+    public MeshRenderer m_renderer;
     public Material AfterEnterMaterial;
     private Transform player;
     public float duration;
     public AnimationCurve FlyCurve;
-    private Material BeforeInteractMaterial;
+    private Material beforeInteractMaterial;
     private void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
-    }
-    private void OnEnable()
-    {
-         
-        BeforeInteractMaterial = renderer.material;
+        beforeInteractMaterial = m_renderer.material;
+
     }
     public override void OnPlayerEnter()
     {
-        renderer.material = AfterEnterMaterial;
+        m_renderer.material = AfterEnterMaterial;
         StartCoroutine(FlyTowardsPlayer());
         base.OnPlayerEnter();
     }
     public override void Interact()
     {
-
-        return;
-
-
     }
     private IEnumerator FlyTowardsPlayer()
     {
