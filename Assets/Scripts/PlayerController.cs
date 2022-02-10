@@ -169,13 +169,24 @@ public class PlayerController : MonoBehaviour
     private void FlipDoSprint()
     {
         doSprint = !doSprint;
-        float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFOV;
+        if (doSprint)
+        {
+            CinemachineCameraShaker.instance.ShakeCamera(100, 10f, 0.01f);
+            PostProccessManipulator.SetLensDistortion();
+        }
+        else
+        {
+            CinemachineCameraShaker.instance.CameraReset();
+            PostProccessManipulator.ResetLensDistortion();
 
+        }
+        float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFOV;
         if (m_CinematicCamera.FOV != FOVToSet)
         {
             StartCoroutine(m_CinematicCamera.FOVScalingRoutine(FOVToSet));
             OnBreathDepletedFlag = false;
         }
+
 
 
 

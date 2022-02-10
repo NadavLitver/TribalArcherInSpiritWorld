@@ -17,6 +17,8 @@ public class Livebody : MonoBehaviour
     public float timeBackToVulnerable = 0.1f;
     [FoldoutGroup("Refrences")]
     public GameObject DeadBody;
+    [FoldoutGroup("Refrences")]
+    public GameObject HealthOrb;
     [FoldoutGroup("Refrences"), ReadOnly, SerializeField]
     protected Animator animator;
     [FoldoutGroup("Refrences")]
@@ -83,10 +85,9 @@ public class Livebody : MonoBehaviour
             //animator.SetTrigger("Hit");
         }
 
-        if (health <= 0)//death
+        if (health > maxHealth)
         {
-            SummonDeadBody();
-            OnDeath.Invoke();
+            health = maxHealth;
         }
 
 
@@ -95,7 +96,8 @@ public class Livebody : MonoBehaviour
     {
         if (DeadBody != null)
             Instantiate(DeadBody, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
-
+        if (HealthOrb != null)
+            Instantiate(HealthOrb, transform.position +(Vector3.up * 5),Quaternion.identity,null);
         
     }
     bool isResetingVulnerable;

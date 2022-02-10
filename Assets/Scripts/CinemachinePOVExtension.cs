@@ -54,7 +54,7 @@ public class CinemachinePOVExtension : CinemachineExtension
     {
         while (FOV != goal)
         {
-            FOV = Mathf.MoveTowards(FOV, goal, Time.deltaTime * 20);
+           FOV = Mathf.MoveTowards(FOV, goal, Time.deltaTime * 5);
             yield return new WaitForEndOfFrame();
 
         }

@@ -67,7 +67,7 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  renderer: {fileID: 7391091809834472809}
+  m_renderer: {fileID: 7391091809834472809}
   AfterEnterMaterial: {fileID: 2100000, guid: 4d8960acbd5bef941acb0eb3b08fd6df, type: 2}
   duration: 1
   FlyCurve:
