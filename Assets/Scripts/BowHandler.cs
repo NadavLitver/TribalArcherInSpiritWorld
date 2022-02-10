@@ -43,7 +43,9 @@ public class BowHandler : MonoBehaviour
     {
 
        isShooting = false;
+       PostProccessManipulator.ResetLensDistortion();
        StartCoroutine(ReleaseNormalArrow());
+
     }
     private void OnChargeMaxed()
     {
@@ -81,6 +83,7 @@ public class BowHandler : MonoBehaviour
             QuickShot();
             return;
         }
+        PostProccessManipulator.SetLensDistortion();
         isShooting = true;
        
 
@@ -124,7 +127,7 @@ public class BowHandler : MonoBehaviour
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
-        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
+        arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
         arrow.SetActive(true);
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
@@ -132,6 +135,14 @@ public class BowHandler : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         PlaceNewArrow();
 
+    }
+    public float GetCurrentDamage(ArrowProjectile currentArrow)
+    {
+        float holdPercent = ((shootHoldTime / maxHoldTime) * 100f);
+        float ratio = ((currentArrow.maxDamageBody - currentArrow.minDamageBody) / 100f);
+        float val = (holdPercent * ratio) + currentArrow.minDamageBody;
+        Debug.Log("Arrow Calculated Damage" + val + " " + "Shoot hold percent" + holdPercent + " " + "Ratio" + ratio);
+        return val;
     }
     
     public IEnumerator ReleaseChainLightingArrow()
@@ -144,7 +155,7 @@ public class BowHandler : MonoBehaviour
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
-        arrowProj.appliedDamage = Mathf.RoundToInt(arrowProj.maxDamage * shootHoldTime);
+        arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
         arrow.SetActive(true);
         shootHoldTime = 0;
         yield return new WaitForSeconds(0.1f);

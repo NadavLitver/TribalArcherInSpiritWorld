@@ -137,7 +137,8 @@ MonoBehaviour:
   rb: {fileID: -6353808596742050730}
   m_trails:
   - {fileID: 8369072124138256223}
-  maxDamage: 60
+  maxDamageBody: 20
+  minDamageBody: 10
   appliedDamage: 0
   gravityScale: 1
 --- !u!1001 &2480225221412998216
