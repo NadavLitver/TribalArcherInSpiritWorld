@@ -375,10 +375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 70
   isVulnerable: 1
   timeBackToVulnerable: 0.1
   DeadBody: {fileID: 0}
+  HealthOrb: {fileID: 3657041678553056595, guid: 20910b6eddfe2c045b30231a5269205b, type: 3}
   animator: {fileID: 0}
   audioSource: {fileID: 0}
   hitEvent:

@@ -91,5 +91,6 @@ public class CinemachineCameraShaker : MonoBehaviour
 		}
 		_perlin.m_AmplitudeGain = IdleAmplitude;
 		_perlin.m_FrequencyGain = IdleFrequency;
+		StopAllCoroutines();
 	}
 }
