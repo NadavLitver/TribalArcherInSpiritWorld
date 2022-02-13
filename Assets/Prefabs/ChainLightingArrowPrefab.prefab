@@ -3914,6 +3914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42950c0fa410c3439a71dd51d4dcbd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gfx: {fileID: 0}
   force: 1
   startingForce: 0
   direction: {x: 0, y: 0, z: 0}
@@ -3970,12 +3971,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de9082633cceda42845476467f690d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chainLightingVFX: {fileID: 3943474332033452073, guid: ed06378267a080f4c83e1c3ec7e39694, type: 3}
+  m_explosion: {fileID: 5603214199911515025, guid: 8f44c891abc07944d9949d55bc113d38, type: 3}
   size: 15
   damage: 100
   HitMask:
     serializedVersion: 2
     m_Bits: 512
-  hitAllEnemies: 1
+  hitMultipleEnemies: 1
+  timeBetweenChainConnections: 0.25
+  amountToHit: 5
 --- !u!1 &8486367893653430748
 GameObject:
   m_ObjectHideFlags: 0
