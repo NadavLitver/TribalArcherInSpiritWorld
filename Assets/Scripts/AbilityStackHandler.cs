@@ -23,7 +23,7 @@ public class AbilityStackHandler : MonoBehaviour
     private float BufferConstantDecreaseSpeed = 100;
     private bool canBufferChange = false;
     [FoldoutGroup("Properties"), SerializeField]
-    private float BufferCombatDelay = 1;
+    private float BufferCombatDelay = 2;
 
     public void Awake()
     {
@@ -47,6 +47,7 @@ public class AbilityStackHandler : MonoBehaviour
         {
             IncreaseStackCount(); 
         }
+        StopAllCoroutines();
         StartCoroutine(CanBufferRoutine());
     }
     private void LateUpdate()
@@ -64,7 +65,7 @@ public class AbilityStackHandler : MonoBehaviour
         currentStackAmount++;
         if (currentStackAmount > MAX_STACKS)
             currentStackAmount = MAX_STACKS;
-
+        Buffer.value = 0;
         onStackChange?.Invoke();
         UpdateUIElements();
 
@@ -116,6 +117,7 @@ public class AbilityStackHandler : MonoBehaviour
     }
     IEnumerator CanBufferRoutine()
     {
+
         canBufferChange = false;
         yield return new WaitForSeconds(BufferCombatDelay);
         canBufferChange = true;

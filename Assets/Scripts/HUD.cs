@@ -21,9 +21,6 @@ public class HUD : MonoBehaviour
     private TextMeshProUGUI counter;
     [FoldoutGroup("Refrences"), SerializeField]
     private Slider powerBuffer;
-    [FoldoutGroup("Refrences"), SerializeField]
-    private PowersHandler powersHandlerRef;
-
     [FoldoutGroup("Parameters"), SerializeField]
     private float slidersFillSpeed;
     [FoldoutGroup("Parameters"), SerializeField]

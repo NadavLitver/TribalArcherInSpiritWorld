@@ -93,7 +93,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   AfterHitEffect: {fileID: 5324433475710574493}
-  healingToApply: 0
+  healingToApply: 25
 --- !u!1001 &480273080202747137
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ArrowProjectile : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gfx;
     [ReadOnly]
     public float force;
     [ReadOnly]
@@ -24,9 +26,9 @@ public class ArrowProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-
         velocity = direction * force;
         rb.AddForce(velocity, ForceMode.Force);
+        transform.up = rb.velocity;
         if (m_trails.Length > 0)
         {
             trailTimes = new float[m_trails.Length];

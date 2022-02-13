@@ -1,8 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Livebody : MonoBehaviour
@@ -50,23 +48,23 @@ public class Livebody : MonoBehaviour
         health = maxHealth;
 
     }
-    
+
 
     public virtual void TakeDamage(int damage)
     {
-       
-        if (isVulnerable)//normal hit
+
+        if (isVulnerable)
         {
             StartCoroutine(SetVulnerablelFalse());
             health -= damage;
             updateUIBars.Invoke();
             hitEvent?.Invoke();
-            //if(isPlayer)
-            //animator.SetTrigger("Hit");
+
         }
 
         if (health <= 0)//death
         {
+            health = 0;
             SummonDeadBody();
             OnDeath.Invoke();
         }
@@ -76,14 +74,12 @@ public class Livebody : MonoBehaviour
     public virtual void RecieveHealth(int hp)
     {
 
-        if (isVulnerable)//normal hit
-        {
-            health += hp;
-            HealEvent?.Invoke();
-            updateUIBars.Invoke();
-            //if(isPlayer)
-            //animator.SetTrigger("Hit");
-        }
+
+        health += hp;
+        HealEvent?.Invoke();
+        updateUIBars.Invoke();
+
+
 
         if (health > maxHealth)
         {
@@ -97,8 +93,8 @@ public class Livebody : MonoBehaviour
         if (DeadBody != null)
             Instantiate(DeadBody, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
         if (HealthOrb != null)
-            Instantiate(HealthOrb, transform.position +(Vector3.up * 5),Quaternion.identity,null);
-        
+            Instantiate(HealthOrb, transform.position + (Vector3.up * 5), Quaternion.identity, null);
+
     }
     bool isResetingVulnerable;
     protected IEnumerator SetVulnerablelFalse()

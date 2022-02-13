@@ -92,7 +92,12 @@ public class PlayerController : MonoBehaviour
     {
         if (doSprint && input.GetPlayerMovement().y > 0)
         {
-            sprintMod = sprintSpeed;
+            if(sprintMod != sprintSpeed)
+            {
+                PostProccessManipulator.SetLensDistortion();
+                CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
+                sprintMod = sprintSpeed;
+            }
             m_breath.LoseBreath(sprintBreathCost * Time.deltaTime);
         }
         else
@@ -169,16 +174,10 @@ public class PlayerController : MonoBehaviour
     private void FlipDoSprint()
     {
         doSprint = !doSprint;
-        if (doSprint)
-        {
-            CinemachineCameraShaker.instance.ShakeCamera(100, 10f, 0.01f);
-            PostProccessManipulator.SetLensDistortion();
-        }
-        else
+        if (!doSprint)
         {
             CinemachineCameraShaker.instance.CameraReset();
             PostProccessManipulator.ResetLensDistortion();
-
         }
         float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFOV;
         if (m_CinematicCamera.FOV != FOVToSet)

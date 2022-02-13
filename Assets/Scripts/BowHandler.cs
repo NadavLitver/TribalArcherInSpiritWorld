@@ -62,15 +62,14 @@ public class BowHandler : MonoBehaviour
     private Vector3 ShootDirection()
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        RaycastHit hit;
         Vector3 targetPoint;
-        if (Physics.Raycast(ray,out hit))
+        if (Physics.Raycast(ray,out RaycastHit hit))
         {
             targetPoint = hit.point;
         }
         else
         {
-            targetPoint = ray.GetPoint(200);
+            targetPoint = ray.GetPoint(800);
         }
         Vector3 direction = (targetPoint - transform.position);
         return direction;
@@ -83,7 +82,7 @@ public class BowHandler : MonoBehaviour
             QuickShot();
             return;
         }
-        PostProccessManipulator.SetLensDistortion();
+        PostProccessManipulator.LensDistortionOnShoot();
         isShooting = true;
        
 
@@ -120,19 +119,18 @@ public class BowHandler : MonoBehaviour
     public IEnumerator ReleaseNormalArrow()
     {
         var arrow = NormalArrowPool.GetPooledObject();
-        arrow.transform.position = UXArrow.position;
-        arrow.transform.rotation = UXArrow.rotation;
+        arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
+        //arrow.transform.position = UXArrow.position;//
         UXArrow.gameObject.SetActive(false);
-
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
-        arrow.SetActive(true);
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
-        yield return new WaitForSeconds(0.1f);
+        arrow.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
         PlaceNewArrow();
 
     }
@@ -147,10 +145,9 @@ public class BowHandler : MonoBehaviour
     
     public IEnumerator ReleaseChainLightingArrow()
     {
-        var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();
-        arrow.transform.position = UXArrow.position;
-        arrow.transform.rotation = UXArrow.rotation;
         UXArrow.gameObject.SetActive(false);
+        var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();
+        arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
 
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
