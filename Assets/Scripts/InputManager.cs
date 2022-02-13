@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerCanceledSprint;
     public float shootHoldTime;
 
+    public UnityEvent OnPause;
 
     public static InputManager Instance
     {
@@ -63,8 +64,13 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.AbilityF.started += PlayerStartedAbilityEThisFrame;
         inputActions.PlayerMap.Sprint.started += PlayerStartedSprint;
         inputActions.PlayerMap.Sprint.canceled += PlayerCanceledSprint;
+        inputActions.GeneralMap.Pause.started += Pause;
 
+    }
 
+    private void Pause(InputAction.CallbackContext obj)
+    {
+        OnPause?.Invoke();
     }
 
     private void PlayerCanceledSprint(InputAction.CallbackContext obj)

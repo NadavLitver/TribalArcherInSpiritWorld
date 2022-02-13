@@ -6,41 +6,46 @@ using UnityEngine.UI;
 public class BloodHandler : MonoBehaviour
 {
     private Image m_image;
-    [SerializeField] private float duration;
+    [SerializeField] private float minDuration;
+    [SerializeField] private float maxDuration;
+
     [SerializeField] private Sprite[] spriteList;
-    [SerializeField] AnimationCurve m_curve;
 
     [SerializeField] Color IdleColor;
     [SerializeField] Color ActiveColor;
-    private void Start()
+
+    public float angle { private get; set; }
+    private void OnEnable()
     {
         m_image = GetComponent<Image>();
         SetRandomImage();
         m_image.color = Color.clear;
+        transform.localRotation = new Quaternion(0, 0, angle, 0);
+        Splatter();
     }
     private void SetRandomImage()
     {
         m_image.sprite = spriteList[Random.Range(0, spriteList.Length)];
         m_image.SetNativeSize();
     }
-    public void Splatter(float rad)
+    public void Splatter()
     {
         StopAllCoroutines();
-        StartCoroutine(SplatterRoutine(rad));
+        StartCoroutine(SplatterRoutine());
     }
-    private IEnumerator SplatterRoutine(float rad)
+    private IEnumerator SplatterRoutine()
     {
         SetRandomImage();
         float currDurr = 0;
-        
-        transform.localRotation = new Quaternion(0,0,rad,0);
+        float duration = Random.Range(minDuration, maxDuration);
         m_image.color = ActiveColor;
         while (currDurr < duration)
         {
             currDurr += Time.deltaTime;
-            m_image.color = Color.Lerp(ActiveColor, IdleColor, currDurr / duration);
+            m_image.color = Color.Lerp(ActiveColor, IdleColor,  currDurr / duration);
             yield return new WaitForEndOfFrame();
         }
         m_image.color = ActiveColor;
+        gameObject.SetActive(false);
     }
 }

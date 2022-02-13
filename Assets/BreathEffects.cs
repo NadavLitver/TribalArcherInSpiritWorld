@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BreathMeter : MonoBehaviour
+public class BreathEffects : MonoBehaviour
 {
     //OOB = out of breath
     [SerializeField, FoldoutGroup("Refrences")]
@@ -67,9 +67,5 @@ public class BreathMeter : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         m_fill.color = targetColor;
-    }
-    private void LateUpdate()
-    {
-        m_slider.value = r_breath.current / r_breath.maxBreath;
     }
 }
