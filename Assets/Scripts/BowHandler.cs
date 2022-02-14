@@ -126,6 +126,7 @@ public class BowHandler : MonoBehaviour
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
+        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
@@ -148,6 +149,7 @@ public class BowHandler : MonoBehaviour
         UXArrow.gameObject.SetActive(false);
         var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();
         arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
+        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 5f, 0.1f);
 
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
