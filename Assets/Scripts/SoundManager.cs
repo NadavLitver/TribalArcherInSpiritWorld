@@ -13,7 +13,24 @@ public class SoundManager : MonoBehaviour
     public ObjectPool m_pool;
     public enum Sound
     {
-      
+      PlayerJump,
+      PlayerLand,
+      PlayerHit,
+      PlayerDead,
+      PlayerWalk,
+      PlayerLeap,
+      OwlDead,
+      OwlIdle,
+      OwlHit,
+      OwlAttack,
+      PlayerSprint,
+      HealthOrbReceived,
+      BowDraw,
+      BowReleaseWeak,
+      BowReleaseMid,
+      BowReleaseFull,
+      BowHit,
+      ElectricShotRelease,
     }
     public static SoundManager instance
     {
@@ -146,7 +163,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    private static AudioClip GetAudioClip(Sound sound)
+    public static AudioClip GetAudioClip(Sound sound)
     {
         foreach (SoundAudioClip clip in instance.clips)
         {

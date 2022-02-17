@@ -11,6 +11,8 @@ public class BowHandler : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
     [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool NormalArrowPool;
+    [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
+
     [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private  Camera cam;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool isShooting;
     [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float UXArrowStartingZ;
@@ -41,11 +43,24 @@ public class BowHandler : MonoBehaviour
     }
     private void OnRelease()
     {
+        
+        if(shootHoldTime < 0.2f)
+        {
+            SoundManager.Play(SoundManager.Sound.BowReleaseWeak, m_audioSource);
+        } 
+        else if(shootHoldTime > 0.2f && shootHoldTime < 0.48f)
+        {
+            SoundManager.Play(SoundManager.Sound.BowReleaseMid, m_audioSource);
 
-       isShooting = false;
+        }
+        else if(shootHoldTime >= 0.48f)
+        {
+            SoundManager.Play(SoundManager.Sound.BowReleaseFull, m_audioSource);
+        }
+        isShooting = false;
        PostProccessManipulator.ResetLensDistortion();
        StartCoroutine(ReleaseNormalArrow());
-
+        m_audioSource.Stop();
     }
     private void OnChargeMaxed()
     {
@@ -80,11 +95,12 @@ public class BowHandler : MonoBehaviour
         if(QuickShotAbiliyRef.AbilityToggle)
         {
             QuickShot();
+            SoundManager.Play(SoundManager.Sound.ElectricShotRelease, m_audioSource, 0.25f);
             return;
         }
         PostProccessManipulator.LensDistortionOnShoot();
         isShooting = true;
-       
+        m_audioSource.Play();
 
     }
     private void Shoot()
@@ -110,7 +126,7 @@ public class BowHandler : MonoBehaviour
     }
     void QuickShot()
     {
-        shootHoldTime = maxHoldTime;
+        shootHoldTime = maxHoldTime - 0.1f;
         StartCoroutine(ReleaseChainLightingArrow());
         QuickShotAbiliyRef.AbilityToggle = false;
         QuickShotAbiliyRef.ResetArrowToSpin();
