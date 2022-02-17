@@ -27,7 +27,7 @@ Material:
     - _GrassWidth: 0.36
     - _MaxDist: 300
     - _MinDist: 40
-    - _Rad: 0.51
+    - _Rad: 0
     - _Radius: 1.5
     - _RandomHeight: 0.25
     - _Strength: 2
