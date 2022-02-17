@@ -57,6 +57,7 @@ public class FlyingEnemyAttack : State
         arrowProj.force = projectileForce;
         arrow.SetActive(true);
         alreadyAttacked = true;
+        SoundManager.Play(SoundManager.Sound.OwlAttack, stateHandler.body.audioSource);
         StartCoroutine(SwapStateDelay());
 
     }

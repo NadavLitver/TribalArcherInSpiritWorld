@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b058d2f04ac9c1d4db5bc22b126fb40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleAmplitude: 0
-  IdleFrequency: 0
+  IdleAmplitude: 5
+  IdleFrequency: 0.008
   DefaultShakeAmplitude: 1
   DefaultShakeFrequency: 10
 --- !u!1 &1234329347
@@ -91,7 +91,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d9f6c38826b754a82e988be700016d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - m_Sound: 0
+    m_AudioClip: {fileID: 8300000, guid: 2a8b29b34d68bea47846fdde7a4cbcce, type: 3}
+  - m_Sound: 1
+    m_AudioClip: {fileID: 8300000, guid: eb4eeaed11ee3194aa53d887e03952ce, type: 3}
+  - m_Sound: 2
+    m_AudioClip: {fileID: 8300000, guid: 6ce483dfa0fc8f04bba0d05ebdb0e91c, type: 3}
+  - m_Sound: 3
+    m_AudioClip: {fileID: 8300000, guid: 29b0bd310bbb9e2408ac52440ece13d3, type: 3}
+  - m_Sound: 4
+    m_AudioClip: {fileID: 8300000, guid: d0c9eba16b262724bb4484594b70090a, type: 3}
+  - m_Sound: 5
+    m_AudioClip: {fileID: 8300000, guid: 04b12f4893d10e749a2576a85248580c, type: 3}
+  - m_Sound: 6
+    m_AudioClip: {fileID: 8300000, guid: f7cf9617557fc9e4aaf67f9a34fcf3bb, type: 3}
+  - m_Sound: 7
+    m_AudioClip: {fileID: 8300000, guid: 4effad269cbde7647904fd4e3d2aa388, type: 3}
+  - m_Sound: 8
+    m_AudioClip: {fileID: 8300000, guid: 82fc6f6145bcadc40932cbc0fc9237b2, type: 3}
+  - m_Sound: 9
+    m_AudioClip: {fileID: 8300000, guid: 73db4c86fb6e41144a07e7b2c1d0a81d, type: 3}
+  - m_Sound: 10
+    m_AudioClip: {fileID: 8300000, guid: fe8f536af0981cf46b5d83ceccf5affb, type: 3}
+  - m_Sound: 11
+    m_AudioClip: {fileID: 8300000, guid: b5d4a5c57d890b247a7b28ac399670b7, type: 3}
+  - m_Sound: 13
+    m_AudioClip: {fileID: 8300000, guid: ef6726b541c0ccf408d0f1d6eb131ace, type: 3}
+  - m_Sound: 14
+    m_AudioClip: {fileID: 8300000, guid: de2ab664dfdcb89479349b9e9dfd6826, type: 3}
+  - m_Sound: 15
+    m_AudioClip: {fileID: 8300000, guid: ea0a4f076c15bf4428b474a776c10b37, type: 3}
+  - m_Sound: 17
+    m_AudioClip: {fileID: 8300000, guid: 603f803008f68ae40a18891ae8db94b3, type: 3}
   DeactivateAudioObjectsTime: 10
   m_pool: {fileID: 1234329349}
 --- !u!114 &1234329349
@@ -206,7 +238,7 @@ MonoBehaviour:
   Buffer: {fileID: 0}
   BufferMaxValue: 100
   BufferConstantDecreaseSpeed: 100
-  BufferCombatDelay: 1
+  BufferCombatDelay: 3
 --- !u!1 &5429089753126200212
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +378,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   shootHoldTime: 0
+  OnPause:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7599429658302137125
 GameObject:
   m_ObjectHideFlags: 0
