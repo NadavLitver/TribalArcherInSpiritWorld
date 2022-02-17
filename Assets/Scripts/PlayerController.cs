@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private CharacterController controller;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Breath m_breath;
     [SerializeField, FoldoutGroup("Refrences")] private CinemachinePOVExtension m_CinematicCamera;
+    [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
+
     [FoldoutGroup("Properties")] public LayerMask groundedLayers;
     [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool isGrounded;
+    [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool isWalking;
     [SerializeField, FoldoutGroup("Properties")] private float playerSpeed = 2.0f;
     [SerializeField, FoldoutGroup("Properties")] private float jumpHeight = 1.0f;
     [SerializeField, FoldoutGroup("Properties")] private float gravityValue = -9.81f;
@@ -92,8 +95,10 @@ public class PlayerController : MonoBehaviour
     {
         if (doSprint && input.GetPlayerMovement().y > 0)
         {
-            if(sprintMod != sprintSpeed)
+            if (sprintMod != sprintSpeed)
             {
+                m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint);
+                m_audioSource.Play();
                 PostProccessManipulator.SetLensDistortion();
                 CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
                 sprintMod = sprintSpeed;
@@ -102,7 +107,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
+            if(sprintMod != 1)
+            {
+                m_audioSource.Stop();
+                m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
+                m_audioSource.Play();
+            }
             sprintMod = 1f;
         }
     }
@@ -111,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         if (input.PlayerJumpedThisFrame() && isGrounded)
         {
+            SoundManager.Play(SoundManager.Sound.PlayerJump, m_audioSource, 0.35f);
             playerVelocity.y = jumpHeight;
             m_breath.LoseBreath(jumpBreathCost);
         }
@@ -122,11 +133,11 @@ public class PlayerController : MonoBehaviour
         if (input.PlayerJumpedThisFrame() && !isGrounded && canLeap)
         {
             if (GetMoveInput() != Vector3.zero)
-                playerVelocity =  GetMoveInput() + (Vector3.up * 0.1f) * leapForce;
-
+                playerVelocity = GetMoveInput() + (Vector3.up * 0.25f) * leapForce;
             else
-                playerVelocity = camTransform.forward +(Vector3.up * 0.1f) * leapForce;
+                playerVelocity = camTransform.forward + (Vector3.up * 0.25f) * leapForce;
 
+            SoundManager.Play(SoundManager.Sound.PlayerLeap, m_audioSource, 0.4f);
             canLeap = false;
             StartCoroutine(cooldown());
         }
@@ -144,7 +155,27 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector3 move)
     {
+        if (move != Vector3.zero)
+        {
+            if (!isWalking)
+            {
+                isWalking = true;
+                m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
+                m_audioSource.Play();
+            }
+
+        }
+        else
+        {
+            if (isWalking)
+            {
+                isWalking = false;
+                m_audioSource.Stop();
+
+            }
+        }
         controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
+
     }
 
     private void SetGrounded()
@@ -154,6 +185,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!isGrounded)
             {
+                SoundManager.Play(SoundManager.Sound.PlayerLand, m_audioSource, 0.05f);
                 isGrounded = true;
                 playerVelocity = Vector3.zero;
             }
@@ -189,5 +221,5 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+   
 }
