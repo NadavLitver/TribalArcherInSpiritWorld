@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 824402594955988906}
   - component: {fileID: 2104494297072329193}
   - component: {fileID: 4760781699996530666}
+  - component: {fileID: 2593408384258209850}
   m_Layer: 0
   m_Name: SmallPalm_Bent
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2593408384258209850
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419543922540744171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -399045257770388226, guid: 04dfe017cd90efe43882f97a90291866, type: 3}
