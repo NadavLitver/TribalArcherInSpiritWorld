@@ -78,7 +78,7 @@ public class DrawMarkHandler : MonoBehaviour
         {
             for (int i = 0; i < CrosshairCorners.Length; i++)
             {
-                CrosshairCorners[i].transform.localPosition = Vector3.MoveTowards(CrosshairCorners[i].transform.localPosition, CrosshairCorners[i].goal, playerBow.shootHoldTime * 150 *  Time.deltaTime);
+                CrosshairCorners[i].transform.localPosition = Vector3.MoveTowards(CrosshairCorners[i].transform.localPosition, CrosshairCorners[i].goal, playerBow.shootHoldTime * 500 *  Time.deltaTime);
                 yield return new WaitForEndOfFrame();
             }
         }

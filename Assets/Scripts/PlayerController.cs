@@ -122,10 +122,10 @@ public class PlayerController : MonoBehaviour
         if (input.PlayerJumpedThisFrame() && !isGrounded && canLeap)
         {
             if (GetMoveInput() != Vector3.zero)
-                playerVelocity =  GetMoveInput() + (Vector3.up * 0.25f) * leapForce;
+                playerVelocity =  GetMoveInput() + (Vector3.up * 0.1f) * leapForce;
 
             else
-                playerVelocity = camTransform.forward +(Vector3.up * 0.25f) * leapForce;
+                playerVelocity = camTransform.forward +(Vector3.up * 0.1f) * leapForce;
 
             canLeap = false;
             StartCoroutine(cooldown());
@@ -144,8 +144,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector3 move)
     {
-
-       
         controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
     }
 
