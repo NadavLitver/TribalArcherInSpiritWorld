@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPool: {fileID: 1921852690541477108}
-  summonRate: 3
+  summonRate: 1
   DoSummon: 1
   SpawnPoint: {fileID: 1921852688983167336}
 --- !u!114 &1921852690541477108
