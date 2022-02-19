@@ -271,7 +271,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
-  canExitToHit: 0
+  canExitToHit: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -454,7 +454,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 140
@@ -476,7 +476,7 @@ Animator:
   m_GameObject: {fileID: 6279340190576987187}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ab49f3cef633f1d4c84f8c46ec6c0b74, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 627bad3e5c1f0dc43b4e18de4de9d243, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -590,7 +590,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8086212890568030590}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ec294d30a7cd35149900e90c7108cd83, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 627bad3e5c1f0dc43b4e18de4de9d243, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -771,10 +771,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.000009834766
       objectReference: {fileID: 0}
+    - target: {fileID: 7581159181405873052, guid: 35714e53a36af9b4d860f8e7460b1d81, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43a2ed12338d3064aab259a89b309c25, type: 2}
     - target: {fileID: 7687886161933205983, guid: 35714e53a36af9b4d860f8e7460b1d81, type: 3}
       propertyPath: m_Name
       value: PF_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8013113123497516131, guid: 35714e53a36af9b4d860f8e7460b1d81, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43a2ed12338d3064aab259a89b309c25, type: 2}
     - target: {fileID: 8371595785382846886, guid: 35714e53a36af9b4d860f8e7460b1d81, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.39727023
