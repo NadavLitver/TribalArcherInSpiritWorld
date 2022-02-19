@@ -88,35 +88,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b96af92054fbe84587b8457bb63f86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
+  minDuration: 0
+  maxDuration: 0
   spriteList:
   - {fileID: 21300000, guid: fcd10587b96ca4a45aa9659c9f36bcf4, type: 3}
   - {fileID: 21300000, guid: c9bbd3b204152de448a99be15bbb1ceb, type: 3}
   - {fileID: 21300000, guid: 57275ab869937d145a8e4b2751a10b60, type: 3}
-  m_curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   IdleColor: {r: 0.752, g: 0.752, b: 0.752, a: 0}
   ActiveColor: {r: 0.248, g: 0.248, b: 0.248, a: 1}
 --- !u!1 &590285196953160091
@@ -361,7 +338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.015333972, y: 0}
   m_AnchorMax: {x: 0.9817585, y: 1}
-  m_AnchoredPosition: {x: 0.37812805, y: 0}
+  m_AnchoredPosition: {x: 0.3781128, y: 0}
   m_SizeDelta: {x: 0.7562, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &959888058733733349
@@ -429,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3fa3e264910cae449f2b1a51e94319b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ac3f5f451301c149831418149ead7ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -505,7 +482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71495642d6a1285408d4e2a77d09af20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f6e656b8774d8f44a8c800d83f0d693, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -655,7 +632,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3fa3e264910cae449f2b1a51e94319b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ac3f5f451301c149831418149ead7ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -676,7 +653,7 @@ GameObject:
   - component: {fileID: 959888058967971090}
   - component: {fileID: 959888058967971101}
   m_Layer: 5
-  m_Name: PowerBarsHor
+  m_Name: Stacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +777,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.746
+  m_FillAmount: 0.75
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1024,7 +1001,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 74.6
+  m_Value: 75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1437,7 +1414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71495642d6a1285408d4e2a77d09af20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f6e656b8774d8f44a8c800d83f0d693, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1513,7 +1490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71495642d6a1285408d4e2a77d09af20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f6e656b8774d8f44a8c800d83f0d693, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1589,7 +1566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71495642d6a1285408d4e2a77d09af20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f6e656b8774d8f44a8c800d83f0d693, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1840,7 +1817,6 @@ MonoBehaviour:
   PowerPoints: []
   counter: {fileID: 959888059362341714}
   powerBuffer: {fileID: 4975855232948066253}
-  powersHandlerRef: {fileID: 0}
   slidersFillSpeed: 50
   powerDecay: 1
 --- !u!225 &1727070675954213732
@@ -1942,7 +1918,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 68.2
+  m_Value: 75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2059,7 +2035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3fa3e264910cae449f2b1a51e94319b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ac3f5f451301c149831418149ead7ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2188,7 +2164,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.682
+  m_FillAmount: 0.75
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2226,7 +2202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.017839774, y: 0}
   m_AnchorMax: {x: 0.9820396, y: 1}
-  m_AnchoredPosition: {x: -0.000076293945, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: -0.00012207, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4605747402112885267
@@ -2242,7 +2218,7 @@ GameObject:
   - component: {fileID: 7758943510017238190}
   - component: {fileID: 2669342010678256830}
   m_Layer: 5
-  m_Name: PowerPoint (31)
+  m_Name: Stack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2838,7 +2814,7 @@ GameObject:
   - component: {fileID: 785478819717191501}
   - component: {fileID: 3324944912127142433}
   m_Layer: 5
-  m_Name: PowerPoint (11)
+  m_Name: Stack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2958,7 +2934,7 @@ GameObject:
   - component: {fileID: 2032239243659919382}
   - component: {fileID: 9178203111133851231}
   m_Layer: 5
-  m_Name: PowerPoint (21)
+  m_Name: Stack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
