@@ -25,6 +25,7 @@ public class EnemyProjectileCollider : MonoBehaviour
         {
             PlayerHit(currentLivebody, other.ClosestPointOnBounds(transform.position));
         }
+       
     }
     private void PlayerHit(Livebody currentLivebody,Vector3 hitPoint)
     {

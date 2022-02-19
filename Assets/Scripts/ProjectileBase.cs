@@ -12,20 +12,22 @@ public class ProjectileBase : MonoBehaviour
     public Rigidbody rb;
     [SerializeField]
     private float gravityScale;
-
+    [SerializeField]
+    private float TTL = 15;
 
     private void OnEnable()
     {
        
         velocity = direction * force;
         rb.AddForce(velocity, ForceMode.Force);
+        StartCoroutine(TimeToLiveRoutine());
 
     }
     private void Update()
     {
         if (direction != Vector3.zero)
             transform.forward = rb.velocity;
-
+       
 
 
     }
@@ -40,6 +42,12 @@ public class ProjectileBase : MonoBehaviour
         direction = Vector3.zero;
         velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
+        StopAllCoroutines();
       
+    }
+    IEnumerator TimeToLiveRoutine()
+    {
+        yield return new WaitForSeconds(TTL);
+        gameObject.SetActive(false);
     }
 }
