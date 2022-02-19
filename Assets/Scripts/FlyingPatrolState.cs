@@ -49,7 +49,7 @@ public class FlyingPatrolState : State
     {
         if (!walkPointSet) RandomPoint(transform.position, walkPointRange, out walkPoint);
 
-        if (walkPointSet)
+        if (walkPointSet && agent.isActiveAndEnabled)
             agent.SetDestination(walkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;

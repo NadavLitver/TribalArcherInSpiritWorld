@@ -13,12 +13,13 @@ public class FlyingEnemyAttack : State
     public float faceTargetSpeed = 50;
     protected override void OnStateDisabled()
     {
-        alreadyAttacked = false;
+       
 
     }
 
     protected override void OnStateEnabled()
     {
+        alreadyAttacked = false;
         agent.isStopped = true;
         //agent.updatePosition = false;
        
@@ -31,7 +32,7 @@ public class FlyingEnemyAttack : State
     }
     void FaceTarget()
     {
-        var turnTowardNavSteeringTarget = agent.steeringTarget;
+        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
 
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -39,23 +40,16 @@ public class FlyingEnemyAttack : State
     }
     private void AttackPlayer()
     {
-        var dir = PlayerController.playerTransform.position - transform.position;
-
-        var goal = transform.position + (-dir.normalized * BackStepLength);
-
-        //Make sure enemy doesn't move
-      //  agent.SetDestination(goal);
-
-       // transform.LookAt(PlayerController.playerTransform);
+      
         if (alreadyAttacked || PlayerController.playerTransform == null)
             return;
-        var arrow = pool.GetPooledObject();
-        arrow.transform.position = shootPoint.position;
-        arrow.transform.rotation = shootPoint.rotation;
-        var arrowProj = arrow.GetComponent<ProjectileBase>();
-        arrowProj.direction = (PlayerController.playerTransform.position - shootPoint.position).normalized;
-        arrowProj.force = projectileForce;
-        arrow.SetActive(true);
+        var Shot = pool.GetPooledObject();
+        Shot.transform.position = shootPoint.position;
+        Shot.transform.rotation = shootPoint.rotation;
+        var ProjBase = Shot.GetComponent<ProjectileBase>();
+        ProjBase.direction = (PlayerController.playerTransform.position - shootPoint.position).normalized;
+        ProjBase.force = projectileForce;
+        Shot.SetActive(true);
         alreadyAttacked = true;
         SoundManager.Play(SoundManager.Sound.OwlAttack, stateHandler.body.audioSource);
         StartCoroutine(SwapStateDelay());
@@ -71,6 +65,7 @@ public class FlyingEnemyAttack : State
 
         yield return new WaitForSeconds(timeBetweenAttacks * 0.5f);
         agent.SetDestination(PlayerController.playerTransform.position);
+        agent.isStopped = false;
         SwapToNextState();
     }
 }

@@ -141,7 +141,7 @@ MonoBehaviour:
   maxDamageBody: 20
   minDamageBody: 10
   appliedDamage: 0
-  gravityScale: 1
+  gravityScale: 0.6
 --- !u!1001 &2480225221412998216
 PrefabInstance:
   m_ObjectHideFlags: 0
