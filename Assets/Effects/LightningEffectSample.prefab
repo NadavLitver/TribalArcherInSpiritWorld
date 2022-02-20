@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3943474332033452247}
   - component: {fileID: 3943474332033452072}
   m_Layer: 0
-  m_Name: Lightning 1
+  m_Name: LightningEffectSample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   PositionCountProperty:
     m_Name: PositionCount
   Targets:
-  - {fileID: 0}
+  - {fileID: 3943474331431220470}
   - {fileID: 3943474330334178109}
   - {fileID: 3943474331341136193}
   - {fileID: 3943474331295492392}
