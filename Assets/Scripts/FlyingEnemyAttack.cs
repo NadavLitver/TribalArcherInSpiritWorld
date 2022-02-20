@@ -8,7 +8,8 @@ public class FlyingEnemyAttack : State
     public float BackStepLength;
     bool alreadyAttacked;
     public ObjectPool pool;
-    public Transform shootPoint;
+    public Transform rightHand;
+    public Transform leftHand;
     public float projectileForce;
     public float faceTargetSpeed = 50;
     protected override void OnStateDisabled()
@@ -44,10 +45,11 @@ public class FlyingEnemyAttack : State
         if (alreadyAttacked || PlayerController.playerTransform == null)
             return;
         var Shot = pool.GetPooledObject();
-        Shot.transform.position = shootPoint.position;
-        Shot.transform.rotation = shootPoint.rotation;
+        var shootPos = RandomBoolean() ? rightHand : leftHand;
+        Shot.transform.SetPositionAndRotation(shootPos.position, shootPos.rotation);
+
         var ProjBase = Shot.GetComponent<ProjectileBase>();
-        ProjBase.direction = (PlayerController.playerTransform.position - shootPoint.position).normalized;
+        ProjBase.direction = (PlayerController.playerTransform.position - shootPos.position).normalized;
         ProjBase.force = projectileForce;
         Shot.SetActive(true);
         alreadyAttacked = true;
@@ -67,5 +69,9 @@ public class FlyingEnemyAttack : State
         agent.SetDestination(PlayerController.playerTransform.position);
         agent.isStopped = false;
         SwapToNextState();
+    }
+    private bool RandomBoolean()
+    {
+        return (Random.value > 0.55f);
     }
 }

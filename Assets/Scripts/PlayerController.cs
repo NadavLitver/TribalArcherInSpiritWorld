@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
             Move(GetMoveInput());
             BreathboundMovement();
         }
+
+        
     }
 
     private Vector3 GetMoveInput()

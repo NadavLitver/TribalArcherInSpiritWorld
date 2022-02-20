@@ -73,6 +73,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sens"",
+                    ""type"": ""Value"",
+                    ""id"": ""7ca5079a-095a-47f3-bf2a-e2094ccebbee"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -196,6 +204,39 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c6ab09eb-365a-4364-aeb6-ec3565443446"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sens"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""9ade65b5-c3d2-45e0-9322-ea334ce53222"",
+                    ""path"": ""<Keyboard>/pageDown"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sens"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e5087ee2-869e-4049-ba08-7e365f31b962"",
+                    ""path"": ""<Keyboard>/pageUp"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sens"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -238,6 +279,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_AbilityF = m_PlayerMap.FindAction("AbilityF", throwIfNotFound: true);
         m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerMap_Sens = m_PlayerMap.FindAction("Sens", throwIfNotFound: true);
         // GeneralMap
         m_GeneralMap = asset.FindActionMap("GeneralMap", throwIfNotFound: true);
         m_GeneralMap_Pause = m_GeneralMap.FindAction("Pause", throwIfNotFound: true);
@@ -297,6 +339,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_AbilityF;
     private readonly InputAction m_PlayerMap_Sprint;
+    private readonly InputAction m_PlayerMap_Sens;
     public struct PlayerMapActions
     {
         private @PlayerInputs m_Wrapper;
@@ -308,6 +351,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @AbilityF => m_Wrapper.m_PlayerMap_AbilityF;
         public InputAction @Sprint => m_Wrapper.m_PlayerMap_Sprint;
+        public InputAction @Sens => m_Wrapper.m_PlayerMap_Sens;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -338,6 +382,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
+                @Sens.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSens;
+                @Sens.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSens;
+                @Sens.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSens;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -363,6 +410,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Sens.started += instance.OnSens;
+                @Sens.performed += instance.OnSens;
+                @Sens.canceled += instance.OnSens;
             }
         }
     }
@@ -409,6 +459,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAbilityF(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnSens(InputAction.CallbackContext context);
     }
     public interface IGeneralMapActions
     {

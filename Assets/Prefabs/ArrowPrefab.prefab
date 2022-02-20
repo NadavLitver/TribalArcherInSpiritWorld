@@ -102,6 +102,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ArrowProj: {fileID: 3607663050196930741}
+  StackOnBodyHit: 20
+  StackOnHeadHit: 25
 --- !u!54 &-6353808596742050730
 Rigidbody:
   m_ObjectHideFlags: 0

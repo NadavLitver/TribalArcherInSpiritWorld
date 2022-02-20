@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChainLightingBehaviour : MonoBehaviour
@@ -19,41 +20,55 @@ public class ChainLightingBehaviour : MonoBehaviour
     [FoldoutGroup("Properties"), SerializeField]
     private float timeBetweenChainConnections = 0.25f;
     [FoldoutGroup("Properties"), SerializeField]
-    private int amountToHit =5;
-  
+    private int amountToHit = 5;
+
 
     [Button]
     public void CheckRadiusForEnemies()
     {
-       AbilityStackHandler.instance.StartCoroutine(ChainLightingRoutine());
+        AbilityStackHandler.instance.StartCoroutine(ChainLightingRoutine());
 
     }
     IEnumerator ChainLightingRoutine()
     {
         Collider[] enemies = Physics.OverlapBox(transform.position, Vector3.one * size, Quaternion.identity, HitMask, QueryTriggerInteraction.Collide);
+        List<Livebody> bodies = new List<Livebody>(amountToHit);
         if (enemies.Length > 0)
         {
+
             if (hitMultipleEnemies)
             {
+                for (int i = 0; i < enemies.Length; i++)
+                {
+                    Livebody currentBody = enemies[i].gameObject.GetComponent<Livebody>() ?? enemies[i].gameObject.GetComponentInParent<Livebody>() ?? enemies[i].gameObject.GetComponentInChildren<Livebody>();
+                    if (currentBody != null)
+                    {
+                        for (int j = 0; j < bodies.Count; j++)
+                        {
+                            if (bodies[j] == currentBody)//checking whole list for duplicates
+                            {
+                                break;
+                            }
 
+
+                        }
+                        bodies.Add(currentBody);
+                    }
+                }
+
+                int length = bodies.Count > amountToHit ? amountToHit : bodies.Count;
                 GameObject chainLighting = Instantiate(chainLightingVFX);
-                int length = enemies.Length > amountToHit ? amountToHit : enemies.Length;
                 chainLighting.transform.position = transform.position;
+                AbilityStackHandler.instance.IncreaseBufferValue(5 * length);
                 Debug.Log(length + " enemies hit count from chain lighting");
                 for (int i = 0; i < length; i++)
                 {
 
-
-                    Livebody currentBody = enemies[i].gameObject.GetComponent<Livebody>() ?? enemies[i].gameObject.GetComponentInParent<Livebody>() ?? enemies[i].gameObject.GetComponentInChildren<Livebody>();
-                    if (currentBody != null)
-                    {
-                        chainLighting.transform.GetChild(i).position = enemies[i].transform.position;
-                        currentBody.TakeDamage(damage);
-                        Instantiate(m_explosion, enemies[i].transform.position, Quaternion.identity);
-                        Debug.Log(i);
-
-                    }
-                    yield return new WaitForSeconds(timeBetweenChainConnections);
+                    chainLighting.transform.GetChild(i).position = bodies[i].transform.position + (Vector3.up * 5);
+                    bodies[i].TakeDamage(damage);
+                    Instantiate(m_explosion, enemies[i].transform.position, Quaternion.identity);
+                    Debug.Log(i);
+                    //yield return new WaitForSeconds(timeBetweenChainConnections);
                 }
                 yield return new WaitForSeconds(timeBetweenChainConnections * 2);
                 Destroy(chainLighting.gameObject);
