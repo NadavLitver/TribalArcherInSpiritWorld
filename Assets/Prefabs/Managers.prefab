@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b058d2f04ac9c1d4db5bc22b126fb40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IdleAmplitude: 5
-  IdleFrequency: 0.008
+  IdleAmplitude: 3.5
+  IdleFrequency: 0.006
   DefaultShakeAmplitude: 1
   DefaultShakeFrequency: 10
 --- !u!1 &1234329347

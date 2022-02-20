@@ -3959,6 +3959,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ArrowProj: {fileID: 1409273139744146273}
+  StackOnBodyHit: 0
+  StackOnHeadHit: 0
 --- !u!114 &6066153273329438219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3971,9 +3973,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de9082633cceda42845476467f690d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chainLightingVFX: {fileID: 3943474332033452073, guid: ed06378267a080f4c83e1c3ec7e39694, type: 3}
+  chainLightingVFX: {fileID: 3943474332033452073, guid: 05761dca7c5c80742a3085d6eab6cd3d, type: 3}
   m_explosion: {fileID: 5603214199911515025, guid: 8f44c891abc07944d9949d55bc113d38, type: 3}
-  size: 15
+  size: 25
   damage: 100
   HitMask:
     serializedVersion: 2

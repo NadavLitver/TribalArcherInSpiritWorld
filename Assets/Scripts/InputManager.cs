@@ -124,6 +124,10 @@ public class InputManager : MonoBehaviour
     {
         return inputActions.PlayerMap.Look.ReadValue<Vector2>();
     }
+    public float GetPgUpPgDwnAxis()
+    {
+        return inputActions.PlayerMap.Sens.ReadValue<float>();
+    }
     public bool PlayerJumpedThisFrame()
     {
         return inputActions.PlayerMap.Jump.triggered;

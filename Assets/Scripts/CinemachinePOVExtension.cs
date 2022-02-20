@@ -47,6 +47,8 @@ public class CinemachinePOVExtension : CinemachineExtension
                 if(state.Lens.FieldOfView != FOV)
                  state.Lens = new LensSettings(FOV, 0, 0.3f, 1000, 0);
 
+                MouseSensitivity +=  InputManager.Instance.GetPgUpPgDwnAxis();
+                MouseSensitivity = Mathf.Clamp(MouseSensitivity, 0, 100);
             }
         }
     }

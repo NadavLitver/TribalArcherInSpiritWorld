@@ -23,7 +23,8 @@ public class PostProccessManipulator : MonoBehaviour
     }
     public static void SetLensDistortion()
     {
-
+        if (distortionValueOnSprint == 0)
+            return;
         if (volume.profile.TryGet<LensDistortion>(out lensDistortion))
         {
             volume.StartCoroutine(LensDistortionRoutine(lensDistortion));
@@ -39,7 +40,8 @@ public class PostProccessManipulator : MonoBehaviour
     }
     public static void LensDistortionOnShoot()
     {
-
+        if (distortionValueOnShoot == 0)
+            return;
         if (volume.profile.TryGet<LensDistortion>(out lensDistortion))
         {
             volume.StartCoroutine(LensDistortionOnShoot(lensDistortion));
@@ -47,6 +49,7 @@ public class PostProccessManipulator : MonoBehaviour
     }
     private static IEnumerator LensDistortionRoutine(LensDistortion lens)
     {
+       
         float curDur = 0;
         float currentIntenstity = lens.intensity.value;
         while (lens.intensity.value != distortionValueOnSprint)

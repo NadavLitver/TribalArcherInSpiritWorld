@@ -12,6 +12,8 @@ public class PlayerArrowCollider : MonoBehaviour
     public UnityEvent OnLivebodyHeadshot;
     [FoldoutGroup("Refrences")]
     public ArrowProjectile ArrowProj;
+    public int StackOnBodyHit;
+    public int StackOnHeadHit;
     protected virtual void OnTriggerEnter(Collider other)
     {
         Debug.Log("Arrow Hit" + other.gameObject.name);
@@ -37,7 +39,7 @@ public class PlayerArrowCollider : MonoBehaviour
                 currentLivebody.TakeDamage(ArrowProj.appliedDamage + 5);
                 VFXManager.Play(VFXManager.Effect.HeadshotEffect, other.ClosestPointOnBounds(transform.position));
                 HitMarkHandler.instance.PlayHeadShotHitMark();
-                AbilityStackHandler.instance.IncreaseBufferValue(25);
+                AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
 
 
 
@@ -47,7 +49,7 @@ public class PlayerArrowCollider : MonoBehaviour
                 currentLivebody.TakeDamage(ArrowProj.appliedDamage);
                 VFXManager.Play(VFXManager.Effect.EnemyHit, other.ClosestPointOnBounds(transform.position));
                 HitMarkHandler.instance.PlayNormalHitMark();
-                AbilityStackHandler.instance.IncreaseBufferValue(20);
+                AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
 
             }
 

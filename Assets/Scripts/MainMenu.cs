@@ -7,21 +7,21 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private float ButtonPressDelay = 0.2f;
     public void Button_Start()
     {
+        StopAllCoroutines();
         StartCoroutine(StartRoutine());
     }
     private IEnumerator StartRoutine()
     {
-        StopAllCoroutines();
         yield return new WaitForSeconds(ButtonPressDelay);
         SceneManager.LoadScene(1);
     }
     public void Button_Exit()
     {
+        StopAllCoroutines();
         StartCoroutine(ExitRoutine());
     }
     private IEnumerator ExitRoutine()
     {
-        StopAllCoroutines();
         yield return new WaitForSeconds(ButtonPressDelay);
         Application.Quit();
     }
