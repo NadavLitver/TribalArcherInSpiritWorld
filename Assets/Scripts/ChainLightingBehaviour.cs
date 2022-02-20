@@ -63,11 +63,11 @@ public class ChainLightingBehaviour : MonoBehaviour
                 Debug.Log(length + " enemies hit count from chain lighting");
                 for (int i = 0; i < length; i++)
                 {
-
+                    
                     chainLighting.transform.GetChild(i).position = bodies[i].transform.position + (Vector3.up * 5);
                     bodies[i].TakeDamage(damage);
                     Instantiate(m_explosion, enemies[i].transform.position, Quaternion.identity);
-                    Debug.Log(i);
+                    //Debug.Log(i);
                     //yield return new WaitForSeconds(timeBetweenChainConnections);
                 }
                 yield return new WaitForSeconds(timeBetweenChainConnections * 2);

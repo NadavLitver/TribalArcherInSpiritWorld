@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 3943474332033452247}
   - component: {fileID: 3943474332033452072}
   m_Layer: 0
-  m_Name: LightningEffectSample
+  m_Name: LightingEffectSample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
