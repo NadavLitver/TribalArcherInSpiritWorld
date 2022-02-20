@@ -84,7 +84,7 @@ public class BowHandler : MonoBehaviour
         }
         else
         {
-            targetPoint = ray.GetPoint(800);
+            targetPoint = ray.GetPoint(10);
         }
         Vector3 direction = (targetPoint - transform.position);
         return direction;
