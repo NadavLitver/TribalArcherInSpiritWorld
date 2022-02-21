@@ -1,21 +1,19 @@
 using Sirenix.OdinInspector;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BowHandler : MonoBehaviour
 {
-    [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private InputManager input;
+    [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences")] private BowString bowString;
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
     [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool NormalArrowPool;
     [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
 
-    [SerializeField, FoldoutGroup("Refrences"),ReadOnly] private  Camera cam;
+    [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Camera cam;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool isShooting;
-    [SerializeField,FoldoutGroup("Properties"), ReadOnly]  private float UXArrowStartingZ;
+    [SerializeField, FoldoutGroup("Properties"), ReadOnly] private float UXArrowStartingZ;
     [SerializeField, FoldoutGroup("Properties")] private float arrowForce;
     [FoldoutGroup("Properties"), ReadOnly] public float shootHoldTime;
     [FoldoutGroup("Properties"), ReadOnly] private float maxHoldTime;
@@ -41,32 +39,22 @@ public class BowHandler : MonoBehaviour
         Shoot();
 
     }
+ 
     private void OnRelease()
     {
-        
-        if(shootHoldTime < 0.2f)
-        {
-            SoundManager.Play(SoundManager.Sound.BowReleaseWeak, m_audioSource);
-        } 
-        else if(shootHoldTime > 0.2f && shootHoldTime < 0.48f)
-        {
-            SoundManager.Play(SoundManager.Sound.BowReleaseMid, m_audioSource);
 
-        }
-        else if(shootHoldTime >= 0.48f)
-        {
-            SoundManager.Play(SoundManager.Sound.BowReleaseFull, m_audioSource);
-        }
+
+        SoundManager.Play(SoundManager.Sound.BowReleaseFull,transform.position,0.5f);
         isShooting = false;
-       PostProccessManipulator.ResetLensDistortion();
-       StartCoroutine(ReleaseNormalArrow());
+        PostProccessManipulator.ResetLensDistortion();
+        StartCoroutine(ReleaseNormalArrow());
         m_audioSource.Stop();
     }
     private void OnChargeMaxed()
     {
         isShooting = false;
     }
-  
+
 
     private void PlaceNewArrow()
     {
@@ -78,7 +66,7 @@ public class BowHandler : MonoBehaviour
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         Vector3 targetPoint;
-        if (Physics.Raycast(ray,out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             targetPoint = hit.point;
         }
@@ -92,7 +80,7 @@ public class BowHandler : MonoBehaviour
 
     private void OnShoot()
     {
-        if(QuickShotAbiliyRef.AbilityToggle)
+        if (QuickShotAbiliyRef.AbilityToggle)
         {
             QuickShot();
             SoundManager.Play(SoundManager.Sound.ElectricShotRelease, m_audioSource, 0.25f);
@@ -118,8 +106,8 @@ public class BowHandler : MonoBehaviour
         input.OnPlayerStartShoot.RemoveListener(OnShoot);
         input.OnPlayerReleaseShoot.RemoveListener(OnRelease);
     }
-    
-    private void OnDrawGizmos()  
+
+    private void OnDrawGizmos()
     {
         //if(Application.isPlaying)
         //Gizmos.DrawRay(UXArrow.position, ShootDirection().normalized * arrowForce);
@@ -136,7 +124,6 @@ public class BowHandler : MonoBehaviour
     {
         var arrow = NormalArrowPool.GetPooledObject();
         arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
-        //arrow.transform.position = UXArrow.position;//
         UXArrow.gameObject.SetActive(false);
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
@@ -159,7 +146,7 @@ public class BowHandler : MonoBehaviour
         Debug.Log("Arrow Calculated Damage" + val + " " + "Shoot hold percent" + holdPercent + " " + "Ratio" + ratio);
         return val;
     }
-    
+
     public IEnumerator ReleaseChainLightingArrow()
     {
         UXArrow.gameObject.SetActive(false);

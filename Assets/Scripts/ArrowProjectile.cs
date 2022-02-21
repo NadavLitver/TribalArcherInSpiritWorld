@@ -23,7 +23,12 @@ public class ArrowProjectile : MonoBehaviour
     private float[] trailTimes;
     [SerializeField]
     private float gravityScale;
-
+    public LayerMask rayMask;
+    [SerializeField,ReadOnly]
+    public Vector3 rayHitPoint;
+    Ray ray;
+    bool rayHit;
+  
     private void OnEnable()
     {
         velocity = direction * force;
@@ -38,18 +43,38 @@ public class ArrowProjectile : MonoBehaviour
             }
             StartCoroutine(ActivateTrail());
         }
+        rayHit = false;
     }
     private void Update()
     {
         if (direction != Vector3.zero)
             transform.up = rb.velocity;
+      
+    }
+    private void SetRayPoint()
+    {
+        if (rayHit)
+            return;
 
+        ray = new Ray(transform.position, transform.up);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 2f, rayMask, QueryTriggerInteraction.Collide))
+        {
+            rayHitPoint = hit.point;
+            rayHit = true;
+             
+        }
+        else
+        {
+            rayHitPoint = ray.GetPoint(10);
+        }
 
 
     }
     private void FixedUpdate()
     {
         rb.velocity += Vector3.down * gravityScale;
+        SetRayPoint();
     }
     IEnumerator ActivateTrail()
     {
@@ -80,5 +105,11 @@ public class ArrowProjectile : MonoBehaviour
                 trail.Clear();
             }
         }
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawRay(transform.position, transform.up * 2);
+
+
     }
 }

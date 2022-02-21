@@ -33,12 +33,21 @@ public class FlyingEnemySideMove : State
     void Update()
     {
         timeInState += Time.deltaTime;
-        agent.Move(direction * Time.deltaTime * speed);
-        if((transform.position - destination).magnitude < 2f || timeInState > 1.5f)
+        agent.Move((direction + transform.forward)* Time.deltaTime * speed);
+        FaceTarget();
+        if ((transform.position - destination).magnitude < 2f || timeInState > 1.5f)
         {
             SwapToNextState();
             
         }
+    }
+    void FaceTarget()
+    {
+        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
+
+        Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 20);
     }
     private void OnDrawGizmos()
     {

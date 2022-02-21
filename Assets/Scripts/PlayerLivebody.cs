@@ -14,12 +14,15 @@ public class PlayerLivebody : Livebody
     {
         base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.PlayerHit, audioSource, 0.5f);
+        PostProccessManipulator.SetVignette(health);
     }
     public override void RecieveHealth(int hp)
     {
         SoundManager.Play(SoundManager.Sound.HealthOrbReceived, audioSource, 0.15f);
         Debug.Log("Player Recieved Health" + hp);
         base.RecieveHealth(hp);
+        PostProccessManipulator.SetVignette(health);
+
     }
-    
+
 }

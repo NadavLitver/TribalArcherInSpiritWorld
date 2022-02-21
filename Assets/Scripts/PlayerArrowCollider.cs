@@ -22,7 +22,7 @@ public class PlayerArrowCollider : MonoBehaviour
         if (currentLivebody == null)
         {
             this.gameObject.SetActive(false);
-            VFXManager.Play(VFXManager.Effect.TerrainHitEffect, other.ClosestPointOnBounds(transform.position));
+            VFXManager.Play(VFXManager.Effect.TerrainHitEffect,other.ClosestPointOnBounds(ArrowProj.rayHitPoint));
             return;
         }
 
@@ -37,7 +37,7 @@ public class PlayerArrowCollider : MonoBehaviour
             {
                 OnLivebodyHeadshot?.Invoke();
                 currentLivebody.TakeDamage(ArrowProj.appliedDamage + 5);
-                VFXManager.Play(VFXManager.Effect.HeadshotEffect, other.ClosestPointOnBounds(transform.position));
+                VFXManager.Play(VFXManager.Effect.HeadshotEffect, other.ClosestPointOnBounds(ArrowProj.rayHitPoint));
                 HitMarkHandler.instance.PlayHeadShotHitMark();
                 AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
 
@@ -47,7 +47,7 @@ public class PlayerArrowCollider : MonoBehaviour
             else
             {
                 currentLivebody.TakeDamage(ArrowProj.appliedDamage);
-                VFXManager.Play(VFXManager.Effect.EnemyHit, other.ClosestPointOnBounds(transform.position));
+                VFXManager.Play(VFXManager.Effect.EnemyHit, other.ClosestPointOnBounds(ArrowProj.rayHitPoint));
                 HitMarkHandler.instance.PlayNormalHitMark();
                 AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
 
