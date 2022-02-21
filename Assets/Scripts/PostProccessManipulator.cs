@@ -8,26 +8,43 @@ public class PostProccessManipulator : MonoBehaviour
 {
     private static Volume volume;
     private static LensDistortion lensDistortion;
+    private static Vignette vignette;
     [SerializeField, FoldoutGroup("Properties")]
     float lensDistortionOnShoot;
     [SerializeField, FoldoutGroup("Properties")]
     float lensDistortionOnSprint;
-    private static float distortionValueOnSprint;
-    private static float distortionValueOnShoot;
+    [SerializeField, FoldoutGroup("Properties")]
+    float maxVignette;
+    private static float DistortionValueOnSprint;
+    private static float DistortionValueOnShoot;
+    private static float MaximumVignetteVal;
 
     void Start()
     {
         volume = GetComponent<Volume>();
-        distortionValueOnSprint = lensDistortionOnSprint;
-        distortionValueOnShoot = lensDistortionOnShoot;
+        DistortionValueOnSprint = lensDistortionOnSprint;
+        DistortionValueOnShoot = lensDistortionOnShoot;
+        MaximumVignetteVal = maxVignette;
     }
     public static void SetLensDistortion()
     {
-        if (distortionValueOnSprint == 0)
+        if (DistortionValueOnSprint == 0)
             return;
         if (volume.profile.TryGet<LensDistortion>(out lensDistortion))
         {
             volume.StartCoroutine(LensDistortionRoutine(lensDistortion));
+        }
+    }
+    public static void SetVignette(float currentHP)
+    {
+       
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+            if (MaximumVignetteVal == 0)
+                return;
+           float newVignetteVal = (((100 -currentHP) * MaximumVignetteVal) / 100);
+            Debug.Log("new VIGNETTE VALUE IS " + newVignetteVal);
+            volume.StartCoroutine(VignetteRoutine(vignette, newVignetteVal));
         }
     }
     public static void ResetLensDistortion()
@@ -40,7 +57,7 @@ public class PostProccessManipulator : MonoBehaviour
     }
     public static void LensDistortionOnShoot()
     {
-        if (distortionValueOnShoot == 0)
+        if (DistortionValueOnShoot == 0)
             return;
         if (volume.profile.TryGet<LensDistortion>(out lensDistortion))
         {
@@ -52,9 +69,23 @@ public class PostProccessManipulator : MonoBehaviour
        
         float curDur = 0;
         float currentIntenstity = lens.intensity.value;
-        while (lens.intensity.value != distortionValueOnSprint)
+        while (lens.intensity.value != DistortionValueOnSprint)
         {
-            lens.intensity.value = Mathf.Lerp(currentIntenstity, distortionValueOnSprint, curDur / 1);
+            lens.intensity.value = Mathf.Lerp(currentIntenstity, DistortionValueOnSprint, curDur / 1);
+            curDur += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+
+        }
+
+    }
+    private static IEnumerator VignetteRoutine(Vignette vignette,float value)
+    {
+
+        float curDur = 0;
+        float currentIntenstity = vignette.intensity.value;
+        while (vignette.intensity.value != value)
+        {
+            vignette.intensity.value = Mathf.Lerp(currentIntenstity, value, curDur / 1);
             curDur += Time.deltaTime;
             yield return new WaitForEndOfFrame();
 
@@ -65,9 +96,9 @@ public class PostProccessManipulator : MonoBehaviour
     {
         float curDur = 0.5f;
         float currentIntenstity = lens.intensity.value;
-        while (lens.intensity.value != distortionValueOnShoot)
+        while (lens.intensity.value != DistortionValueOnShoot)
         {
-            lens.intensity.value = Mathf.Lerp(currentIntenstity, distortionValueOnShoot, curDur / 1);
+            lens.intensity.value = Mathf.Lerp(currentIntenstity, DistortionValueOnShoot, curDur / 1);
             curDur += Time.deltaTime;
             yield return new WaitForEndOfFrame();
 
