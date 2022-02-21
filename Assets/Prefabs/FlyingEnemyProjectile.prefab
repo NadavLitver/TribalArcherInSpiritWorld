@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 95677b51707d3a5479f640160a09bb8f, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   rb: {fileID: 7109183572625793373}
   gravityScale: 0
+  TTL: 15
 --- !u!1001 &5753454162239994093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,6 +187,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7109183572625793375}
     m_Modifications:
+    - target: {fileID: 6907127836468718707, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836468718707, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836468718707, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.010679956
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836468718707, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.23849206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836468748175, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836468748175, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836468748175, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.3061061
+      objectReference: {fileID: 0}
     - target: {fileID: 6907127836482567999, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
       propertyPath: m_Name
       value: PS_Projectile
@@ -193,6 +222,18 @@ PrefabInstance:
     - target: {fileID: 6907127836482877273, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836482877273, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4036365
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836482877273, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4036365
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907127836482877273, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4036365
       objectReference: {fileID: 0}
     - target: {fileID: 6907127836482877273, guid: 65210c79e63962043991f373b4fa6f8e, type: 3}
       propertyPath: m_LocalPosition.x

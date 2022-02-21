@@ -1231,7 +1231,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.63457084, b: 1, a: 1}
+        key0: {r: 0.35659218, g: 0, b: 1, a: 1}
         key1: {r: 0, g: 0.21369132, b: 0.7205882, a: 0}
         key2: {r: 0.2437284, g: 0.2717546, b: 0.33823532, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -5931,15 +5931,15 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 0, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0.09803922, b: 1, a: 0}
+        key1: {r: 0, g: 0.35255194, b: 1, a: 1}
+        key2: {r: 0.40804815, g: 0, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 30055
+        ctime1: 30069
         ctime2: 65388
         ctime3: 0
         ctime4: 0
@@ -9480,7 +9480,7 @@ Transform:
   m_GameObject: {fileID: 6907127836482567999}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -74.271, y: 1.48, z: 66.408}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.16, y: 1.16, z: 1.16}
   m_Children:
   - {fileID: 6907127836482873379}
   - {fileID: 6907127836482922201}
@@ -14474,7 +14474,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.82329035, b: 1, a: 0.45882353}
+      maxColor: {r: 0.19723415, g: 0, b: 1, a: 0.45882353}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -20281,7 +20281,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 1, b: 1, a: 1}
+        key0: {r: 0.3839836, g: 0, b: 1, a: 1}
         key1: {r: 0, g: 0.25490198, b: 1, a: 0}
         key2: {r: 0, g: 0.09803922, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
