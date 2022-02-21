@@ -15,4 +15,13 @@ public class FlyingEnemyBody : Livebody
         SoundManager.Play(SoundManager.Sound.OwlHit, audioSource);
 
     }
+    void OnEnable()
+    {
+        isVulnerable = true;
+    }
+    void OnDisable()
+    {
+        isVulnerable = false;
+
+    }
 }

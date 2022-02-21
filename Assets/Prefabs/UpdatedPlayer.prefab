@@ -5514,13 +5514,13 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -6832,6 +6832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PS_RunEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 1028164891494620178, guid: 0261c1c99de387f498eff4e01ccd3b95, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1028164891494620179, guid: 0261c1c99de387f498eff4e01ccd3b95, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6878,7 +6882,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1028164891494620181, guid: 0261c1c99de387f498eff4e01ccd3b95, type: 3}
       propertyPath: moveWithTransform
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028164891494620181, guid: 0261c1c99de387f498eff4e01ccd3b95, type: 3}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0261c1c99de387f498eff4e01ccd3b95, type: 3}
