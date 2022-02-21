@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -24,7 +25,8 @@ public class AbilityStackHandler : MonoBehaviour
     private bool canBufferChange = false;
     [FoldoutGroup("Properties"), SerializeField]
     private float BufferCombatDelay = 2;
-
+    [FoldoutGroup("Refrences"), SerializeField]
+    private TextMeshProUGUI addedStackValueText;
     public void Awake()
     {
         if (instance == null)
@@ -43,7 +45,9 @@ public class AbilityStackHandler : MonoBehaviour
     public void IncreaseBufferValue(float _amountToIncrease)
     {
         Buffer.value += _amountToIncrease;
-        if(Buffer.value >= Buffer.maxValue)
+        addedStackValueText.text = "+" + " " + _amountToIncrease;
+        addedStackValueText.color = new Color(1, 1, 1, 1);
+        if (Buffer.value >= Buffer.maxValue)
         {
             IncreaseStackCount(); 
         }
@@ -53,7 +57,15 @@ public class AbilityStackHandler : MonoBehaviour
     private void LateUpdate()
     {
         ConstantlyDecreaseBuffer();
+        DecreasePopUpTextAlpha();
     }
+
+    private void DecreasePopUpTextAlpha()
+    {
+        if (addedStackValueText.color.a != 0)
+            addedStackValueText.color = new Color(1, 1, 1, Mathf.MoveTowards(addedStackValueText.color.a, 0, Time.deltaTime));
+    }
+
     private void ConstantlyDecreaseBuffer()
     {
         
