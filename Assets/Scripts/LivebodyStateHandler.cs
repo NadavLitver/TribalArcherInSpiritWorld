@@ -6,6 +6,7 @@ public class LivebodyStateHandler : MonoBehaviour
 {
     [FoldoutGroup("Refrences"), ReadOnly]
     public Livebody body;
+   
     [SerializeField, Tooltip("Insert all states of current livebody, call the SwapState function from each state to set the current state"), FoldoutGroup("Properties")]
     private List<State> states;
     [SerializeField, Tooltip("Specifically the state the livebody goes to when hit"), FoldoutGroup("Properties")]
@@ -13,6 +14,8 @@ public class LivebodyStateHandler : MonoBehaviour
     private void Awake()
     {
         body = GetComponentInParent<Livebody>();
+       
+       
 
     }
 
@@ -20,9 +23,19 @@ public class LivebodyStateHandler : MonoBehaviour
     {
         body.health = body.maxHealth;
         body.isVulnerable = true;
-        SwapState(states[0]);
+        InitStates();
+        AbilityStackHandler.instance.playerBody.OnDeath.AddListener(InitStates);
+
     }
- 
+    public void OnDisable()
+    {
+        AbilityStackHandler.instance.playerBody.OnDeath.RemoveListener(InitStates);
+    }
+    public void InitStates()
+    {
+        SwapState(states[0]);
+
+    }
     public void SwapState(State state)
     {
         foreach (State _state in states)

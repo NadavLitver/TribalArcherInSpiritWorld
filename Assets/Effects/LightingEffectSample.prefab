@@ -260,7 +260,7 @@ VisualEffect:
       m_Array:
       - m_Value:
           serializedVersion: 2
-          key0: {r: 1, g: 1, b: 1, a: 1}
+          key0: {r: 0.4660377, g: 1, b: 0.8417152, a: 1}
           key1: {r: 0.5816024, g: 0.040479675, b: 0.6377666, a: 1}
           key2: {r: 0.786744, g: 0.22229022, b: 0.81970483, a: 0}
           key3: {r: 0, g: 0, b: 0, a: 0}
@@ -312,7 +312,7 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}

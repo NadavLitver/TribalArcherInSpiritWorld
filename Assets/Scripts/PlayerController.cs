@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
             {
                 m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint);
                 m_audioSource.Play();
+                
                 PostProccessManipulator.SetLensDistortion();
                 CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
                 sprintMod = sprintSpeed;
@@ -177,7 +178,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
-
+        
     }
 
     private void SetGrounded()
@@ -202,6 +203,17 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawRay(transform.position, Vector3.down * GroundCheckLength);
+    }
+    public void Stop(float duration)
+    {
+        StartCoroutine(StopRoutine(duration));
+        IEnumerator StopRoutine(float duration)
+        {
+            canMove = false;
+            yield return new WaitForSeconds(duration);
+            canMove = true;
+             
+        }
     }
     private void FlipDoSprint()
     {

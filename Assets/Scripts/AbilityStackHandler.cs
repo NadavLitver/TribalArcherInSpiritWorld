@@ -27,6 +27,8 @@ public class AbilityStackHandler : MonoBehaviour
     private float BufferCombatDelay = 2;
     [FoldoutGroup("Refrences"), SerializeField]
     private TextMeshProUGUI addedStackValueText;
+    [FoldoutGroup("Refrences")]
+    public PlayerLivebody playerBody;
     public void Awake()
     {
         if (instance == null)
@@ -41,6 +43,8 @@ public class AbilityStackHandler : MonoBehaviour
         currentStackAmount = MAX_STACKS;
         Buffer.maxValue = BufferMaxValue;
         UpdateUIElements();
+        playerBody.OnDeath.AddListener(ResetStacks);
+        
     }
     public void IncreaseBufferValue(float _amountToIncrease)
     {
@@ -86,6 +90,15 @@ public class AbilityStackHandler : MonoBehaviour
     {
         currentStackAmount += _amountToIncrease;
         if (currentStackAmount > MAX_STACKS)
+            currentStackAmount = MAX_STACKS;
+
+        onStackChange?.Invoke();
+        UpdateUIElements();
+
+    }
+    private void ResetStacks()
+    {
+       
             currentStackAmount = MAX_STACKS;
 
         onStackChange?.Invoke();

@@ -26,7 +26,7 @@ public class SceneMaster : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         //loadingScreen.SetActive(false);
     }
     private void Start()

@@ -125,5 +125,10 @@ public class PostProccessManipulator : MonoBehaviour
         }
 
     }
+    void OnDisable()
+    {
+        volume = null;
+       
+    }
 }
 

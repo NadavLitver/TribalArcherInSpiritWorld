@@ -125,15 +125,16 @@ public class BowHandler : MonoBehaviour
         var arrow = NormalArrowPool.GetPooledObject();
         arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
         UXArrow.gameObject.SetActive(false);
+
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
-        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         shootHoldTime = 0;
+        arrow.SetActive(true);
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
-        arrow.SetActive(true);
+        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         yield return new WaitForSeconds(0.05f);
         PlaceNewArrow();
 
@@ -152,15 +153,15 @@ public class BowHandler : MonoBehaviour
         UXArrow.gameObject.SetActive(false);
         var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();
         arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
-        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 5f, 0.1f);
 
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
-        arrow.SetActive(true);
         shootHoldTime = 0;
-        yield return new WaitForSeconds(0.1f);
+        arrow.SetActive(true);
+        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 5f, 0.1f);
+        yield return new WaitForSeconds(0.05f);
         PlaceNewArrow();
 
     }

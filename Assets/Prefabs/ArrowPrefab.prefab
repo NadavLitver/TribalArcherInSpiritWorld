@@ -143,7 +143,7 @@ MonoBehaviour:
   maxDamageBody: 20
   minDamageBody: 10
   appliedDamage: 0
-  gravityScale: 0.6
+  gravityScale: 0.5
   rayMask:
     serializedVersion: 2
     m_Bits: 640

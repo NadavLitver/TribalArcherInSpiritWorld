@@ -188,7 +188,7 @@ MonoBehaviour:
   agent: {fileID: 6279340190576987184}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15
-  sightRange: 100
+  sightRange: 90
   playerInSight: 0
   GroundInSight: 0
 --- !u!114 &6072534156915436494
@@ -214,7 +214,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   agent: {fileID: 6279340190576987184}
-  sightRange: 30
+  sightRange: 35
   playerInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 2
@@ -311,8 +311,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   agent: {fileID: 6279340190576987184}
-  speed: 10
-  Range: 5
+  speed: 12
+  Range: 4.5
 --- !u!1 &6072534157048039973
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 50
+  maxHealth: 45
   isVulnerable: 1
   timeBackToVulnerable: 0.1
   DeadBody: {fileID: 0}

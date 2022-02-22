@@ -1,13 +1,28 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLivebody : Livebody
 {
+    Vector3 startingWorldPos;
+    [SerializeField, ReadOnly,FoldoutGroup("Refrences")]
+    PlayerController controller;
+   
+    void Start()
+    {
+        startingWorldPos = transform.position;
+        controller = GetComponent<PlayerController>();
+    }
     protected override void SummonDeadBody()
     {
         base.SummonDeadBody();
         SoundManager.Play(SoundManager.Sound.PlayerDead, audioSource, 0.5f);
+        controller.Stop(1);
+        transform.position = startingWorldPos;
+        health = 100;
+      
+
 
     }
     public override void TakeDamage(int damage)
