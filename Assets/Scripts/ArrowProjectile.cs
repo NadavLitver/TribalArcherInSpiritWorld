@@ -28,12 +28,18 @@ public class ArrowProjectile : MonoBehaviour
     public Vector3 rayHitPoint;
     Ray ray;
     bool rayHit;
+    float timeAlive;
   
     private void OnEnable()
     {
+        
         velocity = direction * force;
-        rb.AddForce(velocity, ForceMode.Force);
-        transform.up = rb.velocity;
+        Debug.Log(direction);
+        rb.AddForce(velocity, ForceMode.Impulse);
+        transform.up = velocity;
+        timeAlive = 0;
+
+
         if (m_trails.Length > 0)
         {
             trailTimes = new float[m_trails.Length];
@@ -47,9 +53,9 @@ public class ArrowProjectile : MonoBehaviour
     }
     private void Update()
     {
-        if (direction != Vector3.zero)
+        if (direction != Vector3.zero && timeAlive > 0.1f)
             transform.up = rb.velocity;
-      
+        timeAlive += Time.deltaTime;
     }
     private void SetRayPoint()
     {

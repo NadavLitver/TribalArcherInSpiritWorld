@@ -5819,6 +5819,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  controller: {fileID: 0}
 --- !u!114 &453187471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6226,7 +6227,7 @@ PrefabInstance:
       objectReference: {fileID: 5893302131387895033}
     - target: {fileID: 4388962376751778796, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: arrowForce
-      value: 25000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4388962376751778796, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: objectPool

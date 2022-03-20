@@ -72,7 +72,7 @@ public class BowHandler : MonoBehaviour
         }
         else
         {
-            targetPoint = ray.GetPoint(10);
+            targetPoint = ray.GetPoint(100);
         }
         Vector3 direction = (targetPoint - transform.position);
         return direction;
@@ -123,18 +123,21 @@ public class BowHandler : MonoBehaviour
     public IEnumerator ReleaseNormalArrow()
     {
         var arrow = NormalArrowPool.GetPooledObject();
-        arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
-        UXArrow.gameObject.SetActive(false);
-
+     
+        
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
+        arrow.transform.position = UXArrow.position;
+       
+        UXArrow.gameObject.SetActive(false);
         shootHoldTime = 0;
-        arrow.SetActive(true);
+       // Debug.Break();
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
+        arrow.SetActive(true);
         yield return new WaitForSeconds(0.05f);
         PlaceNewArrow();
 

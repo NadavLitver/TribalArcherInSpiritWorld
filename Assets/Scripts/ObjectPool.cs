@@ -26,7 +26,7 @@ public class ObjectPool : MonoBehaviour
                 return pooledObjects[i];
             }
         }
-        GameObject GO = Instantiate(objectToPool, transform);
+        GameObject GO = Instantiate(objectToPool);
         GO.SetActive(false);
         pooledObjects.Add(GO);
         return GO;
