@@ -11,7 +11,7 @@ public class HealthOrb : InteractableBase
     public AnimationCurve FlyCurve;
     public GameObject AfterHitEffect;
     public int healingToApply;
-    private void Start()
+    private void Awake()
     {
         player = FindObjectOfType<PlayerLivebody>();
 

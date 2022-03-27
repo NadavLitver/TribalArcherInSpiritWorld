@@ -3845,10 +3845,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9175793312925398289}
-  - component: {fileID: 8708921654515987301}
   - component: {fileID: 454015447552278402}
   - component: {fileID: 1409273139744146273}
-  - component: {fileID: 6382002492562665674}
   - component: {fileID: 6066153273329438219}
   m_Layer: 6
   m_Name: ChainLightingArrowPrefab
@@ -3873,19 +3871,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8708921654515987301
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8366887437970108331}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.1, z: 0.05}
-  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!54 &454015447552278402
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3921,30 +3906,17 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   rb: {fileID: 454015447552278402}
   m_trails: []
-  maxDamageBody: 20
-  minDamageBody: 10
   appliedDamage: 0
   gravityScale: 0
   rayMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
---- !u!114 &6382002492562665674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8366887437970108331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e59305646ba0349bb26f296dba1c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnPlayerHit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHitLiveBody:
+  maxDamageBody: 20
+  minDamageBody: 10
+  StackOnBodyHit: 20
+  StackOnHeadHit: 25
+  onHitBody:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6066153273329438219}
@@ -3959,12 +3931,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnLivebodyHeadshot:
+  onHitHead:
     m_PersistentCalls:
-      m_Calls: []
-  ArrowProj: {fileID: 1409273139744146273}
-  StackOnBodyHit: 0
-  StackOnHeadHit: 0
+      m_Calls:
+      - m_Target: {fileID: 6066153273329438219}
+        m_TargetAssemblyTypeName: ChainLightingBehaviour, Assembly-CSharp
+        m_MethodName: CheckRadiusForEnemies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6066153273329438219
 MonoBehaviour:
   m_ObjectHideFlags: 0

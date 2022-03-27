@@ -41,8 +41,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6829910583226918597}
-  - component: {fileID: 6431718613141987505}
-  - component: {fileID: 6431718613141987510}
   - component: {fileID: -6353808596742050730}
   - component: {fileID: 3607663050196930741}
   m_Layer: 6
@@ -67,43 +65,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6431718613141987505
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161882865376935039}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.007956193, y: 0.1142359, z: 0.011969215}
-  m_Center: {x: 0.010964814, y: 0.14553091, z: -0.003907954}
---- !u!114 &6431718613141987510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6161882865376935039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66e59305646ba0349bb26f296dba1c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnPlayerHit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHitLiveBody:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLivebodyHeadshot:
-    m_PersistentCalls:
-      m_Calls: []
-  ArrowProj: {fileID: 3607663050196930741}
-  StackOnBodyHit: 20
-  StackOnHeadHit: 25
 --- !u!54 &-6353808596742050730
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,14 +101,22 @@ MonoBehaviour:
   rb: {fileID: -6353808596742050730}
   m_trails:
   - {fileID: 8369072124138256223}
-  maxDamageBody: 20
-  minDamageBody: 10
   appliedDamage: 0
-  gravityScale: 0.5
+  gravityScale: 0.4
   rayMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
+  maxDamageBody: 20
+  minDamageBody: 10
+  StackOnBodyHit: 20
+  StackOnHeadHit: 25
+  onHitBody:
+    m_PersistentCalls:
+      m_Calls: []
+  onHitHead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2480225221412998216
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,35 +1,33 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ArrowProjectile : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject gfx;
-    [ReadOnly]
-    public float force;
-    [ReadOnly]
-    public float startingForce;
+
+    [SerializeField] private GameObject gfx;
+    [ReadOnly] public float force;
+    [ReadOnly] public float startingForce;
     public Vector3 direction;
-    [ReadOnly, SerializeField]
-    private Vector3 velocity;
+    [ReadOnly, SerializeField] private Vector3 velocity;
     public Rigidbody rb;
-    [SerializeField]
-    public TrailRenderer[] m_trails;
-    public int maxDamageBody;
-    public int minDamageBody;
-    [ReadOnly]
-    public int appliedDamage;
+    [SerializeField]  public TrailRenderer[] m_trails;
+    [ReadOnly] public int appliedDamage;
     private float[] trailTimes;
-    [SerializeField]
-    private float gravityScale;
+    [SerializeField] private float gravityScale;
     public LayerMask rayMask;
-    [SerializeField,ReadOnly]
-    public Vector3 rayHitPoint;
+    [SerializeField, ReadOnly] public Vector3 rayHitPoint;
     Ray ray;
     bool rayHit;
     float timeAlive;
-  
+    public int maxDamageBody;
+    public int minDamageBody;
+    public int StackOnBodyHit;
+    public int StackOnHeadHit;
+    public UnityEvent onHitBody;
+    public UnityEvent onHitHead;
+
     private void OnEnable()
     {
         
@@ -53,11 +51,10 @@ public class ArrowProjectile : MonoBehaviour
     }
     private void Update()
     {
-        if (direction != Vector3.zero && timeAlive > 0.1f)
-            transform.up = rb.velocity;
         timeAlive += Time.deltaTime;
+     
     }
-    private void SetRayPoint()
+    private void CheckCollisionWithRay()
     {
         if (rayHit)
             return;
@@ -67,20 +64,49 @@ public class ArrowProjectile : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 2f, rayMask, QueryTriggerInteraction.Collide))
         {
             rayHitPoint = hit.point;
+            Livebody currentLivebody = hit.collider.gameObject.GetComponent<Livebody>() ?? hit.collider.gameObject.GetComponentInParent<Livebody>() ?? hit.collider.gameObject.GetComponentInChildren<Livebody>();
+            if (currentLivebody == null)
+            {
+                this.gameObject.SetActive(false);
+                VFXManager.Play(VFXManager.Effect.TerrainHitEffect, rayHitPoint);
+                return;
+            }
+            else
+            {
+                if (hit.collider.gameObject.CompareTag("Head"))
+                {
+                   // OnLivebodyHeadshot?.Invoke();
+                    currentLivebody.TakeDamage(appliedDamage + 5);
+                    VFXManager.Play(VFXManager.Effect.HeadshotEffect, rayHitPoint);
+                    HitMarkHandler.instance.PlayHeadShotHitMark();
+                    AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
+
+
+
+                }
+                else
+                {
+                    currentLivebody.TakeDamage(appliedDamage);
+                    VFXManager.Play(VFXManager.Effect.EnemyHit,rayHitPoint);
+                    HitMarkHandler.instance.PlayNormalHitMark();
+                    AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
+                    onHitBody?.Invoke();
+                }
+            }
             rayHit = true;
-             
+            this.gameObject.SetActive(false);
         }
-        else
-        {
-            rayHitPoint = ray.GetPoint(10);
-        }
+    
 
 
     }
     private void FixedUpdate()
     {
+        CheckCollisionWithRay();
         rb.velocity += Vector3.down * gravityScale;
-        SetRayPoint();
+        if (direction != Vector3.zero && timeAlive > 0.1f)
+            transform.up = rb.velocity;
+        
     }
     IEnumerator ActivateTrail()
     {
@@ -115,7 +141,7 @@ public class ArrowProjectile : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawRay(transform.position, transform.up * 2);
-
+        Gizmos.DrawWireSphere(rayHitPoint, 2);
 
     }
 }
