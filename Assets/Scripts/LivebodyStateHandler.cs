@@ -14,9 +14,6 @@ public class LivebodyStateHandler : MonoBehaviour
     private void Awake()
     {
         body = GetComponentInParent<Livebody>();
-       
-       
-
     }
 
     public void OnEnable()

@@ -12,7 +12,7 @@ public class EnemyProjectileCollider : MonoBehaviour
     int damage;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Arrow Hit" + other.gameObject.name);
+       
         Livebody currentLivebody = other.GetComponent<Livebody>() ?? other.GetComponentInParent<Livebody>() ?? other.GetComponentInChildren<Livebody>();
         //  Quaternion effectRotation = (other.ClosestPointOnBounds(transform.position) - PlayerController.playerTransform);
         if (currentLivebody == null)
@@ -30,7 +30,6 @@ public class EnemyProjectileCollider : MonoBehaviour
     private void PlayerHit(Livebody currentLivebody,Vector3 hitPoint)
     {
         OnPlayerHit?.Invoke();
-        Debug.Log(" Player Hit For " + " " + damage);
         currentLivebody.TakeDamage(damage);
         VFXManager.Play(VFXManager.Effect.HeadshotEffect, hitPoint);
         this.gameObject.SetActive(false);
