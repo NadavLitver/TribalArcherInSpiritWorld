@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-[DefaultExecutionOrder(-1)]
+
 public class LivebodyStateHandler : MonoBehaviour
 {
     [FoldoutGroup("Refrences"), ReadOnly]

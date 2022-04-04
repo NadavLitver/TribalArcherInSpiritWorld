@@ -44,10 +44,11 @@ public class FlyingEnemyAttack : State
       
         if (alreadyAttacked || PlayerController.playerTransform == null)
             return;
+       
         var Shot = pool.GetPooledObject();
         var shootPos = RandomBoolean() ? rightHand : leftHand;
         Shot.transform.SetPositionAndRotation(shootPos.position, shootPos.rotation);
-
+        _animator.SetTrigger("Throw");
         var ProjBase = Shot.GetComponent<ProjectileBase>();
         ProjBase.direction = (PlayerController.playerTransform.position - shootPos.position).normalized;
         ProjBase.force = projectileForce;
