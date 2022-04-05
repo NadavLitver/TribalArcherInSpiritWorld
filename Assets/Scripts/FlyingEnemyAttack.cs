@@ -48,7 +48,7 @@ public class FlyingEnemyAttack : State
         var Shot = pool.GetPooledObject();
         var shootPos = RandomBoolean() ? rightHand : leftHand;
         Shot.transform.SetPositionAndRotation(shootPos.position, shootPos.rotation);
-        _animator.SetTrigger("Throw");
+        
         var ProjBase = Shot.GetComponent<ProjectileBase>();
         ProjBase.direction = (PlayerController.playerTransform.position - shootPos.position).normalized;
         ProjBase.force = projectileForce;
@@ -60,7 +60,8 @@ public class FlyingEnemyAttack : State
     }
     IEnumerator AttackDelay()
     {
-        yield return new WaitForSeconds(timeBetweenAttacks * 0.5f);
+        _animator.SetTrigger("Throw");
+        yield return new WaitForSeconds(timeBetweenAttacks);
         AttackPlayer();
     }
     IEnumerator SwapStateDelay()
