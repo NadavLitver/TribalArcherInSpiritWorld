@@ -32,7 +32,6 @@ public class ArrowProjectile : MonoBehaviour
     {
         
         velocity = direction * force;
-        Debug.Log(direction);
         rb.AddForce(velocity, ForceMode.Impulse);
         transform.up = velocity;
         timeAlive = 0;
