@@ -35,7 +35,7 @@ public class FlyingEnemySideMove : State
         timeInState += Time.deltaTime;
         agent.Move((direction + transform.forward)* Time.deltaTime * speed);
         FaceTarget();
-        if ((transform.position - destination).magnitude < 2f || timeInState > 1.5f)
+        if ((transform.position - destination).magnitude < 2f || timeInState > 1f)
         {
             SwapToNextState();
             
