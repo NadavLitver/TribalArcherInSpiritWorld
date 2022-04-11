@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class AbilityStackHandler : MonoBehaviour
 {
+    public static AbilityStackHandler instance;
     [FoldoutGroup("Properties"), ShowInInspector, ReadOnly]
     const int MAX_STACKS = 3;
     [FoldoutGroup("Properties"), ReadOnly]
     public int currentStackAmount;
-    public static AbilityStackHandler instance;
     [FoldoutGroup("Events")]
     public UnityEvent onStackChange;
     [FoldoutGroup("Refrences")]
