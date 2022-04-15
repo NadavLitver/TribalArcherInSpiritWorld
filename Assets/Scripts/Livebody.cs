@@ -93,7 +93,7 @@ public class Livebody : MonoBehaviour
         if (DeadBody != null)
             Instantiate(DeadBody, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
         if (HealthOrb != null)
-            Instantiate(HealthOrb, transform.position + (Vector3.up * 5), Quaternion.identity, null);
+            Instantiate(HealthOrb, transform.position + (Vector3.up * 9), Quaternion.identity, null);
 
     }
     bool isResetingVulnerable;

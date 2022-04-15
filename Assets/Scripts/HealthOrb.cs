@@ -10,6 +10,7 @@ public class HealthOrb : InteractableBase
     public float duration;
     public AnimationCurve FlyCurve;
     public GameObject AfterHitEffect;
+    public float ConsumeDistance;
     public int healingToApply;
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class HealthOrb : InteractableBase
     {
         var startPos = transform.position;
         float curDuration = 0;
-        while ((player.transform.position - transform.position).magnitude > 0.1f)
+        while ((player.transform.position - transform.position).magnitude > ConsumeDistance)
         {
             curDuration += Time.deltaTime;
             transform.position = Vector3.Lerp(startPos, player.transform.position, FlyCurve.Evaluate(curDuration / duration));
