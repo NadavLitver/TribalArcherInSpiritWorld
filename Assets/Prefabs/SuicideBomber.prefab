@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 45
+  maxHealth: 20
   isVulnerable: 1
   timeBackToVulnerable: 0.1
   DeadBody: {fileID: 0}
@@ -478,7 +478,7 @@ PrefabInstance:
     - target: {fileID: -2253193619438327426, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c54ecfe23a4811440aad72f3bb702500, type: 2}
+      objectReference: {fileID: 2100000, guid: 0c5dfb86fb9b95e42bce81f60fbad7dc, type: 2}
     - target: {fileID: -1081150152133585175, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -486,7 +486,7 @@ PrefabInstance:
     - target: {fileID: -630939621396423661, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 022fd64dff72d304c95e1a99d5f61b05, type: 2}
+      objectReference: {fileID: 2100000, guid: bf0cf811c9275a44b8ef1a3d4c04a447, type: 2}
     - target: {fileID: 196123252597373898, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -514,11 +514,11 @@ PrefabInstance:
     - target: {fileID: 2803436535603912181, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c7a0a7cabecd78e49b2c00b3d1791f35, type: 2}
+      objectReference: {fileID: 2100000, guid: fad52ad4fa4b4de4fbcff6240c816b69, type: 2}
     - target: {fileID: 4424813233843495001, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c54ecfe23a4811440aad72f3bb702500, type: 2}
+      objectReference: {fileID: 2100000, guid: 0c5dfb86fb9b95e42bce81f60fbad7dc, type: 2}
     - target: {fileID: 6657560127643677590, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_Layer
       value: 9
