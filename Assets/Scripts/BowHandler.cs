@@ -147,7 +147,6 @@ public class BowHandler : MonoBehaviour
         float holdPercent = ((shootHoldTime / maxHoldTime) * 100f);
         float ratio = ((currentArrow.maxDamageBody - currentArrow.minDamageBody) / 100f);
         float val = (holdPercent * ratio) + currentArrow.minDamageBody;
-        Debug.Log("Arrow Calculated Damage" + val + " " + "Shoot hold percent" + holdPercent + " " + "Ratio" + ratio);
         return val;
     }
 
