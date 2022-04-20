@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Effects/Combat/Enemy/Enemy 1.meta
+guid: 5c881d38d9cde8349a4bd168b475babe
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 972e58267486e024bb3fb7e5e1103a87
 NativeFormatImporter:
+>>>>>>> main:Assets/Materials/Enemy2Body.mat.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

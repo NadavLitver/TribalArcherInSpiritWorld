@@ -506,7 +506,7 @@ MonoBehaviour:
   maxHealth: 45
   isVulnerable: 1
   timeBackToVulnerable: 0.1
-  DeadBody: {fileID: 0}
+  DeadBody: {fileID: 3075044854833262754, guid: 6a01b53e4d8f18c4b9c9fa4a4b6870e1, type: 3}
   HealthOrb: {fileID: 3657041678553056595, guid: 20910b6eddfe2c045b30231a5269205b, type: 3}
   animator: {fileID: 0}
   audioSource: {fileID: 333799896863975475}
