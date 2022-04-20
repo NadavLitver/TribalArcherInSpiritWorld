@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class FlyingEnemyBody : Livebody
     {
         base.SummonDeadBody();
         SoundManager.Play(SoundManager.Sound.OwlDead, audioSource);
+        //VFXManager.Play(VFXManager.Effect.FlyingEnemyDead, CenterPivot.position);
     }
     public override void TakeDamage(int damage)
     {
