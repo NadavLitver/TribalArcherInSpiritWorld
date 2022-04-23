@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Effects/Combat/Enemy/Enemy 3/PS_LaserBeam.prefab.meta
+guid: 0c5dfb86fb9b95e42bce81f60fbad7dc
+PrefabImporter:
+=======
 guid: c54ecfe23a4811440aad72f3bb702500
 NativeFormatImporter:
+>>>>>>> main:Assets/Materials/Enemy2Wings.mat.meta
   externalObjects: {}
   mainObjectFileID: 2100000
   userData: 

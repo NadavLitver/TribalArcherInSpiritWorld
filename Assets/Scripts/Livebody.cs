@@ -20,6 +20,8 @@ public class Livebody : MonoBehaviour
     [FoldoutGroup("Refrences"), ReadOnly, SerializeField]
     protected Animator animator;
     [FoldoutGroup("Refrences")]
+    public Transform CenterPivot;
+    [FoldoutGroup("Refrences")]
     public AudioSource audioSource;
     [FoldoutGroup("Events")]
     public UnityEvent hitEvent;
@@ -91,9 +93,9 @@ public class Livebody : MonoBehaviour
     protected virtual void SummonDeadBody()
     {
         if (DeadBody != null)
-            Instantiate(DeadBody, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
+            Instantiate(DeadBody, CenterPivot.position, Quaternion.identity, null);
         if (HealthOrb != null)
-            Instantiate(HealthOrb, transform.position + (Vector3.up * 5), Quaternion.identity, null);
+            Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
 
     }
     bool isResetingVulnerable;
