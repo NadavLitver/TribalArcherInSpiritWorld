@@ -14,10 +14,11 @@ public class ProjectileBase : MonoBehaviour
     private float gravityScale;
     [SerializeField]
     private float TTL = 15;
-
+    [SerializeField]
+    GameObject m_collider;
     private void OnEnable()
     {
-       
+        m_collider.SetActive(true);
         velocity = direction * force;
         rb.AddForce(velocity, ForceMode.Force);
         StartCoroutine(TimeToLiveRoutine());

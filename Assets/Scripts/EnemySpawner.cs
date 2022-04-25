@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(summonRate);
                 GameObject clone = enemyPool.GetPooledObject();
                 enemiesSpawned.Add(clone);
-                clone.transform.position = SpawnPoint.position;
+                clone.transform.position = SpawnPoint.position + new Vector3(Random.value,0,Random.value);
                 clone.SetActive(true);
             }
             yield return new WaitForSeconds(5);
