@@ -9,15 +9,21 @@ public class FlyingChaseState : State
     private float timeInState;
     public int timeInSecondsToSideJump;
     public State SideStep;
+    [SerializeField,FoldoutGroup("Refrences")] private FloatyObject floatComponent;
     protected override void OnStateDisabled()
     {
+        if (floatComponent != null && !floatComponent.enabled)
+        {
+            floatComponent.enabled = false;
+        }
     }
 
     protected override void OnStateEnabled()
     {
         agent.isStopped = false;
         timeInState = 0;
-        
+        if (floatComponent != null && floatComponent.enabled)
+            floatComponent.enabled = false;
 
     }
 
