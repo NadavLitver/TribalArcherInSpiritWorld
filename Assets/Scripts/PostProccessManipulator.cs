@@ -15,9 +15,12 @@ public class PostProccessManipulator : MonoBehaviour
     float lensDistortionOnSprint;
     [SerializeField, FoldoutGroup("Properties")]
     float maxVignette;
+    [SerializeField, FoldoutGroup("Properties")]
+    float VignetteOnHitAddition;
     private static float DistortionValueOnSprint;
     private static float DistortionValueOnShoot;
     private static float MaximumVignetteVal;
+    private static float VignetteOnHitAdditionValue;
 
     void Start()
     {
@@ -25,6 +28,7 @@ public class PostProccessManipulator : MonoBehaviour
         DistortionValueOnSprint = lensDistortionOnSprint;
         DistortionValueOnShoot = lensDistortionOnShoot;
         MaximumVignetteVal = maxVignette;
+        VignetteOnHitAdditionValue = VignetteOnHitAddition;
     }
     public static void SetLensDistortion()
     {
@@ -43,6 +47,18 @@ public class PostProccessManipulator : MonoBehaviour
             if (MaximumVignetteVal == 0)
                 return;
            float newVignetteVal = (((100 -currentHP) * MaximumVignetteVal) / 100);
+            Debug.Log("new VIGNETTE VALUE IS " + newVignetteVal);
+            volume.StartCoroutine(VignetteRoutine(vignette, newVignetteVal));
+        }
+    }
+    public static void OnHitVignette()
+    {
+
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+            if (MaximumVignetteVal == 0)
+                return;
+            float newVignetteVal = MaximumVignetteVal + VignetteOnHitAdditionValue;
             Debug.Log("new VIGNETTE VALUE IS " + newVignetteVal);
             volume.StartCoroutine(VignetteRoutine(vignette, newVignetteVal));
         }
@@ -90,7 +106,6 @@ public class PostProccessManipulator : MonoBehaviour
             yield return new WaitForEndOfFrame();
 
         }
-
     }
     private static IEnumerator LensDistortionOnShoot(LensDistortion lens)
     {
