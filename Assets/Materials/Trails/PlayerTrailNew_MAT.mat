@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerTrailNew_MAT
   m_Shader: {fileID: 4800000, guid: 1e9a07b1809f48344ac6fb78f7e2f733, type: 3}
-  m_ShaderKeywords: _ENABLECUSTOMFADE_ON
+  m_ShaderKeywords: _ENABLEADJUSTCOLOR_ON _ENABLECUSTOMFADE_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -105,7 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AdjustColorBrightness: 1
+    - _AdjustColorBrightness: 3.8
     - _AdjustColorContrast: 1
     - _AdjustColorFade: 1
     - _AdjustColorHueShift: 0
@@ -137,7 +137,7 @@ Material:
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0.1
     - _DstBlend: 0
-    - _EnableAdjustColor: 0
+    - _EnableAdjustColor: 1
     - _EnableAlphaTint: 0
     - _EnableBlackTint: 0
     - _EnableCustomFade: 1
