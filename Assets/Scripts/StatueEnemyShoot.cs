@@ -3,7 +3,7 @@ using UnityEngine;
 public class StatueEnemyShoot : State
 {
     [SerializeField] private LineRenderer aimLine;
-    [SerializeField] private LineRenderer beamLine;
+    [SerializeField] private LaserBeam beamLine;
     private float timeInState;
     [SerializeField] private float aimTime;
     [SerializeField] private float shootTime;
@@ -73,9 +73,11 @@ public class StatueEnemyShoot : State
         if (!beamLine.gameObject.activeInHierarchy)
         {
             beamLine.gameObject.SetActive(true);
+            beamLine.shootDirection = stopAimPos.normalized;
+            beamLine.Attack();
         }
         aimLine.SetPosition(1, Vector3.zero);
-        beamLine.SetPosition(1, stopAimPos);
+      //  beamLine.SetPosition(1, stopAimPos);
 
     }
 }
