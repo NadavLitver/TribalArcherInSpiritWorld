@@ -17,16 +17,6 @@ public class ChainLightingShot : MonoBehaviour
     }
     private void ToggleAbility()
     {
-
-        //if (AbilityToggle)
-        //{
-        //    ResetArrowToSpin();
-        //    AbilityToggle = false;
-        //}
-        //else
-        //{
-        //    AbilityToggle = true;
-        //}
         if (!AbilityToggle && AbilityStackHandler.instance.currentStackAmount < 1)
             return;
         AbilityToggle = !AbilityToggle;
