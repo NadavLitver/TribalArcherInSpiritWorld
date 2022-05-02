@@ -56,11 +56,11 @@ public class PostProccessManipulator : MonoBehaviour
 
         if (volume.profile.TryGet<Vignette>(out vignette))
         {
-            if (MaximumVignetteVal == 0)
-                return;
-            float newVignetteVal = MaximumVignetteVal + VignetteOnHitAdditionValue;
-            Debug.Log("new VIGNETTE VALUE IS " + newVignetteVal);
-            volume.StartCoroutine(VignetteRoutine(vignette, newVignetteVal));
+            volume.StartCoroutine(OnHitVignetteRoutine(vignette));
+        }
+        else
+        {
+            Debug.LogError("Vignette not found");
         }
     }
     public static void ResetLensDistortion()
@@ -79,6 +79,10 @@ public class PostProccessManipulator : MonoBehaviour
         {
             volume.StartCoroutine(LensDistortionOnShoot(lensDistortion));
         }
+        else
+        {
+            Debug.LogError("Vignette not found");
+        }
     }
     private static IEnumerator LensDistortionRoutine(LensDistortion lens)
     {
@@ -96,7 +100,6 @@ public class PostProccessManipulator : MonoBehaviour
     }
     private static IEnumerator VignetteRoutine(Vignette vignette,float value)
     {
-
         float curDur = 0;
         float currentIntenstity = vignette.intensity.value;
         while (vignette.intensity.value != value)
@@ -106,6 +109,28 @@ public class PostProccessManipulator : MonoBehaviour
             yield return new WaitForEndOfFrame();
 
         }
+        
+    }
+    private static IEnumerator OnHitVignetteRoutine(Vignette vignette)
+    {
+        float duration = 0.2f;
+
+        float curDur = 0;
+        float currentIntenstity = vignette.intensity.value;
+        while (curDur < 1)
+        {
+            vignette.intensity.value = Mathf.Lerp(currentIntenstity, currentIntenstity + VignetteOnHitAdditionValue, curDur);
+            curDur += Time.deltaTime / (duration / 2);
+            yield return new WaitForEndOfFrame();
+        }
+        curDur = 1;
+        while (curDur > 0)
+        {
+            vignette.intensity.value = Mathf.Lerp(currentIntenstity, currentIntenstity + VignetteOnHitAdditionValue, curDur);
+            curDur -= Time.deltaTime / (duration / 2);
+            yield return new WaitForEndOfFrame();
+        }
+        vignette.intensity.value = currentIntenstity;
     }
     private static IEnumerator LensDistortionOnShoot(LensDistortion lens)
     {

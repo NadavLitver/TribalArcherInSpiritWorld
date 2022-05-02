@@ -148,8 +148,8 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpeedMainTexUVNoiseUV: {r: 0, g: 0, b: 0, a: 0}
     - _SpeedMainTexUVNoiseZW: {r: 0, g: 0, b: 0, a: 0}
-    - _SplitToningHighlightsColor: {r: 1, g: 0.38195974, b: 0.10196078, a: 0}
-    - _SplitToningShadowsColor: {r: 1, g: 0.10196078, b: 0.7257184, a: 0}
+    - _SplitToningHighlightsColor: {r: 1, g: 0.19431208, b: 0.10196078, a: 0}
+    - _SplitToningShadowsColor: {r: 1, g: 0.10196078, b: 0.43326998, a: 0}
     - _TilingMainTexUVNoiseZW: {r: 1, g: 1, b: 1, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDistortFrom: {r: -0.02, g: -0.02, b: 0, a: 0}
