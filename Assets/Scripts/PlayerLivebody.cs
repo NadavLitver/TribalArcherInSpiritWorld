@@ -30,6 +30,7 @@ public class PlayerLivebody : Livebody
         base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.PlayerHit, audioSource, 0.5f);
         PostProccessManipulator.SetVignette(health);
+        PostProccessManipulator.OnHitVignette();
     }
     public override void RecieveHealth(int hp)
     {
