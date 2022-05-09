@@ -11,7 +11,7 @@ public class ScatterArrowAbility : Ability
         InputManager.Instance.OnPlayerClickAbilityR.AddListener(ToggleAbility);
 
     }
-    protected override void ToggleAbility()
+    public override void ToggleAbility()
     {
         base.ToggleAbility();
         for (int i = 0; i < uXExtraArrows.Length; i++)

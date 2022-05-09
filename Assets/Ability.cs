@@ -6,7 +6,7 @@ public class Ability : MonoBehaviour
 {
     public bool AbilityToggle;
     public int stackCost;
-    protected virtual void ToggleAbility()
+    public virtual void ToggleAbility()
     {
         if (!AbilityToggle && AbilityStackHandler.instance.currentStackAmount < stackCost)
             return;

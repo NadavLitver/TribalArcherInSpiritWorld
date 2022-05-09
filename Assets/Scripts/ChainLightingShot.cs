@@ -14,7 +14,7 @@ public class ChainLightingShot : Ability
         AbilityToggle = false;
         InputManager.Instance.OnPlayerClickAbilityF.AddListener(ToggleAbility);
     }
-    protected override void ToggleAbility()
+    public override void ToggleAbility()
     {
         base.ToggleAbility();
     }

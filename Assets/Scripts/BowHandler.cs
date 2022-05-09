@@ -154,11 +154,11 @@ public class BowHandler : MonoBehaviour
         {
             if(i == 1)
             {
-                arrowDirectionChanger = 0.2f;
+                arrowDirectionChanger = 0.1f;
             }
             else if(i == 2)
             {
-                arrowDirectionChanger = -0.2f;
+                arrowDirectionChanger = -0.1f;
             }
             var arrow = NormalArrowPool.GetPooledObject();
             var arrowProj = arrow.GetComponent<ArrowProjectile>();
@@ -172,6 +172,8 @@ public class BowHandler : MonoBehaviour
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
+        AbilityStackHandler.instance.DecreaseStackCount();
+        ScatterArrowAbilityRef.ToggleAbility();
        
         yield return new WaitForSeconds(0.05f);
         PlaceNewArrow();
