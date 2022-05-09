@@ -18,6 +18,9 @@ public class ArrowProjectile : MonoBehaviour
     [SerializeField] private float gravityScale;
     public LayerMask rayMask;
     [SerializeField, ReadOnly] public Vector3 rayHitPoint;
+    Vector3 boxCastPosition => transform.position + Vector3.up;
+    [SerializeField] Vector3 colliderBounds;
+
     Ray ray;
     bool rayHit;
     float timeAlive;
@@ -27,6 +30,7 @@ public class ArrowProjectile : MonoBehaviour
     public int StackOnHeadHit;
     public UnityEvent onHitBody;
     public UnityEvent onHitHead;
+     
 
     private void OnEnable()
     {
@@ -35,7 +39,7 @@ public class ArrowProjectile : MonoBehaviour
         rb.AddForce(velocity, ForceMode.Impulse);
         transform.up = velocity;
         timeAlive = 0;
-
+       
 
         if (m_trails.Length > 0)
         {
@@ -51,7 +55,7 @@ public class ArrowProjectile : MonoBehaviour
     private void Update()
     {
         timeAlive += Time.deltaTime;
-     
+       
     }
     private void CheckCollisionWithRay()
     {
@@ -60,10 +64,11 @@ public class ArrowProjectile : MonoBehaviour
 
         ray = new Ray(transform.position, transform.up);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 2f, rayMask, QueryTriggerInteraction.Collide))
+        if (Physics.BoxCast(boxCastPosition, colliderBounds, ray.direction, out RaycastHit hit,transform.rotation,colliderBounds.magnitude, rayMask))
         {
+            
             rayHitPoint = hit.point;
-            Livebody currentLivebody = hit.collider.gameObject.GetComponent<Livebody>() ?? hit.collider.gameObject.GetComponentInParent<Livebody>() ?? hit.collider.gameObject.GetComponentInChildren<Livebody>();
+            Livebody currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
             if (currentLivebody == null)
             {
                 this.gameObject.SetActive(false);
@@ -137,10 +142,10 @@ public class ArrowProjectile : MonoBehaviour
             }
         }
     }
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
-        Gizmos.DrawRay(transform.position, transform.up * 2);
-        Gizmos.DrawWireSphere(rayHitPoint, 2);
+        Gizmos.DrawWireCube(boxCastPosition, colliderBounds);
+        //Gizmos.DrawWireSphere(rayHitPoint, 2);
 
     }
 }

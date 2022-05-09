@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerFinishCharge;
     public UnityEvent OnPlayerStartInteract;
     public UnityEvent OnPlayerClickAbilityF;
+    public UnityEvent OnPlayerClickAbilityR;
     public UnityEvent OnPlayerStartedSprint;
     public UnityEvent OnPlayerCanceledSprint;
     public float shootHoldTime;
@@ -61,11 +62,16 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Shoot.performed += PlayerFinishCharging; 
         inputActions.PlayerMap.Shoot.canceled += PlayerReleaseShootThisFrame;
         inputActions.PlayerMap.Interact.started += PlayerStartedInteractThisFrame;
-        inputActions.PlayerMap.AbilityF.started += PlayerStartedAbilityEThisFrame;
+        inputActions.PlayerMap.AbilityF.started += PlayerStartedAbilityFThisFrame;
         inputActions.PlayerMap.Sprint.started += PlayerStartedSprint;
         inputActions.PlayerMap.Sprint.canceled += PlayerCanceledSprint;
+        inputActions.PlayerMap.AbilityR.started += PlayerStartedAbilityRThisFrame;
         inputActions.GeneralMap.Pause.started += Pause;
+    }
 
+    private void PlayerStartedAbilityRThisFrame(InputAction.CallbackContext obj)
+    {
+        OnPlayerClickAbilityR?.Invoke();
     }
 
     private void Pause(InputAction.CallbackContext obj)
@@ -103,7 +109,7 @@ public class InputManager : MonoBehaviour
     {
         OnPlayerStartInteract?.Invoke();
     }
-    private void PlayerStartedAbilityEThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    private void PlayerStartedAbilityFThisFrame(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         OnPlayerClickAbilityF?.Invoke();
     }

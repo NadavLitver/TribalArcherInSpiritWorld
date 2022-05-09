@@ -8,6 +8,14 @@ public class BeamCollisionHandler : MonoBehaviour
     bool isOnPlayer;
     Livebody currentLivebody;
     float timeOnPlayer;
+    float timeEnabled;
+    [SerializeField, FoldoutGroup("Refrences")] Collider m_collider;
+    private void OnEnable()
+    {
+        m_collider = GetComponent<Collider>();
+        m_collider.enabled = false;
+        timeEnabled = 0;
+    }
     private void OnTriggerEnter(Collider other)
     {
         currentLivebody = other.GetComponent<Livebody>() ?? other.GetComponentInParent<Livebody>() ?? other.GetComponentInChildren<Livebody>();
@@ -33,6 +41,7 @@ public class BeamCollisionHandler : MonoBehaviour
     }
     private void Update()
     {
+        
         if (isOnPlayer)
         {
             timeOnPlayer += Time.deltaTime;
@@ -44,6 +53,12 @@ public class BeamCollisionHandler : MonoBehaviour
                 timeOnPlayer = 0;
             }
         }
-        
+        else if (!m_collider.enabled)
+        {
+            timeEnabled += Time.deltaTime;
+            if (timeEnabled > 1)
+                m_collider.enabled = true;
+
+        }
     }
 }
