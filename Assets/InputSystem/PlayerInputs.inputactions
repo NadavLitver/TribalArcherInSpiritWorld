@@ -54,6 +54,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "AbilityR",
+                    "type": "Button",
+                    "id": "9f5cf5ad-1e43-4812-81c5-a59917f1e24c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "734d6a00-54d7-41bb-8c55-3adae9fd1bca",
@@ -224,6 +232,17 @@
                     "action": "Sens",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4a12a55c-595f-4314-a8bb-db3944a12b74",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AbilityR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

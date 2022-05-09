@@ -22,6 +22,8 @@ public class FlyingPatrolState : State
     {
         // agent.updateRotation = true;
         agent.isStopped = false;
+        if(_animator != null)
+          _animator.Play("Idle"); 
         
 
     }

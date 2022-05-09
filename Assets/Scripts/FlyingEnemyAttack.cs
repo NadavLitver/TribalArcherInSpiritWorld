@@ -8,8 +8,7 @@ public class FlyingEnemyAttack : State
     public float BackStepLength;
     bool alreadyAttacked;
     public ObjectPool pool;
-    public Transform rightHand;
-    public Transform leftHand;
+    public Transform shootPos;
     public float projectileForce;
     public float faceTargetSpeed = 50;
     protected override void OnStateDisabled()
@@ -23,6 +22,7 @@ public class FlyingEnemyAttack : State
         alreadyAttacked = false;
         agent.isStopped = true;
         //agent.updatePosition = false;
+
        
         StartCoroutine(AttackDelay());
 
@@ -43,10 +43,12 @@ public class FlyingEnemyAttack : State
     {
       
         if (alreadyAttacked || PlayerController.playerTransform == null)
+        {
+            StartCoroutine(SwapStateDelay());
             return;
-       
+        }
+      
         var Shot = pool.GetPooledObject();
-        var shootPos = RandomBoolean() ? rightHand : leftHand;
         Shot.transform.SetPositionAndRotation(shootPos.position, shootPos.rotation);
         
         var ProjBase = Shot.GetComponent<ProjectileBase>();
@@ -60,14 +62,14 @@ public class FlyingEnemyAttack : State
     }
     IEnumerator AttackDelay()
     {
-        _animator.SetTrigger("Throw");
+        _animator.Play("Shoot");
         yield return new WaitForSeconds(timeBetweenAttacks);
         AttackPlayer();
     }
     IEnumerator SwapStateDelay()
     {
 
-        yield return new WaitForSeconds(timeBetweenAttacks * 0.5f);
+        yield return new WaitForSeconds(timeBetweenAttacks);
         agent.SetDestination(PlayerController.playerTransform.position);
         agent.isStopped = false;
         SwapToNextState();

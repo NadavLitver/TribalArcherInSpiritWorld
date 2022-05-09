@@ -12,6 +12,8 @@ public class FlyingEnemyHitState : State
     protected override void OnStateEnabled()
     {
         StartCoroutine(SwapStateDelay());
+        if (_animator != null)
+            _animator.Play("Hit");
     }
     IEnumerator SwapStateDelay()
     {

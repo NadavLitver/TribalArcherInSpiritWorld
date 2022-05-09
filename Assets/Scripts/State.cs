@@ -21,7 +21,7 @@ public abstract class State : MonoBehaviour
         stateHandler = GetComponent<LivebodyStateHandler>();
         if (stateHandler == null)
             Debug.LogError("No State_Handler Found");
-
+       
     }
    
     private void OnEnable()

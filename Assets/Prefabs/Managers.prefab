@@ -375,6 +375,9 @@ MonoBehaviour:
   OnPlayerClickAbilityF:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerClickAbilityR:
+    m_PersistentCalls:
+      m_Calls: []
   OnPlayerStartedSprint:
     m_PersistentCalls:
       m_Calls:
