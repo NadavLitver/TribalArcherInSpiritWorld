@@ -9,6 +9,8 @@ public class BowHandler : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
     [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ScatterArrowAbility ScatterArrowAbilityRef;
+    [SerializeField, FoldoutGroup("Refrences")] private LightingBoltAOEAbility LightingBoltAbility;
+
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool NormalArrowPool;
     [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
 
@@ -49,6 +51,12 @@ public class BowHandler : MonoBehaviour
             SoundManager.Play(SoundManager.Sound.BowReleaseFull, transform.position, 0.5f);
             isShooting = false;
             PostProccessManipulator.ResetLensDistortion();
+            m_audioSource.Stop();
+            if (LightingBoltAbility.AbilityToggle)
+            {
+                StartCoroutine(ReleaseLightingArrow());
+                return;
+            }
             if (ScatterArrowAbilityRef.AbilityToggle)
             {
                 StartCoroutine(ReleaseScatterArrow());
@@ -57,7 +65,6 @@ public class BowHandler : MonoBehaviour
             {
                 StartCoroutine(ReleaseNormalArrow());
             }
-            m_audioSource.Stop();
         }
 
       
@@ -143,6 +150,30 @@ public class BowHandler : MonoBehaviour
         arrow.SetActive(true);
         yield return new WaitForSeconds(0.05f);
         PlaceNewArrow();
+
+    }
+    public IEnumerator ReleaseLightingArrow()
+    {
+
+        var arrow = LightingBoltAbility.LightingArrowPool.GetPooledObject();
+        arrow.transform.position = UXArrow.position;
+        arrow.transform.rotation = UXArrow.rotation;
+        var arrowProj = arrow.GetComponent<ArrowProjectile>();
+        arrowProj.direction = ShootDirection().normalized;
+        arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
+        UXArrow.gameObject.SetActive(false);      
+        shootHoldTime = 0;
+        bowString.ResetBowStringPos();
+        bowString.PlayStringVFX();
+        CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
+        AbilityStackHandler.instance.DecreaseStackCount(LightingBoltAbility.stackCost);
+        arrow.SetActive(true);
+        LightingBoltAbility.ToggleAbility();
+
+        yield return new WaitForSeconds(0.05f);
+        PlaceNewArrow();
+
 
     }
     public IEnumerator ReleaseScatterArrow()

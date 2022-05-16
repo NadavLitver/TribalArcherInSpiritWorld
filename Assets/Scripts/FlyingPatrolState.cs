@@ -13,6 +13,8 @@ public class FlyingPatrolState : State
     public float sightRange;
     public bool playerInSight;
     public bool GroundInSight;
+    [SerializeField,FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
+   
     protected override void OnStateDisabled()
     {
 
@@ -22,11 +24,16 @@ public class FlyingPatrolState : State
     {
         // agent.updateRotation = true;
         agent.isStopped = false;
-        if(_animator != null)
-          _animator.Play("Idle"); 
-        
+        if (_animator != null)
+            _animator.Play("Idle");
+        if(gfx!= null)
+          gfx.ResetGFXRotation();
+
 
     }
+
+
+
     private void Update()
     {
 

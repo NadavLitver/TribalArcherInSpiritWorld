@@ -18,6 +18,8 @@ public class ArrowProjectile : MonoBehaviour
     [SerializeField] private float gravityScale;
     public LayerMask rayMask;
     [SerializeField, ReadOnly] public Vector3 rayHitPoint;
+    [SerializeField] private LightingBolt lightingBolt;
+
     Vector3 boxCastPosition => transform.position + Vector3.up;
     [SerializeField] Vector3 colliderBounds;
 
@@ -69,14 +71,20 @@ public class ArrowProjectile : MonoBehaviour
             
             rayHitPoint = hit.point;
             Livebody currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
+            
             if (currentLivebody == null)
             {
                 this.gameObject.SetActive(false);
                 VFXManager.Play(VFXManager.Effect.TerrainHitEffect, rayHitPoint);
                 return;
             }
+            if (lightingBolt != null)
+            {
+                lightingBolt.OnActivate(currentLivebody);
+            }
             else
             {
+             
                 if (hit.collider.gameObject.CompareTag("Head"))
                 {
                    // OnLivebodyHeadshot?.Invoke();
@@ -84,7 +92,7 @@ public class ArrowProjectile : MonoBehaviour
                     VFXManager.Play(VFXManager.Effect.HeadshotEffect, rayHitPoint);
                     HitMarkHandler.instance.PlayHeadShotHitMark();
                     AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
-
+                    onHitHead?.Invoke();
 
 
                 }
@@ -96,6 +104,7 @@ public class ArrowProjectile : MonoBehaviour
                     AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
                     onHitBody?.Invoke();
                 }
+               
             }
             rayHit = true;
             this.gameObject.SetActive(false);

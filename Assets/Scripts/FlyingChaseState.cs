@@ -10,6 +10,8 @@ public class FlyingChaseState : State
     public int timeInSecondsToSideJump;
     public State SideStep;
     [SerializeField,FoldoutGroup("Refrences")] private FloatyObject floatComponent;
+    [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
+
     protected override void OnStateDisabled()
     {
         if (floatComponent != null && !floatComponent.enabled)
@@ -24,7 +26,8 @@ public class FlyingChaseState : State
         timeInState = 0;
         if (floatComponent != null && floatComponent.enabled)
             floatComponent.enabled = false;
-
+        if (gfx != null)
+            gfx.ResetGFXRotation();
     }
 
     private void Update()

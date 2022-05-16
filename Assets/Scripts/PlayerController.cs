@@ -7,10 +7,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Transform camTransform;
+
+    [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Camera cam;
+
+
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private CharacterController controller;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Breath m_breath;
     [SerializeField, FoldoutGroup("Refrences")] private CinemachinePOVExtension m_CinematicCamera;
     [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
+    [SerializeField, FoldoutGroup("Refrences")] private Transform camFollow;
 
     [FoldoutGroup("Properties")] public LayerMask groundedLayers;
     [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
@@ -46,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         input = InputManager.Instance;
+        cam = Camera.main;
         camTransform = Camera.main.transform;
         playerTransform = transform;
         input.OnPlayerStartedSprint.AddListener(FlipDoSprint);
@@ -55,6 +61,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetGrounded();
+        
         if (canMove)
         {
             Jump();
@@ -68,13 +75,29 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetMoveInput()
     {
+        camFollow.rotation = new Quaternion(0, camTransform.rotation.y, 0, camTransform.rotation.w);
         Vector2 Inputmovement = input.GetPlayerMovement();
         Vector3 move = new Vector3(Inputmovement.x, 0, Inputmovement.y);
-        move = camTransform.forward * move.z + camTransform.right * move.x;
+        move = camFollow.forward * move.z + camFollow.right * move.x;
         move.y = 0;
         return move;
     }
+    //private Vector3 Direction()
+    //{
 
+    //    Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+    //    Vector3 targetPoint;
+    //    if (Physics.Raycast(ray, out RaycastHit hit))
+    //    {
+    //        targetPoint = hit.point;
+    //    }
+    //    else
+    //    {
+    //        targetPoint = ray.GetPoint(100);
+    //    }
+    //    Vector3 direction = (targetPoint - transform.position);
+    //    return direction;
+    //}
     private void BreathboundMovement()
     {
         if (m_breath.current > 0)

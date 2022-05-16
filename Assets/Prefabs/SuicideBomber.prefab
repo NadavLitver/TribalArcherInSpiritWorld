@@ -370,6 +370,7 @@ MonoBehaviour:
   sightRange: 75
   playerInSight: 0
   GroundInSight: 0
+  bodyGFX: {fileID: 0}
 --- !u!114 &4359631609399318988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +397,7 @@ MonoBehaviour:
   sightRange: 3
   playerInSight: 0
   timeInState: 0
-  timeInSecondsToSideJump: 6
+  timeInSecondsToSideJump: 8
   SideStep: {fileID: 4359631609399318987}
   floatComponent: {fileID: 2898932861911702693}
 --- !u!114 &4359631609399318987

@@ -21,12 +21,14 @@ public class LivebodyStateHandler : MonoBehaviour
         body.health = body.maxHealth;
         body.isVulnerable = true;
         InitStates();
-        AbilityStackHandler.instance.playerBody.OnDeath.AddListener(InitStates);
+        if(AbilityStackHandler.instance != null)
+          AbilityStackHandler.instance.playerBody.OnDeath.AddListener(InitStates);
 
     }
     public void OnDisable()
     {
-        AbilityStackHandler.instance.playerBody.OnDeath.RemoveListener(InitStates);
+        if (AbilityStackHandler.instance != null)
+            AbilityStackHandler.instance.playerBody.OnDeath.RemoveListener(InitStates);
     }
     public void InitStates()
     {
