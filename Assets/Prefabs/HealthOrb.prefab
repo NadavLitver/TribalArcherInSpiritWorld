@@ -44,7 +44,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 22
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3657041678553056594
 MonoBehaviour:
@@ -95,6 +95,12 @@ MonoBehaviour:
   AfterHitEffect: {fileID: 8860690098967493520}
   ConsumeDistance: 0.35
   healingToApply: 25
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  floatinessEnabled: 1
+  frequency: 0.85
+  speed: 1.2
 --- !u!1001 &480273080202747137
 PrefabInstance:
   m_ObjectHideFlags: 0
