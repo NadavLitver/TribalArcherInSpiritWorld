@@ -41,8 +41,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.0941448, y: 0.87144303, z: 0.89818954}
+  m_Center: {x: -0.015624046, y: 0.9357215, z: 0.12066841}
 --- !u!114 &2898932861911702693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   sightRange: 75
   playerInSight: 0
   GroundInSight: 0
-  bodyGFX: {fileID: 0}
+  gfx: {fileID: 0}
 --- !u!114 &4359631609399318988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +400,7 @@ MonoBehaviour:
   timeInSecondsToSideJump: 8
   SideStep: {fileID: 4359631609399318987}
   floatComponent: {fileID: 2898932861911702693}
+  gfx: {fileID: 0}
 --- !u!114 &4359631609399318987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +465,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f10e7b8157e3df4b872ba3735f17f3d, type: 3}
       propertyPath: m_LocalPosition.x
