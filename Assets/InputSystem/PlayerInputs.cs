@@ -75,6 +75,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""AbilityQ"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fe41219-00d1-4093-b727-7cce4db0335f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""734d6a00-54d7-41bb-8c55-3adae9fd1bca"",
@@ -256,6 +264,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""AbilityR"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4884178a-e983-4d50-af85-5326f6d691eb"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbilityQ"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -298,6 +317,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMap_AbilityF = m_PlayerMap.FindAction("AbilityF", throwIfNotFound: true);
         m_PlayerMap_AbilityR = m_PlayerMap.FindAction("AbilityR", throwIfNotFound: true);
+        m_PlayerMap_AbilityQ = m_PlayerMap.FindAction("AbilityQ", throwIfNotFound: true);
         m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerMap_Sens = m_PlayerMap.FindAction("Sens", throwIfNotFound: true);
         // GeneralMap
@@ -359,6 +379,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMap_Interact;
     private readonly InputAction m_PlayerMap_AbilityF;
     private readonly InputAction m_PlayerMap_AbilityR;
+    private readonly InputAction m_PlayerMap_AbilityQ;
     private readonly InputAction m_PlayerMap_Sprint;
     private readonly InputAction m_PlayerMap_Sens;
     public struct PlayerMapActions
@@ -372,6 +393,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
         public InputAction @AbilityF => m_Wrapper.m_PlayerMap_AbilityF;
         public InputAction @AbilityR => m_Wrapper.m_PlayerMap_AbilityR;
+        public InputAction @AbilityQ => m_Wrapper.m_PlayerMap_AbilityQ;
         public InputAction @Sprint => m_Wrapper.m_PlayerMap_Sprint;
         public InputAction @Sens => m_Wrapper.m_PlayerMap_Sens;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
@@ -404,6 +426,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @AbilityR.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityR;
                 @AbilityR.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityR;
                 @AbilityR.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityR;
+                @AbilityQ.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityQ;
+                @AbilityQ.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityQ;
+                @AbilityQ.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnAbilityQ;
                 @Sprint.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnSprint;
@@ -435,6 +460,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @AbilityR.started += instance.OnAbilityR;
                 @AbilityR.performed += instance.OnAbilityR;
                 @AbilityR.canceled += instance.OnAbilityR;
+                @AbilityQ.started += instance.OnAbilityQ;
+                @AbilityQ.performed += instance.OnAbilityQ;
+                @AbilityQ.canceled += instance.OnAbilityQ;
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
@@ -487,6 +515,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAbilityF(InputAction.CallbackContext context);
         void OnAbilityR(InputAction.CallbackContext context);
+        void OnAbilityQ(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnSens(InputAction.CallbackContext context);
     }

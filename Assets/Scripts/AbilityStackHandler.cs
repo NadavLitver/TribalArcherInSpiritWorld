@@ -86,6 +86,7 @@ public class AbilityStackHandler : MonoBehaviour
         UpdateUIElements();
 
     }
+    [Button]
     private void IncreaseStackCount(int _amountToIncrease)
     {
         currentStackAmount += _amountToIncrease;

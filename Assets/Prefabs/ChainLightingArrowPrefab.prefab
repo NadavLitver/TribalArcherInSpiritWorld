@@ -3912,6 +3912,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
+  colliderBounds: {x: 2, y: 3, z: 2}
   maxDamageBody: 20
   minDamageBody: 10
   StackOnBodyHit: 20

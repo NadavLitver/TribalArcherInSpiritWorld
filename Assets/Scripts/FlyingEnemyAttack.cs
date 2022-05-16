@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class FlyingEnemyAttack : State
     public Transform shootPos;
     public float projectileForce;
     public float faceTargetSpeed = 50;
+    [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
+
     protected override void OnStateDisabled()
     {
        
@@ -23,8 +26,9 @@ public class FlyingEnemyAttack : State
         agent.isStopped = true;
         //agent.updatePosition = false;
 
-       
         StartCoroutine(AttackDelay());
+        if (gfx != null)
+            gfx.ResetGFXRotation();
 
     }
     private void Update()
