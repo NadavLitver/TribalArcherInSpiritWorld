@@ -1,0 +1,1212 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.14f1 (d0d1bb862f9d) revision 13685179'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19044.1645; Version 2009; 64bit' Language: 'en' Physical Memory: 16331 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\UnityProjects\2020.3.14f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/Users/AMIR/Desktop/Unity Builds/TribalArcherInSpiritWorld
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+51435
+Successfully changed project path to: C:/Users/AMIR/Desktop/Unity Builds/TribalArcherInSpiritWorld
+C:/Users/AMIR/Desktop/Unity Builds/TribalArcherInSpiritWorld
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 294.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.14f1 (d0d1bb862f9d)
+[Subsystems] Discovering subsystems at path C:/Program Files/UnityProjects/2020.3.14f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/AMIR/Desktop/Unity Builds/TribalArcherInSpiritWorld/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 Ti (ID=0x1b82)
+    Vendor:   
+    VRAM:     8079 MB
+    Driver:   30.0.15.1215
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/UnityProjects/2020.3.14f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/UnityProjects/2020.3.14f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/UnityProjects/2020.3.14f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56300
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/UnityProjects/2020.3.14f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/UnityProjects/2020.3.14f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005739 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 281.20 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.577 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5578ms)
+		BeginReloadAssembly (132ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (2ms)
+		EndReloadAssembly (1280ms)
+			LoadAssemblies (127ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (410ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (82ms)
+			SetupLoadedEditorAssemblies (594ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (281ms)
+				BeforeProcessingInitializeOnLoad (32ms)
+				ProcessInitializeOnLoadAttributes (198ms)
+				ProcessInitializeOnLoadMethodAttributes (70ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.026521 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 267.86 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.653 seconds
+Domain Reload Profiling:
+	ReloadAssembly (8655ms)
+		BeginReloadAssembly (355ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (11ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (40ms)
+		EndReloadAssembly (8154ms)
+			LoadAssemblies (236ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1002ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (253ms)
+			SetupLoadedEditorAssemblies (6326ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (268ms)
+				BeforeProcessingInitializeOnLoad (288ms)
+				ProcessInitializeOnLoadAttributes (5667ms)
+				ProcessInitializeOnLoadMethodAttributes (75ms)
+				AfterProcessingInitializeOnLoad (15ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 2.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4358 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 219.0 MB.
+System memory in use after: 219.2 MB.
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 4871.
+Total: 73.467700 ms (FindLiveObjects: 0.844000 ms CreateObjectMapping: 0.552300 ms MarkObjects: 71.302300 ms  DeleteObjects: 0.766600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/LevelDesign_New 2.unity
+  artifactKey: Guid(fb7b5dbf978911d4caf71fdefd707d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/LevelDesign_New 2.unity using Guid(fb7b5dbf978911d4caf71fdefd707d9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfd7ace37a41a86a0b22d41b73d56d6c') in 0.039859 seconds 
+  Import took 0.056050 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.200280 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.382 seconds
+Domain Reload Profiling:
+	ReloadAssembly (8383ms)
+		BeginReloadAssembly (466ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (21ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (158ms)
+		EndReloadAssembly (7731ms)
+			LoadAssemblies (531ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1264ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (188ms)
+			SetupLoadedEditorAssemblies (5405ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (29ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (4ms)
+				BeforeProcessingInitializeOnLoad (277ms)
+				ProcessInitializeOnLoadAttributes (5049ms)
+				ProcessInitializeOnLoadMethodAttributes (28ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (22ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4147 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 202.4 MB.
+System memory in use after: 202.6 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4874.
+Total: 104.142200 ms (FindLiveObjects: 0.839100 ms CreateObjectMapping: 0.633700 ms MarkObjects: 101.894300 ms  DeleteObjects: 0.771400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.193200 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  8.250 seconds
+Domain Reload Profiling:
+	ReloadAssembly (8252ms)
+		BeginReloadAssembly (424ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (20ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (169ms)
+		EndReloadAssembly (7609ms)
+			LoadAssemblies (347ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1190ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (225ms)
+			SetupLoadedEditorAssemblies (5465ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (15ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (328ms)
+				ProcessInitializeOnLoadAttributes (5056ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
+				AfterProcessingInitializeOnLoad (24ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (32ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 4.01 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 202.5 MB.
+System memory in use after: 202.6 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4876.
+Total: 165.290200 ms (FindLiveObjects: 1.898900 ms CreateObjectMapping: 1.168700 ms MarkObjects: 160.658500 ms  DeleteObjects: 1.559400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.026458 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 5.77 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 12.121 seconds
+Domain Reload Profiling:
+	ReloadAssembly (12122ms)
+		BeginReloadAssembly (508ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (24ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (210ms)
+		EndReloadAssembly (11354ms)
+			LoadAssemblies (449ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1838ms)
+			ReleaseScriptCaches (7ms)
+			RebuildScriptCaches (464ms)
+			SetupLoadedEditorAssemblies (7851ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (24ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (6ms)
+				BeforeProcessingInitializeOnLoad (552ms)
+				ProcessInitializeOnLoadAttributes (7204ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
+				AfterProcessingInitializeOnLoad (23ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (28ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 3.24 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 202.5 MB.
+System memory in use after: 202.7 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4878.
+Total: 147.900300 ms (FindLiveObjects: 1.171000 ms CreateObjectMapping: 0.803700 ms MarkObjects: 144.854600 ms  DeleteObjects: 1.066200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2244.459554 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Sphere01.fbx
+  artifactKey: Guid(07b9b515e17d96c4f987b6c8891498d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Sphere01.fbx using Guid(07b9b515e17d96c4f987b6c8891498d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f24b4350b79bf859de976f59cda0f30') in 0.767120 seconds 
+  Import took 0.789438 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000494 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Sphere01_lowpoly.fbx
+  artifactKey: Guid(0538cef95fed13243892fbf281eaf2b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Sphere01_lowpoly.fbx using Guid(0538cef95fed13243892fbf281eaf2b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06f78f507343cb02c49dd7d0990e4b75') in 0.067015 seconds 
+  Import took 0.084417 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000478 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Spike01.fbx
+  artifactKey: Guid(3c22d4f8d5d00f14096b5afc187cfb26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Spike01.fbx using Guid(3c22d4f8d5d00f14096b5afc187cfb26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29cfec5e91bb10f324cf99b2e3a4d667') in 0.058808 seconds 
+  Import took 0.075732 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000524 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Slash01.fbx
+  artifactKey: Guid(6951a84d3f3d1f04ebc2036dba515ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Slash01.fbx using Guid(6951a84d3f3d1f04ebc2036dba515ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78deebe9504d8df6b06ca7d4f344e011') in 0.054483 seconds 
+  Import took 0.072722 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.359889 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Swirl02.fbx
+  artifactKey: Guid(40c2b5618148fbf499d7f9889e0f7c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Swirl02.fbx using Guid(40c2b5618148fbf499d7f9889e0f7c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0425a7ec5ec2fe25f738a7cb1cd59f8') in 0.084807 seconds 
+  Import took 0.096696 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.011076 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Swirl02.fbx
+  artifactKey: Guid(40c2b5618148fbf499d7f9889e0f7c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Models/Swirl02.fbx using Guid(40c2b5618148fbf499d7f9889e0f7c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0425a7ec5ec2fe25f738a7cb1cd59f8') in 0.031666 seconds 
+  Import took 0.046303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 518.435620 seconds.
+  path: Assets/Polybrush Data/Brush Settings/New Brush.asset
+  artifactKey: Guid(e35361c1fb0f3d04bbb0992433cf3409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Brush Settings/New Brush.asset using Guid(e35361c1fb0f3d04bbb0992433cf3409) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a770c762690219b705092ede3951347') in 0.018951 seconds 
+  Import took 0.057243 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.919662 seconds.
+  path: Assets/Polybrush Data/Brush Settings/BrushSettings-Default.asset
+  artifactKey: Guid(eebd5f23d3be387459043840250e1901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Brush Settings/BrushSettings-Default.asset using Guid(eebd5f23d3be387459043840250e1901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0eae9f750fe213785dea74a054cfe5f4') in 0.017310 seconds 
+  Import took 0.031988 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002929 seconds.
+  path: Assets/Polybrush Data/Brush Settings/BrushSettings-Default.asset
+  artifactKey: Guid(eebd5f23d3be387459043840250e1901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Brush Settings/BrushSettings-Default.asset using Guid(eebd5f23d3be387459043840250e1901) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0eae9f750fe213785dea74a054cfe5f4') in 0.007324 seconds 
+  Import took 0.021958 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 158.619814 seconds.
+  path: Assets/Polybrush Data/Prefab Palette/New Prefab Palette.asset
+  artifactKey: Guid(23e894471a1c1a84196a6ab74f9536bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Prefab Palette/New Prefab Palette.asset using Guid(23e894471a1c1a84196a6ab74f9536bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08da77062c5672c78eeb35b15fed7ec4') in 0.016088 seconds 
+  Import took 0.028193 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.236058 seconds.
+  path: Assets/Polybrush Data/Prefab Palette/PrefabPalette-Default.asset
+  artifactKey: Guid(a8a34ed49f966684688c7b4fa83b58ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Prefab Palette/PrefabPalette-Default.asset using Guid(a8a34ed49f966684688c7b4fa83b58ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '091daa2b6f2718ef3ee4101e7713bf51') in 0.011756 seconds 
+  Import took 0.050526 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 973.670135 seconds.
+  path: Assets/Textures/Ruins/2_Poles_Tex_V02.png
+  artifactKey: Guid(81a21bba5da6f2e449a869953645645c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Ruins/2_Poles_Tex_V02.png using Guid(81a21bba5da6f2e449a869953645645c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af34445c6c78d6960b244c5ff8fd98ac') in 0.849046 seconds 
+  Import took 0.869893 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000379 seconds.
+  path: Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Textures/BeamWhite01.PNG
+  artifactKey: Guid(034133cced7821448981f2dfd228f9ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/GabrielAguiarProductions/Unique_Projectiles_Volume_2/Textures/BeamWhite01.PNG using Guid(034133cced7821448981f2dfd228f9ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08058637199c7f49f8f304ead9e212cd') in 0.093351 seconds 
+  Import took 0.109338 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000453 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Demo/Demo Sprites/Background.png
+  artifactKey: Guid(8519e405360651948987424740c2f332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Demo/Demo Sprites/Background.png using Guid(8519e405360651948987424740c2f332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e56c6e48b3de9bd9b1f1fa97a0c06c5') in 0.131700 seconds 
+  Import took 0.150139 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000494 seconds.
+  path: Assets/Sprites/Blood/Blood 2.png
+  artifactKey: Guid(c9bbd3b204152de448a99be15bbb1ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Blood/Blood 2.png using Guid(c9bbd3b204152de448a99be15bbb1ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24c3db3e4726482d02e4a4805c9d19ff') in 0.066640 seconds 
+  Import took 0.083394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000534 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/Emojis/angry.png
+  artifactKey: Guid(827643247c5396045ab168f4d32a7e92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/Emojis/angry.png using Guid(827643247c5396045ab168f4d32a7e92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd22f47b207853efb6db827632229a5b9') in 0.037506 seconds 
+  Import took 0.054763 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000458 seconds.
+  path: Assets/Scenes/Menu/Assets/Button Types.png
+  artifactKey: Guid(2d420d639aa927847a9a0a4b14d609c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Menu/Assets/Button Types.png using Guid(2d420d639aa927847a9a0a4b14d609c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c7ef33fb90a54c310a3e2e05f9c5d03') in 0.098339 seconds 
+  Import took 0.114162 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000468 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle_simple_colored.png
+  artifactKey: Guid(55f61b37e04f3154e9bd91e8e8894662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle_simple_colored.png using Guid(55f61b37e04f3154e9bd91e8e8894662) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e679e483bce107704a8b4ec18e3b47f') in 0.091870 seconds 
+  Import took 0.108643 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000484 seconds.
+  path: Assets/Sprites/Refs/BG_concept_10_color.png
+  artifactKey: Guid(c716991f331e2da4cb604f71c153c7f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Refs/BG_concept_10_color.png using Guid(c716991f331e2da4cb604f71c153c7f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f7f1abb43119f0026fe9966bc73cd07') in 0.195566 seconds 
+  Import took 0.212577 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000503 seconds.
+  path: Assets/Sprites/CrosshairStuff/BottomRightCrosshair.png
+  artifactKey: Guid(4fe6f4801be55b4488fd8c5dd8b5ba28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/CrosshairStuff/BottomRightCrosshair.png using Guid(4fe6f4801be55b4488fd8c5dd8b5ba28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e3c8f471f1c883ae67b64daf19ebb48') in 0.053145 seconds 
+  Import took 0.074054 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000543 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle_blurry.png
+  artifactKey: Guid(98b95ddb7aa1a5b4794f02e6dc33fa22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle_blurry.png using Guid(98b95ddb7aa1a5b4794f02e6dc33fa22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c00457441bf37dce16da9ff5d22c60a2') in 0.050667 seconds 
+  Import took 0.069871 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000648 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/aura_soft01.png
+  artifactKey: Guid(a3ba33a4ac48743449b608e6e6a07c7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/aura_soft01.png using Guid(a3ba33a4ac48743449b608e6e6a07c7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f711deb3b19886aa81437970a08124cc') in 0.069159 seconds 
+  Import took 0.096837 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000593 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Demo/Demo Sprites/UI Resources/Banner.png
+  artifactKey: Guid(eb990c0028350c24287502762e9acdf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Demo/Demo Sprites/UI Resources/Banner.png using Guid(eb990c0028350c24287502762e9acdf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2913ac2cf8da1a00956a75ef5c1f479') in 0.054327 seconds 
+  Import took 0.081411 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000595 seconds.
+  path: Assets/Sprites/Beam_Edge.png
+  artifactKey: Guid(b4841ea481aacf64983a1409530acae6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Beam_Edge.png using Guid(b4841ea481aacf64983a1409530acae6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3a427f3dc1978cb217930f8c3f9b41b') in 0.053204 seconds 
+  Import took 0.075066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000592 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/Emojis/blush.png
+  artifactKey: Guid(387dc9cb29c56b146a2fadccaf58cef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/Emojis/blush.png using Guid(387dc9cb29c56b146a2fadccaf58cef4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80dae45eed3b7b00b4f0ea273ea2fa56') in 0.072863 seconds 
+  Import took 0.096281 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000525 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle.png
+  artifactKey: Guid(c22f22ee2005563459d1f228a43b0199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle.png using Guid(c22f22ee2005563459d1f228a43b0199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45f0ee693de2d0b585c0a49257d2cffd') in 0.061087 seconds 
+  Import took 0.082437 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000538 seconds.
+  path: Assets/Sprites/Blood/Blood 1.png
+  artifactKey: Guid(fcd10587b96ca4a45aa9659c9f36bcf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Blood/Blood 1.png using Guid(fcd10587b96ca4a45aa9659c9f36bcf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc12684d1f5bb93041480d9b9fc1b6fa') in 0.081202 seconds 
+  Import took 0.101211 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000552 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/Emojis/bigsmile.png
+  artifactKey: Guid(a887e55c507f0a24eae8c11437b3251e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/Emojis/bigsmile.png using Guid(a887e55c507f0a24eae8c11437b3251e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a00c79fb5237fea772d9c113228133c4') in 0.077039 seconds 
+  Import took 0.097755 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000496 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/bubble_round2.png
+  artifactKey: Guid(f7a22d56eb4318549a93c932a100895f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/bubble_round2.png using Guid(f7a22d56eb4318549a93c932a100895f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb5828daf2ee83f1e1061d1161c1779c') in 0.046221 seconds 
+  Import took 0.064408 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000541 seconds.
+  path: Assets/Textures/Environment/Bush.png
+  artifactKey: Guid(ef611657831467049ababcf7184866a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Environment/Bush.png using Guid(ef611657831467049ababcf7184866a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31dd011b402430d199133a21f474529a') in 0.051227 seconds 
+  Import took 0.068480 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000486 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/Emojis/angryscream.png
+  artifactKey: Guid(1d53ccea30d239443a353dfc56787f7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/Emojis/angryscream.png using Guid(1d53ccea30d239443a353dfc56787f7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b0cef1fdbc041604fd1d8f0febbe6b2') in 0.070658 seconds 
+  Import took 0.089246 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000542 seconds.
+  path: Assets/Textures/Bow.png
+  artifactKey: Guid(91dae975989a0c94f9611d685539dc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Bow.png using Guid(91dae975989a0c94f9611d685539dc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91275762ef37d28b2d9fc0decace610f') in 0.196017 seconds 
+  Import took 0.212534 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000475 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/bubble_half_thick.png
+  artifactKey: Guid(9a369030ecb533f41b884af1c44d1b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/bubble_half_thick.png using Guid(9a369030ecb533f41b884af1c44d1b53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82182d3858125953f19b3e280f35cf2a') in 0.050766 seconds 
+  Import took 0.068041 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000552 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/aura_punch.png
+  artifactKey: Guid(dc459e47586770b49b1aa54a5bd66f68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/aura_punch.png using Guid(dc459e47586770b49b1aa54a5bd66f68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1b7f6ec83d8149a9db7b2f6019f0a92') in 0.042736 seconds 
+  Import took 0.059926 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000502 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/bubble_half_clear.png
+  artifactKey: Guid(de49c5d1a5904ec48995555448878019) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/bubble_half_clear.png using Guid(de49c5d1a5904ec48995555448878019) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cc0cdc1ecac03df0d388ab8ce701588') in 0.037118 seconds 
+  Import took 0.054105 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000541 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Demo/Demo Sprites/UI Resources/Arrow.png
+  artifactKey: Guid(74d8009b6d411704c8b3b2f309e973db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Demo/Demo Sprites/UI Resources/Arrow.png using Guid(74d8009b6d411704c8b3b2f309e973db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b039ff657313a73f59dbd86055a6535') in 0.039890 seconds 
+  Import took 0.059118 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000543 seconds.
+  path: Assets/Textures/Arrow.png.png
+  artifactKey: Guid(0b8158253b69bb145ab9b71f4971e34b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/Arrow.png.png using Guid(0b8158253b69bb145ab9b71f4971e34b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f25cb42e600509528e9f2c3f67e10f79') in 0.171602 seconds 
+  Import took 0.210678 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000466 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/bubble_round3.png
+  artifactKey: Guid(d8dceb749fb85b541b3ad192b70f9586) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/bubble_round3.png using Guid(d8dceb749fb85b541b3ad192b70f9586) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cba85095091b82eaef9bd8f6cc9d396') in 0.046286 seconds 
+  Import took 0.061859 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000524 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/bubble_soap.png
+  artifactKey: Guid(73d20bc2cf7876446a1747597c972e98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/bubble_soap.png using Guid(73d20bc2cf7876446a1747597c972e98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a3cc51ceeea2a8803eba6cc8648e45a') in 0.036462 seconds 
+  Import took 0.054080 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000471 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle_soft2.png
+  artifactKey: Guid(842df994cbd81dd4cbaecf511216000a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle_soft2.png using Guid(842df994cbd81dd4cbaecf511216000a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '396c53ed59ee7ca0e8cb02bb6b7888fb') in 0.054730 seconds 
+  Import took 0.070315 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000454 seconds.
+  path: Assets/Sprites/CrosshairStuff/BottomLeftCrosshair.png
+  artifactKey: Guid(7c9fc7e718130b442ba475210a6e9169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/CrosshairStuff/BottomLeftCrosshair.png using Guid(7c9fc7e718130b442ba475210a6e9169) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '934afd6a971498f0fe29805e2761a3c7') in 0.044740 seconds 
+  Import took 0.060940 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000559 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle_simple_modular.png
+  artifactKey: Guid(d4370ff5c64d0424faf1f3024f59063d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle_simple_modular.png using Guid(d4370ff5c64d0424faf1f3024f59063d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd80d7754639eb2bef00bf6d69ae4cf4a') in 0.036873 seconds 
+  Import took 0.054254 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000474 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle_soft.png
+  artifactKey: Guid(27219c4af3e561e41bc297224110e7ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle_soft.png using Guid(27219c4af3e561e41bc297224110e7ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddbca053f8eaebc7eda982c79f300708') in 0.088954 seconds 
+  Import took 0.104504 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000436 seconds.
+  path: Assets/Sprites/Beam.png
+  artifactKey: Guid(546535797eb81b1428659fa57027aadc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Beam.png using Guid(546535797eb81b1428659fa57027aadc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3a82d55580ebb94b57a39f67b165d58') in 0.041409 seconds 
+  Import took 0.057136 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000491 seconds.
+  path: Assets/Sprites/Blood/Blood 3.png
+  artifactKey: Guid(57275ab869937d145a8e4b2751a10b60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Blood/Blood 3.png using Guid(57275ab869937d145a8e4b2751a10b60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ade0b3b28a9663b316226373ccb83a4') in 0.052629 seconds 
+  Import took 0.071761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000491 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Textures/Bubbles_001.png
+  artifactKey: Guid(fd44f03e440fd204f810622702f7d5b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Textures/Bubbles_001.png using Guid(fd44f03e440fd204f810622702f7d5b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0752b41f34033e9f6a03c1212d582ca6') in 0.051639 seconds 
+  Import took 0.069882 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.173645 seconds.
+  path: Assets/Polybrush Data
+  artifactKey: Guid(5cca616c37d1016469af118787332cfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data using Guid(5cca616c37d1016469af118787332cfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc83744e5fb6650feebc62a880aa7ec4') in 0.008252 seconds 
+  Import took 0.018626 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.156660 seconds.
+  path: Assets/Polybrush Data/Prefab Palette
+  artifactKey: Guid(00dcc5c0645270446ae3cc1f7ad89bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Prefab Palette using Guid(00dcc5c0645270446ae3cc1f7ad89bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9207ee7644c23ef9929f2aae29eec3fb') in 0.009354 seconds 
+  Import took 0.021731 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.217009 seconds.
+  path: Assets/Polybrush Data/Brush Settings
+  artifactKey: Guid(5c59f1f77fcd39f4fa9c65098ba0f490) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Brush Settings using Guid(5c59f1f77fcd39f4fa9c65098ba0f490) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a78d29fe22b0040a620e1a83270953f8') in 0.008333 seconds 
+  Import took 0.018895 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.341850 seconds.
+  path: Assets/Polybrush Data/Color Palette
+  artifactKey: Guid(e961cc854561d6947a2a8b3fd9cbf34e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Polybrush Data/Color Palette using Guid(e961cc854561d6947a2a8b3fd9cbf34e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05cc7b706131ebf415613215ce73b370') in 0.011281 seconds 
+  Import took 0.023790 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 40.963070 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/candle_soft3.png
+  artifactKey: Guid(645405d52577672438ad2c6c20c93b9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/candle_soft3.png using Guid(645405d52577672438ad2c6c20c93b9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '276fbb91ecdb05c0b600871d65cad429') in 0.033237 seconds 
+  Import took 0.044741 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000312 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/cardglow07.png
+  artifactKey: Guid(ac02ec98bb1ce884c938cc8a274b98ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/cardglow07.png using Guid(ac02ec98bb1ce884c938cc8a274b98ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '741f8b51e148df15c1457c36eaac87c6') in 0.765731 seconds 
+  Import took 0.783828 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000388 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 001.png
+  artifactKey: Guid(4d33ee2e152ac44408a5c455f9ee0528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 001.png using Guid(4d33ee2e152ac44408a5c455f9ee0528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c496159e189d63e66b7815c211a5c20f') in 0.037463 seconds 
+  Import took 0.049568 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000410 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 003.png
+  artifactKey: Guid(bb519aead20bebd4d8bb1929440b9728) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 003.png using Guid(bb519aead20bebd4d8bb1929440b9728) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eceb619d8ee1729df5a9e4717075957e') in 0.036381 seconds 
+  Import took 0.052954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000423 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/circle.png
+  artifactKey: Guid(155f67fd8750f8e4e83c8efb1731f3a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/circle.png using Guid(155f67fd8750f8e4e83c8efb1731f3a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '570c456f5650b950ea358294f5e9f73f') in 0.027101 seconds 
+  Import took 0.046220 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000487 seconds.
+  path: Assets/Samples/Visual Effect Graph/10.5.1/VisualEffectGraph Additions/Textures/Generic/CellularNormals01.png
+  artifactKey: Guid(d4041a0d87bcddd43b9caf926962dcbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Visual Effect Graph/10.5.1/VisualEffectGraph Additions/Textures/Generic/CellularNormals01.png using Guid(d4041a0d87bcddd43b9caf926962dcbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cce47a87f2e4c634521c52c7f743e4bb') in 0.051095 seconds 
+  Import took 0.068139 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000433 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Textures/Circle.png
+  artifactKey: Guid(806dd3e73c1633d42829cfa167960b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Textures/Circle.png using Guid(806dd3e73c1633d42829cfa167960b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62bbe50352515b892582ecf089bf4a04') in 0.055011 seconds 
+  Import took 0.075220 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000550 seconds.
+  path: Assets/Samples/Visual Effect Graph/10.5.1/VisualEffectGraph Additions/Textures/Smoke/CandleSmoke01_20x4.png
+  artifactKey: Guid(0844dee3e2c25884c87e43436230eaa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Visual Effect Graph/10.5.1/VisualEffectGraph Additions/Textures/Smoke/CandleSmoke01_20x4.png using Guid(0844dee3e2c25884c87e43436230eaa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fb57a8edc0f2787daec81ed07d23857') in 0.046274 seconds 
+  Import took 0.066181 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000727 seconds.
+  path: Assets/Imported/Epic Toon FX/Textures/cardglow06.png
+  artifactKey: Guid(25e89bd28240b0043accd970b53ec71d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Textures/cardglow06.png using Guid(25e89bd28240b0043accd970b53ec71d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6f1d72780a20a9d371ed48a2306ef65') in 0.129672 seconds 
+  Import took 0.149751 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000611 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 008.png
+  artifactKey: Guid(c0d7738d613822f4bad3247d82547f1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 008.png using Guid(c0d7738d613822f4bad3247d82547f1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6654046d3feb4bcbd4fdb5a2c841b2d2') in 0.059264 seconds 
+  Import took 0.076375 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000719 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 002.png
+  artifactKey: Guid(bfe12a3ce27f18a49b63f9b473533d4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 002.png using Guid(bfe12a3ce27f18a49b63f9b473533d4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0283ee183b215094505d14cdb65d158a') in 0.047291 seconds 
+  Import took 0.067408 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000585 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 007 - Wind.png
+  artifactKey: Guid(b9b8f2bc00d67894ca654978fefbb77b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 007 - Wind.png using Guid(b9b8f2bc00d67894ca654978fefbb77b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88a8dded8d42a4b1ecd18187081a6ebd') in 0.062352 seconds 
+  Import took 0.084754 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000553 seconds.
+  path: Assets/Sprites/CrosshairStuff/CenterDorCrosshair.png
+  artifactKey: Guid(c40d4ec80d45f974ab58d364043db28a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/CrosshairStuff/CenterDorCrosshair.png using Guid(c40d4ec80d45f974ab58d364043db28a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2ad0c2a9876fb351f943af6390459ed') in 0.071573 seconds 
+  Import took 0.090867 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000503 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 004.png
+  artifactKey: Guid(75ca5bef17900fc4083edf4ff7196649) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 004.png using Guid(75ca5bef17900fc4083edf4ff7196649) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '816b3984cd90513a0b2ab0eb80cf0b79') in 0.067392 seconds 
+  Import took 0.089520 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000502 seconds.
+  path: Assets/Samples/Visual Effect Graph/10.5.1/VisualEffectGraph Additions/Textures/Generic/CellularNoise01.png
+  artifactKey: Guid(bf69fe7bc0f403c4a87f786040e07ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/Visual Effect Graph/10.5.1/VisualEffectGraph Additions/Textures/Generic/CellularNoise01.png using Guid(bf69fe7bc0f403c4a87f786040e07ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4d2bd72d29fc751d3f8cfeceee3b5e2') in 0.047416 seconds 
+  Import took 0.069516 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000492 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 005.png
+  artifactKey: Guid(2bfb11b1f609fbe4196557220fdac0ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 005.png using Guid(2bfb11b1f609fbe4196557220fdac0ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e117b131cb02b512961810b9e41620b') in 0.056460 seconds 
+  Import took 0.076247 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000574 seconds.
+  path: Assets/Sprites/UI/charged-arrow.png
+  artifactKey: Guid(d3eb57d6d0468ae43b4a3b68ae25bea1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/UI/charged-arrow.png using Guid(d3eb57d6d0468ae43b4a3b68ae25bea1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe2c644861f0d654ebfb4f1e6b552b88') in 0.048667 seconds 
+  Import took 0.065982 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000492 seconds.
+  path: Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 006.png
+  artifactKey: Guid(d59f4bc95f0a62940b6033dcd259078c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/CartoonCoffee/VFX Deluxe/Masks/Circle Mask 006.png using Guid(d59f4bc95f0a62940b6033dcd259078c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3702addadc8dbf316135852dad78f044') in 0.055764 seconds 
+  Import took 0.072763 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.033036 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.10 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 12.863 seconds
+Domain Reload Profiling:
+	ReloadAssembly (12865ms)
+		BeginReloadAssembly (1066ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (40ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (525ms)
+		EndReloadAssembly (11485ms)
+			LoadAssemblies (581ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1917ms)
+			ReleaseScriptCaches (7ms)
+			RebuildScriptCaches (362ms)
+			SetupLoadedEditorAssemblies (8102ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (409ms)
+				ProcessInitializeOnLoadAttributes (7570ms)
+				ProcessInitializeOnLoadMethodAttributes (65ms)
+				AfterProcessingInitializeOnLoad (33ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (70ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 3.14 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 208.6 MB.
+System memory in use after: 208.8 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4947.
+Total: 115.088400 ms (FindLiveObjects: 1.014700 ms CreateObjectMapping: 0.677200 ms MarkObjects: 112.422400 ms  DeleteObjects: 0.970100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.031158 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.07 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 10.306 seconds
+Domain Reload Profiling:
+	ReloadAssembly (10307ms)
+		BeginReloadAssembly (576ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (24ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (236ms)
+		EndReloadAssembly (9420ms)
+			LoadAssemblies (503ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (2318ms)
+			ReleaseScriptCaches (6ms)
+			RebuildScriptCaches (312ms)
+			SetupLoadedEditorAssemblies (5725ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (17ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (317ms)
+				ProcessInitializeOnLoadAttributes (5327ms)
+				ProcessInitializeOnLoadMethodAttributes (37ms)
+				AfterProcessingInitializeOnLoad (21ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (47ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 208.7 MB.
+System memory in use after: 208.8 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4949.
+Total: 119.263400 ms (FindLiveObjects: 1.300100 ms CreateObjectMapping: 1.679200 ms MarkObjects: 115.220600 ms  DeleteObjects: 1.059500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.025783 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 5.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 12.439 seconds
+Domain Reload Profiling:
+	ReloadAssembly (12440ms)
+		BeginReloadAssembly (540ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (27ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (216ms)
+		EndReloadAssembly (11621ms)
+			LoadAssemblies (466ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1697ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (291ms)
+			SetupLoadedEditorAssemblies (8552ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (23ms)
+				SetLoadedEditorAssemblies (4ms)
+				RefreshPlugins (6ms)
+				BeforeProcessingInitializeOnLoad (466ms)
+				ProcessInitializeOnLoadAttributes (7996ms)
+				ProcessInitializeOnLoadMethodAttributes (36ms)
+				AfterProcessingInitializeOnLoad (20ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (52ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 3.34 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 208.7 MB.
+System memory in use after: 208.9 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4951.
+Total: 129.399300 ms (FindLiveObjects: 1.082200 ms CreateObjectMapping: 0.751300 ms MarkObjects: 126.427100 ms  DeleteObjects: 1.131700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.046799 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.34 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 12.874 seconds
+Domain Reload Profiling:
+	ReloadAssembly (12875ms)
+		BeginReloadAssembly (1465ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (48ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (695ms)
+		EndReloadAssembly (11113ms)
+			LoadAssemblies (720ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1301ms)
+			ReleaseScriptCaches (5ms)
+			RebuildScriptCaches (342ms)
+			SetupLoadedEditorAssemblies (8429ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (22ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (4ms)
+				BeforeProcessingInitializeOnLoad (534ms)
+				ProcessInitializeOnLoadAttributes (7818ms)
+				ProcessInitializeOnLoadMethodAttributes (30ms)
+				AfterProcessingInitializeOnLoad (19ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (36ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 208.7 MB.
+System memory in use after: 208.9 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4953.
+Total: 90.834900 ms (FindLiveObjects: 1.137700 ms CreateObjectMapping: 0.653000 ms MarkObjects: 87.885000 ms  DeleteObjects: 1.155100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 2.460737 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 17.681 seconds
+Domain Reload Profiling:
+	ReloadAssembly (17701ms)
+		BeginReloadAssembly (1813ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (314ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (799ms)
+		EndReloadAssembly (15383ms)
+			LoadAssemblies (1849ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (2473ms)
+			ReleaseScriptCaches (9ms)
+			RebuildScriptCaches (399ms)
+			SetupLoadedEditorAssemblies (9382ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (25ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (4ms)
+				BeforeProcessingInitializeOnLoad (502ms)
+				ProcessInitializeOnLoadAttributes (8748ms)
+				ProcessInitializeOnLoadMethodAttributes (61ms)
+				AfterProcessingInitializeOnLoad (39ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (73ms)
+Platform modules already initialized, skipping
+Shader 'CartoonCoffee/Particle Basic': fallback shader '2' not found
+Shader 'CartoonCoffee/Particle Additive': fallback shader '2' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 4.20 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4146 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 208.7 MB.
+System memory in use after: 208.9 MB.
+
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 4955.
+Total: 102.628200 ms (FindLiveObjects: 1.051200 ms CreateObjectMapping: 0.643300 ms MarkObjects: 99.505600 ms  DeleteObjects: 1.423800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  requireTextureImportCompression: false -> true
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 18281.296865 seconds.
+  path: Assets/Imported/Epic Toon FX/Materials/Misc/Magic/magic_orb2_ADD.mat
+  artifactKey: Guid(1bafc7aca6a15ce4a92553883cdf5612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported/Epic Toon FX/Materials/Misc/Magic/magic_orb2_ADD.mat using Guid(1bafc7aca6a15ce4a92553883cdf5612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2241509d186afddb28b5a5105f0be565') in 1.272118 seconds 
+  Import took 1.304593 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 70346.258983 seconds.
+  path: Assets/Prefabs/FlyingEnemyProjectile.prefab
+  artifactKey: Guid(724c465a88f6c7f479aaa551265251c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/FlyingEnemyProjectile.prefab using Guid(724c465a88f6c7f479aaa551265251c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '327464e1181017d452cec99eb0c9a200') in 3.636229 seconds 
+  Import took 5.520164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001051 seconds.
+  path: Assets/Prefabs/Environment
+  artifactKey: Guid(f6b60e7a3bdbe5a4ab89344080490743) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Environment using Guid(f6b60e7a3bdbe5a4ab89344080490743) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a6590d8498d877b5de7225015de3af8') in 0.015674 seconds 
+  Import took 0.031405 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.172739 seconds.
+  path: Assets/Prefabs/Environment/Pole.prefab
+  artifactKey: Guid(19f812f3b6380ce4e97a3b45742308fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Environment/Pole.prefab using Guid(19f812f3b6380ce4e97a3b45742308fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a4e50a5409aa18f5e6c97e77a6dbf11') in 1.920393 seconds 
+  Import took 1.953707 seconds .
+

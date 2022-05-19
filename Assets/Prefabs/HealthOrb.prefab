@@ -93,7 +93,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   AfterHitEffect: {fileID: 8860690098967493520}
-  ConsumeDistance: 0.35
+  ConsumeDistance: 0.5
   healingToApply: 25
   groundLayer:
     serializedVersion: 2
