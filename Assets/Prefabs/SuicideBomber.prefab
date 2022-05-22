@@ -88,6 +88,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  baseHeight: {fileID: 0}
 --- !u!1 &4359631608720208368
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +171,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  chanceToDropHealthOrb: 41
 --- !u!195 &4359631608720208371
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -370,7 +372,7 @@ MonoBehaviour:
   sightRange: 75
   playerInSight: 0
   GroundInSight: 0
-  bodyGFX: {fileID: 0}
+  gfx: {fileID: 0}
 --- !u!114 &4359631609399318988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +402,7 @@ MonoBehaviour:
   timeInSecondsToSideJump: 8
   SideStep: {fileID: 4359631609399318987}
   floatComponent: {fileID: 2898932861911702693}
+  gfx: {fileID: 0}
 --- !u!114 &4359631609399318987
 MonoBehaviour:
   m_ObjectHideFlags: 0
