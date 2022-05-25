@@ -9,6 +9,7 @@ public class HealthOrb : InteractableBase
     private PlayerLivebody player;
     public float duration;
     public AnimationCurve FlyCurve;
+    public AnimationCurve FlyToGroundCurve;
     public GameObject AfterHitEffect;
     public float ConsumeDistance;
     public int healingToApply;
@@ -34,13 +35,13 @@ public class HealthOrb : InteractableBase
         {
             yield break;
         }
-        Vector3 goal = hitInfo.point + (Vector3.up);
+        Vector3 goal = hitInfo.point + (Vector3.up * 0.9f);
         var startPos = transform.position;
         float curDuration = 0;
         while ((goal - transform.position).magnitude > ConsumeDistance)
         {
             curDuration += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPos, goal, FlyCurve.Evaluate(curDuration / duration));
+            transform.position = Vector3.Lerp(startPos, goal, FlyToGroundCurve.Evaluate(curDuration / duration));
             yield return new WaitForEndOfFrame();
         }
         float currentTime = Time.time - Randomizer.ReturnRandomNum(new Vector2Int(0, 3));
@@ -56,6 +57,7 @@ public class HealthOrb : InteractableBase
     }
     public override void OnPlayerEnter()
     {
+        StopAllCoroutines();
         StartCoroutine(FlyTowardsPlayer());
         base.OnPlayerEnter();
     }

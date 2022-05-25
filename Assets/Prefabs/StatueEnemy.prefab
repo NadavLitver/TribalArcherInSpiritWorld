@@ -665,6 +665,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  chanceToDropHealthOrb: 40
 --- !u!1 &5994949779585165258
 GameObject:
   m_ObjectHideFlags: 0
