@@ -6138,7 +6138,7 @@ GameObject:
   - component: {fileID: 9140463929022984131}
   - component: {fileID: 9140463929022984132}
   - component: {fileID: 9140463929022984133}
-  - component: {fileID: 2069408452}
+  - component: {fileID: 454179245509855442}
   m_Layer: 6
   m_Name: GFX
   m_TagString: Player
@@ -6223,7 +6223,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &2069408452
+--- !u!114 &454179245509855442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6232,7 +6232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9140463929022984135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d817694d8cdf644ead6ad34006ebcbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0db272429a9d13c449a8b6d56aa7ee82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1392089
