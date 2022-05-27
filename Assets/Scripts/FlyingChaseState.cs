@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class FlyingChaseState : State
 {
-    public float sightRange;
-    public bool playerInSight;
-    [ReadOnly,SerializeField]
-    private float timeInState;
-    public int timeInSecondsToSideJump;
-    public State SideStep;
-    [SerializeField,FoldoutGroup("Refrences")] private FloatyObject floatComponent;
+    [FoldoutGroup("Refrences")] public State SideStep;
+
+    [SerializeField, FoldoutGroup("Properties")] private float sightRange;
+    [SerializeField, FoldoutGroup("Properties")] private bool playerInSight;
+    [ReadOnly, FoldoutGroup("Properties")] public float timeInState;
+    [FoldoutGroup("Properties")] public int timeInSecondsToSideJump;
+    [SerializeField, FoldoutGroup("Refrences")] private FloatyObject floatComponent;
     [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
 
     protected override void OnStateDisabled()
@@ -41,7 +41,7 @@ public class FlyingChaseState : State
         }
         else
         {
-            if(timeInState > timeInSecondsToSideJump)
+            if (timeInState > timeInSecondsToSideJump)
             {
                 stateHandler.SwapState(SideStep);
             }

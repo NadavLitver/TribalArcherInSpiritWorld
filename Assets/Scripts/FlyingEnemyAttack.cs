@@ -5,20 +5,16 @@ using UnityEngine;
 
 public class FlyingEnemyAttack : State
 {
-    public float timeBetweenAttacks;
-    public float BackStepLength;
-    bool alreadyAttacked;
-    public ObjectPool pool;
-    public Transform shootPos;
-    public float projectileForce;
-    public float faceTargetSpeed = 50;
+    [SerializeField, FoldoutGroup("Properties")] private  float timeBetweenAttacks;
+    [SerializeField, FoldoutGroup("Properties")] private  float BackStepLength;
+    [SerializeField, FoldoutGroup("Properties")] private float projectileForce;
+    [SerializeField, FoldoutGroup("Properties")] private float faceTargetSpeed = 50;
+    [ReadOnly,FoldoutGroup("Refrences")] bool alreadyAttacked;
+    [FoldoutGroup("Refrences")] public ObjectPool pool;
+    [FoldoutGroup("Refrences")] public Transform shootPos;
     [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
 
-    protected override void OnStateDisabled()
-    {
-       
-
-    }
+ 
 
     protected override void OnStateEnabled()
     {
@@ -81,5 +77,10 @@ public class FlyingEnemyAttack : State
     private bool RandomBoolean()
     {
         return (Random.value > 0.55f);
+    }
+    protected override void OnStateDisabled()
+    {
+
+
     }
 }
