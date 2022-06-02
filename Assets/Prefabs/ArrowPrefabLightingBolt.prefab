@@ -77,11 +77,13 @@ MonoBehaviour:
     m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
   lightingBolt: {fileID: 2860290249947658307}
+  doStun: 0
+  stunDuration: 0
   colliderBounds: {x: 1, y: 3, z: 1}
   maxDamageBody: 20
   minDamageBody: 10
-  StackOnBodyHit: 20
-  StackOnHeadHit: 25
+  StackOnBodyHit: 40
+  StackOnHeadHit: 60
   onHitBody:
     m_PersistentCalls:
       m_Calls: []
@@ -102,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps_LightingBolt: {fileID: 8825989936325252369, guid: 002e88f1ca13e44499125b8e948cadb6, type: 3}
   ps_LightingExplosion: {fileID: 8825989936325252369, guid: 51bdfe9f7b5d37f44a26d43778a34564, type: 3}
+  AOE_Size: 20
   explosionDamage: 50
   enemyMask:
     serializedVersion: 2

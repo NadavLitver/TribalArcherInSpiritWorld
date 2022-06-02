@@ -108,11 +108,13 @@ MonoBehaviour:
     m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
   lightingBolt: {fileID: 0}
+  doStun: 0
+  stunDuration: 0
   colliderBounds: {x: 1, y: 3, z: 1}
   maxDamageBody: 20
   minDamageBody: 10
-  StackOnBodyHit: 20
-  StackOnHeadHit: 25
+  StackOnBodyHit: 40
+  StackOnHeadHit: 60
   onHitBody:
     m_PersistentCalls:
       m_Calls: []

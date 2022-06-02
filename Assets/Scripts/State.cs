@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,7 @@ public abstract class State : MonoBehaviour
     [FoldoutGroup("Properties")] public LayerMask groundLayer, playerLayer;
 
     [FoldoutGroup("Properties")] public bool canExitToHit;
+
 
     [SerializeField, FoldoutGroup("Refrences")] protected Animator _animator;
 
@@ -34,6 +36,8 @@ public abstract class State : MonoBehaviour
     {
         StopAllCoroutines();
         OnStateDisabled();
+        if (_animator != null)
+            _animator.speed = 1;
     }
     protected abstract void OnStateDisabled();
 
@@ -41,4 +45,5 @@ public abstract class State : MonoBehaviour
     {
         stateHandler.SwapState(nextState);
     }
+  
 }

@@ -11,12 +11,19 @@ public class FlyingChaseState : State
     [FoldoutGroup("Properties")] public int timeInSecondsToSideJump;
     [SerializeField, FoldoutGroup("Refrences")] private FloatyObject floatComponent;
     [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
+    [SerializeField, FoldoutGroup("Properties")] bool changeSpeed;
+    [SerializeField, FoldoutGroup("Properties")] float newSpeed;
+    private float prevSpeed;
 
     protected override void OnStateDisabled()
     {
         if (floatComponent != null && !floatComponent.enabled)
         {
             floatComponent.enabled = false;
+        }
+        if(changeSpeed)
+        {
+            agent.speed = prevSpeed;
         }
     }
 
@@ -28,6 +35,11 @@ public class FlyingChaseState : State
             floatComponent.enabled = false;
         if (gfx != null)
             gfx.ResetGFXRotation();
+        if (changeSpeed)
+        {
+            prevSpeed = agent.speed;
+            agent.speed = newSpeed;
+        }
     }
 
     private void Update()
