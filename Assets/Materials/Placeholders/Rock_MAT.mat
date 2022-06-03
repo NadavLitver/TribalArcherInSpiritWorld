@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rock_MAT
-  m_Shader: {fileID: -6465566751694194690, guid: ae34dadabdf2c2f49aafd489a1e9ad86, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: -6465566751694194690, guid: 78ee5a67fba740743a5d8d373409e25e, type: 3}
+  m_ShaderKeywords: _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,12 +19,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - MainTex:
+        m_Texture: {fileID: 2800000, guid: 74bc71b3f8225c84aa4ac9b8dd82b97a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Mask_R_Emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_252e722d409b4804a6d10f742d52dd89:
         m_Texture: {fileID: 2800000, guid: 74bc71b3f8225c84aa4ac9b8dd82b97a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_72c0b69f3c564addb4a93c8ecf389612:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C8C9609E:
+        m_Texture: {fileID: 2800000, guid: 74bc71b3f8225c84aa4ac9b8dd82b97a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -140,15 +152,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Brightness_Rim: 0.88
+    - Rim_Power: 0
+    - Toon_Ramp_Offset: 0.675
+    - Toon_Ramp_Smoothness: 0.036
     - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: 0.61
     - Vector1_22e890d9fa794584bb7e2e49d3ccf28a: 4.68
-    - Vector1_4C850B07: 0.1
+    - Vector1_4C850B07: 0.194
     - Vector1_64B788AD: 4
-    - Vector1_67744406: 1
+    - Vector1_67744406: 0.294
     - Vector1_7a94f536a47340ffb45c9cc48c6be7eb: 0.411
     - Vector1_947e540c4d27443fba5f780fdc1a1733: 0.563
     - Vector1_a199e3e12f1b49049100eb4a71d02f18: 0.13
     - _AlphaClip: 0
+    - _Ambient: 0.2
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -184,20 +201,22 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _Toon_Ramp_Offset_Point: 0.26
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - Color_057304138c224518a29f9a1f6a929faf: {r: 1, g: 0.5623342, b: 0.4009434, a: 1}
-    - Color_4B4CE890: {r: 2.7577293, g: 1.5178902, b: 1.1317098, a: 1}
-    - Color_4B9AABFA: {r: 1, g: 1, b: 1, a: 1}
+    - Color_4B4CE890: {r: 2.9960785, g: 0.9882353, b: 0.6431373, a: 0}
+    - Color_4B9AABFA: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
     - Color_5e3e8f19e18e4b4db4d6cb79a3735d64: {r: 0.21782663, g: 0.22739276, b: 0.8396226, a: 0}
-    - Color_A96C309B: {r: 1.4980392, g: 0.1254902, b: 0.34509805, a: 1}
+    - Color_A96C309B: {r: 0.37166595, g: 0.16030312, b: 0.09291649, a: 1}
     - Color_F150E237: {r: 1, g: 1, b: 1, a: 1}
     - Color_e765cd13f4e24897a0d5401b60460263: {r: 0.5717254, g: 0.07281409, b: 0.094778635, a: 0}
+    - Toon_Ramp_Tint: {r: 0.764151, g: 0.6059442, b: 0.47218764, a: 1}
     - Vector2_a1445baa9ebe4cfc8c26d154ec5e712d: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_e728ca982cbc4546a8432e97e3f9ae16: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 0.94425386, b: 0.6933962, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
     - _EmissionColor: {r: 0.0028034954, g: 0.009433985, b: 0.009177, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
