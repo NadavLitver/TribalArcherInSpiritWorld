@@ -1,29 +1,31 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class State : MonoBehaviour
 {
-    [SerializeField, FoldoutGroup("Refrences")]
-    protected Animator _animator;
-    [SerializeField, FoldoutGroup("Refrences"), ReadOnly]
-    protected LivebodyStateHandler stateHandler;
-    [SerializeField, FoldoutGroup("Refrences")]
-    protected State nextState;
-    [FoldoutGroup("Properties")]
-    public bool canExitToHit;
-    [FoldoutGroup("Properties")]
-    public LayerMask groundLayer, playerLayer;
-    [FoldoutGroup("Refrences")]
-    public NavMeshAgent agent;
+
+    [FoldoutGroup("Properties")] public LayerMask groundLayer, playerLayer;
+
+    [FoldoutGroup("Properties")] public bool canExitToHit;
+
+
+    [SerializeField, FoldoutGroup("Refrences")] protected Animator _animator;
+
+    [SerializeField, FoldoutGroup("Refrences"), ReadOnly] protected LivebodyStateHandler stateHandler;
+
+    [SerializeField, FoldoutGroup("Refrences")] protected State nextState;
+
+    [FoldoutGroup("Refrences")] public NavMeshAgent agent;
     private void Awake()
     {
         stateHandler = GetComponent<LivebodyStateHandler>();
         if (stateHandler == null)
             Debug.LogError("No State_Handler Found");
-       
+
     }
-   
+
     private void OnEnable()
     {
         OnStateEnabled();
@@ -34,6 +36,8 @@ public abstract class State : MonoBehaviour
     {
         StopAllCoroutines();
         OnStateDisabled();
+        if (_animator != null)
+            _animator.speed = 1;
     }
     protected abstract void OnStateDisabled();
 
@@ -41,4 +45,5 @@ public abstract class State : MonoBehaviour
     {
         stateHandler.SwapState(nextState);
     }
+  
 }

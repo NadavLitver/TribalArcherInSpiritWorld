@@ -1,20 +1,18 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class FlyingPatrolState : State
 {
-    [ReadOnly]
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-    public float sightRange;
-    public bool playerInSight;
-    public bool GroundInSight;
-    [SerializeField,FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
-   
+
+    private bool walkPointSet;
+    [SerializeField, FoldoutGroup("Properties")] public float walkPointRange;
+    [SerializeField, FoldoutGroup("Properties")] private float sightRange;
+    [ReadOnly, FoldoutGroup("Properties")] public bool playerInSight;
+    [ReadOnly, FoldoutGroup("Properties")] public Vector3 walkPoint;
+    [ReadOnly, FoldoutGroup("Properties")] public bool GroundInSight;
+    [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
+
     protected override void OnStateDisabled()
     {
 
@@ -26,8 +24,8 @@ public class FlyingPatrolState : State
         agent.isStopped = false;
         if (_animator != null)
             _animator.Play("Idle");
-        if(gfx!= null)
-          gfx.ResetGFXRotation();
+        if (gfx != null)
+            gfx.ResetGFXRotation();
 
 
     }

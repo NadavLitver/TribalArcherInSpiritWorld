@@ -11,9 +11,13 @@ public class LivebodyStateHandler : MonoBehaviour
     private List<State> states;
     [SerializeField, Tooltip("Specifically the state the livebody goes to when hit"), FoldoutGroup("Properties")]
     public State hitState;
+    [SerializeField, Tooltip("Specifically the state the livebody goes to when hit"), FoldoutGroup("Properties")]
+    public State stunState;
     private void Awake()
     {
         body = GetComponentInParent<Livebody>();
+        if (body != null)
+            body.m_stateHandler = this;
     }
 
     public void OnEnable()
@@ -34,6 +38,18 @@ public class LivebodyStateHandler : MonoBehaviour
     {
         SwapState(states[0]);
 
+    }
+    public State GetCurrentState()
+    {
+        foreach (State _state in states)
+        {
+            if(_state.enabled == true)
+            {
+                return _state;
+            }
+        }
+        Debug.Log("No State Enabled");
+        return states[0];
     }
     public void SwapState(State state)
     {
@@ -62,6 +78,12 @@ public class LivebodyStateHandler : MonoBehaviour
                   SwapState(hitState);
 
         }
+
+    }
+    public void SwapToStunState()
+    {
+        if(stunState!= null)
+        SwapState(stunState);
 
     }
 }

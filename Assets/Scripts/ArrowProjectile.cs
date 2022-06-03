@@ -19,6 +19,8 @@ public class ArrowProjectile : MonoBehaviour
     public LayerMask rayMask;
     [SerializeField, ReadOnly] public Vector3 rayHitPoint;
     [SerializeField] private LightingBolt lightingBolt;
+    [SerializeField] private bool doStun;
+    [SerializeField] private float stunDuration;
 
     Vector3 boxCastPosition => transform.position + Vector3.up;
     [SerializeField] Vector3 colliderBounds;
@@ -32,7 +34,7 @@ public class ArrowProjectile : MonoBehaviour
     public int StackOnHeadHit;
     public UnityEvent onHitBody;
     public UnityEvent onHitHead;
-     
+    Livebody currentLivebody;
 
     private void OnEnable()
     {
@@ -70,7 +72,7 @@ public class ArrowProjectile : MonoBehaviour
         {
             
             rayHitPoint = hit.point;
-            Livebody currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
+            currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
             
             if (currentLivebody == null)
             {
@@ -84,7 +86,10 @@ public class ArrowProjectile : MonoBehaviour
             }
             else
             {
-             
+                if (doStun)
+                {
+                    currentLivebody.m_stateHandler.SwapToStunState();
+                }
                 if (hit.collider.gameObject.CompareTag("Head"))
                 {
                    // OnLivebodyHeadshot?.Invoke();

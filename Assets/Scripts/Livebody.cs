@@ -33,6 +33,7 @@ public class Livebody : MonoBehaviour
     public bool isPlayer;
     [FoldoutGroup("Events")]
     public UnityEvent OnDeath;
+    internal LivebodyStateHandler m_stateHandler;
 
     private void Awake()
     {
