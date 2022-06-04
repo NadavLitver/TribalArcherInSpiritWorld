@@ -14,6 +14,10 @@ public class StatueEnemyShoot : State
     private Vector3 stopAimPos;
     protected override void OnStateDisabled()
     {
+
+        aimLine.SetPosition(1, Vector3.zero);
+        aimLine.gameObject.SetActive(true);
+        beamLine.gameObject.SetActive(false);
     }
 
     protected override void OnStateEnabled()
@@ -44,9 +48,6 @@ public class StatueEnemyShoot : State
             {
                 if ((timeInState - aimTime - shootTime) > BreathTimeAfterFinishShoot)
                 {
-                    aimLine.SetPosition(1, Vector3.zero);
-                    aimLine.gameObject.SetActive(true);
-                    beamLine.gameObject.SetActive(false);
                     SwapToNextState();
                 }
             }
