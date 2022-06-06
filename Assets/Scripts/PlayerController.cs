@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties_Leap"), ReadOnly] private bool canLeap;
     [SerializeField, FoldoutGroup("Properties_Leap")] private float leapForce;
     [SerializeField, FoldoutGroup("Properties_Leap")] public float LeapCD;
+    [SerializeField, FoldoutGroup("Properties_Leap")] public UnityEvent leapEvent;
+    
 
     public static Transform playerTransform;
     public static bool canMove;
@@ -158,6 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         if (input.PlayerJumpedThisFrame() && !isGrounded && canLeap)
         {
+            leapEvent?.Invoke();
             if (GetMoveInput() != Vector3.zero)
                 playerVelocity = GetMoveInput() + (Vector3.up * 0.25f) * leapForce;
             else
