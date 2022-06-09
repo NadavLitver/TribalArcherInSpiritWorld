@@ -10,7 +10,7 @@ public class Livebody : MonoBehaviour
     [FoldoutGroup("Properties")]
     public int maxHealth;
     [FoldoutGroup("Properties")]
-    public bool isVulnerable;
+    public bool isVulnerable = true;
     [FoldoutGroup("Properties")]
     public float timeBackToVulnerable = 0.1f;
     [FoldoutGroup("Refrences")]
@@ -58,20 +58,21 @@ public class Livebody : MonoBehaviour
 
         if (isVulnerable)
         {
-            StartCoroutine(SetVulnerablelFalse());
             health -= damage;
+            StartCoroutine(SetVulnerablelFalse());
             updateUIBars.Invoke();
             hitEvent?.Invoke();
 
+            if (health <= 0)//death
+            {
+                health = 0;
+                SummonDeadBody();
+                OnDeath.Invoke();
+                isVulnerable = false;
+            }
         }
 
-        if (health <= 0)//death
-        {
-            health = 0;
-            SummonDeadBody();
-            OnDeath.Invoke();
-        }
-
+        
 
     }
     public virtual void RecieveHealth(int hp)
@@ -107,7 +108,10 @@ public class Livebody : MonoBehaviour
         isResetingVulnerable = true;
         isVulnerable = false;
         yield return new WaitForSeconds(timeBackToVulnerable);
-        isVulnerable = true;
+        if(health > 0){
+            isVulnerable = true;
+        }
+        
         isResetingVulnerable = false;
 
     }

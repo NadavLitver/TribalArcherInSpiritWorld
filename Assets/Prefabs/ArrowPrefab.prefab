@@ -103,14 +103,15 @@ MonoBehaviour:
   - {fileID: 8369072124138256223}
   appliedDamage: 0
   gravityScale: 0.4
-  rayMask:
-    serializedVersion: 2
-    m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
   lightingBolt: {fileID: 0}
   doStun: 0
   stunDuration: 0
+  timeToLive: 10
   colliderBounds: {x: 1, y: 3, z: 1}
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 641
   maxDamageBody: 20
   minDamageBody: 10
   StackOnBodyHit: 40
@@ -119,6 +120,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onHitHead:
+    m_PersistentCalls:
+      m_Calls: []
+  onHitAnything:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &2480225221412998216

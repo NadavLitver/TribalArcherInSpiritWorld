@@ -6,16 +6,17 @@ public class BowHandler : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences")] private BowString bowString;
-    [SerializeField, FoldoutGroup("Refrences")] private Transform UXArrow;
     [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ScatterArrowAbility ScatterArrowAbilityRef;
     [SerializeField, FoldoutGroup("Refrences")] private LightingBoltAOEAbility LightingBoltAbility;
-
+    [SerializeField, FoldoutGroup("Refrences")] private Animator m_animator;
     [SerializeField, FoldoutGroup("Refrences")] private ObjectPool NormalArrowPool;
     [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
-
+    [SerializeField, FoldoutGroup("Refrences")] private Transform ArrowPos;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private Camera cam;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool isShooting;
+    [SerializeField, FoldoutGroup("Properties"), ReadOnly] public bool canShoot;
+
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private float UXArrowStartingZ;
     [SerializeField, FoldoutGroup("Properties")] private float arrowForce;
     [FoldoutGroup("Properties"), ReadOnly] public float shootHoldTime;
@@ -32,9 +33,10 @@ public class BowHandler : MonoBehaviour
         input = InputManager.Instance;
         input.OnPlayerStartShoot.AddListener(OnShoot);
         input.OnPlayerReleaseShoot.AddListener(OnRelease);
+        canShoot = true;
         //input.OnPlayerFinishCharge.AddListener(OnChargeMaxed);
         maxHoldTime = input.shootHoldTime;
-        UXArrowStartingZ = UXArrow.localPosition.z;
+       
 
     }
     private void Update()
@@ -46,9 +48,10 @@ public class BowHandler : MonoBehaviour
     private void OnRelease()
     {
 
-        if (isShooting)
+        if (isShooting && canShoot)
         {
-            SoundManager.Play(SoundManager.Sound.BowReleaseFull, transform.position, 0.5f);
+            float soundModifier = Mathf.Clamp(shootHoldTime, 0.3f, 0.7f);
+            SoundManager.Play(SoundManager.Sound.BowReleaseFull, transform.position,soundModifier);
             isShooting = false;
             PostProccessManipulator.ResetLensDistortion();
             m_audioSource.Stop();
@@ -72,11 +75,7 @@ public class BowHandler : MonoBehaviour
     
 
 
-    private void PlaceNewArrow()
-    {
-        UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, UXArrowStartingZ);
-        UXArrow.gameObject.SetActive(true);
-    }
+   
 
     private Vector3 ShootDirection()
     {
@@ -97,24 +96,40 @@ public class BowHandler : MonoBehaviour
 
     private void OnShoot()
     {
-        if (QuickShotAbiliyRef.AbilityToggle)
+        if (canShoot)
         {
-            QuickShot();
-            SoundManager.Play(SoundManager.Sound.ElectricShotRelease, m_audioSource, 0.25f);
-            return;
+            if (QuickShotAbiliyRef.AbilityToggle)
+            {
+                QuickShot();
+                SoundManager.Play(SoundManager.Sound.ElectricShotRelease, m_audioSource, 0.25f);
+                return;
+            }
+            if (ScatterArrowAbilityRef.AbilityToggle)
+            {
+                m_animator.SetTrigger("ScatterPull");
+
+            }
+            else
+            {
+             m_animator.SetTrigger("Pull");
+
+            }
+         
+
+            PostProccessManipulator.LensDistortionOnShoot();
+            isShooting = true;
+            m_audioSource.Play();
+         //   StartCoroutine(shootCD());
         }
-        PostProccessManipulator.LensDistortionOnShoot();
-        isShooting = true;
-        m_audioSource.Play();
+       
 
     }
     private void SetUXArrowPos()
     {
-        if (isShooting)
+        if (isShooting && shootHoldTime < maxHoldTime)
         {
             shootHoldTime += Time.deltaTime;
             float lerpT = shootHoldTime / maxHoldTime;
-            UXArrow.localPosition = new Vector3(UXArrow.localPosition.x, UXArrow.localPosition.y, Mathf.Lerp(UXArrowStartingZ, UXArrowStartingZ + 0.1f, lerpT));
             bowString.SetBowStringPos(lerpT);
         }
     }
@@ -135,34 +150,30 @@ public class BowHandler : MonoBehaviour
     }
     public IEnumerator ReleaseNormalArrow()
     {
-        
+        m_animator.SetTrigger("Release");
         var arrow = NormalArrowPool.GetPooledObject();
+        arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
-        arrow.transform.position = UXArrow.position;
-        UXArrow.gameObject.SetActive(false);
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         arrow.SetActive(true);
         yield return new WaitForSeconds(0.05f);
-        PlaceNewArrow();
 
     }
     public IEnumerator ReleaseLightingArrow()
     {
 
         var arrow = LightingBoltAbility.LightingArrowPool.GetPooledObject();
-        arrow.transform.position = UXArrow.position;
-        arrow.transform.rotation = UXArrow.rotation;
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
+        arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
-        arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
-        UXArrow.gameObject.SetActive(false);      
+        arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));   
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
         bowString.PlayStringVFX();
@@ -172,14 +183,13 @@ public class BowHandler : MonoBehaviour
         LightingBoltAbility.ToggleAbility();
 
         yield return new WaitForSeconds(0.05f);
-        PlaceNewArrow();
 
 
     }
     public IEnumerator ReleaseScatterArrow()
     {
         float arrowDirectionChanger =0;
-        UXArrow.gameObject.SetActive(false);
+       
         Vector3 dir = ShootDirection().normalized;
         for (int i = 0; i < 3; i++)
         {
@@ -193,10 +203,11 @@ public class BowHandler : MonoBehaviour
             }
             var arrow = NormalArrowPool.GetPooledObject();
             var arrowProj = arrow.GetComponent<ArrowProjectile>();
+            arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
             arrowProj.direction = dir +(Vector3.Cross(Vector3.up,dir) * arrowDirectionChanger);
             arrowProj.force = arrowForce * shootHoldTime;
             arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
-            arrow.transform.position = UXArrow.position;
+           
             arrow.SetActive(true);
         }
         shootHoldTime = 0;
@@ -205,9 +216,9 @@ public class BowHandler : MonoBehaviour
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         AbilityStackHandler.instance.DecreaseStackCount();
         ScatterArrowAbilityRef.ToggleAbility();
+        m_animator.SetTrigger("ScatterRelease");
        
         yield return new WaitForSeconds(0.05f);
-        PlaceNewArrow();
 
     }
     public float GetCurrentDamage(ArrowProjectile currentArrow)
@@ -220,9 +231,9 @@ public class BowHandler : MonoBehaviour
 
     public IEnumerator ReleaseChainLightingArrow()
     {
-        UXArrow.gameObject.SetActive(false);
+       
         var arrow = QuickShotAbiliyRef.ChainLightingArrowPool.GetPooledObject();
-        arrow.transform.SetPositionAndRotation(UXArrow.position, UXArrow.rotation);
+        arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
         arrowProj.force = arrowForce * shootHoldTime;
@@ -231,8 +242,17 @@ public class BowHandler : MonoBehaviour
         arrow.SetActive(true);
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 5f, 0.1f);
         yield return new WaitForSeconds(0.05f);
-        PlaceNewArrow();
 
     }
+    //IEnumerator shootCD()
+    //{
+    //    if (canShoot == false)
+    //    {
+    //        yield break;
+    //    }
+    //    canShoot = false;
+    //    yield return new WaitForSeconds(0.5f);
+    //    canShoot = true;
+    //}
 } 
 

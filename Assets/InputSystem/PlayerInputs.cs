@@ -48,7 +48,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""id"": ""4ed68eed-1bc8-43f5-b6a6-bfd59142cf7d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.5)""
+                    ""interactions"": ""Hold(duration=0.68)""
                 },
                 {
                     ""name"": ""Interact"",

@@ -8,6 +8,7 @@ public class PlayerLivebody : Livebody
     Vector3 startingWorldPos;
     [SerializeField, ReadOnly,FoldoutGroup("Refrences")]
     PlayerController controller;
+    [SerializeField, FoldoutGroup("Refrences")] FadeToBlack fadeToBlack;
    
     void Start()
     {
@@ -16,13 +17,30 @@ public class PlayerLivebody : Livebody
     }
     protected override void SummonDeadBody()
     {
-        base.SummonDeadBody();
-        SoundManager.Play(SoundManager.Sound.PlayerDead, audioSource, 0.5f);
-        controller.Stop(1);
-        transform.position = startingWorldPos;
-        health = 100;
-      
+        
+      SceneMaster.instance.StartCoroutine(DeathRoutine());
 
+
+    }
+    IEnumerator DeathRoutine()
+    {
+        controller.Stop(2);
+        SoundManager.Play(SoundManager.Sound.PlayerDead, audioSource, 1f);
+        fadeToBlack.PlayFade();
+        yield return new WaitForSeconds(3);
+        SceneMaster.instance.LoadLevel(SceneMaster.instance.GetCurrentIndex());
+     
+        //transform.position = startingWorldPos;
+        //health = 100;
+        //PostProccessManipulator.SetVignette(health);
+    }
+    void OnEnable()
+    {
+        isVulnerable = true;
+    }
+    void OnDisable()
+    {
+        isVulnerable = false;
 
     }
     public override void TakeDamage(int damage)

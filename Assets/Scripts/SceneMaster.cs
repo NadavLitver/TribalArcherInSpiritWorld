@@ -51,6 +51,10 @@ public class SceneMaster : MonoBehaviour
         //loadingScreen.SetActive(false);
 
     }
+    public int GetCurrentIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
     public void LoadLevel(string scene)
     {
         StartCoroutine(LoadAsync(scene));

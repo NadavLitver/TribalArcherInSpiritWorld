@@ -16,24 +16,25 @@ public class ArrowProjectile : MonoBehaviour
     [ReadOnly] public int appliedDamage;
     private float[] trailTimes;
     [SerializeField] private float gravityScale;
-    public LayerMask rayMask;
     [SerializeField, ReadOnly] public Vector3 rayHitPoint;
     [SerializeField] private LightingBolt lightingBolt;
     [SerializeField] private bool doStun;
     [SerializeField] private float stunDuration;
-
+    [SerializeField] private float timeToLive;
     Vector3 boxCastPosition => transform.position + Vector3.up;
     [SerializeField] Vector3 colliderBounds;
 
     Ray ray;
     bool rayHit;
     float timeAlive;
+    public LayerMask rayMask;
     public int maxDamageBody;
     public int minDamageBody;
     public int StackOnBodyHit;
     public int StackOnHeadHit;
     public UnityEvent onHitBody;
     public UnityEvent onHitHead;
+    public UnityEvent onHitAnything;
     Livebody currentLivebody;
 
     private void OnEnable()
@@ -59,7 +60,10 @@ public class ArrowProjectile : MonoBehaviour
     private void Update()
     {
         timeAlive += Time.deltaTime;
-       
+        if(timeAlive > timeToLive)
+        {
+            gameObject.SetActive(false);
+        }
     }
     private void CheckCollisionWithRay()
     {
@@ -73,11 +77,16 @@ public class ArrowProjectile : MonoBehaviour
             
             rayHitPoint = hit.point;
             currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
+            onHitAnything?.Invoke();
+            SoundManager.Play(SoundManager.Sound.BowHit, hit.point);
+           // Debug.Break();
             
+            //rb.isKinematic = true;
             if (currentLivebody == null)
             {
                 this.gameObject.SetActive(false);
                 VFXManager.Play(VFXManager.Effect.TerrainHitEffect, rayHitPoint);
+                rayHit = true;
                 return;
             }
             if (lightingBolt != null)
@@ -109,9 +118,10 @@ public class ArrowProjectile : MonoBehaviour
                     AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
                     onHitBody?.Invoke();
                 }
-               
+             
             }
             rayHit = true;
+           // rb.isKinematic = true;
             this.gameObject.SetActive(false);
         }
     
@@ -120,10 +130,13 @@ public class ArrowProjectile : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        CheckCollisionWithRay();
-        rb.velocity += Vector3.down * gravityScale;
-        if (direction != Vector3.zero && timeAlive > 0.1f)
+        
+        if (direction != Vector3.zero && timeAlive > 0.1f && !rayHit)
+        {
+            rb.velocity += Vector3.down * gravityScale;
+            CheckCollisionWithRay();
             transform.up = rb.velocity;
+        }
         
     }
     IEnumerator ActivateTrail()
@@ -148,6 +161,7 @@ public class ArrowProjectile : MonoBehaviour
         direction = Vector3.zero;
         velocity = Vector3.zero;
         rb.velocity = Vector3.zero;
+       
         foreach (TrailRenderer trail in m_trails)
         {
             if (trail != null)
