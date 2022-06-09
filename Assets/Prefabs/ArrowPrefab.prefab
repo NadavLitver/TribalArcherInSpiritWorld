@@ -102,7 +102,7 @@ MonoBehaviour:
   m_trails:
   - {fileID: 8369072124138256223}
   appliedDamage: 0
-  gravityScale: 0.4
+  gravityScale: 0.45
   rayHitPoint: {x: 0, y: 0, z: 0}
   lightingBolt: {fileID: 0}
   doStun: 0

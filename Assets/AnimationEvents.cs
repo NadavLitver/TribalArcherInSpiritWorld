@@ -8,13 +8,16 @@ public class AnimationEvents : MonoBehaviour
     public PlayerController m_player;
     public BowHandler m_bow;
 
-    public void CanShootOff()
+    public void CallLoadArrow()
     {
-        m_bow.canShoot = false;
+        StartCoroutine(Load());
     }
-    public void CanShootOn()
+   
+    IEnumerator Load()
     {
-        m_bow.canShoot = true;
+        yield return new WaitForSeconds(0.2f);
+        m_bow.isLoaded = true;
+
     }
     public void TurnOffArrow()
     {
