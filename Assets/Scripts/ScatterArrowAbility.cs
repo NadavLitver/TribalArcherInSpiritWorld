@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScatterArrowAbility : Ability
 {
-    [SerializeField] GameObject[] uXExtraArrows;
+    [SerializeField] Animator m_animator;
     private void Awake()
     {
         AbilityToggle = false;
@@ -14,9 +14,15 @@ public class ScatterArrowAbility : Ability
     public override void ToggleAbility()
     {
         base.ToggleAbility();
-        for (int i = 0; i < uXExtraArrows.Length; i++)
+        if (AbilityToggle)
         {
-            uXExtraArrows[i].SetActive(AbilityToggle);
+            m_animator.Play("ScatterLoad");
+
+        }
+        else
+        {
+            m_animator.Play("Load");
+
         }
     }
   

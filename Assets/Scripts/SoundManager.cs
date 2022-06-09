@@ -26,8 +26,6 @@ public class SoundManager : MonoBehaviour
       PlayerSprint,
       HealthOrbReceived,
       BowDraw,
-      BowReleaseWeak,
-      BowReleaseMid,
       BowReleaseFull,
       BowHit,
       ElectricShotRelease,
@@ -108,6 +106,21 @@ public class SoundManager : MonoBehaviour
         audioSource.reverbZoneMix = Mathf.Clamp(reverb, 0, 1.1f);
         audioSource.volume = Mathf.Clamp01(Volume);
         audioSource.pitch = Mathf.Clamp(pitch, -3, 3);
+        audioSource.PlayOneShot(GetAudioClip(sound));
+        _instance.StartCoroutine(_instance.DestroyAudioObjects(soundGO));
+
+    }
+    public static void Play(Sound sound, Vector3 worldPos, float Volume, float pitch, float reverb,float _spatialBlend)
+    {
+
+        GameObject soundGO = _instance.m_pool.GetPooledObject();
+        soundGO.SetActive(true);
+        soundGO.transform.position = worldPos;
+        AudioSource audioSource = soundGO.GetComponent<AudioSource>();
+        audioSource.reverbZoneMix = Mathf.Clamp(reverb, 0, 1.1f);
+        audioSource.volume = Mathf.Clamp01(Volume);
+        audioSource.pitch = Mathf.Clamp(pitch, -3, 3);
+        audioSource.spatialBlend = _spatialBlend;
         audioSource.PlayOneShot(GetAudioClip(sound));
         _instance.StartCoroutine(_instance.DestroyAudioObjects(soundGO));
 
