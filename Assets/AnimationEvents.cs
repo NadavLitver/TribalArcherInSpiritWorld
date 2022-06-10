@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationEvents : MonoBehaviour
@@ -12,12 +11,25 @@ public class AnimationEvents : MonoBehaviour
     {
         StartCoroutine(Load());
     }
-   
+
     IEnumerator Load()
     {
+        m_bow.isLoaded = false;
         yield return new WaitForSeconds(0.2f);
         m_bow.isLoaded = true;
 
+    }
+    IEnumerator ArrowOnDelay()
+    {
+        yield return new WaitForSeconds(0.05f);
+        TurnOffArrow();
+        yield return new WaitForSeconds(0.2f);
+        TurnOnArrow();
+
+    }
+    public void CallArrowOffOn()
+    {
+        StartCoroutine(ArrowOnDelay());
     }
     public void TurnOffArrow()
     {
