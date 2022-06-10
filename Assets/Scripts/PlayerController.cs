@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences")] private CinemachinePOVExtension m_CinematicCamera;
     [SerializeField, FoldoutGroup("Refrences")] private AudioSource m_audioSource;
     [SerializeField, FoldoutGroup("Refrences")] private Transform camFollow;
-
+    [SerializeField, FoldoutGroup("Refrences")] private Animator m_animator;
     [FoldoutGroup("Properties")] public LayerMask groundedLayers;
     [FoldoutGroup("Properties"), ReadOnly] public Vector3 playerVelocity;
     [SerializeField, FoldoutGroup("Properties"), ReadOnly] private bool isGrounded;
@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.Play(SoundManager.Sound.PlayerJump, m_audioSource, 0.35f);
             playerVelocity.y = jumpHeight;
             m_breath.LoseBreath(jumpBreathCost);
+            m_animator.SetTrigger("Jump");
         }
 
         Gravity();
@@ -188,6 +189,8 @@ public class PlayerController : MonoBehaviour
                 isWalking = true;
                 m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
                 m_audioSource.Play();
+               
+
             }
 
         }
@@ -200,6 +203,7 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        m_animator.SetBool("NormalWalk", isWalking);
         controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
         
     }
@@ -214,6 +218,7 @@ public class PlayerController : MonoBehaviour
                 SoundManager.Play(SoundManager.Sound.PlayerLand, m_audioSource, 0.05f);
                 isGrounded = true;
                 playerVelocity = Vector3.zero;
+                m_animator.SetTrigger("Land");
             }
         }
         else

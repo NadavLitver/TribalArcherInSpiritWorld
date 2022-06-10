@@ -3907,14 +3907,15 @@ MonoBehaviour:
   m_trails: []
   appliedDamage: 0
   gravityScale: 0
-  rayMask:
-    serializedVersion: 2
-    m_Bits: 641
   rayHitPoint: {x: 0, y: 0, z: 0}
   lightingBolt: {fileID: 0}
   doStun: 1
   stunDuration: 1
+  timeToLive: 10
   colliderBounds: {x: 2, y: 3, z: 2}
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 641
   maxDamageBody: 20
   minDamageBody: 10
   StackOnBodyHit: 40
@@ -3923,6 +3924,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onHitHead:
+    m_PersistentCalls:
+      m_Calls: []
+  onHitAnything:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8486367893653430748

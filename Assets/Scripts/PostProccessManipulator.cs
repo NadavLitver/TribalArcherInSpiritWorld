@@ -51,6 +51,15 @@ public class PostProccessManipulator : MonoBehaviour
             volume.StartCoroutine(VignetteRoutine(vignette, newVignetteVal));
         }
     }
+    public static void SetVignetteZero()
+    {
+
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+           
+            volume.StartCoroutine(VignetteRoutine(vignette, 0));
+        }
+    }
     public static void OnHitVignette()
     {
 
