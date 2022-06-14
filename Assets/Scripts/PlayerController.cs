@@ -125,7 +125,8 @@ public class PlayerController : MonoBehaviour
         {
             if (sprintMod != sprintSpeed)
             {
-                m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint);
+                m_audioSource.Stop();
+                m_audioSource.clip = GetCurrentRunClip();
                 m_audioSource.Play();
                 
                 PostProccessManipulator.SetLensDistortion();
@@ -139,13 +140,47 @@ public class PlayerController : MonoBehaviour
             if(sprintMod != 1)
             {
                 m_audioSource.Stop();
-                m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
+                m_audioSource.clip = GetCurrentWalkClip();
                 m_audioSource.Play();
             }
             sprintMod = 1f;
         }
     }
+    public AudioClip GetCurrentWalkClip()
+    {
+        int ranNum = Randomizer.ReturnRandomNum(new Vector2Int(0, 4));
+        switch (ranNum)
+        {
+            case 0:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
+            case 1:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk2);
+            case 2:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk3);
+            case 3:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk4);
+            default:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
+        }
+    }
+    public AudioClip GetCurrentRunClip()
+    {
+        int ranNum = Randomizer.ReturnRandomNum(new Vector2Int(0, 4));
+        switch (ranNum)
+        {
+            case 0:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint);
+            case 1:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint2);
+            case 2:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint3);
+            case 3:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint4);
+            default:
+                return SoundManager.GetAudioClip(SoundManager.Sound.PlayerSprint);
 
+        }
+    }
     private void Jump()
     {
         if (input.PlayerJumpedThisFrame() && isGrounded)

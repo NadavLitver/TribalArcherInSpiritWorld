@@ -12,7 +12,7 @@ public class StatueEnemyShoot : State
     [SerializeField] private float BreathTimeAfterFinishShoot;
     [SerializeField] private float faceTargetSpeed;
     [SerializeField,ReadOnly] private bool startedAim, startedShoot, canAim, CanShoot;
-
+    [SerializeField] private AudioSource m_audioSource;
 
 
     private Vector3 stopAimPos;
@@ -45,7 +45,8 @@ public class StatueEnemyShoot : State
             {
                 startedAim = true;
                 StartCoroutine(animationDelay(0.9f, false));
-
+                
+                
             }
             if (canAim)
             {
@@ -116,6 +117,8 @@ public class StatueEnemyShoot : State
             stateHandler.body.animator.SetBool("Shooting", true);
             yield return new WaitForSeconds(time);
             CanShoot = true;
+            SoundManager.Play(SoundManager.Sound.StatueAttack, m_audioSource,1);
+
         }
         else
         {
@@ -123,6 +126,7 @@ public class StatueEnemyShoot : State
             stateHandler.body.animator.SetTrigger("Aim");
             yield return new WaitForSeconds(time);
             canAim = true;
+            SoundManager.Play(SoundManager.Sound.StatueAim, m_audioSource,1);
 
         }
 

@@ -45,7 +45,7 @@ public class BeamCollisionHandler : MonoBehaviour
         if (isOnPlayer)
         {
             timeOnPlayer += Time.deltaTime;
-            if(timeOnPlayer > 0.5f)
+            if(timeOnPlayer > 0.25f)
             {
                 if(currentLivebody!= null)
                   currentLivebody.TakeDamage(damage);
