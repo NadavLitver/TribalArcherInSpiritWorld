@@ -1,3 +1,5 @@
+using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 
 public class StatueEnemyShoot : State
@@ -9,6 +11,8 @@ public class StatueEnemyShoot : State
     [SerializeField] private float shootTime;
     [SerializeField] private float BreathTimeAfterFinishShoot;
     [SerializeField] private float faceTargetSpeed;
+    [SerializeField,ReadOnly] private bool startedAim, startedShoot, canAim, CanShoot;
+
 
 
     private Vector3 stopAimPos;
@@ -28,6 +32,8 @@ public class StatueEnemyShoot : State
         aimLine.gameObject.SetActive(true);
         beamLine.gameObject.SetActive(false);
         stopAimPos = Vector3.zero;
+        startedAim = false;
+        startedShoot = false;
 
     }
     private void Update()
@@ -35,19 +41,40 @@ public class StatueEnemyShoot : State
         timeInState += Time.deltaTime;
         if (timeInState < aimTime)
         {
-            stopAimPos = new Vector3( 0, PlayerController.playerTransform.position.y -30, PlayerController.playerTransform.position.z);
-            AimBeam();
+            if (!startedAim)
+            {
+                startedAim = true;
+                StartCoroutine(animationDelay(0.9f, false));
+
+            }
+            if (canAim)
+            {
+                stopAimPos = new Vector3(0, PlayerController.playerTransform.position.y - 30, PlayerController.playerTransform.position.z);
+                AimBeam();
+            }
+
         }
         else
         {
             if ((timeInState - aimTime) < shootTime)
             {
-                ShootBeam();
+                if (!startedShoot)
+                {
+
+                    StartCoroutine(animationDelay(1.2f, true));
+                    startedShoot = true;
+                }
+                if (CanShoot)
+                { 
+                    ShootBeam();
+                }
+                
             }
             else
             {
                 if ((timeInState - aimTime - shootTime) > BreathTimeAfterFinishShoot)
                 {
+                    stateHandler.body.animator.SetBool("Shooting", false);
                     SwapToNextState();
                 }
             }
@@ -78,7 +105,27 @@ public class StatueEnemyShoot : State
             beamLine.Attack();
         }
         aimLine.SetPosition(1, Vector3.zero);
-      //  beamLine.SetPosition(1, stopAimPos);
+        //  beamLine.SetPosition(1, stopAimPos);
+
+    }
+    IEnumerator animationDelay(float time, bool isShooting)
+    {
+        
+        if (isShooting)
+        {
+            stateHandler.body.animator.SetBool("Shooting", true);
+            yield return new WaitForSeconds(time);
+            CanShoot = true;
+        }
+        else
+        {
+
+            stateHandler.body.animator.SetTrigger("Aim");
+            yield return new WaitForSeconds(time);
+            canAim = true;
+
+        }
+
 
     }
 }

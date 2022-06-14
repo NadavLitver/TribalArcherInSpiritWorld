@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
             SoundManager.Play(SoundManager.Sound.PlayerJump, m_audioSource, 0.35f);
             playerVelocity.y = jumpHeight;
             m_breath.LoseBreath(jumpBreathCost);
-            m_animator.Play("Jump");
+            m_animator.SetTrigger("Jump");
         }
 
         Gravity();
@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
                 SoundManager.Play(SoundManager.Sound.PlayerLand, m_audioSource, 0.05f);
                 isGrounded = true;
                 playerVelocity = Vector3.zero;
-                m_animator.Play("Land");
+                m_animator.SetTrigger("Land");
             }
         }
         else

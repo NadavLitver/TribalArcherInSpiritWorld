@@ -53,7 +53,6 @@ public class BowHandler : MonoBehaviour
             float soundModifier = Mathf.Clamp(shootHoldTime, 0.3f, 0.7f);
             SoundManager.Play(SoundManager.Sound.BowReleaseFull, transform.position,soundModifier);
             PostProccessManipulator.ResetLensDistortion();
-            isLoaded = false;
             m_audioSource.Stop();
             if (LightingBoltAbility.AbilityToggle)
             {
