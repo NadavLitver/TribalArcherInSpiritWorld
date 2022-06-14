@@ -29,6 +29,19 @@ public class SoundManager : MonoBehaviour
       BowReleaseFull,
       BowHit,
       ElectricShotRelease,
+      PlayerWalk2,
+      PlayerWalk3,
+      PlayerWalk4,
+      PlayerSprint2,
+      PlayerSprint3,
+      PlayerSprint4,
+      PlayerEnter,
+      OwlProjectileHit,
+      StatueDead,
+      StatueAttack,
+      StatueAim,
+      
+
     }
     public static SoundManager instance
     {

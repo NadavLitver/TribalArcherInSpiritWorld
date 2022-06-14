@@ -1,6 +1,4 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatueEnemyLivebody : Livebody
@@ -11,9 +9,10 @@ public class StatueEnemyLivebody : Livebody
     {
         float ran = Randomizer.ReturnRandomFloat(new Vector2(0, 100));
         if (HealthOrb != null && ran > chanceToDropHealthOrb)
-         {
-             Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
-         }
+        {
+            Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
+        }
+        SoundManager.Play(SoundManager.Sound.StatueDead, transform.position, 1);
     }
     void OnEnable()
     {

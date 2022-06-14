@@ -29,7 +29,7 @@ public class PlayerLivebody : Livebody
         fadeToBlack.PlayFade();
         yield return new WaitForSeconds(3);
         SceneMaster.instance.LoadLevel(SceneMaster.instance.GetCurrentIndex());
-     
+        
         //transform.position = startingWorldPos;
         //health = 100;
         //PostProccessManipulator.SetVignette(health);
@@ -37,6 +37,7 @@ public class PlayerLivebody : Livebody
     void OnEnable()
     {
         isVulnerable = true;
+        SoundManager.Play(SoundManager.Sound.PlayerEnter, audioSource, 1f);
     }
     void OnDisable()
     {
