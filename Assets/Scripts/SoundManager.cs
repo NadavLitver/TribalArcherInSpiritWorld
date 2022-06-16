@@ -40,6 +40,10 @@ public class SoundManager : MonoBehaviour
       StatueDead,
       StatueAttack,
       StatueAim,
+      SuicideCruising,
+      SuicideDetect,
+      SuicideDead,
+      SuicideExplosions,
       
 
     }

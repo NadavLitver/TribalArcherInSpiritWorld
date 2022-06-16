@@ -11,13 +11,16 @@ public class FlyingEnemyHitState : State
 
     protected override void OnStateEnabled()
     {
-        StartCoroutine(SwapStateDelay());
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
         if (_animator != null)
             _animator.Play("Hit");
+        StartCoroutine(SwapStateDelay());
     }
     IEnumerator SwapStateDelay()
     {
         yield return new WaitForSeconds(hitStateLength);
+        agent.isStopped = false;
         SwapToNextState();
     }
 }

@@ -14,6 +14,7 @@ public class FlyingChaseState : State
     [SerializeField, FoldoutGroup("Properties")] bool changeSpeed;
     [SerializeField, FoldoutGroup("Properties")] float newSpeed;
     private float prevSpeed;
+    
 
     protected override void OnStateDisabled()
     {
@@ -39,7 +40,10 @@ public class FlyingChaseState : State
         {
             prevSpeed = agent.speed;
             agent.speed = newSpeed;
+            SoundManager.Play(SoundManager.Sound.SuicideCruising, stateHandler.body.audioSource);
+         
         }
+
     }
 
     private void Update()
