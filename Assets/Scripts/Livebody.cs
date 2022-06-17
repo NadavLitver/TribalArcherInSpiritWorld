@@ -17,8 +17,8 @@ public class Livebody : MonoBehaviour
     public GameObject DeadBody;
     [FoldoutGroup("Refrences")]
     public GameObject HealthOrb;
-    [FoldoutGroup("Refrences"), ReadOnly, SerializeField]
-    protected Animator animator;
+    [FoldoutGroup("Refrences"), ReadOnly]
+    public Animator animator;
     [FoldoutGroup("Refrences")]
     public Transform CenterPivot;
     [FoldoutGroup("Refrences")]

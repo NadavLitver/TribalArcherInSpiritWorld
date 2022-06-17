@@ -16,6 +16,7 @@ public class StatueEnemyChase : State
     protected override void OnStateEnabled()
     {
         agent.isStopped = false;
+        stateHandler.body.animator.SetTrigger("Chase");
 
 
     }
