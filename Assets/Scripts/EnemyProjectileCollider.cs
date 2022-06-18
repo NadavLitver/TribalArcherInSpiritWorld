@@ -17,9 +17,9 @@ public class EnemyProjectileCollider : MonoBehaviour
         //  Quaternion effectRotation = (other.ClosestPointOnBounds(transform.position) - PlayerController.playerTransform);
         if (currentLivebody == null)
         {
-            transform.parent.gameObject.SetActive(false);
             VFXManager.Play(VFXManager.Effect.TerrainHitEffect, other.ClosestPointOnBounds(transform.position));
             SoundManager.Play(SoundManager.Sound.OwlProjectileHit, transform.position, 0.55f);
+            transform.parent.gameObject.SetActive(false);
             return;
         }
         if (other.gameObject.CompareTag("Player"))
