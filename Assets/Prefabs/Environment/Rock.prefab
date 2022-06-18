@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.356589, y: 6.556671, z: 12.470528}
-  m_Center: {x: -0.6165893, y: 2.9287372, z: -0.04831195}
+  m_Size: {x: 6.319235, y: 6.1780105, z: 11.461752}
+  m_Center: {x: -0.7081785, y: 2.7394068, z: -0.048355103}

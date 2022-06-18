@@ -105,10 +105,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Brightness_Rim: 0.88
+    - Brightness_Rim: 0.39
     - Rim_Power: 0
-    - Toon_Ramp_Offset: 0.156
-    - Toon_Ramp_Smoothness: 0
+    - Toon_Ramp_Offset: 0.317
+    - Toon_Ramp_Smoothness: 0.5
     - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: 0.61
     - Vector1_4C850B07: 0.1
     - Vector1_64B788AD: 4
