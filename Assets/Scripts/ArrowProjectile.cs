@@ -59,6 +59,7 @@ public class ArrowProjectile : MonoBehaviour
     }
     private void Update()
     {
+        CheckCollisionWithRay();
         timeAlive += Time.deltaTime;
         if(timeAlive > timeToLive)
         {
@@ -134,7 +135,7 @@ public class ArrowProjectile : MonoBehaviour
         if (direction != Vector3.zero && timeAlive > 0.1f && !rayHit)
         {
             rb.velocity += Vector3.down * gravityScale;
-            CheckCollisionWithRay();
+            
             transform.up = rb.velocity;
         }
         

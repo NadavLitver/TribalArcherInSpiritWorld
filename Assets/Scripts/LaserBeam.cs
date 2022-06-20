@@ -30,10 +30,10 @@ public class LaserBeam : MonoBehaviour
         yield return new WaitForSeconds(chargeTime);
         float curDur = 0;
         m_beamEnd.SetActive(true);
-        foreach (GameObject go in m_particles)
-        {
-            go.SetActive(true);
-        }
+        //foreach (GameObject go in m_particles)
+        //{
+        //    go.SetActive(true);
+        //}
         while (curDur < 1)
         {
             foreach (LineRenderer line in m_lines)

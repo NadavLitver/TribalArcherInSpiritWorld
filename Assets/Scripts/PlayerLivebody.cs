@@ -54,7 +54,6 @@ public class PlayerLivebody : Livebody
     public override void RecieveHealth(int hp)
     {
         SoundManager.Play(SoundManager.Sound.HealthOrbReceived, audioSource, 0.15f);
-        Debug.Log("Player Recieved Health" + hp);
         base.RecieveHealth(hp);
         PostProccessManipulator.SetVignette(health);
 

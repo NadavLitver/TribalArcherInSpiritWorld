@@ -37,14 +37,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Mask_R_Emission:
-        m_Texture: {fileID: 2800000, guid: 26600478e01b9a746af5cc38ec147b0d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_252e722d409b4804a6d10f742d52dd89:
-        m_Texture: {fileID: 2800000, guid: 50eae49f2f28fcd4984b6ae387be59cb, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C8C9609E:
         m_Texture: {fileID: 2800000, guid: 50eae49f2f28fcd4984b6ae387be59cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -105,15 +97,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Brightness_Rim: 1.18
-    - Rim_Power: 0.3
-    - Toon_Ramp_Offset: 0.5
+    - Brightness_Rim: 2
+    - Rim_Power: 0.51
+    - Toon_Ramp_Offset: 0.19
     - Toon_Ramp_Smoothness: 0
-    - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: 0
-    - Vector1_4C850B07: 0.1
-    - Vector1_64B788AD: 32
-    - Vector1_67744406: 0.7
-    - Vector1_a199e3e12f1b49049100eb4a71d02f18: 0
     - _AlphaClip: 0
     - _Ambient: 0
     - _Blend: 0
@@ -143,12 +130,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_057304138c224518a29f9a1f6a929faf: {r: 1, g: 1, b: 1, a: 1}
-    - Color_4B4CE890: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
-    - Color_4B9AABFA: {r: 1, g: 1, b: 1, a: 0}
-    - Color_A96C309B: {r: 1, g: 1, b: 1, a: 0}
-    - Color_F150E237: {r: 0, g: 1, b: 0.2762072, a: 0}
-    - Toon_Ramp_Tint: {r: 1, g: 1, b: 1, a: 1}
+    - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

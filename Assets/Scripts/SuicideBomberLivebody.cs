@@ -15,12 +15,11 @@ public class SuicideBomberLivebody : Livebody
         {
             Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
         }
-        SoundManager.Play(SoundManager.Sound.OwlDead, audioSource);
+        SoundManager.Play(SoundManager.Sound.SuicideDead, transform.position);
     }
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        SoundManager.Play(SoundManager.Sound.OwlHit, audioSource);
 
     }
     void OnEnable()

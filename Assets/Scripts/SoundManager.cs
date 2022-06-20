@@ -40,6 +40,10 @@ public class SoundManager : MonoBehaviour
       StatueDead,
       StatueAttack,
       StatueAim,
+      SuicideCruising,
+      SuicideDetect,
+      SuicideDead,
+      SuicideExplosions,
       
 
     }
@@ -198,7 +202,6 @@ public class SoundManager : MonoBehaviour
                 return clip.m_AudioClip;
             }
         }
-        Debug.LogError("sound" + sound + "not found");
         return null;
     }
     private IEnumerator DestroyAudioObjects(GameObject go)

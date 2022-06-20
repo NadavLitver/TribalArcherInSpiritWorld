@@ -23,6 +23,7 @@ public class SuicideBomberExplodeState : State
 
     protected override void OnStateEnabled()
     {
+        
          explosionTargets = Physics.OverlapBox(ExplosionPos.position, explosionRadius * Vector3.one, ExplosionPos.rotation, playerLayer);
         if(explosionTargets.Length != 0)
         {
@@ -34,7 +35,8 @@ public class SuicideBomberExplodeState : State
                     OnPlayerHit?.Invoke();
                     currentLivebody.TakeDamage(damage);
                     VFXManager.Play(VFXManager.Effect.HeadshotEffect, ExplosionPos.position);
-                    transform.root.gameObject.SetActive(false);
+                    SoundManager.Play(SoundManager.Sound.SuicideExplosions, transform.position);
+                    transform.parent.gameObject.SetActive(false);
                 }
             }
         }

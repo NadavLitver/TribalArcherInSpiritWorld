@@ -8,6 +8,7 @@ public class ChainLightingShot : Ability
     public GameObject ArrowToSpin;
     public ObjectPool ChainLightingArrowPool;
     public UnityEvent OnQuickShotToggle;
+    [SerializeField] Animator m_animator;
     //private Quaternion arrowToSpinStartingRotation;
     private void Awake()
     {
@@ -17,6 +18,10 @@ public class ChainLightingShot : Ability
     public override void ToggleAbility()
     {
         base.ToggleAbility();
+        if (AbilityToggle)
+        {
+            m_animator.Play("Load");
+        }
     }
 
     public void ResetArrowToSpin()
