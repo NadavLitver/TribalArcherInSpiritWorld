@@ -52,7 +52,7 @@ public class StatueEnemyShoot : State
             {
                 stopAimPos = PlayerController.playerTransform.position;/* new Vector3(0,transform.position.y/*PlayerController.playerTransform.position.y - 40, PlayerController.playerTransform.position.z);*/
                 stopAimPos.x = 0;
-                stopAimPos.y -= 50;
+                stopAimPos.y = -1;
                 AimBeam();
             }
 
@@ -86,10 +86,10 @@ public class StatueEnemyShoot : State
     }
     public void AimBeam()
     {
-        aimLine.SetPosition(1, stopAimPos);
+       
 
         FaceTarget();
-
+        aimLine.SetPosition(1, stopAimPos);
         void FaceTarget()
         {
             var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
@@ -98,6 +98,7 @@ public class StatueEnemyShoot : State
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * faceTargetSpeed);
         }
+     
     }
     public void ShootBeam()
     {

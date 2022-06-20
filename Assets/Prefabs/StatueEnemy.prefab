@@ -605,7 +605,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -705,7 +705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9124039898247878677
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5994949779585165258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0000121593475}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5598535999018461937}
@@ -64354,6 +64354,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5892183525692724654}
     m_Modifications:
+    - target: {fileID: 464089060357452135, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1011194847005853256, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
       propertyPath: startDelay.scalar
       value: 1
@@ -64385,6 +64389,10 @@ PrefabInstance:
     - target: {fileID: 1892790141346239120, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
       propertyPath: m_Positions.Array.data[1].z
       value: -5.6251304e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336243344239905940, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4189647183289891299, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
       propertyPath: m_Layer
@@ -64432,6 +64440,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6245353671450818907, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
       propertyPath: InitialModule.startRotation.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319120479002912276, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6383523832170041079, guid: 7d90a5bff6050534fae5f152fd36e30d, type: 3}
