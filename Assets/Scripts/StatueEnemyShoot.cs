@@ -39,6 +39,9 @@ public class StatueEnemyShoot : State
     private void Update()
     {
         timeInState += Time.deltaTime;
+        stopAimPos = PlayerController.playerTransform.position;
+        stopAimPos.x = 0;
+        stopAimPos.y = -30;
         if (timeInState < aimTime)
         {
             if (!startedAim)
@@ -49,10 +52,8 @@ public class StatueEnemyShoot : State
                 
             }
             if (canAim)
-            {
-                stopAimPos = PlayerController.playerTransform.position;/* new Vector3(0,transform.position.y/*PlayerController.playerTransform.position.y - 40, PlayerController.playerTransform.position.z);*/
-                stopAimPos.x = 0;
-                stopAimPos.y = -1;
+            {/* new Vector3(0,transform.position.y/*PlayerController.playerTransform.position.y - 40, PlayerController.playerTransform.position.z);*/
+               
                 AimBeam();
             }
 
@@ -90,15 +91,16 @@ public class StatueEnemyShoot : State
 
         FaceTarget();
         aimLine.SetPosition(1, stopAimPos);
-        void FaceTarget()
-        {
-            var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
-
-            Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * faceTargetSpeed);
-        }
+       
      
+    }
+    void FaceTarget()
+    {
+        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
+
+        Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * faceTargetSpeed);
     }
     public void ShootBeam()
     {

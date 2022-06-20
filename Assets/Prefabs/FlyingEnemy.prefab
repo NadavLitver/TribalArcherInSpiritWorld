@@ -250,7 +250,7 @@ MonoBehaviour:
   nextState: {fileID: 6072534156915436490}
   agent: {fileID: 6279340190576987184}
   SideStep: {fileID: 2486890781247201281}
-  sightRange: 35
+  sightRange: 45
   playerInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 2
@@ -281,10 +281,10 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 2486890781247201281}
   agent: {fileID: 6279340190576987184}
-  timeBetweenAttacks: 1.6
+  timeBetweenAttacks: 1.4
   BackStepLength: 20
   projectileForce: 1500
-  faceTargetSpeed: 20
+  faceTargetSpeed: 60
   pool: {fileID: 6072534156915436491}
   shootPos: {fileID: 6072534155734360003}
   gfx: {fileID: 6543308502325101366}
@@ -350,8 +350,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
-  speed: 12
-  Range: 4.5
+  speed: 20
+  Range: 3.5
 --- !u!114 &4455560621232203280
 MonoBehaviour:
   m_ObjectHideFlags: 0

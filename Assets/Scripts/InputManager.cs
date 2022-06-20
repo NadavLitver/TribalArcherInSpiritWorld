@@ -67,8 +67,13 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Sprint.canceled += PlayerCanceledSprint;
         inputActions.PlayerMap.AbilityR.started += PlayerStartedAbilityRThisFrame;
         inputActions.PlayerMap.AbilityQ.started += PlayerStartedAbilityQThisFrame;
-
+        inputActions.PlayerMap.Exit.performed += OnExit;
         inputActions.GeneralMap.Pause.started += Pause;
+    }
+
+    private void OnExit(InputAction.CallbackContext obj)
+    {
+        SceneMaster.instance.QuitApp();
     }
 
     private void PlayerStartedAbilityQThisFrame(InputAction.CallbackContext obj)

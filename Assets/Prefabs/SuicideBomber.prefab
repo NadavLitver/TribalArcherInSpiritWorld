@@ -141,7 +141,7 @@ NavMeshAgent:
   m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
@@ -360,7 +360,7 @@ MonoBehaviour:
   sightRange: 3
   playerInSight: 0
   timeInState: 0
-  timeInSecondsToSideJump: 10
+  timeInSecondsToSideJump: 12
   floatComponent: {fileID: 0}
   gfx: {fileID: 0}
   changeSpeed: 1
@@ -443,7 +443,7 @@ MonoBehaviour:
   nextState: {fileID: 7287593671631427746}
   agent: {fileID: 4359631608720208371}
   stunDuration: 1
-  stunEffect: {fileID: 0}
+  stunEffect: {fileID: 6952382888897578267, guid: e45de5d670786cc4facf4fca24320bd6, type: 3}
 --- !u!114 &4445954659718942571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,9 +465,9 @@ MonoBehaviour:
   canExitToHit: 0
   _animator: {fileID: 4589204153777282710}
   stateHandler: {fileID: 0}
-  nextState: {fileID: 7287593671631427746}
+  nextState: {fileID: 4359631609399318988}
   agent: {fileID: 4359631608720208371}
-  hitStateLength: 1.5
+  hitStateLength: 1
 --- !u!114 &7287593671631427746
 MonoBehaviour:
   m_ObjectHideFlags: 0
