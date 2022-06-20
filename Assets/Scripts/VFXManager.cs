@@ -85,7 +85,7 @@ public class VFXManager : MonoBehaviour
                 return vfx.m_prefab;
             }
         }
-        Debug.LogError("effect" + effect + "not found");
+       
         return null;
     }
 }

@@ -47,7 +47,6 @@ public class PostProccessManipulator : MonoBehaviour
             if (MaximumVignetteVal == 0)
                 return;
            float newVignetteVal = (((100 -currentHP) * MaximumVignetteVal) / 100);
-            Debug.Log("new VIGNETTE VALUE IS " + newVignetteVal);
             volume.StartCoroutine(VignetteRoutine(vignette, newVignetteVal));
         }
     }
@@ -67,10 +66,7 @@ public class PostProccessManipulator : MonoBehaviour
         {
             volume.StartCoroutine(OnHitVignetteRoutine(vignette));
         }
-        else
-        {
-            Debug.LogError("Vignette not found");
-        }
+     
     }
     public static void ResetLensDistortion()
     {
@@ -88,10 +84,7 @@ public class PostProccessManipulator : MonoBehaviour
         {
             volume.StartCoroutine(LensDistortionOnShoot(lensDistortion));
         }
-        else
-        {
-            Debug.LogError("Vignette not found");
-        }
+       
     }
     private static IEnumerator LensDistortionRoutine(LensDistortion lens)
     {

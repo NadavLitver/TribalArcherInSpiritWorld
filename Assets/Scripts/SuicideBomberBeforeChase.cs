@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SuicideBomberBeforeChase : State
 {
-    private float timeBeforeChase =0.5f;
+    private float timeBeforeChase =0.4f;
     private float faceTargetSpeed = 90;
 
     protected override void OnStateDisabled()

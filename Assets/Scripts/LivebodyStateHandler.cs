@@ -48,7 +48,6 @@ public class LivebodyStateHandler : MonoBehaviour
                 return _state;
             }
         }
-        Debug.Log("No State Enabled");
         return states[0];
     }
     public void SwapState(State state)

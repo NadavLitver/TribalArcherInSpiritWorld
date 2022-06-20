@@ -58,7 +58,6 @@ public class InputManager : MonoBehaviour
             }
         }
         shootHoldTime = float.Parse(holdTime.ToString());
-        Debug.Log("max hold time for arrow is  " + shootHoldTime);
         inputActions.PlayerMap.Shoot.started += PlayerStartedShootThisFrame;
         inputActions.PlayerMap.Shoot.performed += PlayerFinishCharging; 
         inputActions.PlayerMap.Shoot.canceled += PlayerReleaseShootThisFrame;

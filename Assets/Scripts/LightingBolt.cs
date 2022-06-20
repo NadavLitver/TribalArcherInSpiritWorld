@@ -39,7 +39,6 @@ public class LightingBolt : MonoBehaviour
                 enemiesDamaged++;
             }
         }
-        Debug.Log(enemiesDamaged);
     }
     private void OnDrawGizmos()
     {

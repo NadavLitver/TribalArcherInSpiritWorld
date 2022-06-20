@@ -202,7 +202,6 @@ public class SoundManager : MonoBehaviour
                 return clip.m_AudioClip;
             }
         }
-        Debug.LogError("sound" + sound + "not found");
         return null;
     }
     private IEnumerator DestroyAudioObjects(GameObject go)
