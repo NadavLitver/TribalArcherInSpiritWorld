@@ -50,7 +50,9 @@ public class StatueEnemyShoot : State
             }
             if (canAim)
             {
-                stopAimPos = new Vector3(0, PlayerController.playerTransform.position.y - 30, PlayerController.playerTransform.position.z);
+                stopAimPos = PlayerController.playerTransform.position;/* new Vector3(0,transform.position.y/*PlayerController.playerTransform.position.y - 40, PlayerController.playerTransform.position.z);*/
+                stopAimPos.x = 0;
+                stopAimPos.y -= 50;
                 AimBeam();
             }
 

@@ -40,7 +40,7 @@ public class FlyingChaseState : State
         {
             prevSpeed = agent.speed;
             agent.speed = newSpeed;
-            SoundManager.Play(SoundManager.Sound.SuicideCruising, stateHandler.body.audioSource);
+            SoundManager.Play(SoundManager.Sound.SuicideCruising, stateHandler.body.audioSource,0.75f);
          
         }
 

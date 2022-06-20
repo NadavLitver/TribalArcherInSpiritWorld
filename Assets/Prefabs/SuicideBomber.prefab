@@ -136,7 +136,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 25
-  m_Acceleration: 12
+  m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 240
   m_StoppingDistance: 0
@@ -159,7 +159,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -325,10 +325,10 @@ MonoBehaviour:
   canExitToHit: 1
   _animator: {fileID: 0}
   stateHandler: {fileID: 0}
-  nextState: {fileID: 4359631609399318988}
+  nextState: {fileID: 7287593671631427746}
   agent: {fileID: 4359631608720208371}
   walkPointRange: 12
-  sightRange: 75
+  sightRange: 90
   playerInSight: 0
   walkPoint: {x: 0, y: 0, z: 0}
   GroundInSight: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
   floatComponent: {fileID: 0}
   gfx: {fileID: 0}
   changeSpeed: 1
-  newSpeed: 40
+  newSpeed: 50
 --- !u!114 &4359631609399318987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 4359631609399318988}
   agent: {fileID: 4359631608720208371}
-  speed: 14
+  speed: 35
   Range: 3.5
 --- !u!114 &4359631609399318986
 MonoBehaviour:
