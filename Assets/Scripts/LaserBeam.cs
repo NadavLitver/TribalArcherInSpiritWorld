@@ -66,7 +66,11 @@ public class LaserBeam : MonoBehaviour
             curDur -= Time.deltaTime / beamStretchDuration;
             yield return new WaitForEndOfFrame();
         }
-
+        foreach (LineRenderer line in m_lines)
+        {
+            line.SetPosition(0, Vector3.zero);
+            line.SetPosition(1, Vector3.zero);
+        }
 
     }
 }

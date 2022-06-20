@@ -1,6 +1,5 @@
 using Sirenix.OdinInspector;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +18,7 @@ public class BreathEffects : MonoBehaviour
     [SerializeField, FoldoutGroup("Colors")] private Color IdleColor;
     [SerializeField, FoldoutGroup("Colors")] private Color OutOfBreathColor;
     [SerializeField, FoldoutGroup("Colors")] private Color FlashColor;
-    
+
     [SerializeField, FoldoutGroup("Parameters")] private float lerpSpeed;
     [SerializeField, FoldoutGroup("Parameters")] private float lerpDuration;
 
