@@ -19,6 +19,9 @@ public class DrawMarkHandler : MonoBehaviour
     private float startTime;
     private float startScale;
 
+    private float startRot = 0f;
+    private float maxRot = 15f;
+
     private void Start()
     {
         doSine = false;
@@ -45,11 +48,13 @@ public class DrawMarkHandler : MonoBehaviour
     {
         float duration = 1f;
         float currDurr = 0;
+        transform.rotation = Quaternion.identity;
         while (currDurr < duration)
         {
             currDurr += Time.deltaTime;
             transform.localScale = Vector3.one * Mathf.Lerp(1f, startScale, currDurr / duration);
             m_canvasGroup.alpha = Mathf.Lerp(0, 1, currDurr / duration);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(startRot, maxRot, currDurr / duration));
             yield return new WaitForEndOfFrame();
         }
         transform.localScale = Vector3.one * startScale;
