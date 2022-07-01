@@ -13,15 +13,16 @@ public class SuicideBomberBeforeChase : State
 
     protected override void OnStateEnabled()
     {
+        agent.SetDestination(PlayerController.playerTransform.position);
         agent.isStopped = true;
         _animator.SetTrigger("BeforeChase");
         SoundManager.Play(SoundManager.Sound.SuicideDetect, stateHandler.body.audioSource);
         StartCoroutine(SwapStateDelay());
     }
-    //private void Update()
-    //{
-    //    //FaceTarget();
-    //}
+    private void Update()
+    {
+        FaceTarget();
+    }
     IEnumerator SwapStateDelay()
     {
         yield return new WaitForSeconds(timeBeforeChase);
