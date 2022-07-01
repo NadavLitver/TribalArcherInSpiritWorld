@@ -108,7 +108,7 @@ MonoBehaviour:
   doStun: 0
   stunDuration: 0
   timeToLive: 10
-  colliderBounds: {x: 1, y: 3, z: 1}
+  colliderBounds: {x: 1, y: 5, z: 1}
   rayMask:
     serializedVersion: 2
     m_Bits: 641

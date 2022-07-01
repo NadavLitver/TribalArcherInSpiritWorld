@@ -279,7 +279,7 @@ MonoBehaviour:
   canExitToHit: 0
   _animator: {fileID: 8183739704399131198}
   stateHandler: {fileID: 0}
-  nextState: {fileID: 2486890781247201281}
+  nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
   timeBetweenAttacks: 1.6
   BackStepLength: 20

@@ -83,14 +83,15 @@ public class BowHandler : MonoBehaviour
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         Vector3 targetPoint;
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            targetPoint = hit.point;
-        }
-        else
-        {
-            targetPoint = ray.GetPoint(100);
-        }
+        //if (Physics.Raycast(ray, out RaycastHit hit))
+        //{
+        //    targetPoint = hit.point;
+        //}
+        //else
+        //{
+
+        //}
+        targetPoint = ray.GetPoint(100);
         Vector3 direction = (targetPoint - transform.position);
         return direction;
     }
