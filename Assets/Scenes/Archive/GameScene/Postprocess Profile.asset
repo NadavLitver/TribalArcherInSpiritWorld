@@ -16,12 +16,12 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 15
+    m_Value: -12
     min: -100
     max: 100
   tint:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 100
     min: -100
     max: 100
 --- !u!114 &-6286801526576704263
@@ -72,19 +72,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: -0.64
   contrast:
     m_OverrideState: 1
     m_Value: 3.5
     min: -100
     max: 100
   colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 0.9833224, b: 0.95, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
 --- !u!114 &-2005558104516810063
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.93232715, z: 0.98215216, w: 0}
+    m_Value: {x: 0.9571342, y: 0.91885, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
     m_Value: {x: 0.9838613, y: 1, z: 0.99663025, w: 0}

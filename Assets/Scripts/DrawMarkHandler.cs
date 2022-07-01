@@ -17,15 +17,18 @@ public class DrawMarkHandler : MonoBehaviour
 
     private bool doSine;
     private float startTime;
-    private float startScale;
+    private float startScale = 1f;
+    private float endScale = 0.7f;
 
     private float startRot = 0f;
     private float maxRot = 15f;
 
+    [SerializeField] private AnimationCurve rotEase;
+    [SerializeField] private AnimationCurve scaleEase;
+
     private void Start()
     {
         doSine = false;
-        startScale = 1.5f;
         m_canvasGroup.alpha = 0;
     }
     private void Update()
@@ -33,7 +36,7 @@ public class DrawMarkHandler : MonoBehaviour
 
         if (doSine)
         {
-            transform.localScale = Vector3.one * (startScale + (Mathf.Sin((Time.time - startTime)) * Time.deltaTime * 1f));
+            transform.localScale = Vector3.one * (endScale + (Mathf.Sin((Time.time - startTime)) * Time.deltaTime * 1f));
         }
     }
 
@@ -51,13 +54,14 @@ public class DrawMarkHandler : MonoBehaviour
         transform.rotation = Quaternion.identity;
         while (currDurr < duration)
         {
-            currDurr += Time.deltaTime;
-            transform.localScale = Vector3.one * Mathf.Lerp(1f, startScale, currDurr / duration);
+            currDurr +=  Time.deltaTime;
+            Debug.Log(currDurr);
+            transform.localScale = Vector3.one * Mathf.Lerp(startScale, endScale, scaleEase.Evaluate(currDurr));
             m_canvasGroup.alpha = Mathf.Lerp(0, 1, currDurr / duration);
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(startRot, maxRot, currDurr / duration));
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(startRot, maxRot, rotEase.Evaluate(currDurr)));
             yield return new WaitForEndOfFrame();
         }
-        transform.localScale = Vector3.one * startScale;
+        transform.localScale = Vector3.one * endScale;
         m_canvasGroup.alpha = 1;
         doSine = true;
         startTime = Time.time;
@@ -80,12 +84,12 @@ public class DrawMarkHandler : MonoBehaviour
         {
             currDurr += Time.deltaTime;
             m_canvasGroup.alpha = Mathf.Lerp(1, 0, currDurr / duration);
-            transform.localScale = Vector3.one * Mathf.Lerp(transform.localScale.x, 2f, currDurr / duration);
+            transform.localScale = Vector3.one * Mathf.Lerp(endScale, 1.5f, currDurr / duration);
 
             yield return new WaitForEndOfFrame();
         }
         m_canvasGroup.alpha = 0;
-        transform.localScale = Vector3.one * 1.75f;
+        transform.localScale = Vector3.one * 1.5f;
         //Debug.Log("release end");
     }
     void SetCornersBackToStartingPos()
