@@ -12,5 +12,6 @@ public class CrosshairCornerHandler : MonoBehaviour
     private void Awake()
     {
         startingPos = transform.localPosition;
+        goal = startingPos;
     }
 }

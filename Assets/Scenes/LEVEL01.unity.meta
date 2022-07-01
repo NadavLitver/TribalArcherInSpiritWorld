@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/LevelDesign_New 1.unity.meta
+guid: 403d7572e9dfc834c94d6e67c8b8157d
+========
 guid: e59fac87fcd724a4fa75762b2fbe5786
+>>>>>>>> Bar:Assets/Scenes/Game_Scene_Bar_New.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

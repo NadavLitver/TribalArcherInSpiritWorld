@@ -35,11 +35,24 @@ public class NaturalBowMovement : MonoBehaviour
     [FoldoutGroup("Properties"), SerializeField]
     private AnimationCurve posLerpEase;
 
+    [FoldoutGroup("Properties"), SerializeField]
+    private float leapRotModifier;
+    [FoldoutGroup("Properties"), SerializeField]
+    private float leapPosModifier;
+    [FoldoutGroup("Properties"), SerializeField]
+    private float leapSidePosModifier;
+    [FoldoutGroup("Properties"), SerializeField]
+    private AnimationCurve LeapDecay;
+    [FoldoutGroup("Properties"), SerializeField]
+    private float LeapDuration;
+    private bool isLeap;
+
 
     private void Start()
     {
         startRot = transform.localRotation.eulerAngles;
         startPos = transform.localPosition;
+        isLeap = false;
     }
     void Update()
     {
@@ -72,10 +85,14 @@ public class NaturalBowMovement : MonoBehaviour
             + Mathf.Clamp(_moveDelta.x, -rotClampValues.z, rotClampValues.z); // + move delta x 
         Quaternion targetRot = Quaternion.Euler(xR,yR,zR);
         //implementation
-        transform.localRotation = Quaternion.RotateTowards
-            (transform.localRotation, targetRot, rotLerpSpeed * Time.deltaTime);
+        if (!isLeap)
+        {
+            transform.localRotation = Quaternion.RotateTowards
+                (transform.localRotation, targetRot, rotLerpSpeed * Time.deltaTime);
+        }
         
-        transform.Rotate(noiseMovement);
+        
+        //transform.Rotate(noiseMovement);
 
         /* Position */
 
@@ -86,9 +103,39 @@ public class NaturalBowMovement : MonoBehaviour
         float yP = startPos.y 
             - Mathf.Clamp(_moveDelta.y, -posClampValues.y, posClampValues.y);// + move delta y
         float zP = startPos.z
-            - Mathf.Clamp(_moveDelta.y, - posClampValues.z, posClampValues.z); // - move delta z
+            - Mathf.Clamp(_moveDelta.y, -posClampValues.z, posClampValues.z); // - move delta z
+            
         Vector3 targetPos = new Vector3(xP, yP, zP);
         //implementation
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition ,targetPos,posLerpSpeed * Time.deltaTime);
+        
+        if (!isLeap)
+        {
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition ,targetPos,posLerpSpeed * Time.deltaTime);
+        }
+    }
+    public void LeapApplication()
+    {
+        StartCoroutine(LeapApplicationCoru());
+    }
+    private IEnumerator LeapApplicationCoru()
+    {
+        isLeap = true;
+        Debug.Log("Leap");
+        Vector2 dir = InputManager.Instance.GetPlayerMovement();
+        Debug.Log("Dir x: " + dir.x + "; Dir y: " + dir.y);
+        Vector3 curPos = transform.localPosition;
+        Vector3 curRot = transform.localRotation.eulerAngles;
+        float curDur = 0;
+        while (curDur < 1)
+        {
+            //appliedLeapRotModifier = LeapRotDecay.Evaluate()
+            curDur += Time.deltaTime / LeapDuration;
+            float evaluation = LeapDecay.Evaluate(curDur);
+            transform.localPosition = curPos + (Vector3.forward * evaluation * dir.y * leapPosModifier) + Vector3.right * evaluation * dir.x * leapSidePosModifier;
+            transform.localRotation = Quaternion.Euler(curRot + (Vector3.forward * evaluation * -dir.x * leapRotModifier));
+            yield return new WaitForEndOfFrame();
+        }
+        curDur = 1;
+        isLeap = false;
     }
 }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/LevelDesign_New 1.meta
+guid: 28c11f97f830e8e4db1cb36898970f4e
+========
 guid: 5dac425a0c937cb459c7c70c26b5328b
+>>>>>>>> Bar:Assets/Scenes/Game_Scene_Bar_New.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
