@@ -430,7 +430,7 @@ MonoBehaviour:
   sightRange: 3
   playerInSight: 0
   timeInState: 0
-  timeInSecondsToSideJump: 12
+  timeInSecondsToSideJump: 20
   floatComponent: {fileID: 0}
   gfx: {fileID: 0}
   changeSpeed: 1

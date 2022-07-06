@@ -6,7 +6,7 @@ public class BowHandler : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
     [SerializeField, FoldoutGroup("Refrences")] private BowString bowString;
-    [SerializeField, FoldoutGroup("Refrences")] private ChainLightingShot QuickShotAbiliyRef;
+    [SerializeField, FoldoutGroup("Refrences")] private QuickStunAbility QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ScatterArrowAbility ScatterArrowAbilityRef;
     [SerializeField, FoldoutGroup("Refrences")] private LightingBoltAOEAbility LightingBoltAbility;
     [SerializeField, FoldoutGroup("Refrences")] private Animator m_animator;
@@ -83,14 +83,15 @@ public class BowHandler : MonoBehaviour
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         Vector3 targetPoint;
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            targetPoint = hit.point;
-        }
-        else
-        {
-            targetPoint = ray.GetPoint(100);
-        }
+        //if (Physics.Raycast(ray, out RaycastHit hit))
+        //{
+        //    targetPoint = hit.point;
+        //}
+        //else
+        //{
+
+        //}
+        targetPoint = ray.GetPoint(100);
         Vector3 direction = (targetPoint - transform.position);
         return direction;
     }
@@ -146,8 +147,7 @@ public class BowHandler : MonoBehaviour
     {
         shootHoldTime = maxHoldTime - 0.1f;
         StartCoroutine(ReleaseChainLightingArrow());
-        QuickShotAbiliyRef.AbilityToggle = false;
-        QuickShotAbiliyRef.ResetArrowToSpin();
+        QuickShotAbiliyRef.ToggleAbility();
         AbilityStackHandler.instance.DecreaseStackCount(QuickShotAbiliyRef.stackCost);
     }
     public IEnumerator ReleaseNormalArrow()

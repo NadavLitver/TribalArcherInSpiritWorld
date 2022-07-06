@@ -45,7 +45,7 @@ public class CinemachinePOVExtension : CinemachineExtension
                 startingRotation.y = Mathf.Clamp(startingRotation.y, -clampAngle, clampAngle);
                 state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
                 if(state.Lens.FieldOfView != FOV)
-                 state.Lens = new LensSettings(FOV, 0, 0.3f, 1000, 0);
+                 state.Lens = new LensSettings(FOV, 0, 0.3f, 1500, 0);
 
                 MouseSensitivity +=  InputManager.Instance.GetPgUpPgDwnAxis();
                 MouseSensitivity = Mathf.Clamp(MouseSensitivity, 0, 100);
