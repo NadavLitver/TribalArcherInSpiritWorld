@@ -14,7 +14,10 @@ public class SuicideBomberBeforeChase : State
     protected override void OnStateEnabled()
     {
         agent.isStopped = true;
-        _animator.SetTrigger("BeforeChase");
+        foreach (Animator item in _animators)
+        {
+            item.SetTrigger("BeforeChase");
+        }
         SoundManager.Play(SoundManager.Sound.SuicideDetect, stateHandler.body.audioSource);
         StartCoroutine(SwapStateDelay());
     }
@@ -26,7 +29,10 @@ public class SuicideBomberBeforeChase : State
     {
         yield return new WaitForSeconds(timeBeforeChase);
         agent.isStopped = false;
-        _animator.SetTrigger("Chase");
+        foreach (Animator item in _animators)
+        {
+            item.SetTrigger("Chase");
+        }
         SwapToNextState();
     }
     void FaceTarget()

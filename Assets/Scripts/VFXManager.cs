@@ -12,7 +12,8 @@ public class VFXManager : MonoBehaviour
         EnemyHit,
         HeadshotEffect,
         TerrainHitEffect,
-        FlyingEnemyDead
+        FlyingEnemyDead,
+        FloatingNumber
     }
     public static VFXManager instance
     {
@@ -66,6 +67,11 @@ public class VFXManager : MonoBehaviour
     {
 
         _instance.StartCoroutine(RepeatCouroutine(effect, worldPos, amountToRepeat, timeIntervals));
+    }
+    public static void PlayFloatingNumber(Vector3 worldPos, int num, float heightMod)
+    {
+        GameObject currenteffect = Instantiate(GetVFXGameObject(Effect.FloatingNumber), worldPos, Quaternion.identity, null);
+        currenteffect.GetComponent<FloatingNumberHandler>().Float(num, heightMod);
     }
     private static IEnumerator RepeatCouroutine(Effect effect, Vector3 worldPos, int amountToRepeat, float timeIntervals)
     {

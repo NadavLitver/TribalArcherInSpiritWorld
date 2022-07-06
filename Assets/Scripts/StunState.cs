@@ -23,7 +23,7 @@ public class StunState : State
     protected virtual IEnumerator PauseState(float duration)
     {
         stunEffect.SetActive(true);
-        if (_animator == null)
+        if (_animators.Count > 0)
         {
             agent.isStopped = true;
             yield return new WaitForSeconds(duration);
@@ -33,13 +33,19 @@ public class StunState : State
             yield break;
         }
 
-        float prevSpeed = _animator.speed;
-        _animator.speed = 0;
+        float prevSpeed = _animators[0].speed;
+        foreach (Animator item in _animators)
+        {
+            item.speed = 0;
+        }
         agent.isStopped = true;
         yield return new WaitForSeconds(duration);
         agent.isStopped = false;
-        _animator.Play("Hit");
-        _animator.speed = prevSpeed;
+        foreach (Animator item in _animators)
+        {
+            item.Play("Hit");
+            item.speed = prevSpeed;
+        }
         stunEffect.SetActive(false);
 
         SwapToNextState();

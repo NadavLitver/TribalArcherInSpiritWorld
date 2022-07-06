@@ -13,8 +13,11 @@ public class FlyingEnemyHitState : State
     {
         agent.isStopped = true;
         agent.velocity = Vector3.zero;
-        if (_animator != null)
-            _animator.Play("Hit");
+        if (_animators != null)
+            foreach (Animator item in _animators)
+            {
+                item.Play("Hit");
+            }
         StartCoroutine(SwapStateDelay());
     }
     IEnumerator SwapStateDelay()

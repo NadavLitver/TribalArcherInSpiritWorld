@@ -62,7 +62,10 @@ public class FlyingEnemyAttack : State
     }
     IEnumerator AttackDelay()
     {
-        _animator.Play("Shoot");
+        foreach (Animator item in _animators)
+        {
+            item.Play("Shoot");
+        }
         yield return new WaitForSeconds(timeBetweenAttacks);
         AttackPlayer();
     }

@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +12,7 @@ public abstract class State : MonoBehaviour
     [FoldoutGroup("Properties")] public bool canExitToHit;
 
 
-    [SerializeField, FoldoutGroup("Refrences")] protected Animator _animator;
+    [SerializeField, FoldoutGroup("Refrences")] protected List<Animator> _animators;
 
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] protected LivebodyStateHandler stateHandler;
 
@@ -35,8 +36,11 @@ public abstract class State : MonoBehaviour
     {
         StopAllCoroutines();
         OnStateDisabled();
-        if (_animator != null)
-            _animator.speed = 1;
+        if (_animators != null)
+            foreach (Animator item in _animators)
+            {
+                item.speed = 1;
+            }
     }
     protected abstract void OnStateDisabled();
 

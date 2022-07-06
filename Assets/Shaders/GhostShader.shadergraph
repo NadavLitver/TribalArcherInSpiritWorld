@@ -3542,7 +3542,7 @@
     },
     "m_Name": "FresnelColor",
     "m_DefaultReferenceName": "Color_beeae2cca5fc439eab0c90d326dc2d79",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_FresnelColor",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,

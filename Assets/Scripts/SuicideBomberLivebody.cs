@@ -7,6 +7,7 @@ public class SuicideBomberLivebody : Livebody
 {
     [FoldoutGroup("Properties"), Range(0, 100), SerializeField]
     float chanceToDropHealthOrb;
+    [SerializeField] private HitEffectHandler hitEffect;
     
     protected override void SummonDeadBody()
     {
@@ -19,7 +20,9 @@ public class SuicideBomberLivebody : Livebody
     }
     public override void TakeDamage(int damage)
     {
+        VFXManager.PlayFloatingNumber(transform.position, damage, 9f);
         base.TakeDamage(damage);
+        hitEffect.Hit();
 
     }
     void OnEnable()

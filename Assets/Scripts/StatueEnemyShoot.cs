@@ -78,6 +78,10 @@ public class StatueEnemyShoot : State
             {
                 if ((timeInState - aimTime - shootTime) > BreathTimeAfterFinishShoot)
                 {
+                    foreach (Animator item in _animators)
+                    {
+                        item.SetBool("Shooting", false);
+                    }
                     stateHandler.body.animator.SetBool("Shooting", false);
                     SwapToNextState();
                 }
@@ -119,7 +123,10 @@ public class StatueEnemyShoot : State
         
         if (isShooting)
         {
-            stateHandler.body.animator.SetBool("Shooting", true);
+            foreach (Animator item in _animators)
+            {
+                item.SetBool("Shooting", true);
+            }
             yield return new WaitForSeconds(time);
             CanShoot = true;
             SoundManager.Play(SoundManager.Sound.StatueAttack, m_audioSource,1);
@@ -127,8 +134,10 @@ public class StatueEnemyShoot : State
         }
         else
         {
-
-            stateHandler.body.animator.SetTrigger("Aim");
+            foreach (Animator item in _animators)
+            {
+                item.SetTrigger("Aim");
+            }
             yield return new WaitForSeconds(time);
             canAim = true;
             SoundManager.Play(SoundManager.Sound.StatueAim, m_audioSource,1);

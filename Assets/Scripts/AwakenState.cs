@@ -12,7 +12,10 @@ public class AwakenState : State
 
     protected override void OnStateEnabled()
     {
-        _animator.Play("Awaken");
+        foreach (Animator item in _animators)
+        {
+            item.Play("Awaken");
+        }
         StartCoroutine(delayNextStateSwap());
     }
     IEnumerator delayNextStateSwap()

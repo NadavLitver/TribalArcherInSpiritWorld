@@ -22,8 +22,11 @@ public class FlyingPatrolState : State
     {
         // agent.updateRotation = true;
         agent.isStopped = false;
-        if (_animator != null)
-            _animator.Play("Idle");
+        if (_animators.Count > 0)
+            foreach (Animator item in _animators)
+            {
+                item.Play("Idle");
+            }
         if (gfx != null)
             gfx.ResetGFXRotation();
 

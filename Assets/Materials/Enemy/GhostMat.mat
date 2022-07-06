@@ -47,4 +47,5 @@ Material:
     - Color_d02b805b14c74dd9b8a7cae8c265ce02: {r: 0.0012322073, g: 0.0012322073, b: 0.0012322073, a: 0}
     - Vector3_b0fe8847fa7347a1b9d75b16648d6c73: {r: 0, g: 0.83, b: 0.27, a: 0}
     - Vector3_fb05ad29191e48b3b84b3e652eb5c0fe: {r: 0.05, g: 0, b: 0, a: 0}
+    - _FresnelColor: {r: 0.14244394, g: 0.35335132, b: 0.9150943, a: 1}
   m_BuildTextureStacks: []

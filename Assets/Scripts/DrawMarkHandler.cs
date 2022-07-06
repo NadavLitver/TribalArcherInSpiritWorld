@@ -21,7 +21,7 @@ public class DrawMarkHandler : MonoBehaviour
     private float endScale = 0.7f;
 
     private float startRot = 0f;
-    private float maxRot = 15f;
+    private float maxRot = -20f;
 
     [SerializeField] private AnimationCurve rotEase;
     [SerializeField] private AnimationCurve scaleEase;
