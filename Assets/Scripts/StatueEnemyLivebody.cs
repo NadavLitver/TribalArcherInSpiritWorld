@@ -18,7 +18,7 @@ public class StatueEnemyLivebody : Livebody
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        VFXManager.PlayFloatingNumber(transform.position, damage, 9f);
+        VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
         hitEffect.Hit();
     }
     void OnEnable()

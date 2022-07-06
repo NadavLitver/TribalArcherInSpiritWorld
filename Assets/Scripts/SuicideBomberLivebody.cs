@@ -20,7 +20,7 @@ public class SuicideBomberLivebody : Livebody
     }
     public override void TakeDamage(int damage)
     {
-        VFXManager.PlayFloatingNumber(transform.position, damage, 9f);
+        VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
         base.TakeDamage(damage);
         hitEffect.Hit();
 

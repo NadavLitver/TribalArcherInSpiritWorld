@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
         {
             leapEvent?.Invoke();
             if (GetMoveInput() != Vector3.zero)
-                playerVelocity = GetMoveInput() + (Vector3.up * 0.25f) * leapForce;
+                playerVelocity = GetMoveInput() + (Vector3.up * 0.2f) * leapForce;
             else
                 playerVelocity = camTransform.forward + (Vector3.up * 0.25f) * leapForce;
 

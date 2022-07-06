@@ -1,20 +1,19 @@
 using Sirenix.OdinInspector;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyingEnemyAttack : State
 {
-    [SerializeField, FoldoutGroup("Properties")] private  float timeBetweenAttacks;
-    [SerializeField, FoldoutGroup("Properties")] private  float BackStepLength;
+    [SerializeField, FoldoutGroup("Properties")] private float timeBetweenAttacks;
+    [SerializeField, FoldoutGroup("Properties")] private float BackStepLength;
     [SerializeField, FoldoutGroup("Properties")] private float projectileForce;
     [SerializeField, FoldoutGroup("Properties")] private float faceTargetSpeed = 50;
-    [ReadOnly,FoldoutGroup("Refrences")] bool alreadyAttacked;
+    [ReadOnly, FoldoutGroup("Refrences")] bool alreadyAttacked;
     [FoldoutGroup("Refrences")] public ObjectPool pool;
     [FoldoutGroup("Refrences")] public Transform shootPos;
     [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
 
- 
+
 
     protected override void OnStateEnabled()
     {
@@ -41,22 +40,25 @@ public class FlyingEnemyAttack : State
     }
     private void AttackPlayer()
     {
-      
+
         if (alreadyAttacked || PlayerController.playerTransform == null)
         {
-            StartCoroutine(SwapStateDelay());
-            return;
+           
+                StartCoroutine(SwapStateDelay());
+                return;
+           
         }
       
         var Shot = pool.GetPooledObject();
         Shot.transform.SetPositionAndRotation(shootPos.position, shootPos.rotation);
-        
+
         var ProjBase = Shot.GetComponent<ProjectileBase>();
         ProjBase.direction = (PlayerController.playerTransform.position - shootPos.position).normalized;
         ProjBase.force = projectileForce;
         Shot.SetActive(true);
         alreadyAttacked = true;
         SoundManager.Play(SoundManager.Sound.OwlAttack, stateHandler.body.audioSource);
+       
         StartCoroutine(SwapStateDelay());
 
     }
@@ -68,6 +70,7 @@ public class FlyingEnemyAttack : State
         }
         yield return new WaitForSeconds(timeBetweenAttacks);
         AttackPlayer();
+       
     }
     IEnumerator SwapStateDelay()
     {

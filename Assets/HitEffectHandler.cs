@@ -23,7 +23,7 @@ public class HitEffectHandler : MonoBehaviour
     public void Hit()
     {
         StopCoroutine(this.HitRoutine());
-        StartCoroutine(HitRoutine());
+       VFXManager.instance.StartCoroutine(HitRoutine());
     }
     private IEnumerator HitRoutine() 
     {
@@ -44,5 +44,9 @@ public class HitEffectHandler : MonoBehaviour
         {
             item.material.SetColor(colorRef, idleColor);
         }
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }

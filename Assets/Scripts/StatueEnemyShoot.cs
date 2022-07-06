@@ -39,20 +39,18 @@ public class StatueEnemyShoot : State
     private void Update()
     {
         timeInState += Time.deltaTime;
-        stopAimPos = PlayerController.playerTransform.position;
-        stopAimPos.x = 0;
-        stopAimPos.y = -30;
+      
         if (timeInState < aimTime)
         {
             if (!startedAim)
             {
                 startedAim = true;
-                StartCoroutine(animationDelay(0.9f, false));
+                StartCoroutine(animationDelay(0.1f, false));
                 
                 
             }
             if (canAim)
-            {/* new Vector3(0,transform.position.y/*PlayerController.playerTransform.position.y - 40, PlayerController.playerTransform.position.z);*/
+            {
                
                 AimBeam();
             }
@@ -65,7 +63,7 @@ public class StatueEnemyShoot : State
                 if (!startedShoot)
                 {
 
-                    StartCoroutine(animationDelay(1.2f, true));
+                    StartCoroutine(animationDelay(1f, true));
                     startedShoot = true;
                 }
                 if (CanShoot)
@@ -87,6 +85,9 @@ public class StatueEnemyShoot : State
                 }
             }
         }
+        stopAimPos = PlayerController.playerTransform.position;
+        stopAimPos.x = 0;
+        stopAimPos.y = -30;
 
     }
     public void AimBeam()

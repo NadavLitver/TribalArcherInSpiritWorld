@@ -113,7 +113,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 641
   maxDamageBody: 20
-  minDamageBody: 10
+  minDamageBody: 5
   StackOnBodyHit: 40
   StackOnHeadHit: 60
   onHitBody:

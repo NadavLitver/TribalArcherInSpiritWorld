@@ -20,10 +20,10 @@ public class FlyingEnemyBody : Livebody
     }
     public override void TakeDamage(int damage)
     {
-        hitEffect.Hit();
-        VFXManager.PlayFloatingNumber(transform.position, damage, 8f);
+        VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
         base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.OwlHit, audioSource);
+        hitEffect.Hit();
     }
     void OnEnable()
     {

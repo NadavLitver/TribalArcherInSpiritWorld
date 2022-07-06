@@ -146,7 +146,7 @@ public class ArrowProjectile : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Head"))
                 {
                     // OnLivebodyHeadshot?.Invoke();
-                    currentLivebody.TakeDamage(appliedDamage + 5);
+                    currentLivebody.TakeDamage(appliedDamage);
                     VFXManager.Play(VFXManager.Effect.HeadshotEffect, rayHitPoint);
                     HitMarkHandler.instance.PlayHeadShotHitMark();
                     AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
@@ -154,14 +154,7 @@ public class ArrowProjectile : MonoBehaviour
 
 
                 }
-                else
-                {
-                    currentLivebody.TakeDamage(appliedDamage);
-                    VFXManager.Play(VFXManager.Effect.EnemyHit, rayHitPoint);
-                    HitMarkHandler.instance.PlayNormalHitMark();
-                    AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
-                    onHitBody?.Invoke();
-                }
+               
 
             }
             rayHit = true;
