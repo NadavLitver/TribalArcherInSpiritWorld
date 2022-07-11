@@ -19,7 +19,11 @@ public class LivebodyStateHandler : MonoBehaviour
         if (body != null)
             body.m_stateHandler = this;
     }
+    private void Start()
+    {
+        EnemySpawnerManager.instance.AddMe(body);
 
+    }
     public void OnEnable()
     {
         body.health = body.maxHealth;
@@ -27,6 +31,7 @@ public class LivebodyStateHandler : MonoBehaviour
         InitStates();
         if(AbilityStackHandler.instance != null)
           AbilityStackHandler.instance.playerBody.OnDeath.AddListener(InitStates);
+       
 
     }
     public void OnDisable()

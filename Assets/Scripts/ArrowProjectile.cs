@@ -55,6 +55,13 @@ public class ArrowProjectile : MonoBehaviour
             }
             StartCoroutine(ActivateTrail());
         }
+        if(Physics.Raycast(transform.position,velocity,out RaycastHit hit, rayMask))
+        {
+            if(hit.distance < 2)
+            {
+                OnHit(hit);
+            }
+        }
         rayHit = false;
        
     }
@@ -67,50 +74,7 @@ public class ArrowProjectile : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    onHitAnything?.Invoke();
-    //    SoundManager.Play(SoundManager.Sound.BowHit, other.ClosestPointOnBounds(PlayerController.playerTransform.position));
-    //    currentLivebody = other.gameObject.GetComponentInParent<Livebody>();
-    //    if (currentLivebody == null)
-    //    {
-    //        this.gameObject.SetActive(false);
-    //        VFXManager.Play(VFXManager.Effect.TerrainHitEffect, other.ClosestPointOnBounds(PlayerController.playerTransform.position));
-    //        return;
-    //    }
-    //    if (lightingBolt != null)
-    //    {
-    //        lightingBolt.OnActivate(currentLivebody);
-    //    }
-    //    else
-    //    {
-    //        if (doStun)
-    //        {
-    //            currentLivebody.m_stateHandler.SwapToStunState();
-    //        }
-    //        if (other.gameObject.CompareTag("Head"))
-    //        {
-    //            // OnLivebodyHeadshot?.Invoke();
-    //            currentLivebody.TakeDamage(appliedDamage + 5);
-    //            VFXManager.Play(VFXManager.Effect.HeadshotEffect, other.ClosestPointOnBounds(PlayerController.playerTransform.position));
-    //            HitMarkHandler.instance.PlayHeadShotHitMark();
-    //            AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
-    //            onHitHead?.Invoke();
-
-
-    //        }
-    //        else
-    //        {
-    //            currentLivebody.TakeDamage(appliedDamage);
-    //            VFXManager.Play(VFXManager.Effect.EnemyHit, other.ClosestPointOnBounds(PlayerController.playerTransform.position));
-    //            HitMarkHandler.instance.PlayNormalHitMark();
-    //            AbilityStackHandler.instance.IncreaseBufferValue(StackOnBodyHit);
-    //            onHitBody?.Invoke();
-    //        }
-    //        this.gameObject.SetActive(false);
-    //    }
-    //}
-
+    
     private void CheckCollisionWithRay()
     {
         if (rayHit)
@@ -119,52 +83,53 @@ public class ArrowProjectile : MonoBehaviour
         ray = new Ray(transform.position, direction);
 
         if (Physics.BoxCast(boxCastPosition, colliderBounds, ray.direction, out RaycastHit hit, transform.rotation, colliderBounds.magnitude, rayMask))
-        {
-
-            rayHitPoint = hit.point;
-            currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
-            onHitAnything?.Invoke();
-            SoundManager.Play(SoundManager.Sound.BowHit, hit.point);
-          
-            if (currentLivebody == null)
-            {
-                this.gameObject.SetActive(false);
-                VFXManager.Play(VFXManager.Effect.TerrainHitEffect, rayHitPoint);
-                rayHit = true;
-                return;
-            }
-            if (lightingBolt != null)
-            {
-                lightingBolt.OnActivate(currentLivebody);
-            }
-            else
-            {
-                if (doStun)
-                {
-                    currentLivebody.m_stateHandler.SwapToStunState();
-                }
-                if (hit.collider.gameObject.CompareTag("Head"))
-                {
-                    // OnLivebodyHeadshot?.Invoke();
-                    currentLivebody.TakeDamage(appliedDamage);
-                    VFXManager.Play(VFXManager.Effect.HeadshotEffect, rayHitPoint);
-                    HitMarkHandler.instance.PlayHeadShotHitMark();
-                    AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
-                    onHitHead?.Invoke();
-
-
-                }
-               
-
-            }
-            rayHit = true;
-         
-            this.gameObject.SetActive(false);
-        }
-
-
+            OnHit(hit);
 
     }
+
+    private void OnHit(RaycastHit hit)
+    {
+        rayHitPoint = hit.point;
+        currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
+        onHitAnything?.Invoke();
+        SoundManager.Play(SoundManager.Sound.BowHit, hit.point);
+
+        if (currentLivebody == null)
+        {
+            this.gameObject.SetActive(false);
+            VFXManager.Play(VFXManager.Effect.TerrainHitEffect, rayHitPoint);
+            rayHit = true;
+            return;
+        }
+        if (lightingBolt != null)
+        {
+            lightingBolt.OnActivate(currentLivebody);
+        }
+        else
+        {
+            if (doStun)
+            {
+                currentLivebody.m_stateHandler.SwapToStunState();
+            }
+            if (hit.collider.gameObject.CompareTag("Head"))
+            {
+                // OnLivebodyHeadshot?.Invoke();
+                currentLivebody.TakeDamage(appliedDamage);
+                VFXManager.Play(VFXManager.Effect.HeadshotEffect, rayHitPoint);
+                HitMarkHandler.instance.PlayHeadShotHitMark();
+                AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
+                onHitHead?.Invoke();
+
+
+            }
+
+
+        }
+        rayHit = true;
+
+        this.gameObject.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
         

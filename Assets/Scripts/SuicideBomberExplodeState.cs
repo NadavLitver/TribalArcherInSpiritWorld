@@ -36,6 +36,7 @@ public class SuicideBomberExplodeState : State
                     currentLivebody.TakeDamage(damage);
                     VFXManager.Play(VFXManager.Effect.HeadshotEffect, ExplosionPos.position);
                     SoundManager.Play(SoundManager.Sound.SuicideExplosions, transform.position);
+                    EnemySpawnerManager.instance.RemoveMe(stateHandler.body);
                     transform.parent.gameObject.SetActive(false);
                 }
             }

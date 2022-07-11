@@ -36,12 +36,15 @@ public class HitEffectHandler : MonoBehaviour
             Debug.Log(curDur);
             foreach (SkinnedMeshRenderer item in m_skinnedMeshRenderers)
             {
-                item.material.SetColor(colorRef, Color.Lerp(idleColor, activeColor * maxIntensity, ease));
+                
+         item.material.SetColor(colorRef, Color.Lerp(idleColor, activeColor * maxIntensity, ease));
+                    
             }
             yield return null;
         }
         foreach (SkinnedMeshRenderer item in m_skinnedMeshRenderers)
         {
+            
             item.material.SetColor(colorRef, idleColor);
         }
     }

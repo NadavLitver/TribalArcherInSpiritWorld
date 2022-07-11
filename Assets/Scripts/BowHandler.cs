@@ -159,7 +159,11 @@ public class BowHandler : MonoBehaviour
         arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
-        arrowProj.force = arrowForce * shootHoldTime;
+        if(shootHoldTime < 0.21f)
+        {
+            shootHoldTime = 0.1f;
+        }
+        arrowProj.force = arrowForce * (shootHoldTime * 2);
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
@@ -173,12 +177,12 @@ public class BowHandler : MonoBehaviour
     }
     public IEnumerator ReleaseLightingArrow()
     {
-
+        yield return new WaitUntil(() => shootHoldTime > 0.2f);
         var arrow = LightingBoltAbility.LightingArrowPool.GetPooledObject();
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
         arrowProj.direction = ShootDirection().normalized;
-        arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.force = arrowForce * (shootHoldTime * 2);
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));   
         shootHoldTime = 0;
         bowString.ResetBowStringPos();
@@ -194,6 +198,7 @@ public class BowHandler : MonoBehaviour
     }
     public IEnumerator ReleaseScatterArrow()
     {
+        yield return new WaitUntil(() => shootHoldTime > 0.2f);
         float arrowDirectionChanger =0;
        
         Vector3 dir = ShootDirection().normalized;
@@ -211,7 +216,7 @@ public class BowHandler : MonoBehaviour
             var arrowProj = arrow.GetComponent<ArrowProjectile>();
             arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
             arrowProj.direction = dir +(Vector3.Cross(Vector3.up,dir) * arrowDirectionChanger);
-            arrowProj.force = arrowForce * shootHoldTime;
+            arrowProj.force = arrowForce * (shootHoldTime * 2);
             arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
            
             arrow.SetActive(true);
@@ -242,7 +247,7 @@ public class BowHandler : MonoBehaviour
         arrow.transform.SetPositionAndRotation(ArrowPos.position, ArrowPos.rotation);
         var arrowProj = arrow.GetComponent<ArrowProjectile>();
         arrowProj.direction = ShootDirection().normalized;
-        arrowProj.force = arrowForce * shootHoldTime;
+        arrowProj.force = arrowForce * (shootHoldTime * 2);
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
         shootHoldTime = 0;
         arrow.SetActive(true);

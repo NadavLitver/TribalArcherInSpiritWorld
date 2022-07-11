@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6187965389316745325}
   - component: {fileID: 4621347892378293390}
   - component: {fileID: 2860290249947658307}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: ArrowPrefabLightingBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 2801983996438045696}
   - component: {fileID: 1246791262393854885}
   - component: {fileID: 3938830281948733295}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arrow_V1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7625044335339903509}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: group19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7760132255146667268}
   - component: {fileID: 438616917467296612}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail_Player_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

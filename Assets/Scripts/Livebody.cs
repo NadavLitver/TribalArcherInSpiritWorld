@@ -59,7 +59,7 @@ public class Livebody : MonoBehaviour
         if (isVulnerable)
         {
             health -= damage;
-            StartCoroutine(SetVulnerablelFalse());
+            //StartCoroutine(SetVulnerablelFalse());
             updateUIBars.Invoke();
             hitEvent?.Invoke();
 
@@ -69,6 +69,7 @@ public class Livebody : MonoBehaviour
                 SummonDeadBody();
                 OnDeath.Invoke();
                 isVulnerable = false;
+             
             }
         }
 

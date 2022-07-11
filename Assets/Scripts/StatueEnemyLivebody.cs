@@ -14,6 +14,8 @@ public class StatueEnemyLivebody : Livebody
             Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
         }
         SoundManager.Play(SoundManager.Sound.StatueDead, transform.position, 1);
+        EnemySpawnerManager.instance.RemoveMe(this);
+
     }
     public override void TakeDamage(int damage)
     {

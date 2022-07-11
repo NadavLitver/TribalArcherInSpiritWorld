@@ -16,6 +16,8 @@ public class FlyingEnemyBody : Livebody
            Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
         }
         SoundManager.Play(SoundManager.Sound.OwlDead, audioSource);
+        EnemySpawnerManager.instance.RemoveMe(this);
+
         //VFXManager.Play(VFXManager.Effect.FlyingEnemyDead, CenterPivot.position);
     }
     public override void TakeDamage(int damage)
