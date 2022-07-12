@@ -1009,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 467320, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 467320, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1042,6 +1042,26 @@ PrefabInstance:
     - target: {fileID: 467320, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19843638, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 19843638, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19843638, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 19843638, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
+      propertyPath: ShapeModule.m_Position.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 19843638, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7009d5780d8b4da48a9539e964da8b95, type: 3}

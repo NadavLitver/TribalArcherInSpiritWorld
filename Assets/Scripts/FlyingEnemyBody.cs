@@ -7,7 +7,6 @@ public class FlyingEnemyBody : Livebody
 {
     [FoldoutGroup("Properties"), Range(0, 100),SerializeField]
     float chanceToDropHealthOrb;
-    [SerializeField] private HitEffectHandler hitEffect;
     protected override void SummonDeadBody()
     {
         float ran = Randomizer.ReturnRandomFloat(new Vector2(0,100));
@@ -25,7 +24,6 @@ public class FlyingEnemyBody : Livebody
         VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
         base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.OwlHit, audioSource);
-        hitEffect.Hit();
     }
     void OnEnable()
     {

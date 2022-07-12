@@ -5,7 +5,6 @@ public class StatueEnemyLivebody : Livebody
 {
     [FoldoutGroup("Properties"), Range(0, 100), SerializeField]
     float chanceToDropHealthOrb;
-    [SerializeField] private HitEffectHandler hitEffect;
     protected override void SummonDeadBody()
     {
         float ran = Randomizer.ReturnRandomFloat(new Vector2(0, 100));
@@ -19,9 +18,8 @@ public class StatueEnemyLivebody : Livebody
     }
     public override void TakeDamage(int damage)
     {
-        base.TakeDamage(damage);
         VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
-        hitEffect.Hit();
+        base.TakeDamage(damage);
     }
     void OnEnable()
     {

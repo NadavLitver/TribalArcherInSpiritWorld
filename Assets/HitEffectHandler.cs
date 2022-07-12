@@ -23,9 +23,9 @@ public class HitEffectHandler : MonoBehaviour
     public void Hit()
     {
         StopCoroutine(this.HitRoutine());
-       VFXManager.instance.StartCoroutine(HitRoutine());
+        VFXManager.instance.StartCoroutine(HitRoutine());
     }
-    private IEnumerator HitRoutine() 
+    private IEnumerator HitRoutine()
     {
         float curDur;
         curDur = 0;
@@ -36,16 +36,17 @@ public class HitEffectHandler : MonoBehaviour
             Debug.Log(curDur);
             foreach (SkinnedMeshRenderer item in m_skinnedMeshRenderers)
             {
-                
-         item.material.SetColor(colorRef, Color.Lerp(idleColor, activeColor * maxIntensity, ease));
-                    
+                for (int i = 0; i < item.materials.Length; i++)
+                {
+                    item.materials[i].SetColor(colorRef, Color.Lerp(idleColor, activeColor, ease));
+                }
             }
             yield return null;
         }
         foreach (SkinnedMeshRenderer item in m_skinnedMeshRenderers)
         {
-            
-            item.material.SetColor(colorRef, idleColor);
+
+            item.materials[0].SetColor(colorRef, idleColor);
         }
     }
     private void OnDisable()

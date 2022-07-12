@@ -178,6 +178,7 @@ Material:
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
     - _EnvironmentReflections: 1
+    - _FresnelPower: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -218,6 +219,7 @@ Material:
     - _BaseColor: {r: 1, g: 0.94425386, b: 0.6933962, a: 1}
     - _Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
     - _EmissionColor: {r: 0.0028034954, g: 0.009433985, b: 0.009177, a: 1}
+    - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6811040517038883174

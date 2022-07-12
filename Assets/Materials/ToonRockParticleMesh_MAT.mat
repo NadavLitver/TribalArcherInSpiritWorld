@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3503726027600579502
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_Enemy_Hands
-  m_Shader: {fileID: -6465566751694194690, guid: 2692e2955f511e64e8f453e68b81fcae, type: 3}
+  m_Name: ToonRockParticleMesh_MAT
+  m_Shader: {fileID: -6465566751694194690, guid: ae34dadabdf2c2f49aafd489a1e9ad86, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,24 +19,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - MainTex:
-        m_Texture: {fileID: 2800000, guid: 5fa53ec7d6e88814db8d86682d01a7af, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Mask_R_Emission:
-        m_Texture: {fileID: 2800000, guid: 5fa53ec7d6e88814db8d86682d01a7af, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - Texture2D_252e722d409b4804a6d10f742d52dd89:
-        m_Texture: {fileID: 2800000, guid: 5fa53ec7d6e88814db8d86682d01a7af, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C8C9609E:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 15297e213ee20d042bc887b8c97401f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 15297e213ee20d042bc887b8c97401f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -73,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 15297e213ee20d042bc887b8c97401f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -105,17 +80,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Brightness_Rim: 2.22
-    - Rim_Power: 0
-    - Toon_Ramp_Offset: 0.92
-    - Toon_Ramp_Smoothness: 0
-    - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: 0
-    - Vector1_4C850B07: 0.1
-    - Vector1_64B788AD: 4
-    - Vector1_67744406: 1
-    - Vector1_a199e3e12f1b49049100eb4a71d02f18: 0
+    - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: -0.67
+    - Vector1_4C850B07: 0
+    - Vector1_64B788AD: 0
+    - Vector1_67744406: 0
+    - Vector1_a199e3e12f1b49049100eb4a71d02f18: 8.53
     - _AlphaClip: 0
-    - _Ambient: 0.32
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -126,7 +96,6 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FresnelPower: 10
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -140,19 +109,31 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Toon_Ramp_Offset_Point: 0.5
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_057304138c224518a29f9a1f6a929faf: {r: 6.2874913, g: 6.2874913, b: 6.2874913, a: 1}
-    - Color_4B4CE890: {r: 1, g: 0.9858491, b: 0.9858491, a: 0}
-    - Color_4B9AABFA: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+    - Color_057304138c224518a29f9a1f6a929faf: {r: 9.849155, g: 7.8020763, b: 4.9825144, a: 1}
+    - Color_4B4CE890: {r: 0, g: 0, b: 0, a: 1}
+    - Color_4B9AABFA: {r: 0.9917177, g: 1, b: 0.7877358, a: 1}
     - Color_A96C309B: {r: 1, g: 1, b: 1, a: 1}
-    - Color_F150E237: {r: 1, g: 1, b: 1, a: 1}
-    - Toon_Ramp_Tint: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - Color_F150E237: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_2553fda076bc44af8070f71c3ea8d1bd: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_92dfca70ac92439bbefd20338d48ec6d: {r: 1, g: 1, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &8046836611666990107
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
