@@ -14,6 +14,8 @@ public class StatueEnemyLivebody : Livebody
         }
         SoundManager.Play(SoundManager.Sound.StatueDead, transform.position, 1);
         EnemySpawnerManager.instance.RemoveMe(this);
+        Debug.Log("SummonDeadBodyCalled");
+        base.SummonDeadBody();
 
     }
     public override void TakeDamage(int damage)

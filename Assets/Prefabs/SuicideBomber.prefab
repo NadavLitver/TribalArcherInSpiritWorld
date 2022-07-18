@@ -296,7 +296,7 @@ MonoBehaviour:
   maxHealth: 40
   isVulnerable: 1
   timeBackToVulnerable: 0.1
-  DeadBody: {fileID: 0}
+  DeadBody: {fileID: 1257899049973296, guid: d4c897f22064ea347853091adb00788e, type: 3}
   HealthOrb: {fileID: 3657041678553056595, guid: 20910b6eddfe2c045b30231a5269205b, type: 3}
   animator: {fileID: 0}
   CenterPivot: {fileID: 4607568065452998966}
@@ -339,7 +339,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   chanceToDropHealthOrb: 41
-  hitEffect: {fileID: 2073561889}
 --- !u!195 &4359631608720208371
 NavMeshAgent:
   m_ObjectHideFlags: 0

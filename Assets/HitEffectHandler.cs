@@ -33,7 +33,6 @@ public class HitEffectHandler : MonoBehaviour
         {
             curDur += Time.deltaTime / effectDuration;
             float ease = m_ease.Evaluate(curDur);
-            Debug.Log(curDur);
             foreach (SkinnedMeshRenderer item in m_skinnedMeshRenderers)
             {
                 for (int i = 0; i < item.materials.Length; i++)

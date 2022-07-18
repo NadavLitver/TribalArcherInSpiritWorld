@@ -97,8 +97,7 @@ public class Livebody : MonoBehaviour
     {
         if (DeadBody != null)
             Instantiate(DeadBody, CenterPivot.position, Quaternion.identity, null);
-        if (HealthOrb != null)
-            Instantiate(HealthOrb, CenterPivot.position, Quaternion.identity, null);
+   
 
     }
     bool isResetingVulnerable;

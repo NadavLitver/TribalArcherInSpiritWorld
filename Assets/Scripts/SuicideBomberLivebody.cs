@@ -16,6 +16,7 @@ public class SuicideBomberLivebody : Livebody
         }
         SoundManager.Play(SoundManager.Sound.SuicideDead, transform.position);
         EnemySpawnerManager.instance.RemoveMe(this);
+        base.SummonDeadBody();
     }
     public override void TakeDamage(int damage)
     {

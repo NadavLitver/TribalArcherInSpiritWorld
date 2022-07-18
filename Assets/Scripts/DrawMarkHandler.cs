@@ -55,7 +55,6 @@ public class DrawMarkHandler : MonoBehaviour
         while (currDurr < duration)
         {
             currDurr +=  Time.deltaTime;
-            Debug.Log(currDurr);
             transform.localScale = Vector3.one * Mathf.Lerp(startScale, endScale, scaleEase.Evaluate(currDurr));
             m_canvasGroup.alpha = Mathf.Lerp(0, 1, currDurr / duration);
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(startRot, maxRot, rotEase.Evaluate(currDurr)));

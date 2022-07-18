@@ -16,7 +16,7 @@ public class FlyingEnemyBody : Livebody
         }
         SoundManager.Play(SoundManager.Sound.OwlDead, audioSource);
         EnemySpawnerManager.instance.RemoveMe(this);
-
+        base.SummonDeadBody();
         //VFXManager.Play(VFXManager.Effect.FlyingEnemyDead, CenterPivot.position);
     }
     public override void TakeDamage(int damage)

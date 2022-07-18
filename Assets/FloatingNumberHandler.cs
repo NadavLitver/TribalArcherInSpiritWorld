@@ -39,7 +39,6 @@ public class FloatingNumberHandler : MonoBehaviour
         while (curDur < 1)
         {
             curDur += Time.deltaTime / duration;
-            Debug.Log(curDur);
             transform.position = Vector3.Lerp(startPos, targetPos, moveEase.Evaluate(curDur));
             text.color = new Color(text.color.r, text.color.g, text.color.b, fadeEase.Evaluate(curDur));
             yield return null;
