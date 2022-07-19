@@ -5426,7 +5426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 20
+  maxHealth: 120
   isVulnerable: 0
   timeBackToVulnerable: 0.1
   DeadBody: {fileID: 5026327600422785357, guid: 317ef1fdcacb07d4b985f21fe3343e03, type: 3}
