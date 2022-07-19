@@ -5,7 +5,6 @@ using UnityEngine;
 public class BowHandler : MonoBehaviour
 {
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] private InputManager input;
-    [SerializeField, FoldoutGroup("Refrences")] private BowString bowString;
     [SerializeField, FoldoutGroup("Refrences")] private QuickStunAbility QuickShotAbiliyRef;
     [SerializeField, FoldoutGroup("Refrences")] private ScatterArrowAbility ScatterArrowAbilityRef;
     [SerializeField, FoldoutGroup("Refrences")] private LightingBoltAOEAbility LightingBoltAbility;
@@ -132,8 +131,6 @@ public class BowHandler : MonoBehaviour
         if (isShooting && shootHoldTime < maxHoldTime)
         {
             shootHoldTime += Time.deltaTime;
-            float lerpT = shootHoldTime / maxHoldTime;
-            bowString.SetBowStringPos(lerpT);
         }
     }
     private void OnDisable()
@@ -166,8 +163,6 @@ public class BowHandler : MonoBehaviour
         arrowProj.force = arrowForce * (shootHoldTime * 2);
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));
         shootHoldTime = 0;
-        bowString.ResetBowStringPos();
-        bowString.PlayStringVFX();
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         isShooting = false;
         
@@ -185,8 +180,6 @@ public class BowHandler : MonoBehaviour
         arrowProj.force = arrowForce * (shootHoldTime * 2);
         arrowProj.appliedDamage = Mathf.RoundToInt(GetCurrentDamage(arrowProj));   
         shootHoldTime = 0;
-        bowString.ResetBowStringPos();
-        bowString.PlayStringVFX();
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         AbilityStackHandler.instance.DecreaseStackCount(LightingBoltAbility.stackCost);
         arrow.SetActive(true);
@@ -222,8 +215,6 @@ public class BowHandler : MonoBehaviour
             arrow.SetActive(true);
         }
         shootHoldTime = 0;
-        bowString.ResetBowStringPos();
-        bowString.PlayStringVFX();
         CinemachineCameraShaker.instance.ShakeCamera(0.1f, 6f, 0.1f);
         AbilityStackHandler.instance.DecreaseStackCount();
         ScatterArrowAbilityRef.ToggleAbility();

@@ -12,6 +12,7 @@ public class InteractableCheck : MonoBehaviour
     [ReadOnly, SerializeField]
     private List<GameObject> interactablesNearMe;
     public PlayerController PlayerRef;
+    
     private void Awake()
     {
         if (OnInteractClicked == null)

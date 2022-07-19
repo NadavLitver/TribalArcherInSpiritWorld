@@ -360,6 +360,10 @@ MonoBehaviour:
   BufferCombatDelay: 3
   addedStackValueText: {fileID: 0}
   playerBody: {fileID: 0}
+  abilities:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5429089753126200212
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,9 +409,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXArray:
   - m_effect: 0
-    m_prefab: {fileID: 2175872922164089343, guid: 0a647fe19e5d7a042aed06896f59c201, type: 3}
+    m_prefab: {fileID: 2720691050186666078, guid: b5a6ffdaa9abb1844be88eaeeba05874, type: 3}
   - m_effect: 1
-    m_prefab: {fileID: 2175872922164089343, guid: 0a647fe19e5d7a042aed06896f59c201, type: 3}
+    m_prefab: {fileID: 2720691050186666078, guid: b5a6ffdaa9abb1844be88eaeeba05874, type: 3}
   - m_effect: 2
     m_prefab: {fileID: 2605924497512792530, guid: b97275cb6eb976f4c99360eea092b432, type: 3}
   - m_effect: 3

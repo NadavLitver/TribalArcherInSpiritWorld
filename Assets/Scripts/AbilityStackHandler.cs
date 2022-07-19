@@ -4,7 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+public enum AbilityEnum
+{
+    Scatter,
+    QuickShot,
+    LightingStrike,
+}
 public class AbilityStackHandler : MonoBehaviour
 {
     public static AbilityStackHandler instance;
@@ -29,6 +34,7 @@ public class AbilityStackHandler : MonoBehaviour
     private TextMeshProUGUI addedStackValueText;
     [FoldoutGroup("Refrences")]
     public PlayerLivebody playerBody;
+    [SerializeField] Ability[] abilities;
     public void Awake()
     {
         if (instance == null)
@@ -40,6 +46,7 @@ public class AbilityStackHandler : MonoBehaviour
         {
             Debug.LogError("singelton instance populated");
         }
+        
         currentStackAmount = MAX_STACKS;
         Buffer.maxValue = BufferMaxValue;
         UpdateUIElements();
@@ -147,5 +154,20 @@ public class AbilityStackHandler : MonoBehaviour
         canBufferChange = false;
         yield return new WaitForSeconds(BufferCombatDelay);
         canBufferChange = true;
+    }
+    public Ability GetAbility(AbilityEnum ability)
+    {
+        switch (ability)
+        {
+            case AbilityEnum.Scatter:
+                return abilities[0];
+            case AbilityEnum.QuickShot:
+                return abilities[1];
+            case AbilityEnum.LightingStrike:
+                return abilities[2];
+          
+        }
+        Debug.Log("No ability Found");
+        return abilities[0];
     }
 }

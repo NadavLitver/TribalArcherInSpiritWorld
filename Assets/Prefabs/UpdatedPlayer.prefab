@@ -1077,10 +1077,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7795163102927808545}
     m_Modifications:
+    - target: {fileID: 978330266, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 978330268, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_animator
       value: 
       objectReference: {fileID: 8044071146096446681}
+    - target: {fileID: 1593920049, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4388962376751778796, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: arrowForce
       value: 140
@@ -1092,6 +1100,10 @@ PrefabInstance:
     - target: {fileID: 6803620044544205673, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_Name
       value: QuickStunAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803620044544205673, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8523324568311403736, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_Name
