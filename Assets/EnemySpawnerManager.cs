@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawnerManager : MonoBehaviour
@@ -17,7 +18,8 @@ public class EnemySpawnerManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        InvokeRepeating("Spawn", 2, 1);
+        // InvokeRepeating("Spawn", 2, 1);
+        StartCoroutine(Spawn());
     }
 
     public void RemoveMe(Livebody bodyToRemove)
@@ -38,15 +40,30 @@ public class EnemySpawnerManager : MonoBehaviour
 
     }
 
-    void Spawn()
+    IEnumerator Spawn()
     {
-        for (int i = 0; i < enemyPositions.Count; i++)
+        while (this.enabled)
         {
-            if (Vector2.Distance(enemyPositions[i], PlayerController.playerTransform.position) < distanceToActivate)
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < enemyPositions.Count; i++)
             {
-                enemies[i].gameObject.SetActive(true);
+                if (Vector2.Distance(enemyPositions[i], PlayerController.playerTransform.position) < distanceToActivate)
+                {
+                    VFXManager.Play(VFXManager.Effect.SpawnEffect, enemies[i].transform.position);
+                    yield return new WaitForSeconds(1f);
+                    enemies[i].gameObject.SetActive(true);
+                    RemoveMe(enemies[i]);
+                }
             }
         }
+      
 
+    }
+    IEnumerator SpawnRoutine(Livebody ObjectToSetActive)
+    {
+        VFXManager.Play(VFXManager.Effect.SpawnEffect, ObjectToSetActive.transform.position);
+        yield return new WaitForSeconds(2f);
+        ObjectToSetActive.gameObject.SetActive(true);
+        
     }
 }

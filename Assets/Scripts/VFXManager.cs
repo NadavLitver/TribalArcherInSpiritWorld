@@ -13,7 +13,8 @@ public class VFXManager : MonoBehaviour
         HeadshotEffect,
         TerrainHitEffect,
         FlyingEnemyDead,
-        FloatingNumber
+        FloatingNumber,
+        SpawnEffect,
     }
     public static VFXManager instance
     {

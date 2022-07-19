@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties_Leap"), ReadOnly] private bool canLeap;
     [SerializeField, FoldoutGroup("Properties_Leap")] private float leapForce;
     [SerializeField, FoldoutGroup("Properties_Leap")] public float LeapCD;
+    [SerializeField, FoldoutGroup("Properties_Leap")] GameObject LeapVFX;
+
     [SerializeField, FoldoutGroup("Properties_Leap")] public UnityEvent leapEvent;
     
 
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
             Leap();
             Move(GetMoveInput());
             BreathboundMovement();
+            
         }
 
         
@@ -129,7 +132,7 @@ public class PlayerController : MonoBehaviour
                 m_audioSource.clip = GetCurrentRunClip();
                 m_audioSource.Play();
                 
-                PostProccessManipulator.SetLensDistortion();
+                //PostProccessManipulator.SetLensDistortion();
                 CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
                 sprintMod = sprintSpeed;
             }
@@ -198,6 +201,7 @@ public class PlayerController : MonoBehaviour
         if (input.PlayerJumpedThisFrame() && !isGrounded && canLeap)
         {
             leapEvent?.Invoke();
+            LeapVFX.SetActive(true);
             if (GetMoveInput() != Vector3.zero)
                 playerVelocity = GetMoveInput() + (Vector3.up * 0.2f) * leapForce;
             else
