@@ -51,13 +51,13 @@ public class DrawMarkHandler : MonoBehaviour
     {
         float duration = 1f;
         float currDurr = 0;
-        transform.rotation = Quaternion.identity;
+        transform.localRotation = Quaternion.Euler(0,0, startRot);
         while (currDurr < duration)
         {
-            currDurr +=  Time.deltaTime;
+            currDurr += Time.deltaTime;
             transform.localScale = Vector3.one * Mathf.Lerp(startScale, endScale, scaleEase.Evaluate(currDurr));
-            m_canvasGroup.alpha = Mathf.Lerp(0, 1, currDurr / duration);
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(startRot, maxRot, rotEase.Evaluate(currDurr)));
+            m_canvasGroup.alpha = Mathf.Lerp(0, 1, currDurr);
+            transform.localRotation = Quaternion.Euler(0, 0, Mathf.Lerp(startRot, maxRot, rotEase.Evaluate(currDurr)));
             yield return new WaitForEndOfFrame();
         }
         transform.localScale = Vector3.one * endScale;

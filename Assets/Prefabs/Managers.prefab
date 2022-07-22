@@ -374,6 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7307478586526495004}
   - component: {fileID: 4827536214303527188}
+  - component: {fileID: 635659859}
   m_Layer: 0
   m_Name: EffectsManager
   m_TagString: Untagged
@@ -418,6 +419,36 @@ MonoBehaviour:
     m_prefab: {fileID: 3075044854833262754, guid: 6a01b53e4d8f18c4b9c9fa4a4b6870e1, type: 3}
   - m_effect: 4
     m_prefab: {fileID: 1829308401092268362, guid: 8a0524f2f06bcf1438ace22a4da4c129, type: 3}
+--- !u!114 &635659859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429089753126200212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abe759f52dc1544a9ca7fbcc2da4d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doRain: 1
+  rain: {fileID: 0}
+  doClouds: 1
+  clouds: {fileID: 0}
+  doLight: 1
+  light: {fileID: 0}
+  dayLight: {r: 0.95686275, g: 0.76862746, b: 1, a: 1}
+  nightLight: {r: 0, g: 0, b: 0, a: 0}
+  dayLightIntensity: 0.3
+  nightLightIntensity: 0
+  doFog: 1
+  dayFog: {r: 0.3764706, g: 0.4392157, b: 0.5019608, a: 0.5019608}
+  nightFog: {r: 0, g: 0.039215688, b: 0.07450981, a: 1}
+  dayDensity: 0.001
+  nightDensity: 0.007
+  doSky: 1
+  daySky: {fileID: 2100000, guid: 9c202ace24e71c145bc291e8adfa139f, type: 2}
+  nightSky: {fileID: 2100000, guid: ecde7e6f165b7224c93fba4207dc2ab5, type: 2}
 --- !u!1 &7599429657606171109
 GameObject:
   m_ObjectHideFlags: 0

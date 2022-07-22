@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tree_Mat 1
+  m_Name: m_NaturePack
   m_Shader: {fileID: -6465566751694194690, guid: 2692e2955f511e64e8f453e68b81fcae, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -33,6 +33,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_C8C9609E:
         m_Texture: {fileID: 2800000, guid: b4afa78a97cb1e94aaa33bdcd6c5a742, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_f8b6c372fb814c6c85ddace23b965a95:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_111badfd52644a1eac0ff9fb5c009fd4_Out_0:
@@ -74,5 +78,6 @@ Material:
     - Vector2_2553fda076bc44af8070f71c3ea8d1bd: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_92dfca70ac92439bbefd20338d48ec6d: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 1}
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
