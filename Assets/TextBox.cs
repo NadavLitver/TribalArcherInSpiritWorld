@@ -8,7 +8,7 @@ public class TextBox : MonoBehaviour
     private TextMeshProUGUI m_text;
     private Animator m_animator;
     private const string activeRef = "Activate"; // trigger
-    private float defaultDelay = 3.5f;
+    private float defaultDelay = 3f;
 
     private void Awake()
     {
