@@ -23,10 +23,12 @@ public class Relic : InteractableBase
     [SerializeField] private AnimationCurve emissionEase;
     [SerializeField] private List<MeshRenderer> m_renderers;
     [SerializeField] private List<ParticleSystem> auraEffects;
+    [SerializeField] private ParticleSystem consumeEffect;
     private bool isConsumed = false;
 
     private void Start()
     {
+        consumeEffect.gameObject.SetActive(false);
         letterGroup.alpha = 0;
     }
     public override void OnPlayerEnter()
@@ -55,6 +57,10 @@ public class Relic : InteractableBase
 
     private IEnumerator GlowRoutine()
     {
+        TextBox.instance.Activate("Scatter shot added", 3f);
+        base.OnPlayerEnter();
+        consumeEffect.gameObject.SetActive(true);
+        consumeEffect.transform.parent = null;
         foreach (ParticleSystem item in auraEffects)
         {
             ParticleSystem.EmissionModule em;
@@ -62,7 +68,6 @@ public class Relic : InteractableBase
             em.rateOverTime = 0f;
         }
 
-        base.OnPlayerEnter();
         float curDur;
         curDur = 0;
         float duration = 1f;
@@ -88,9 +93,9 @@ public class Relic : InteractableBase
         {
             item.enabled = false;
         }
-        duration = 0.6f;
+        duration = 0.5f;
         curDur = 0;
-        yield return new WaitForSeconds(3.1f);
+        yield return new WaitForSeconds(2.9f);
         AbilityStackHandler.instance.GetAbility(m_ability).gameObject.SetActive(true);
         while (curDur < 1)
         {
