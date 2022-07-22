@@ -5122,7 +5122,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 4, z: 3}
+  m_Size: {x: 6, y: 4, z: 6}
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &3309566502958828240
 MonoBehaviour:
@@ -5176,7 +5176,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.5
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -5186,12 +5186,12 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1.0023575
-      inSlope: 4.505517
-      outSlope: 4.505517
+      value: 1
+      inSlope: 3.2676897
+      outSlope: 3.2676897
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.039877295
+      inWeight: 0.036809802
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -5202,28 +5202,40 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 7.482518
-      outSlope: 7.482518
+      inSlope: 3.1537313
+      outSlope: 3.1537313
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.032208588
+      outWeight: 0.07906764
     - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0.9618836
-      outSlope: 0.9618836
+      time: 0.32605603
+      value: 0.9242449
+      inSlope: 0.41300717
+      outSlope: 0.41300717
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.07975459
+      inWeight: 0.15311706
+      outWeight: 0.10789766
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  letterGroup: {fileID: 0}
   idleColor: {r: 1, g: 1, b: 1, a: 0}
   activeColor: {r: 1, g: 1, b: 1, a: 1}
+  idleIntensity: {r: 1, g: 1, b: 1, a: 0.5019608}
+  activeIntensity: {r: 1, g: 1, b: 1, a: 1}
   idleEmission: 5
-  activeEmission: 10000
+  activeEmission: 5000
   emissionEase:
     serializedVersion: 2
     m_Curve:
@@ -5237,13 +5249,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.33
+      time: 1
       value: 1
-      inSlope: 9.522229
-      outSlope: 9.522229
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.035276014
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -5252,7 +5264,9 @@ MonoBehaviour:
   - {fileID: 5041906155002720567}
   - {fileID: 691673991618944932}
   - {fileID: 4419139837106298820}
-  auraEffects: []
+  auraEffects:
+  - {fileID: 3139082735721973535}
+  - {fileID: 4209955285833411378}
 --- !u!1 &4804499396102496354
 GameObject:
   m_ObjectHideFlags: 0
@@ -10538,5 +10552,15 @@ PrefabInstance:
 --- !u!4 &1935998942496233385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3552864955857854392, guid: dc5f7d4a8f937f14a861a0cfbdb8a3ba, type: 3}
+  m_PrefabInstance: {fileID: 3139082734691043345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4209955285833411378 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1296059344650150691, guid: dc5f7d4a8f937f14a861a0cfbdb8a3ba, type: 3}
+  m_PrefabInstance: {fileID: 3139082734691043345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3139082735721973535 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1318539022, guid: dc5f7d4a8f937f14a861a0cfbdb8a3ba, type: 3}
   m_PrefabInstance: {fileID: 3139082734691043345}
   m_PrefabAsset: {fileID: 0}

@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
     private Slider healthBar;
     [FoldoutGroup("Refrences"), SerializeField]
     private Slider breathBar;
+
     [FoldoutGroup("Refrences"), SerializeField]
     private Button[] PowerPoints;
     [FoldoutGroup("Refrences"), SerializeField]
@@ -25,10 +26,92 @@ public class HUD : MonoBehaviour
     private float slidersFillSpeed;
     [FoldoutGroup("Parameters"), SerializeField]
     private float powerDecay;
+
+    [FoldoutGroup("Icons"), SerializeField]
+    private Image scatterIcon;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Image scatterCover;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Image boltIcon;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Image boltCover;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Image strikeIcon;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Image strikeCover;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Color idleColor;
+    [FoldoutGroup("Icons"), SerializeField]
+    private Color activeColor;
+
+    private int index = 0;
+
     private void Start()
     {
         healthBar.maxValue = playerBodyRef.maxHealth;
         breathBar.maxValue = breathRef.maxBreath;
+    }
+    public void ToggleScatter()
+    {
+        if (index == 1)
+        {
+            scatterCover.color = activeColor;
+            scatterIcon.color = idleColor;
+            index = 0;
+        }
+        else
+        {
+            scatterCover.color = idleColor;
+            scatterIcon.color = activeColor;
+            index = 1;
+
+        }
+
+
+        boltCover.color = activeColor;
+        boltIcon.color = idleColor;
+        strikeCover.color = activeColor;
+        strikeIcon.color = idleColor;
+    }
+    public void ToggleBolt()
+    {
+        if (index == 2)
+        {
+            boltCover.color = activeColor;
+            boltIcon.color = idleColor;
+            index = 0;
+        }
+        else
+        {
+            boltCover.color = idleColor;
+            boltIcon.color = activeColor;
+            index = 2;
+        }
+
+        scatterCover.color = activeColor;
+        scatterIcon.color = idleColor;
+        strikeCover.color = activeColor;
+        strikeIcon.color = idleColor;
+    }
+    public void ToggleStrike()
+    {
+        if (index == 3)
+        {
+            strikeCover.color = activeColor;
+            strikeIcon.color = idleColor;
+            index = 0;
+        }
+        else
+        {
+            strikeCover.color = idleColor;
+            strikeIcon.color = activeColor;
+            index = 3;
+        }
+
+        boltCover.color = activeColor;
+        boltIcon.color = idleColor;
+        scatterCover.color = activeColor;
+        scatterIcon.color = idleColor;
     }
 
     private void LateUpdate()

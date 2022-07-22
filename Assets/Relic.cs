@@ -10,18 +10,32 @@ public class Relic : InteractableBase
     [SerializeField] private Image iconCover;
     [SerializeField] private AnimationCurve coverEase;
     [SerializeField] private AnimationCurve iconEase;
+    [SerializeField] private CanvasGroup letterGroup;
 
     [SerializeField] private Color idleColor;
     [SerializeField] private Color activeColor;
+
+    [SerializeField] private Color idleIntensity;
+    [SerializeField] private Color activeIntensity;
 
     [SerializeField] private float idleEmission;
     [SerializeField] private float activeEmission;
     [SerializeField] private AnimationCurve emissionEase;
     [SerializeField] private List<MeshRenderer> m_renderers;
     [SerializeField] private List<ParticleSystem> auraEffects;
+    private bool isConsumed = false;
+
+    private void Start()
+    {
+        letterGroup.alpha = 0;
+    }
     public override void OnPlayerEnter()
     {
-        Glow();
+        if (!isConsumed)
+        {
+            isConsumed = true;
+            Glow();
+        }
     }
     public override void OnPlayerExit()
     {
@@ -54,7 +68,7 @@ public class Relic : InteractableBase
         float duration = 1f;
         string emissionRef = "_EmissionPower";
 
-        icon.color = idleColor;
+        icon.color = idleIntensity;
         iconCover.color = idleColor;
         foreach (MeshRenderer item in m_renderers)
         {
@@ -72,19 +86,22 @@ public class Relic : InteractableBase
         }
         foreach (MeshRenderer item in m_renderers)
         {
-            item.material.SetFloat(emissionRef, activeEmission);
+            item.enabled = false;
         }
-        duration = 2;
+        duration = 0.6f;
         curDur = 0;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3.1f);
         AbilityStackHandler.instance.GetAbility(m_ability).gameObject.SetActive(true);
         while (curDur < 1)
         {
             curDur += Time.deltaTime / duration;
+            letterGroup.alpha = Mathf.Lerp(0, 1, curDur);
             iconCover.color = Color.Lerp(idleColor, activeColor, coverEase.Evaluate(curDur));
-            icon.color = Color.Lerp(idleColor, activeColor, iconEase.Evaluate(curDur));
+            icon.color = Color.Lerp(idleIntensity, activeIntensity, iconEase.Evaluate(curDur));
+            Debug.Log(curDur);
+            yield return null;
         }
-        icon.color = idleColor;
+        icon.color = idleIntensity;
         iconCover.color = activeColor;
         this.gameObject.SetActive(false);
     }
