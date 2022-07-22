@@ -9,6 +9,10 @@ public class FloatyObject : MonoBehaviour
     public float degreesPerSecond = 15.0f;
     public float amplitude = 0.5f;
     public float frequency = 1f;
+
+    public bool doLookAtTarget;
+    public Transform target;
+    public float lookAtSpeed;
     Vector3 posOffset = new Vector3();
     Vector3 tempPos = new Vector3();
     void Start()
@@ -23,7 +27,10 @@ public class FloatyObject : MonoBehaviour
 
         //myTime += Time.deltaTime;
         //transform.position = new Vector3(transform.position.x, (baseHeight.position.y + myCurve.Evaluate((myTime % ranNum))), transform.position.z);
-        
+        if (doLookAtTarget)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, lookAtSpeed * Time.deltaTime);
+        }
         tempPos = posOffset;
         tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * frequency) * amplitude;
         if(tempPos.y < baseHeight.position.y)

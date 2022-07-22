@@ -35,10 +35,11 @@ public class DayNightManager : MonoBehaviour
     [SerializeField] private Material daySky;
     [SerializeField] private Material nightSky;
 
-
+    [SerializeField] private bool startState;
     private void Start()
     {
-        SetDay();
+        isDay = startState;
+        Refresh();
     }
     [Button]
     public void Toggle()

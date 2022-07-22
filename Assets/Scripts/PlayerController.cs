@@ -36,7 +36,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties_Leap")] private float leapForce;
     [SerializeField, FoldoutGroup("Properties_Leap")] public float LeapCD;
     [SerializeField, FoldoutGroup("Properties_Leap")] public UnityEvent leapEvent;
-    
+
+    [SerializeField, FoldoutGroup("Properties_Slide")] private float slopeSpeed = 8;
+    private Vector3 hitPointNormal;
+    private bool isSliding
+    {
+        get
+        {
+            if (controller.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, 2f, groundedLayers))
+            {
+                hitPointNormal = slopeHit.normal;
+                return Vector3.Angle(hitPointNormal, Vector3.up) > controller.slopeLimit;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 
     public static Transform playerTransform;
     public static bool canMove;
@@ -64,7 +81,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetGrounded();
-        
+
         if (canMove)
         {
             Jump();
@@ -73,7 +90,7 @@ public class PlayerController : MonoBehaviour
             BreathboundMovement();
         }
 
-        
+
     }
 
     private Vector3 GetMoveInput()
@@ -128,7 +145,7 @@ public class PlayerController : MonoBehaviour
                 m_audioSource.Stop();
                 m_audioSource.clip = GetCurrentRunClip();
                 m_audioSource.Play();
-                
+
                 PostProccessManipulator.SetLensDistortion();
                 CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
                 sprintMod = sprintSpeed;
@@ -137,7 +154,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(sprintMod != 1)
+            if (sprintMod != 1)
             {
                 m_audioSource.Stop();
                 m_audioSource.clip = GetCurrentWalkClip();
@@ -228,7 +245,7 @@ public class PlayerController : MonoBehaviour
                 isWalking = true;
                 m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
                 m_audioSource.Play();
-               
+
 
             }
 
@@ -242,9 +259,14 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        Vector3 moveDelta;
+        moveDelta = playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity);
+        if (isSliding)
+        {
+            moveDelta += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed * Time.deltaTime;
+        }
         m_animator.SetBool("NormalWalk", isWalking);
-        controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
-        
+        controller.Move(moveDelta);
     }
 
     private void SetGrounded()
@@ -279,7 +301,7 @@ public class PlayerController : MonoBehaviour
             canMove = false;
             yield return new WaitForSeconds(duration);
             canMove = true;
-             
+
         }
     }
     private void FlipDoSprint()
@@ -302,5 +324,5 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
+
 }
