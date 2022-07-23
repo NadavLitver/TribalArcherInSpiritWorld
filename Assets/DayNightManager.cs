@@ -35,6 +35,9 @@ public class DayNightManager : MonoBehaviour
     [SerializeField] private Material daySky;
     [SerializeField] private Material nightSky;
 
+    //
+    [SerializeField] private bool doArena = true;
+    [SerializeField] private GameObject arena;
     [SerializeField] private bool startState;
     private void Start()
     {
@@ -59,6 +62,16 @@ public class DayNightManager : MonoBehaviour
     }
     private void Refresh()
     {
+        StartCoroutine(RefreshRoutine());
+    }
+    private IEnumerator RefreshRoutine()
+    {
+        float curDur;
+        curDur = 0;
+        if (doArena)
+        {
+            arena.SetActive(!isDay);
+        }
         if (doRain)
         {
             rain.SetActive(!isDay);
@@ -67,19 +80,37 @@ public class DayNightManager : MonoBehaviour
         {
             clouds.SetActive(!isDay);
         }
-        if (doLight)
+        float duration = 2f;
+        while (curDur < 1)
         {
-            light.color = isDay ? dayLight : nightLight;
-            light.intensity = isDay ? dayLightIntensity : nightLightIntensity;
-        }
-        if (doFog)
-        {
-            RenderSettings.fogColor = isDay ? dayFog : nightFog;
-            RenderSettings.fogDensity = isDay ? dayDensity : nightDensity;
-        }
-        if (doSky)
-        {
-            RenderSettings.skybox = isDay ? daySky : nightSky;
+            curDur += Time.deltaTime / duration;
+            
+            if (doLight)
+            {
+                Color startCol = isDay ? nightLight : dayLight;
+                Color endCol = isDay ? dayLight : nightLight;
+                light.color = Color.Lerp(startCol, endCol, curDur);
+
+                float start = isDay ? nightLightIntensity : dayLightIntensity;
+                float end = isDay ? dayLightIntensity : nightLightIntensity;
+                light.intensity = Mathf.Lerp(start, end, curDur);
+            }
+            if (doFog)
+            {
+                Color startCol = isDay ? nightFog : dayFog;
+                Color endCol = isDay ? dayFog : nightFog;
+                RenderSettings.fogColor = Color.Lerp(startCol, endCol, curDur);
+
+                float start = isDay ? nightDensity : dayDensity;
+                float end = isDay ? dayDensity : nightDensity;
+                RenderSettings.fogDensity = Mathf.Lerp(start ,end, curDur);
+            }
+            if (doSky)
+            {
+                RenderSettings.skybox = isDay ? daySky : nightSky;
+            }
+            
+            yield return null;
         }
     }
 }

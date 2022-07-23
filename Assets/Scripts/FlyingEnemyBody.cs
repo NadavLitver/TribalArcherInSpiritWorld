@@ -22,8 +22,8 @@ public class FlyingEnemyBody : Livebody
     public override void TakeDamage(int damage)
     {
         VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
-        base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.OwlHit, audioSource);
+        base.TakeDamage(damage);
     }
     void OnEnable()
     {

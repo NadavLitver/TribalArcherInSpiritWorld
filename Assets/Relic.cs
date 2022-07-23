@@ -57,7 +57,6 @@ public class Relic : InteractableBase
 
     private IEnumerator GlowRoutine()
     {
-        TextBox.instance.Activate("Scatter shot added", 3f);
         base.OnPlayerEnter();
         consumeEffect.gameObject.SetActive(true);
         consumeEffect.transform.parent = null;

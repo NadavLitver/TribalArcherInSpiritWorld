@@ -19,8 +19,6 @@ public class CounterHandler : MonoBehaviour
     [SerializeField] private AnimationCurve shineEase;
 
     [SerializeField] private Image[] parts;
-    [SerializeField] private AnimationClip completedAnim;
-
     private void Start()
     {
         Init();

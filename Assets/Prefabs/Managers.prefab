@@ -449,6 +449,8 @@ MonoBehaviour:
   doSky: 1
   daySky: {fileID: 2100000, guid: 9c202ace24e71c145bc291e8adfa139f, type: 2}
   nightSky: {fileID: 2100000, guid: ecde7e6f165b7224c93fba4207dc2ab5, type: 2}
+  doArena: 1
+  arena: {fileID: 0}
   startState: 0
 --- !u!1 &7599429657606171109
 GameObject:
