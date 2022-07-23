@@ -179,9 +179,9 @@ Material:
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _UVDistortFrom: {r: -0.2, g: -0.2, b: 0, a: 0}
     - _UVDistortNoiseScale: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _UVDistortSpeed: {r: 1, g: 1, b: 0, a: 0}
+    - _UVDistortSpeed: {r: 0.3, g: 0.3, b: 0, a: 0}
     - _UVDistortTo: {r: 0.2, g: 0.2, b: 0, a: 0}
-    - _UVScrollSpeed: {r: -0.4, g: 0, b: 0, a: 0}
+    - _UVScrollSpeed: {r: -0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5529754679218429976
 MonoBehaviour:
