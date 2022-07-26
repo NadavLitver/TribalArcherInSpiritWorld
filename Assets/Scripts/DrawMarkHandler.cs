@@ -72,7 +72,6 @@ public class DrawMarkHandler : MonoBehaviour
     }
     private IEnumerator OnPlayerReleaseChargeRoutine()
     {
-        Debug.Log("release");
         isPlayerCharging = false;
         doSine = false;
         float currDurr = 0f;
@@ -89,7 +88,6 @@ public class DrawMarkHandler : MonoBehaviour
         }
         m_canvasGroup.alpha = 0;
         transform.localScale = Vector3.one * 1.5f;
-        //Debug.Log("release end");
     }
     void SetCornersBackToStartingPos()
     {

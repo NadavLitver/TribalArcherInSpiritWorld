@@ -6,17 +6,6 @@ using UnityEngine.UI;
 public class Relic : InteractableBase
 {
     [SerializeField] AbilityEnum m_ability;
-    [SerializeField] private Image icon;
-    [SerializeField] private Image iconCover;
-    [SerializeField] private AnimationCurve coverEase;
-    [SerializeField] private AnimationCurve iconEase;
-    [SerializeField] private CanvasGroup letterGroup;
-
-    [SerializeField] private Color idleColor;
-    [SerializeField] private Color activeColor;
-
-    [SerializeField] private Color idleIntensity;
-    [SerializeField] private Color activeIntensity;
 
     [SerializeField] private float idleEmission;
     [SerializeField] private float activeEmission;
@@ -24,12 +13,13 @@ public class Relic : InteractableBase
     [SerializeField] private List<MeshRenderer> m_renderers;
     [SerializeField] private List<ParticleSystem> auraEffects;
     [SerializeField] private ParticleSystem consumeEffect;
+
+    [SerializeField] private Animation anim;
     private bool isConsumed = false;
 
     private void Start()
     {
         consumeEffect.gameObject.SetActive(false);
-        letterGroup.alpha = 0;
     }
     public override void OnPlayerEnter()
     {
@@ -43,13 +33,6 @@ public class Relic : InteractableBase
     {
         base.OnPlayerExit();
     }
-    private void Update()
-    {
-        foreach (MeshRenderer item in m_renderers)
-        {
-            item.material.SetFloat("_EmissionPower", idleEmission + Mathf.Sin(Time.time * 3f));
-        }
-    }
     public void Glow()
     {
         StartCoroutine(GlowRoutine());
@@ -58,6 +41,7 @@ public class Relic : InteractableBase
     private IEnumerator GlowRoutine()
     {
         base.OnPlayerEnter();
+        anim.Play();
         consumeEffect.gameObject.SetActive(true);
         consumeEffect.transform.parent = null;
         foreach (ParticleSystem item in auraEffects)
@@ -72,8 +56,6 @@ public class Relic : InteractableBase
         float duration = 1f;
         string emissionRef = "_EmissionPower";
 
-        icon.color = idleIntensity;
-        iconCover.color = idleColor;
         foreach (MeshRenderer item in m_renderers)
         {
             item.material.SetFloat(emissionRef, idleEmission);
@@ -95,18 +77,21 @@ public class Relic : InteractableBase
         duration = 0.5f;
         curDur = 0;
         yield return new WaitForSeconds(2.9f);
-        AbilityStackHandler.instance.GetAbility(m_ability).gameObject.SetActive(true);
-        while (curDur < 1)
+        string text;
+        switch (m_ability)
         {
-            curDur += Time.deltaTime / duration;
-            letterGroup.alpha = Mathf.Lerp(0, 1, curDur);
-            iconCover.color = Color.Lerp(idleColor, activeColor, coverEase.Evaluate(curDur));
-            icon.color = Color.Lerp(idleIntensity, activeIntensity, iconEase.Evaluate(curDur));
-            Debug.Log(curDur);
-            yield return null;
+            case AbilityEnum.Scatter: text = "Scattershot Acquired";
+                break;
+            case AbilityEnum.QuickShot: text = "Lightningbolt Acquired";
+                break;
+            case AbilityEnum.LightingStrike: text = "Lighting Strike Acquired";
+                break;
+            default: text = "ha";
+                break;
         }
-        icon.color = idleIntensity;
-        iconCover.color = activeColor;
+        TextBox.instance.Activate(text, 0f);
+        AbilityStackHandler.instance.GetAbility(m_ability).gameObject.SetActive(true);
+        
         this.gameObject.SetActive(false);
     }
 }

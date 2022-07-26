@@ -42,7 +42,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 506609519733656076, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 691673991618944932, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: m_Materials.Array.size
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c21a7d96d38a0d9438a801552fd18396, type: 2}
     - target: {fileID: 2000267911963883106, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: icon
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -244,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -487,7 +487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3309566502958828240, guid: 1fb11d6fec56cac458df2f0ad91a2b10, type: 3}
       propertyPath: OnEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode

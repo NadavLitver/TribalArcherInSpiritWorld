@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: m_NaturePackTwoSided
   m_Shader: {fileID: -6465566751694194690, guid: 5645896bb0bb998429e9ab3c2fdcd2e2, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _ENABLEUVDISTORT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,7 +39,39 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CustomFadeFadeMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: a06167295dc14ac48976c4ddb0b7019d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTexture:
+        m_Texture: {fileID: 2800000, guid: 4addb5285d2d96b46bcc3d03bf698f23, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: a06167295dc14ac48976c4ddb0b7019d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_111badfd52644a1eac0ff9fb5c009fd4_Out_0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UVDistortShaderMask:
+        m_Texture: {fileID: 2800000, guid: e199ee8112362864f831425463b09fda, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -65,9 +97,39 @@ Material:
     - Vector1_64B788AD: 21.6
     - Vector1_67744406: 0.143
     - Vector1_a199e3e12f1b49049100eb4a71d02f18: 0
+    - _AdjustColorBrightness: 1
+    - _AdjustColorContrast: 1
+    - _AdjustColorFade: 1
+    - _AdjustColorHueShift: 0
+    - _AdjustColorSaturation: 1
+    - _AlphaTintFade: 1
+    - _AlphaTintMinAlpha: 0.05
+    - _AlphaTintPower: 1
     - _Ambient: 0.55
+    - _BlackTintFade: 1
+    - _BlackTintPower: 2
+    - _CustomFadeAlpha: 1
+    - _CustomFadeNoiseFactor: 0
+    - _CustomFadeSmoothness: 2
+    - _Distortionpower: 20.57
+    - _EnableAdjustColor: 0
+    - _EnableAlphaTint: 0
+    - _EnableBlackTint: 0
+    - _EnableCustomFade: 0
+    - _EnableSplitToning: 0
+    - _EnableUVDistort: 1
+    - _EnableUVScroll: 0
     - _FresnelPower: 1
+    - _InvFade: 2.7
+    - _Shininess: 0.078125
+    - _SplitToningBalance: 1
+    - _SplitToningContrast: 1
+    - _SplitToningFade: 1
+    - _SplitToningShift: 0
+    - _SquashAmount: 1
     - _Toon_Ramp_Offset_Point: 0.5
+    - _UVDistortFade: 1
+    - _UVDistortSpace: 0
     m_Colors:
     - Color_057304138c224518a29f9a1f6a929faf: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
     - Color_4B4CE890: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
@@ -77,7 +139,21 @@ Material:
     - Toon_Ramp_Tint: {r: 0, g: 0, b: 0, a: 1}
     - Vector2_2553fda076bc44af8070f71c3ea8d1bd: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_92dfca70ac92439bbefd20338d48ec6d: {r: 1, g: 1, b: 0, a: 0}
+    - _AlphaTintColor: {r: 23.96863, g: 1.254902, b: 23.96863, a: 0}
+    - _BlackTintColor: {r: 1, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _CustomFadeNoiseScale: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 1}
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _SplitToningHighlightsColor: {r: 1, g: 0.1, b: 0.1, a: 0}
+    - _SplitToningShadowsColor: {r: 0.1, g: 0.4000002, b: 1, a: 0}
+    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
+    - _UVDistortFrom: {r: -2, g: -0.02, b: 0, a: 0}
+    - _UVDistortNoiseScale: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _UVDistortSpeed: {r: 2, g: 2, b: 0, a: 0}
+    - _UVDistortTo: {r: 0.02, g: 0.02, b: 0, a: 0}
+    - _UVScrollSpeed: {r: 0.2, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

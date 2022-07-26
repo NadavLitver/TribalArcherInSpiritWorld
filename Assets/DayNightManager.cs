@@ -13,7 +13,8 @@ public class DayNightManager : MonoBehaviour
 
     //clouds
     [SerializeField] private bool doClouds = true;
-    [SerializeField] private GameObject clouds;
+    [SerializeField] private GameObject dayClouds;
+    [SerializeField] private GameObject nightClouds;
 
     //light
     [SerializeField] private bool doLight = true;
@@ -78,7 +79,8 @@ public class DayNightManager : MonoBehaviour
         }
         if (doClouds)
         {
-            clouds.SetActive(!isDay);
+            dayClouds.SetActive(isDay);
+            nightClouds.SetActive(!isDay);
         }
         float duration = 2f;
         while (curDur < 1)

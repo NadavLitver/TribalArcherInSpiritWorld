@@ -3913,6 +3913,7 @@ MonoBehaviour:
   stunDuration: 1
   timeToLive: 10
   colliderBounds: {x: 2, y: 3, z: 2}
+  maskForceMode: 0.25
   rayMask:
     serializedVersion: 2
     m_Bits: 641

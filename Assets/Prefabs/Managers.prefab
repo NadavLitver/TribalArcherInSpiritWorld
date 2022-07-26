@@ -354,6 +354,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  StackEffects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpawnParticles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Buffer: {fileID: 0}
   BufferMaxValue: 100
   BufferConstantDecreaseSpeed: 100
@@ -419,6 +427,8 @@ MonoBehaviour:
     m_prefab: {fileID: 3075044854833262754, guid: 6a01b53e4d8f18c4b9c9fa4a4b6870e1, type: 3}
   - m_effect: 4
     m_prefab: {fileID: 1829308401092268362, guid: 8a0524f2f06bcf1438ace22a4da4c129, type: 3}
+  - m_effect: 5
+    m_prefab: {fileID: 3177757348250566155, guid: d3ab8a1a3e0b88c4fa5aa0819e4b4495, type: 3}
 --- !u!114 &635659859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +444,8 @@ MonoBehaviour:
   doRain: 1
   rain: {fileID: 0}
   doClouds: 1
-  clouds: {fileID: 0}
+  dayClouds: {fileID: 0}
+  nightClouds: {fileID: 0}
   doLight: 1
   light: {fileID: 0}
   dayLight: {r: 0.95686275, g: 0.76862746, b: 1, a: 1}
@@ -525,6 +536,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HUD, Assembly-CSharp
+        m_MethodName: OnRelease
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlayerFinishCharge:
     m_PersistentCalls:
       m_Calls: []
@@ -580,9 +603,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -595,9 +618,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlayerClickHeal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HealthPower, Assembly-CSharp
+        m_MethodName: UseOrb
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -23,6 +23,7 @@ public class ArrowProjectile : MonoBehaviour
     [SerializeField] private float timeToLive;
     Vector3 boxCastPosition => transform.position;
     [SerializeField] Vector3 colliderBounds;
+    [SerializeField, Range(0f, 1f)] private float maskForceMode = 0.25f;
 
     Ray ray;
     bool rayHit;
@@ -36,7 +37,11 @@ public class ArrowProjectile : MonoBehaviour
     public UnityEvent onHitHead;
     public UnityEvent onHitAnything;
     Livebody currentLivebody;
-
+    Quaternion tempRot;
+    Vector3 tempPos;
+    
+    public static Vector3 savedNormal;
+    public static Vector3 savedPos;
     private void OnEnable()
     {
         
@@ -63,7 +68,6 @@ public class ArrowProjectile : MonoBehaviour
             }
         }
         rayHit = false;
-       
     }
     private void Update()
     {
@@ -73,15 +77,17 @@ public class ArrowProjectile : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        if (!rayHit)
+        {
+            tempPos = transform.position;
+        }
     }
-    
+
     private void CheckCollisionWithRay()
     {
         if (rayHit)
             return;
-
         ray = new Ray(transform.position, direction);
-
         if (Physics.BoxCast(boxCastPosition, colliderBounds, ray.direction, out RaycastHit hit, transform.rotation, colliderBounds.magnitude, rayMask))
             OnHit(hit);
 
@@ -89,6 +95,8 @@ public class ArrowProjectile : MonoBehaviour
 
     private void OnHit(RaycastHit hit)
     {
+        savedNormal = hit.normal;
+        savedPos = tempPos;
         rayHitPoint = hit.point;
         currentLivebody = hit.collider.gameObject.GetComponentInParent<Livebody>();
         onHitAnything?.Invoke();
@@ -96,9 +104,9 @@ public class ArrowProjectile : MonoBehaviour
 
         if (currentLivebody == null)
         {
-            this.gameObject.SetActive(false);
-            VFXManager.Play(VFXManager.Effect.TerrainHitEffect, rayHitPoint);
+            VFXManager.Play(VFXManager.Effect.TerrainHitEffect, hit, true, transform.rotation);
             rayHit = true;
+            this.gameObject.SetActive(false);
             return;
         }
         if (lightingBolt != null)
@@ -114,16 +122,13 @@ public class ArrowProjectile : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Head"))
             {
                 // OnLivebodyHeadshot?.Invoke();
+                VFXManager.Play(VFXManager.Effect.HeadshotEffect, hit, hit.transform, true, transform.rotation); 
+                
                 currentLivebody.TakeDamage(appliedDamage);
-                VFXManager.Play(VFXManager.Effect.HeadshotEffect, rayHitPoint);
                 HitMarkHandler.instance.PlayHeadShotHitMark();
                 AbilityStackHandler.instance.IncreaseBufferValue(StackOnHeadHit);
                 onHitHead?.Invoke();
-
-
             }
-
-
         }
         rayHit = true;
 

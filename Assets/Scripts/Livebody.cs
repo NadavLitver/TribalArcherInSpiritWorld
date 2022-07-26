@@ -37,6 +37,7 @@ public class Livebody : MonoBehaviour
     [FoldoutGroup("Events")]
     public UnityEvent OnDeath;
     internal LivebodyStateHandler m_stateHandler;
+    public bool isFlying; //for enemy 1 and 2, getting their masks to fly, given there are masks (this is the "given")
 
     private void Awake()
     {

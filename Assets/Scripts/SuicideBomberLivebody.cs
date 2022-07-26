@@ -7,6 +7,7 @@ public class SuicideBomberLivebody : Livebody
 {
     [FoldoutGroup("Properties"), Range(0, 100), SerializeField]
     float chanceToDropHealthOrb;
+    [SerializeField] private FlyingMaskEffectHandler flyingMaskEffect;
     protected override void SummonDeadBody()
     {
         float ran = Randomizer.ReturnRandomFloat(new Vector2(0, 100));
@@ -16,11 +17,11 @@ public class SuicideBomberLivebody : Livebody
         }
         SoundManager.Play(SoundManager.Sound.SuicideDead, transform.position);
         EnemySpawnerManager.instance.RemoveMe(this);
+        flyingMaskEffect.Detach();
         base.SummonDeadBody();
     }
     public override void TakeDamage(int damage)
     {
-        VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
         base.TakeDamage(damage);
 
     }

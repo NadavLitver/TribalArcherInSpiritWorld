@@ -334,6 +334,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 6088770271026230634}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnExit:
     m_PersistentCalls:
       m_Calls: []
@@ -695,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6637411086546982101, guid: dce9bc8be66c28947bbaffc3954a8b5a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996798064365978644, guid: dce9bc8be66c28947bbaffc3954a8b5a, type: 3}
       propertyPath: lengthInSec
@@ -767,6 +779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce9bc8be66c28947bbaffc3954a8b5a, type: 3}
+--- !u!1 &6088770271026230634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6637411086546982101, guid: dce9bc8be66c28947bbaffc3954a8b5a, type: 3}
+  m_PrefabInstance: {fileID: 604461440386294207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8250232500857337425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8799414394730485742, guid: dce9bc8be66c28947bbaffc3954a8b5a, type: 3}
