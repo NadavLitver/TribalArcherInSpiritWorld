@@ -33,7 +33,7 @@ public class HealthPower : MonoBehaviour
         {
             HUD.instance.playerBodyRef.RecieveHealth(25);
             CurrentStacks--;
-            m_death[CurrentStacks].Play();
+            m_death[CurrentStacks].Play(true);
             UpdateButtons();
         }
     }
@@ -41,7 +41,7 @@ public class HealthPower : MonoBehaviour
     {
         if (CurrentStacks < maxStacks)
         {
-            m_spawn[CurrentStacks].Play();
+            m_spawn[CurrentStacks].Play(true);
             CurrentStacks++;
             UpdateButtons();
         }

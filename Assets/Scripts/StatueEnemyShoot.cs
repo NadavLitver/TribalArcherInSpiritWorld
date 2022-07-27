@@ -13,7 +13,7 @@ public class StatueEnemyShoot : State
     [SerializeField] private float faceTargetSpeed;
     [SerializeField,ReadOnly] private bool startedAim, startedShoot, canAim, CanShoot;
     [SerializeField] private AudioSource m_audioSource;
-
+    [SerializeField] private float faceTargetSpeedAttackMod = 0.5f; // facing target while attacking
 
     private Vector3 stopAimPos;
     protected override void OnStateDisabled()
@@ -94,18 +94,18 @@ public class StatueEnemyShoot : State
     {
        
 
-        FaceTarget();
+        FaceTarget(faceTargetSpeed);
         aimLine.SetPosition(1, stopAimPos);
        
      
     }
-    void FaceTarget()
+    void FaceTarget(float speed)
     {
         var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
 
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * faceTargetSpeed);
+        stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * speed);
     }
     public void ShootBeam()
     {
@@ -115,6 +115,7 @@ public class StatueEnemyShoot : State
             beamLine.shootDirection = stopAimPos.normalized;
             beamLine.Attack();
         }
+        FaceTarget(faceTargetSpeed * faceTargetSpeedAttackMod);
         aimLine.SetPosition(1, Vector3.zero);
         //  beamLine.SetPosition(1, stopAimPos);
 
