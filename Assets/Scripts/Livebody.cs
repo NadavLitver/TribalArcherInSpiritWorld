@@ -31,9 +31,13 @@ public class Livebody : MonoBehaviour
     public UnityEvent updateUIBars;
     [FoldoutGroup("Properties"), ReadOnly, Tooltip("Set By Tag")]
     public bool isPlayer;
+
+    [FoldoutGroup("Events")]
+    public UnityEvent PreDeath;
     [FoldoutGroup("Events")]
     public UnityEvent OnDeath;
     internal LivebodyStateHandler m_stateHandler;
+    public bool isFlying; //for enemy 1 and 2, getting their masks to fly, given there are masks (this is the "given")
 
     private void Awake()
     {
@@ -45,6 +49,8 @@ public class Livebody : MonoBehaviour
             updateUIBars = new UnityEvent();
         if (OnDeath == null)
             OnDeath = new UnityEvent();
+        if (PreDeath == null)
+            PreDeath = new UnityEvent();
 
         isVulnerable = true;
         isPlayer = gameObject.CompareTag("Player");
@@ -65,11 +71,11 @@ public class Livebody : MonoBehaviour
 
             if (health <= 0)//death
             {
+                PreDeath.Invoke();
                 health = 0;
                 SummonDeadBody();
                 OnDeath.Invoke();
                 isVulnerable = false;
-             
             }
         }
 

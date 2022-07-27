@@ -31,7 +31,7 @@ public class HealthOrb : InteractableBase
     }
     private IEnumerator FlyTowardsGround()
      {
-        if (!Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 20, groundLayer))
+        if (!Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 50, groundLayer))
         {
             yield break;
         }
@@ -57,6 +57,10 @@ public class HealthOrb : InteractableBase
     }
     public override void OnPlayerEnter()
     {
+        if (HUD.instance.healthPower.isFull)
+        {
+            return;
+        }
         StopAllCoroutines();
         StartCoroutine(FlyTowardsPlayer());
         base.OnPlayerEnter();
@@ -77,7 +81,7 @@ public class HealthOrb : InteractableBase
         AfterHitEffect.transform.parent = null;
         AfterHitEffect.SetActive(true);
         AfterHitEffect.transform.position = transform.position;
-        player.RecieveHealth(healingToApply);
+        HUD.instance.healthPower.GainOrb();
         Destroy(gameObject);
     }
 }

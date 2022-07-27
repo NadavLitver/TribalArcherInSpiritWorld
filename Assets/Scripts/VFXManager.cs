@@ -14,7 +14,7 @@ public class VFXManager : MonoBehaviour
         TerrainHitEffect,
         FlyingEnemyDead,
         FloatingNumber,
-        SpawnEffect,
+        AddedArrow
     }
     public static VFXManager instance
     {
@@ -63,6 +63,34 @@ public class VFXManager : MonoBehaviour
         GameObject currenteffect = Instantiate(GetVFXGameObject(effect));
         currenteffect.transform.position = worldPos;
         currenteffect.transform.rotation = rotation;
+    }
+    public static void Play(Effect effect, RaycastHit hit, bool addArrow, Quaternion arrowRot)
+    {
+        GameObject currenteffect = Instantiate(GetVFXGameObject(effect));
+        currenteffect.transform.position = hit.point;
+        currenteffect.transform.up = hit.normal;
+        if (addArrow)
+        {
+            currenteffect = Instantiate(GetVFXGameObject(Effect.AddedArrow));
+            currenteffect.transform.position = hit.point;
+            currenteffect.transform.position += hit.normal * Randomizer.ReturnRandomFloat(new Vector2(-0.35f, 0.35f));
+            currenteffect.transform.rotation = arrowRot;
+        }
+    }
+    public static void Play(Effect effect, RaycastHit hit, Transform parent, bool addArrow, Quaternion arrowRot)
+    {
+        GameObject currenteffect = Instantiate(GetVFXGameObject(effect));
+        currenteffect.transform.parent = parent;
+        currenteffect.transform.position = hit.point;
+        currenteffect.transform.up = hit.normal;
+        if (addArrow)
+        {
+            currenteffect = Instantiate(GetVFXGameObject(Effect.AddedArrow));
+            currenteffect.transform.parent = parent;
+            currenteffect.transform.position = hit.point;
+            currenteffect.transform.position += hit.normal * Randomizer.ReturnRandomFloat(new Vector2(-0.35f, 0.35f));
+            currenteffect.transform.rotation = arrowRot;
+        }
     }
     public static void PlayRepeat(Effect effect, Vector3 worldPos, int amountToRepeat, float timeIntervals)
     {

@@ -9,19 +9,23 @@ public class CinemachinePOVExtension : CinemachineExtension
     private Vector3 startingRotation;
     [SerializeField]
     private float clampAngle = 85f;
-    [Range(0f, 100f),SerializeField]
+    [Range(0f, 100f), SerializeField]
     private float MouseSensitivity;
     [Range(0f, 179f), ReadOnly]
     public float FOV;
     [Range(0f, 179f), ReadOnly]
     public float StartingFOV;
     private bool firstCameraFrame;
+    [SerializeField]
+    private float lerpSpeed = 50f;
+
+    [SerializeField] private Camera overlayCam;
 
     protected override void Awake()
     {
         input = InputManager.Instance;
         base.Awake();
-      
+
         //horizontalSpeed = MouseSensitivity;
         //verticalSpeed = horizontalSpeed;
     }
@@ -30,9 +34,9 @@ public class CinemachinePOVExtension : CinemachineExtension
         if (!Application.isPlaying) return;
         if (!firstCameraFrame)
         {
-          FOV = state.Lens.FieldOfView;
-          StartingFOV = FOV;
-          firstCameraFrame = true;
+            FOV = state.Lens.FieldOfView;
+            StartingFOV = FOV;
+            firstCameraFrame = true;
         }
         if (vcam.Follow)
         {
@@ -44,10 +48,13 @@ public class CinemachinePOVExtension : CinemachineExtension
                 startingRotation.y += delta.y * MouseSensitivity * Time.deltaTime;
                 startingRotation.y = Mathf.Clamp(startingRotation.y, -clampAngle, clampAngle);
                 state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
-                if(state.Lens.FieldOfView != FOV)
-                 state.Lens = new LensSettings(FOV, 0, 0.3f, 1500, 0);
+                if (state.Lens.FieldOfView != FOV)
+                {
+                    state.Lens = new LensSettings(FOV, 0, 0.3f, 1500, 0);
+                    overlayCam.fieldOfView = FOV;
+                }
 
-                MouseSensitivity +=  InputManager.Instance.GetPgUpPgDwnAxis();
+                MouseSensitivity += InputManager.Instance.GetPgUpPgDwnAxis();
                 MouseSensitivity = Mathf.Clamp(MouseSensitivity, 0, 100);
             }
         }
@@ -56,10 +63,8 @@ public class CinemachinePOVExtension : CinemachineExtension
     {
         while (FOV != goal)
         {
-           FOV = Mathf.MoveTowards(FOV, goal, Time.deltaTime * 10);
-            yield return new WaitForEndOfFrame();
-
+            FOV = Mathf.MoveTowards(FOV, goal, Time.deltaTime * lerpSpeed);
+            yield return null;
         }
-
     }
 }

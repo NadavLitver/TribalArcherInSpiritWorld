@@ -105,6 +105,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""46fe159e-3b1d-4e86-bbd6-c4a630c4ed05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -294,6 +302,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03623121-8b5f-416b-adec-01737a295954"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -340,6 +359,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Sprint = m_PlayerMap.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerMap_Sens = m_PlayerMap.FindAction("Sens", throwIfNotFound: true);
         m_PlayerMap_Exit = m_PlayerMap.FindAction("Exit", throwIfNotFound: true);
+        m_PlayerMap_Heal = m_PlayerMap.FindAction("Heal", throwIfNotFound: true);
         // GeneralMap
         m_GeneralMap = asset.FindActionMap("GeneralMap", throwIfNotFound: true);
         m_GeneralMap_Pause = m_GeneralMap.FindAction("Pause", throwIfNotFound: true);
@@ -403,6 +423,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMap_Sprint;
     private readonly InputAction m_PlayerMap_Sens;
     private readonly InputAction m_PlayerMap_Exit;
+    private readonly InputAction m_PlayerMap_Heal;
     public struct PlayerMapActions
     {
         private @PlayerInputs m_Wrapper;
@@ -418,6 +439,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Sprint => m_Wrapper.m_PlayerMap_Sprint;
         public InputAction @Sens => m_Wrapper.m_PlayerMap_Sens;
         public InputAction @Exit => m_Wrapper.m_PlayerMap_Exit;
+        public InputAction @Heal => m_Wrapper.m_PlayerMap_Heal;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -460,6 +482,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Exit.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnExit;
                 @Exit.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnExit;
                 @Exit.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnExit;
+                @Heal.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -497,6 +522,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Exit.started += instance.OnExit;
                 @Exit.performed += instance.OnExit;
                 @Exit.canceled += instance.OnExit;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
@@ -547,6 +575,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnSens(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface IGeneralMapActions
     {

@@ -7,6 +7,11 @@ public class FlyingEnemyBody : Livebody
 {
     [FoldoutGroup("Properties"), Range(0, 100),SerializeField]
     float chanceToDropHealthOrb;
+
+
+
+    [SerializeField] private FlyingMaskEffectHandler flyingMaskEffect;
+    
     protected override void SummonDeadBody()
     {
         float ran = Randomizer.ReturnRandomFloat(new Vector2(0,100));
@@ -16,14 +21,14 @@ public class FlyingEnemyBody : Livebody
         }
         SoundManager.Play(SoundManager.Sound.OwlDead, audioSource);
         EnemySpawnerManager.instance.RemoveMe(this);
+        flyingMaskEffect.Detach();
         base.SummonDeadBody();
         //VFXManager.Play(VFXManager.Effect.FlyingEnemyDead, CenterPivot.position);
     }
     public override void TakeDamage(int damage)
     {
-        VFXManager.PlayFloatingNumber(transform.position, damage, 12f);
-        base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.OwlHit, audioSource);
+        base.TakeDamage(damage);
     }
     void OnEnable()
     {

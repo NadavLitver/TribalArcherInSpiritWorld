@@ -108,10 +108,11 @@ MonoBehaviour:
   doStun: 0
   stunDuration: 0
   timeToLive: 10
-  colliderBounds: {x: 1, y: 5, z: 1}
+  colliderBounds: {x: 0.5, y: 7, z: 0.5}
+  maskForceMode: 0.25
   rayMask:
     serializedVersion: 2
-    m_Bits: 641
+    m_Bits: 640
   maxDamageBody: 20
   minDamageBody: 5
   StackOnBodyHit: 40
@@ -125,6 +126,7 @@ MonoBehaviour:
   onHitAnything:
     m_PersistentCalls:
       m_Calls: []
+  maskExplosionRadius: 20
 --- !u!1001 &2480225221412998216
 PrefabInstance:
   m_ObjectHideFlags: 0

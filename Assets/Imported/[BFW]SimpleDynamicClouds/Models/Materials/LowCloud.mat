@@ -14,8 +14,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Transparent
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -77,11 +76,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ScatterMap0:
-        m_Texture: {fileID: 2800000, guid: baad7a7a551467f40971f262f976a1c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 02c3a2de36ef1614a940fbe60a4cf610, type: 3}
         m_Scale: {x: 0.01, y: 0.01}
         m_Offset: {x: 0, y: 0}
     - _ScatterMap1:
-        m_Texture: {fileID: 2800000, guid: 918c11da1b5e132479069533b81df005, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3d39d249d578c4f4ca76146d4d2c65af, type: 3}
         m_Scale: {x: 0.01, y: 0.01}
         m_Offset: {x: 0, y: 0}
     - _TextureMap:
@@ -93,7 +92,7 @@ Material:
     - _Brightness: 0.2
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Density: 0
+    - _Density: 0.97
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _Emptiness: 0.096
@@ -112,7 +111,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _CloudColor: {r: 0, g: 0.03912229, b: 0.078, a: 0.8235294}
+    - _CloudColor: {r: 0.53670686, g: 0.361746, b: 0.638, a: 0.29803923}
     - _Color: {r: 1, g: 1, b: 1, a: 0.422}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SkyColor: {r: 0, g: 0.036156174, b: 0.16911763, a: 1}

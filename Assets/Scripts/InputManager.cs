@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerClickAbilityQ;
     public UnityEvent OnPlayerStartedSprint;
     public UnityEvent OnPlayerCanceledSprint;
+    public UnityEvent OnPlayerClickHeal;
     public float shootHoldTime;
 
     public UnityEvent OnPause;
@@ -68,6 +69,7 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.AbilityR.started += PlayerStartedAbilityRThisFrame;
         inputActions.PlayerMap.AbilityQ.started += PlayerStartedAbilityQThisFrame;
         inputActions.PlayerMap.Exit.performed += OnExit;
+        inputActions.PlayerMap.Heal.started += PlayerStartedHealThisFrame;
         inputActions.GeneralMap.Pause.started += Pause;
     }
 
@@ -81,7 +83,10 @@ public class InputManager : MonoBehaviour
         OnPlayerClickAbilityQ?.Invoke();
 
     }
-
+    private void PlayerStartedHealThisFrame(InputAction.CallbackContext obj)
+    {
+        OnPlayerClickHeal?.Invoke();
+    }
     private void PlayerStartedAbilityRThisFrame(InputAction.CallbackContext obj)
     {
         OnPlayerClickAbilityR?.Invoke();

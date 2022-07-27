@@ -35,10 +35,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties_Leap"), ReadOnly] private bool canLeap;
     [SerializeField, FoldoutGroup("Properties_Leap")] private float leapForce;
     [SerializeField, FoldoutGroup("Properties_Leap")] public float LeapCD;
-    [SerializeField, FoldoutGroup("Properties_Leap")] GameObject LeapVFX;
-
     [SerializeField, FoldoutGroup("Properties_Leap")] public UnityEvent leapEvent;
-    
+
+    [SerializeField, FoldoutGroup("Properties_Slide")] private float slopeSpeed = 10;
+    private float slopeMod = 0;
+    private Vector3 hitPointNormal;
+    private bool isSliding
+    {
+        get
+        {
+            if (controller.isGrounded && Physics.Raycast(transform.position - (Vector3.down * 0.75f), Vector3.down, out RaycastHit slopeHit, 10f, groundedLayers))
+            {
+                slopeMod = (slopeHit.distance);
+                hitPointNormal = slopeHit.normal;
+                Debug.Log("slope mod: " + slopeMod);
+                return Vector3.Angle(hitPointNormal, Vector3.up) > controller.slopeLimit;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 
     public static Transform playerTransform;
     public static bool canMove;
@@ -66,17 +84,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetGrounded();
-        
+
         if (canMove)
         {
-            Jump();
-            Leap();
             Move(GetMoveInput());
             BreathboundMovement();
-            
+            Jump();
+            Leap();
         }
 
-        
+
     }
 
     private Vector3 GetMoveInput()
@@ -131,8 +148,8 @@ public class PlayerController : MonoBehaviour
                 m_audioSource.Stop();
                 m_audioSource.clip = GetCurrentRunClip();
                 m_audioSource.Play();
-                
-                //PostProccessManipulator.SetLensDistortion();
+
+                PostProccessManipulator.SetLensDistortion();
                 CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
                 sprintMod = sprintSpeed;
             }
@@ -140,7 +157,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(sprintMod != 1)
+            if (sprintMod != 1)
             {
                 m_audioSource.Stop();
                 m_audioSource.clip = GetCurrentWalkClip();
@@ -188,8 +205,18 @@ public class PlayerController : MonoBehaviour
     {
         if (input.PlayerJumpedThisFrame() && isGrounded)
         {
+            if (isSliding)
+            {
+                playerVelocity *= 0.5f;
+                playerVelocity += (jumpHeight * hitPointNormal * 0.6f) + (Vector3.up * jumpHeight * 0.45f);
+                canLeap = false;
+            }
+            else
+            {
+                playerVelocity.y = jumpHeight;
+                canLeap = true;
+            }
             SoundManager.Play(SoundManager.Sound.PlayerJump, m_audioSource, 0.35f);
-            playerVelocity.y = jumpHeight;
             m_breath.LoseBreath(jumpBreathCost);
             m_animator.SetTrigger("Jump");
         }
@@ -198,10 +225,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Leap()
     {
-        if (input.PlayerJumpedThisFrame() && !isGrounded && canLeap)
+        if (input.PlayerJumpedThisFrame() && !isSliding && !isGrounded && canLeap)
         {
             leapEvent?.Invoke();
-            LeapVFX.SetActive(true);
             if (GetMoveInput() != Vector3.zero)
                 playerVelocity = GetMoveInput() + (Vector3.up * 0.2f) * leapForce;
             else
@@ -232,7 +258,7 @@ public class PlayerController : MonoBehaviour
                 isWalking = true;
                 m_audioSource.clip = SoundManager.GetAudioClip(SoundManager.Sound.PlayerWalk);
                 m_audioSource.Play();
-               
+
 
             }
 
@@ -246,9 +272,14 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        Vector3 moveDelta;
+        moveDelta = playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity) * (isSliding ? 1 - (slopeMod * 0.1f): 1);
+        if (isSliding)
+        {
+            moveDelta += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed * slopeMod * Time.deltaTime;
+        }
         m_animator.SetBool("NormalWalk", isWalking);
-        controller.Move(playerSpeed * sprintMod * Time.deltaTime * (move + playerVelocity));
-        
+        controller.Move(moveDelta);
     }
 
     private void SetGrounded()
@@ -283,7 +314,7 @@ public class PlayerController : MonoBehaviour
             canMove = false;
             yield return new WaitForSeconds(duration);
             canMove = true;
-             
+
         }
     }
     private void FlipDoSprint()
@@ -306,5 +337,5 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
+
 }
