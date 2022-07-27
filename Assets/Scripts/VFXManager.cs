@@ -14,7 +14,8 @@ public class VFXManager : MonoBehaviour
         TerrainHitEffect,
         FlyingEnemyDead,
         FloatingNumber,
-        AddedArrow
+        AddedArrow,
+        SpawnEffect
     }
     public static VFXManager instance
     {
