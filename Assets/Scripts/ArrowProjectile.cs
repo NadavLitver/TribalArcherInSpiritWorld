@@ -24,7 +24,7 @@ public class ArrowProjectile : MonoBehaviour
     Vector3 boxCastPosition => transform.position;
     [SerializeField] Vector3 colliderBounds;
     [SerializeField, Range(0f, 1f)] private float maskForceMode = 0.25f;
-
+    
     Ray ray;
     bool rayHit;
     float timeAlive;
@@ -112,12 +112,14 @@ public class ArrowProjectile : MonoBehaviour
         if (lightingBolt != null)
         {
             lightingBolt.OnActivate(currentLivebody);
+            SoundManager.Play(SoundManager.Sound.LightingBoltArrowHit);
         }
         else
         {
             if (doStun)
             {
                 currentLivebody.m_stateHandler.SwapToStunState();
+                SoundManager.Play(SoundManager.Sound.StunShotHit, transform.position, 0.7f);
             }
             if (hit.collider.gameObject.CompareTag("Head"))
             {

@@ -31,7 +31,7 @@ public class FlyingMaskEffectHandler : MonoBehaviour
         renderer.enabled = true;
         rb.isKinematic = false;
         rb.AddExplosionForce(forceMod, ArrowProjectile.savedPos, forceMod);
-        Debug.Log("arrow name: " + transform.GetChild(transform.childCount - 1).name + "; applied force: " + transform.GetChild(transform.childCount - 1).forward.normalized);
+        //Debug.Log("arrow name: " + transform.GetChild(transform.childCount - 1).name + "; applied force: " + transform.GetChild(transform.childCount - 1).forward.normalized);
         transform.parent = null;
         StartCoroutine(DisableRoutine());
     }

@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
             {
                 slopeMod = (slopeHit.distance);
                 hitPointNormal = slopeHit.normal;
-                Debug.Log("slope mod: " + slopeMod);
                 return Vector3.Angle(hitPointNormal, Vector3.up) > controller.slopeLimit;
             }
             else

@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
       BowDraw,
       BowReleaseFull,
       BowHit,
-      ElectricShotRelease,
+      StunShotHit,
       PlayerWalk2,
       PlayerWalk3,
       PlayerWalk4,
@@ -44,7 +44,13 @@ public class SoundManager : MonoBehaviour
       SuicideDetect,
       SuicideDead,
       SuicideExplosions,
-      
+      LightingBoltArrowHit,
+      StatueHit,
+      QuestStart,
+      QuestFinish,
+
+
+
 
     }
     public static SoundManager instance

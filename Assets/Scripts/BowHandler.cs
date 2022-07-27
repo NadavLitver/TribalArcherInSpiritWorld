@@ -102,8 +102,8 @@ public class BowHandler : MonoBehaviour
             if (QuickShotAbiliyRef.AbilityToggle)
             {
                 QuickShot();
-               
-                SoundManager.Play(SoundManager.Sound.ElectricShotRelease, m_audioSource, 0.25f);
+                SoundManager.Play(SoundManager.Sound.BowReleaseFull, transform.position, 0.7f);
+                
                 return;
             }
             if (ScatterArrowAbilityRef.AbilityToggle)

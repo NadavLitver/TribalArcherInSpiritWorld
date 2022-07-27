@@ -88,7 +88,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyPositions: []
-  distanceToActivate: 90
+  distanceToActivate: 40
 --- !u!1 &334569548
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,11 +182,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - m_Sound: 0
-    m_AudioClip: {fileID: 8300000, guid: 2070a3996da4b4646b0a003a3210a098, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 246fa15e53aa91446bb3a31b7b7e597a, type: 3}
   - m_Sound: 1
     m_AudioClip: {fileID: 8300000, guid: 547a52f65df371b4595339b21b1c21a3, type: 3}
   - m_Sound: 2
-    m_AudioClip: {fileID: 8300000, guid: 6ce483dfa0fc8f04bba0d05ebdb0e91c, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 3ecc9670fb7362c4b9c149362b136888, type: 3}
   - m_Sound: 3
     m_AudioClip: {fileID: 8300000, guid: 51e612d6c9512a0458ee8727692ad47f, type: 3}
   - m_Sound: 4
@@ -206,14 +206,14 @@ MonoBehaviour:
   - m_Sound: 11
     m_AudioClip: {fileID: 8300000, guid: b5d4a5c57d890b247a7b28ac399670b7, type: 3}
   - m_Sound: 13
-    m_AudioClip: {fileID: 8300000, guid: 5fdec24fa85286943add037f850e4ed8, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: c3d1011fbd0e66f429419b0452c80730, type: 3}
   - m_Sound: 14
     m_AudioClip: {fileID: 8300000, guid: c9c01cbe493135745aea0d90d09995ff, type: 3}
   - m_Sound: 15
-    m_AudioClip: {fileID: 8300000, guid: 3a6049c740989df4d9d7bc47d55dfe9d, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: cf2d90f5405890a419dfee993d7ca373, type: 3}
+  - m_Sound: 4
+    m_AudioClip: {fileID: 8300000, guid: 5d3850e857aa78244bf29c0577574cce, type: 3}
   - m_Sound: 17
-    m_AudioClip: {fileID: 8300000, guid: 603f803008f68ae40a18891ae8db94b3, type: 3}
-  - m_Sound: 16
     m_AudioClip: {fileID: 8300000, guid: 7f1d506f521db8f4d905d606a9ae76a8, type: 3}
   - m_Sound: 17
     m_AudioClip: {fileID: 8300000, guid: 231a6bdff7024044c96c69fdb6475c5e, type: 3}
@@ -228,7 +228,7 @@ MonoBehaviour:
   - m_Sound: 22
     m_AudioClip: {fileID: 8300000, guid: d6cd949e8cb54394a9fc180326dee288, type: 3}
   - m_Sound: 23
-    m_AudioClip: {fileID: 8300000, guid: f27cc2e71fcc11e48a381abef275faa6, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 04e135f3c474962489429402971adc59, type: 3}
   - m_Sound: 25
     m_AudioClip: {fileID: 8300000, guid: 6f85a3b5cf5bc2244be5370089a8764b, type: 3}
   - m_Sound: 26
@@ -243,6 +243,14 @@ MonoBehaviour:
     m_AudioClip: {fileID: 8300000, guid: bf515f03f312ffe4998603381d2a82bc, type: 3}
   - m_Sound: 30
     m_AudioClip: {fileID: 8300000, guid: 3a8e87af9cea304409f9c10e3ce284bb, type: 3}
+  - m_Sound: 31
+    m_AudioClip: {fileID: 8300000, guid: 57630d1a44dbcf141b10279bffdf6ae1, type: 3}
+  - m_Sound: 32
+    m_AudioClip: {fileID: 8300000, guid: a551f5b9c71fc4c488cb8b5e66c176e2, type: 3}
+  - m_Sound: 33
+    m_AudioClip: {fileID: 8300000, guid: a10c2bf8610136e4a9ef9841c5fb0b99, type: 3}
+  - m_Sound: 34
+    m_AudioClip: {fileID: 8300000, guid: c025930f8b4deba4394d3810b00517e6, type: 3}
   DeactivateAudioObjectsTime: 6
   m_pool: {fileID: 1234329349}
 --- !u!114 &1234329349
@@ -362,9 +370,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Buffer: {fileID: 0}
-  BufferMaxValue: 100
-  BufferConstantDecreaseSpeed: 100
+  PowerBar: {fileID: 0}
+  PowerBarMaxValue: 100
+  PowerBarConstantDecreaseSpeed: 100
+  PowerBarFillSpeed: 5
   BufferCombatDelay: 3
   addedStackValueText: {fileID: 0}
   playerBody: {fileID: 0}
@@ -429,6 +438,8 @@ MonoBehaviour:
     m_prefab: {fileID: 1829308401092268362, guid: 8a0524f2f06bcf1438ace22a4da4c129, type: 3}
   - m_effect: 5
     m_prefab: {fileID: 3177757348250566155, guid: d3ab8a1a3e0b88c4fa5aa0819e4b4495, type: 3}
+  - m_effect: 6
+    m_prefab: {fileID: 3209034220695395786, guid: ed82ad8ebb4f7b5419129d9d5759973a, type: 3}
 --- !u!114 &635659859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +465,7 @@ MonoBehaviour:
   nightLightIntensity: 0
   doFog: 1
   dayFog: {r: 0.3764706, g: 0.4392157, b: 0.5019608, a: 0.5019608}
-  nightFog: {r: 0, g: 0.039215688, b: 0.07450981, a: 1}
+  nightFog: {r: 0.08627451, g: 0.09411766, b: 0.1254902, a: 1}
   dayDensity: 0.001
   nightDensity: 0.007
   doSky: 1
@@ -462,7 +473,7 @@ MonoBehaviour:
   nightSky: {fileID: 2100000, guid: ecde7e6f165b7224c93fba4207dc2ab5, type: 2}
   doArena: 1
   arena: {fileID: 0}
-  startState: 0
+  startState: 1
 --- !u!1 &7599429657606171109
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,15 +21,16 @@ public class CounterHandler : MonoBehaviour
     [SerializeField] private Image[] parts;
     private void Start()
     {
-        Init();
+        ResetCounter();
     }
-    private void Init()
+    private void ResetCounter()
     {
         finishedCounting = false;
         for (int i = 0; i < parts.Length; i++)
         {
             parts[i].color = idleColor;
         }
+      
     }
     public void CountUp(float delay)
     {
