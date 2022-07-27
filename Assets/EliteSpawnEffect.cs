@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,16 +16,60 @@ public class EliteSpawnEffect : MonoBehaviour
     [SerializeField] private Material mat;
 
     [SerializeField] private float targetScale = 4;
+    [SerializeField] private Transform[] items;
+    [SerializeField] private float offset = 0.05f;
+    [SerializeField] bool setPosWithRayDown = true;
+    [SerializeField] private LayerMask lm;
+
+    [SerializeField] private GameObject[] myChildren;
+
+    private bool isHit = false;
+
     private void OnEnable()
     {
         if (endEvent == null)
         {
             endEvent = new UnityEvent();
         }
+        foreach (GameObject item in myChildren)
+        {
+            item.SetActive(false);
+        }
+    }
+    public void Activate() // called from animator on awake
+    {
+        if (isHit)
+        {
+            return;
+        }
+        isHit = true;
+        foreach (GameObject item in myChildren)
+        {
+            item.SetActive(true);
+        }
         StartCoroutine(ActiveRoutine());
     }
     private IEnumerator ActiveRoutine()
     {
+        Animator anim = GetComponentInParent<Animator>();
+        if (anim != null)
+        {
+            anim.Play("AwakenElite");
+            Debug.Log("awaken played");
+        }
+        if (setPosWithRayDown)
+        {
+            Vector3 targetPos = transform.position;
+            Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
+            if (Physics.Raycast(ray, out RaycastHit hit, 15, lm))
+            {
+                targetPos = hit.point + (Vector3.up * offset);
+            }
+            foreach (Transform trans in items)
+            {
+                trans.position = targetPos;
+            }
+        }
         float startSize = body.localScale.x;
         float endSize = targetScale;
         float curDur = 0f;
