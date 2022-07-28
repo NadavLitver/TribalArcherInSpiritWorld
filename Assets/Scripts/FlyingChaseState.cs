@@ -50,7 +50,9 @@ public class FlyingChaseState : State
         timeInState += Time.deltaTime;
         ChaseTarget();
         // TargetInSight = Physics.Raycast(transform.position, ((Target.position - stateHandler.body.transform.position).normalized), sightRange, playerLayer);
-        TargetInSight = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(Target.position.x, Target.position.z)) < sightRange;
+        float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(Target.position.x, Target.position.z));
+        Debug.Log(distance);
+        TargetInSight = distance < sightRange;
         if (TargetInSight)
         {
             SwapToNextState();

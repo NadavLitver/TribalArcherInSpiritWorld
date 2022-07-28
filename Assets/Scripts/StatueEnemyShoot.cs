@@ -15,11 +15,11 @@ public class StatueEnemyShoot : State
     [SerializeField,ReadOnly] private bool startedAim, startedShoot, canAim, CanShoot;
     [SerializeField] private AudioSource m_audioSource;
     [SerializeField] private float faceTargetSpeedAttackMod = 0.5f; // facing target while attacking
-    [SerializeField] private LookAtHandler lookAtObject;
     private Vector3 stopAimPos;
     [SerializeField] private float RotOffset = 25f;
     [SerializeField] private Vector3 axis;
     [SerializeField] private AnimationCurve aimEase;
+    [SerializeField] private Transform ObjectToRotateBeam;//lookathandler
     protected override void OnStateDisabled()
     {
 
@@ -75,11 +75,13 @@ public class StatueEnemyShoot : State
                 }
                 if (CanShoot)
                 { 
+                    ObjectToRotateBeam.LookAt(Target.position);
                     FaceTarget(faceTargetSpeedAttackMod);
                     ShootBeam();
                 }
                 else
                 {
+                   // ObjectToRotateBeam.LookAt(Target.position);
                     FaceTarget(faceTargetSpeedAttackMod / 2);
 
                 }
@@ -112,13 +114,13 @@ public class StatueEnemyShoot : State
     }
     void FaceTarget(float speedMod)
     {
-        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
+        var turnTowardNavSteeringTarget = Target.position;
 
 
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateTowardsTargetSpeed * speedMod);
-        float targetRot = lookAtObject.transform.rotation.eulerAngles.x;
+        float targetRot = ObjectToRotateBeam.transform.rotation.eulerAngles.x;
 
         beamLine.transform.localRotation = Quaternion.Euler(Mathf.MoveTowards(beamLine.transform.localRotation.eulerAngles.x, targetRot, faceTargetSpeed * speedMod * Time.deltaTime), 0, 0);
         aimLine.transform.localRotation = Quaternion.Euler(Mathf.MoveTowards(aimLine.transform.localRotation.eulerAngles.x, targetRot, faceTargetSpeed * speedMod * Time.deltaTime), 0, 0);

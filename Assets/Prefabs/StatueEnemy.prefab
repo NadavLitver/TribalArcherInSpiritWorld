@@ -4930,7 +4930,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3158562733835391613}
-  - component: {fileID: 451380081440211583}
   m_Layer: 0
   m_Name: LaserLookAt
   m_TagString: Untagged
@@ -4952,20 +4951,6 @@ Transform:
   m_Father: {fileID: 5892183525692724654}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
---- !u!114 &451380081440211583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3418195595005590143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ddb2464cfec92941a409777e49892f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  onlyY: 0
 --- !u!1 &4477609732533237556
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,6 +5083,7 @@ MonoBehaviour:
   - {fileID: 6324815777406208025}
   hitState: {fileID: 0}
   stunState: {fileID: 6324815777406208025}
+  addToEnemySpawner: 1
 --- !u!114 &5892183525658882917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5122,6 +5108,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 5892183525658882918}
   agent: {fileID: 5892183526249420144}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   rangeToShoot: 80
   playerInShootRange: 0
 --- !u!114 &5892183525658882918
@@ -5148,6 +5136,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 5892183525658882917}
   agent: {fileID: 5892183526249420144}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   aimLine: {fileID: 6184003488289637567}
   beamLine: {fileID: 5848391172641272491}
   aimTime: 1.5
@@ -5161,7 +5151,6 @@ MonoBehaviour:
   CanShoot: 0
   m_audioSource: {fileID: 1039281948}
   faceTargetSpeedAttackMod: 0.4
-  lookAtObject: {fileID: 451380081440211583}
   RotOffset: 0
   axis: {x: 0, y: 0, z: 0}
   aimEase:
@@ -5197,6 +5186,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ObjectToRotateBeam: {fileID: 3158562733835391613}
 --- !u!114 &5321964515791799998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5221,6 +5211,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 1430483974}
   agent: {fileID: 5892183526249420144}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   playerInSight: 0
   sightRange: 140
 --- !u!114 &6324815777406208025
@@ -5247,6 +5239,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 5892183525658882918}
   agent: {fileID: 5892183526249420144}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   stunDuration: 1
   stunEffect: {fileID: 4945920923147921087}
 --- !u!114 &1430483974
@@ -5273,6 +5267,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 5892183525658882917}
   agent: {fileID: 5892183526249420144}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   timeToNextState: 1
 --- !u!1 &5892183525692724655
 GameObject:
@@ -6294,9 +6290,9 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6264200810737971924, guid: 7d7a5937b5028a249814de1324451945, type: 3}
   m_PrefabInstance: {fileID: 1960113115005740312}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &2550086827158168175 stripped
+--- !u!137 &545033494439960298 stripped
 SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4057745512217577335, guid: 7d7a5937b5028a249814de1324451945, type: 3}
+  m_CorrespondingSourceObject: {fileID: -7159631122689098766, guid: 7d7a5937b5028a249814de1324451945, type: 3}
   m_PrefabInstance: {fileID: 1960113115005740312}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1294953920691586309 stripped
@@ -6324,9 +6320,9 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -2757887666527222983, guid: 7d7a5937b5028a249814de1324451945, type: 3}
   m_PrefabInstance: {fileID: 1960113115005740312}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &545033494439960298 stripped
+--- !u!137 &2550086827158168175 stripped
 SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7159631122689098766, guid: 7d7a5937b5028a249814de1324451945, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4057745512217577335, guid: 7d7a5937b5028a249814de1324451945, type: 3}
   m_PrefabInstance: {fileID: 1960113115005740312}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1725672160402167881 stripped
@@ -6498,14 +6494,6 @@ PrefabInstance:
     - target: {fileID: 7385228121955927227, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
       propertyPath: endPosYOffset
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385228121955927227, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
-      propertyPath: beamStretchSpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7385228121955927227, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
-      propertyPath: chargeBeamDuration
-      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 9019359178064676949, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
       propertyPath: m_RootOrder

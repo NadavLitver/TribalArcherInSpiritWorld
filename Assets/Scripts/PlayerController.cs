@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         canMove = true;
         canLeap = true;
+        playerTransform = transform;
     }
     private void Start()
     {

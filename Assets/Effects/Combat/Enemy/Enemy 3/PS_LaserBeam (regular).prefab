@@ -29529,8 +29529,8 @@ MonoBehaviour:
   m_charge: {fileID: 6389051497342764562}
   m_beamEnd: {fileID: 3359405030188504732}
   shootDirection: {x: 0, y: 0, z: 0}
-  chargeBeamDuration: 1
-  beamStretchSpeed: 100
+  chargeBeamDuration: 1.2
+  beamStretchSpeed: 30
   beamDuration: 4
   maxLineLength: 150
   closeBeamDuration: 0.25

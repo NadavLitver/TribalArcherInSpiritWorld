@@ -9,11 +9,14 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] List<Livebody> enemies;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] List<Vector3> enemyPositions;
     [SerializeField, FoldoutGroup("Refrences")] private int distanceToActivate;
+    [SerializeField] bool spawn;
     private void Awake()
     {
         enemies.Clear();
         enemyPositions.Clear();
         instance = this;
+        
+        
     }
     void Start()
     {
@@ -34,6 +37,7 @@ public class EnemySpawnerManager : MonoBehaviour
     }
     public void AddMe(Livebody bodyToRemove)
     {
+        
         enemyPositions.Add(bodyToRemove.transform.position);
         enemies.Add(bodyToRemove);
         bodyToRemove.gameObject.SetActive(false);
@@ -53,7 +57,7 @@ public class EnemySpawnerManager : MonoBehaviour
     }
     IEnumerator Spawn()
     {
-        while (this.enabled)
+        while (this.enabled && spawn)
         {
             yield return new WaitForSeconds(0.5f);
             for (int i = 0; i < enemyPositions.Count; i++)

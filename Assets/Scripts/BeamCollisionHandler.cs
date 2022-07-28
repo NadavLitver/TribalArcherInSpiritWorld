@@ -5,7 +5,7 @@ public class BeamCollisionHandler : MonoBehaviour
     [SerializeField, FoldoutGroup("Properties")]
     int damage;
     [SerializeField, ReadOnly, FoldoutGroup("Properties")]
-    bool isOnPlayer;
+    bool IsOnTarget;
     Livebody currentLivebody;
     float timeOnPlayer;
     float timeEnabled;
@@ -25,24 +25,26 @@ public class BeamCollisionHandler : MonoBehaviour
             VFXManager.Play(VFXManager.Effect.TerrainHitEffect, other.ClosestPointOnBounds(transform.position));
             return;
         }
-        if (other.gameObject.CompareTag("Player"))
+        else
         {
-            PlayerHit(currentLivebody, other.ClosestPointOnBounds(transform.position));
+            HitLiveBody(currentLivebody, other.ClosestPointOnBounds(transform.position));
+
         }
+       
     }
     private void OnTriggerExit(Collider other)
     {
-        isOnPlayer = false;
+        IsOnTarget = false;
     }
-    private void PlayerHit(Livebody currentLivebody, Vector3 hitPoint)
+    private void HitLiveBody(Livebody currentLivebody, Vector3 hitPoint)
     {
         currentLivebody.TakeDamage(damage);
-        isOnPlayer = true;
+        IsOnTarget = true;
     }
     private void Update()
     {
         
-        if (isOnPlayer)
+        if (IsOnTarget)
         {
             timeOnPlayer += Time.deltaTime;
             if(timeOnPlayer > 0.25f)
