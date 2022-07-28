@@ -461,6 +461,7 @@ MonoBehaviour:
   - {fileID: 7287593671631427746}
   hitState: {fileID: 4445954659718942571}
   stunState: {fileID: 2202982925557330375}
+  addToEnemySpawner: 1
 --- !u!114 &4359631609399318989
 MonoBehaviour:
   m_ObjectHideFlags: 0

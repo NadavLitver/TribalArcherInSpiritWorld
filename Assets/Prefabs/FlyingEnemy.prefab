@@ -371,6 +371,7 @@ MonoBehaviour:
   - {fileID: 4455560621232203280}
   hitState: {fileID: 298908480}
   stunState: {fileID: 4455560621232203280}
+  addToEnemySpawner: 1
 --- !u!114 &6072534156915436493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +396,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   walkPointRange: 15
   sightRange: 120
   playerInSight: 0
@@ -425,9 +428,11 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436490}
   agent: {fileID: 6279340190576987184}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   SideStep: {fileID: 2486890781247201281}
   sightRange: 45
-  playerInSight: 0
+  TargetInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 2
   floatComponent: {fileID: 0}
@@ -458,6 +463,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   timeBetweenAttacks: 1
   BackStepLength: 20
   projectileForce: 1500
@@ -504,6 +511,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   hitStateLength: 1
 --- !u!114 &2486890781247201281
 MonoBehaviour:
@@ -529,6 +538,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   speed: 20
   Range: 3.5
 --- !u!114 &4455560621232203280
@@ -555,6 +566,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 6072534156915436494}
   agent: {fileID: 6279340190576987184}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   stunDuration: 1
   stunEffect: {fileID: 6476816268316482994}
 --- !u!1 &6279340190576987187

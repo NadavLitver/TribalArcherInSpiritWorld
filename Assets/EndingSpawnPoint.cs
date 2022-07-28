@@ -39,6 +39,7 @@ public class EndingSpawnPoint : MonoBehaviour
         {
             
             var currentBody = Instantiate(SuicideEnemy, positionToSpawn.position, Quaternion.identity);
+            currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
             currentBody.gameObject.SetActive(true);
@@ -49,6 +50,7 @@ public class EndingSpawnPoint : MonoBehaviour
         for (int i = 0; i < currentPhase.amountPhase_StatueEnemy; i++)//Statues
         {
             var currentBody = Instantiate(StatueEnemy, positionToSpawn.position, Quaternion.identity);
+            currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
             currentBody.gameObject.SetActive(true);
@@ -60,6 +62,7 @@ public class EndingSpawnPoint : MonoBehaviour
         for (int i = 0; i < currentPhase.amountPhase_FlyingEnemy; i++)//FLYING
         {
             var currentBody = Instantiate(flyingEnemy, positionToSpawn.position, Quaternion.identity);
+            currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
             currentBody.gameObject.SetActive(true);

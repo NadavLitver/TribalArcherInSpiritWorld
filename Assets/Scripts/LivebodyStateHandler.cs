@@ -11,8 +11,10 @@ public class LivebodyStateHandler : MonoBehaviour
     private List<State> states;
     [SerializeField, Tooltip("Specifically the state the livebody goes to when hit"), FoldoutGroup("Properties")]
     public State hitState;
-    [SerializeField, Tooltip("Specifically the state the livebody goes to when hit"), FoldoutGroup("Properties")]
+    [SerializeField, Tooltip("Specifically the state the livebody goes to when Stunned"), FoldoutGroup("Properties")]
     public State stunState;
+    [SerializeField, Tooltip("Do I add myself to the enemyspawner? only if im not instantiated"), FoldoutGroup("Properties")]
+    public bool addToEnemySpawner;
     private void Awake()
     {
         body = GetComponentInParent<Livebody>();
@@ -21,8 +23,8 @@ public class LivebodyStateHandler : MonoBehaviour
     }
     private void Start()
     {
-        if(EnemySpawnerManager.instance != null)
-        EnemySpawnerManager.instance.AddMe(body);
+        if(EnemySpawnerManager.instance != null && addToEnemySpawner)
+         EnemySpawnerManager.instance.AddMe(body);
 
     }
     public void OnEnable()
