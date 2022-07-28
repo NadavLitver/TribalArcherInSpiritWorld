@@ -5153,17 +5153,50 @@ MonoBehaviour:
   aimTime: 1.5
   shootTime: 3.5
   BreathTimeAfterFinishShoot: 5
-  faceTargetSpeed: 25
-  rotateTowardsTargetSpeed: 15
+  faceTargetSpeed: 15
+  rotateTowardsTargetSpeed: 10
   startedAim: 0
   startedShoot: 0
   canAim: 0
   CanShoot: 0
   m_audioSource: {fileID: 1039281948}
-  faceTargetSpeedAttackMod: 0.55
+  faceTargetSpeedAttackMod: 0.4
   lookAtObject: {fileID: 451380081440211583}
   RotOffset: 0
   axis: {x: 0, y: 0, z: 0}
+  aimEase:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9929199
+      inSlope: -2.6918116
+      outSlope: -2.6918116
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.375
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9923096
+      value: 0.19671631
+      inSlope: -0.008203465
+      outSlope: -0.008203465
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.30941707
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &5321964515791799998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6467,8 +6500,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7385228121955927227, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
+      propertyPath: beamStretchSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385228121955927227, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
       propertyPath: chargeBeamDuration
-      value: 0.95
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 9019359178064676949, guid: 7382b9074d584e043b7a4af5613bf7b0, type: 3}
       propertyPath: m_RootOrder

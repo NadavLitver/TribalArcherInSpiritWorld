@@ -19,6 +19,7 @@ public class StatueEnemyShoot : State
     private Vector3 stopAimPos;
     [SerializeField] private float RotOffset = 25f;
     [SerializeField] private Vector3 axis;
+    [SerializeField] private AnimationCurve aimEase;
     protected override void OnStateDisabled()
     {
 
@@ -53,8 +54,7 @@ public class StatueEnemyShoot : State
             {
                 startedAim = true;
                 StartCoroutine(animationDelay(0.1f, false));
-                
-                
+                FaceTarget(timeInState / aimTime);
             }
             if (canAim)
             {
@@ -106,7 +106,6 @@ public class StatueEnemyShoot : State
     {
        
 
-        FaceTarget(1);
         aimLine.SetPosition(1, stopAimPos);
        
      
