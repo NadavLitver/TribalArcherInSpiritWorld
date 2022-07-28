@@ -39,7 +39,18 @@ public class EnemySpawnerManager : MonoBehaviour
         bodyToRemove.gameObject.SetActive(false);
 
     }
-
+    [Button]
+    public void DeActivateBaseEnemies()
+    {
+        StopAllCoroutines();
+        foreach (var enemy in enemies)
+        {
+            enemy.gameObject.SetActive(false);
+          
+        }
+        enemies.Clear();
+        enemyPositions.Clear();
+    }
     IEnumerator Spawn()
     {
         while (this.enabled)

@@ -30,9 +30,11 @@ public class SuicideBomberExplodeState : State
             for (int i = 0; i < explosionTargets.Length; i++)
             {
               Livebody currentLivebody = explosionTargets[i].GetComponent<Livebody>() ?? explosionTargets[i].GetComponentInParent<Livebody>() ?? explosionTargets[i].GetComponentInChildren<Livebody>();
-                if(currentLivebody != null && currentLivebody.gameObject.CompareTag("Player"))
+                if(currentLivebody != null)
                 {
-                    OnPlayerHit?.Invoke();
+                    if(currentLivebody.gameObject.CompareTag("Player"))
+                          OnPlayerHit?.Invoke();
+
                     currentLivebody.TakeDamage(damage);
                     VFXManager.Play(VFXManager.Effect.HeadshotEffect, ExplosionPos.position);
                     SoundManager.Play(SoundManager.Sound.SuicideExplosions, transform.position);

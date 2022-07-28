@@ -458,8 +458,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7795163103655438847}
-  m_LocalRotation: {x: -0, y: -0, z: -0.00000000148043, w: 1}
-  m_LocalPosition: {x: -0.000026360154, y: 0.9999965, z: -0.0000027003698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7795163102757083231}
@@ -499,7 +499,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3991
+    m_Bits: 8087
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -877,7 +877,19 @@ MonoBehaviour:
       m_Calls: []
   HealEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: HealthBarFlash, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   updateUIBars:
     m_PersistentCalls:
       m_Calls: []
@@ -900,6 +912,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isFlying: 0
   controller: {fileID: 0}
   fadeToBlack: {fileID: 0}
 --- !u!114 &453187471
@@ -1225,7 +1238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 978330266, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 978330268, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_animator
@@ -1233,7 +1246,7 @@ PrefabInstance:
       objectReference: {fileID: 8044071146096446681}
     - target: {fileID: 1593920049, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997277843036759018, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_LocalScale.x
@@ -1253,7 +1266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4388962376751778796, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: arrowForce
-      value: 140
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4388962376751778796, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_animator
@@ -1265,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6803620044544205673, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8221350060279703167, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_Icon

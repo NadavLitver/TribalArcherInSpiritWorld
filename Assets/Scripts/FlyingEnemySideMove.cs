@@ -44,7 +44,7 @@ public class FlyingEnemySideMove : State
     }
     void FaceTarget()
     {
-        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
+        var turnTowardNavSteeringTarget = Target.position;
 
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

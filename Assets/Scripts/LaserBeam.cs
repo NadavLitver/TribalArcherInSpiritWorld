@@ -88,7 +88,6 @@ public class LaserBeam : MonoBehaviour
             ColorOverLife(curDur);
             SetLineEndPositionsToTargetOverTime(lineLength * Vector3.forward);
             BeamEnd(lineLength * Vector3.forward);
-            Debug.Log("translated end pos: " + targetPos);
             yield return null;
         }
 

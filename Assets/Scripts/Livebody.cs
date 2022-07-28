@@ -41,6 +41,7 @@ public class Livebody : MonoBehaviour
 
     private void Awake()
     {
+        health = maxHealth;
         animator = GetComponentInChildren<Animator>();
 
         if (hitEvent == null)
@@ -54,7 +55,6 @@ public class Livebody : MonoBehaviour
 
         isVulnerable = true;
         isPlayer = gameObject.CompareTag("Player");
-        health = maxHealth;
 
     }
 

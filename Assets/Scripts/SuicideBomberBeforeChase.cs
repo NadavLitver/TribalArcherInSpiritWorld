@@ -13,7 +13,7 @@ public class SuicideBomberBeforeChase : State
 
     protected override void OnStateEnabled()
     {
-        agent.SetDestination(PlayerController.playerTransform.position);
+        agent.SetDestination(Target.position);
         agent.isStopped = true;
         foreach (Animator item in _animators)
         {
@@ -38,7 +38,7 @@ public class SuicideBomberBeforeChase : State
     }
     void FaceTarget()
     {
-        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
+        var turnTowardNavSteeringTarget = Target.position;
 
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));

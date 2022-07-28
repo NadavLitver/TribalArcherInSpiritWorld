@@ -12,6 +12,7 @@ public class FlyingEnemyAttack : State
     [FoldoutGroup("Refrences")] public ObjectPool pool;
     [FoldoutGroup("Refrences")] public Transform shootPos;
     [SerializeField, FoldoutGroup("Refrences")] FlyingEnemyGfxHandler gfx;
+    
 
 
 
@@ -32,7 +33,7 @@ public class FlyingEnemyAttack : State
     }
     void FaceTarget()
     {
-        var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
+        var turnTowardNavSteeringTarget = Target.position;
 
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -41,7 +42,7 @@ public class FlyingEnemyAttack : State
     private void AttackPlayer()
     {
 
-        if (alreadyAttacked || PlayerController.playerTransform == null)
+        if (alreadyAttacked || Target == null)
         {
            
                 StartCoroutine(SwapStateDelay());
@@ -53,7 +54,7 @@ public class FlyingEnemyAttack : State
         Shot.transform.SetPositionAndRotation(shootPos.position, shootPos.rotation);
 
         var ProjBase = Shot.GetComponent<ProjectileBase>();
-        ProjBase.direction = (PlayerController.playerTransform.position - shootPos.position).normalized;
+        ProjBase.direction = (Target.position - shootPos.position).normalized;
         ProjBase.force = projectileForce;
         Shot.SetActive(true);
         alreadyAttacked = true;
@@ -76,7 +77,7 @@ public class FlyingEnemyAttack : State
     {
 
         yield return new WaitForSeconds(timeBetweenAttacks);
-        agent.SetDestination(PlayerController.playerTransform.position);
+        agent.SetDestination(Target.position);
         agent.isStopped = false;
         SwapToNextState();
     }

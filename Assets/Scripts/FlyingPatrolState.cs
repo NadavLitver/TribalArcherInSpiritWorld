@@ -38,15 +38,15 @@ public class FlyingPatrolState : State
     private void Update()
     {
 
-        GroundInSight = Physics.Raycast(transform.position, ((PlayerController.playerTransform.position - stateHandler.body.transform.position).normalized), sightRange, groundLayer);
-        if (GroundInSight)
-        {
-            playerInSight = false;
-            Patroling();
-            return;
-        }
+        //GroundInSight = Physics.Raycast(transform.position, ((PlayerController.playerTransform.position - stateHandler.body.transform.position).normalized), sightRange, groundLayer);
+        //if (GroundInSight)
+        //{
+        //    playerInSight = false;
+        //    Patroling();
+        //    return;
+        //}
         playerInSight = Physics.Raycast(transform.position, ((PlayerController.playerTransform.position - stateHandler.body.transform.position).normalized), sightRange, playerLayer);
-        if (playerInSight)
+        if (playerInSight || isTempleTarget)
         {
             SwapToNextState();
         }

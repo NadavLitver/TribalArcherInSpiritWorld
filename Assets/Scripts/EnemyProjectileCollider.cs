@@ -15,22 +15,27 @@ public class EnemyProjectileCollider : MonoBehaviour
        
         Livebody currentLivebody = other.GetComponent<Livebody>() ?? other.GetComponentInParent<Livebody>() ?? other.GetComponentInChildren<Livebody>();
         //  Quaternion effectRotation = (other.ClosestPointOnBounds(transform.position) - PlayerController.playerTransform);
+        Vector3 hitPoint = other.ClosestPointOnBounds(transform.position);
         if (currentLivebody == null)
         {
-            VFXManager.Play(VFXManager.Effect.TerrainHitEffect, other.ClosestPointOnBounds(transform.position));
+            VFXManager.Play(VFXManager.Effect.TerrainHitEffect, hitPoint);
             SoundManager.Play(SoundManager.Sound.OwlProjectileHit, transform.position, 0.55f);
             transform.parent.gameObject.SetActive(false);
             return;
         }
-        if (other.gameObject.CompareTag("Player"))
+        else
         {
-            PlayerHit(currentLivebody, other.ClosestPointOnBounds(transform.position));
+            LiveBodyHit(currentLivebody, hitPoint);
+          
         }
        
+       
     }
-    private void PlayerHit(Livebody currentLivebody,Vector3 hitPoint)
+    private void LiveBodyHit(Livebody currentLivebody,Vector3 hitPoint)
     {
-        OnPlayerHit?.Invoke();
+        if (currentLivebody.gameObject.CompareTag("Player"))
+            OnPlayerHit?.Invoke();
+
         currentLivebody.TakeDamage(damage);
         VFXManager.Play(VFXManager.Effect.HeadshotEffect, hitPoint);
         transform.parent.gameObject.SetActive(false);

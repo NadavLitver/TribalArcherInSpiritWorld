@@ -21,6 +21,7 @@ public class LivebodyStateHandler : MonoBehaviour
     }
     private void Start()
     {
+        if(EnemySpawnerManager.instance != null)
         EnemySpawnerManager.instance.AddMe(body);
 
     }
@@ -83,6 +84,14 @@ public class LivebodyStateHandler : MonoBehaviour
 
         }
 
+    }
+    [Button]
+    public void ToggleAllStatesTarget()
+    {
+        foreach (State _state in states)
+        {
+            _state.ToggleTarget();
+        }
     }
     public void SwapToStunState()
     {

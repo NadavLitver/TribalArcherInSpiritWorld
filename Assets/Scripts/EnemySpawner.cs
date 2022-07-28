@@ -17,11 +17,20 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> enemiesSpawned;
     [SerializeField]
     private int maxEnemiesForSpawnPoint = 10;
+    public bool endingPhase1, endingPhase2, endingPhase3;
     private void Start()
     {
-
+        InitEndingPhases();
         StartCoroutine(SummonEnemy());
     }
+
+    private void InitEndingPhases()
+    {
+        endingPhase1 = false;
+        endingPhase2 = false;
+        endingPhase3 = false;
+    }
+
     IEnumerator SummonEnemy()
     {
         while (DoSummon )

@@ -485,6 +485,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 7287593671631427746}
   agent: {fileID: 4359631608720208371}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   walkPointRange: 12
   sightRange: 120
   playerInSight: 0
@@ -515,9 +517,11 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 4359631609399318986}
   agent: {fileID: 4359631608720208371}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   SideStep: {fileID: 4359631609399318987}
-  sightRange: 3
-  playerInSight: 0
+  sightRange: 4
+  TargetInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 20
   floatComponent: {fileID: 0}
@@ -548,6 +552,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 4359631609399318988}
   agent: {fileID: 4359631608720208371}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   speed: 35
   Range: 3.5
 --- !u!114 &4359631609399318986
@@ -567,14 +573,16 @@ MonoBehaviour:
     m_Bits: 128
   playerLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   canExitToHit: 0
   _animators:
   - {fileID: 4589204153777282710}
   stateHandler: {fileID: 0}
   nextState: {fileID: 7287593671631427746}
   agent: {fileID: 4359631608720208371}
-  explosionRadius: 5
+  Target: {fileID: 0}
+  isTempleTarget: 0
+  explosionRadius: 10
   ExplosionPos: {fileID: 4607568065452998966}
   OnPlayerHit:
     m_PersistentCalls:
@@ -604,6 +612,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 7287593671631427746}
   agent: {fileID: 4359631608720208371}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   stunDuration: 1
   stunEffect: {fileID: 6952382888897578267, guid: e45de5d670786cc4facf4fca24320bd6, type: 3}
 --- !u!114 &4445954659718942571
@@ -630,6 +640,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 4359631609399318988}
   agent: {fileID: 4359631608720208371}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   hitStateLength: 1
 --- !u!114 &7287593671631427746
 MonoBehaviour:
@@ -655,6 +667,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 4359631609399318988}
   agent: {fileID: 4359631608720208371}
+  Target: {fileID: 0}
+  isTempleTarget: 0
 --- !u!114 &79097709
 MonoBehaviour:
   m_ObjectHideFlags: 0
