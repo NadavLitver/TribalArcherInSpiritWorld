@@ -49,7 +49,7 @@ public class EnemySpawnerManager : MonoBehaviour
             {
                 if (Vector2.Distance(enemyPositions[i], PlayerController.playerTransform.position) < distanceToActivate)
                 {
-                    VFXManager.Play(VFXManager.Effect.SpawnEffect, enemies[i].transform.position);
+                    VFXManager.Play(VFXManager.Effect.SpawnEffect, enemies[i].transform.position, enemies[i].transform.rotation);
                     yield return new WaitForSeconds(1f);
                     enemies[i].gameObject.SetActive(true);
                     RemoveMe(enemies[i]);
@@ -61,8 +61,9 @@ public class EnemySpawnerManager : MonoBehaviour
     }
     IEnumerator SpawnRoutine(Livebody ObjectToSetActive)
     {
-        VFXManager.Play(VFXManager.Effect.SpawnEffect, ObjectToSetActive.transform.position);
+        VFXManager.Play(VFXManager.Effect.SpawnEffect, ObjectToSetActive.transform.position, ObjectToSetActive.transform.rotation);
         yield return new WaitForSeconds(2f);
+
         ObjectToSetActive.gameObject.SetActive(true);
         
     }

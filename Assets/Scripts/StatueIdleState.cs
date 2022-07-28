@@ -7,14 +7,13 @@ public class StatueIdleState : State
 {
     public bool playerInSight;
     [SerializeField,FoldoutGroup("Properties")] private float sightRange;
-    [SerializeField, FoldoutGroup("Refrences")] GameObject beamLine;
     protected override void OnStateDisabled()
     {
     }
 
     protected override void OnStateEnabled()
     {
-        beamLine.SetActive(false);
+
     }
     private void Update()
     {

@@ -117,7 +117,7 @@ public class AbilityStackHandler : MonoBehaviour
         currentStackAmount++;
         if (currentStackAmount > MAX_STACKS)
             currentStackAmount = MAX_STACKS;
-        PowerBar.value = 0;
+        powerBarTarget = 0;
         onStackChange?.Invoke();
         UpdateUIElements();
 

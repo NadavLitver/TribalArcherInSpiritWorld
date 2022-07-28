@@ -20,25 +20,43 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
     [SerializeField] private AnimationCurve colorEase;
-    Vector3 targetPos => shootDirection * lineLength;
+    public bool isAttacking { get; private set; }
+    [SerializeField] private Transform endPos;
+    [SerializeField] private float endPosYOffset;
+    private Vector3 hitPos;
     [Button]
+    private void OnEnable()
+    {
+        endPos.localPosition = Vector3.forward * maxLineLength + Vector3.up * endPosYOffset;
+    }
     public void Attack()
     {
+        if (isAttacking)
+        {
+            return;
+        }
         StartCoroutine(AttackRoutine());
     }
     private void FixedUpdate()
     {
+        CalculateLength();
+    }
+    private void CalculateLength()
+    {
         if (doCalculateLength)
         {
-            Ray ray = new Ray(transform.position, shootDirection);
-            if (Physics.Raycast(ray, out RaycastHit hit,maxLineLength,lm))
+            if (Physics.Linecast(transform.position, endPos.position ,out RaycastHit _hit, lm))
             {
-                lineLength = hit.distance;
+                hitPos = _hit.point;
+                lineLength = _hit.distance;
+                Debug.Log("hit name: " + _hit.transform.name);
             }
             else
             {
                 lineLength = maxLineLength;
+                hitPos = transform.forward * maxLineLength;
             }
+
         }
     }
     private void ColorOverLife(float curDur)
@@ -50,9 +68,9 @@ public class LaserBeam : MonoBehaviour
             line.endColor = Color.Lerp(startColor, endColor, colorEase.Evaluate(curDur));
         }
     }
-    private void BeamEnd(Vector3 target)
+    private void BeamEnd(Vector3 pos)
     {
-        m_beamEnd.transform.localPosition = target;
+        m_beamEnd.transform.position = pos;
     }
     private void SetLineEndPositionsToTargetOverTime(Vector3 target)
     {
@@ -70,6 +88,7 @@ public class LaserBeam : MonoBehaviour
     }
     public IEnumerator AttackRoutine()
     {
+        isAttacking = true;
         doCalculateLength = true;
         m_charge.SetActive(true);
         foreach (LineRenderer line in m_lines)
@@ -79,36 +98,34 @@ public class LaserBeam : MonoBehaviour
             line.SetPosition(1, Vector3.zero);
         }
         yield return new WaitForSeconds(chargeBeamDuration);
-        float curDur = 0;
         m_beamEnd.SetActive(true);
+
+        float curDur = 0;
         while (curDur < 1)
         {
             curDur += Time.deltaTime / beamDuration;
-            
+            BeamEnd(hitPos);
             ColorOverLife(curDur);
             SetLineEndPositionsToTargetOverTime(lineLength * Vector3.forward);
-            BeamEnd(lineLength * Vector3.forward);
-            Debug.Log("translated end pos: " + targetPos);
             yield return null;
         }
-
         doCalculateLength = false;
         //closing beam
-
+        BeamEnd(Vector3.zero);
+        m_beamEnd.SetActive(false);
         while (curDur < 1)
         {
             curDur += Time.deltaTime / closeBeamDuration;
-
             SetLineEndPositionsToTargetOverRatio(curDur ,Vector3.zero);
-            BeamEnd(m_lines[0].GetPosition(1));
             yield return null;
         }
-        m_beamEnd.SetActive(false);
+        m_charge.SetActive(false);
         foreach (LineRenderer line in m_lines)
         {
-            line.gameObject.SetActive(false);
             line.SetPosition(0, Vector3.zero);
             line.SetPosition(1, Vector3.zero);
+            line.gameObject.SetActive(false);
         }
+        isAttacking = false; 
     }
 }
