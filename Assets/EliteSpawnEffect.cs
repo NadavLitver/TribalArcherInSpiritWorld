@@ -43,14 +43,15 @@ public class EliteSpawnEffect : MonoBehaviour
             return;
         }
         isHit = true;
-        foreach (GameObject item in myChildren)
-        {
-            item.SetActive(true);
-        }
+        
         StartCoroutine(ActiveRoutine());
     }
     private IEnumerator ActiveRoutine()
     {
+        foreach (GameObject item in myChildren)
+        {
+            item.SetActive(true);
+        }
         Animator anim = GetComponentInParent<Animator>();
         if (anim != null)
         {
@@ -134,6 +135,8 @@ public class EliteSpawnEffect : MonoBehaviour
             item.materials = tempMats;
         }
         yield return new WaitForSeconds(2f);
+
+
         gameObject.SetActive(false);
     }
 }

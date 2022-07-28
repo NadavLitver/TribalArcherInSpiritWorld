@@ -11,17 +11,19 @@ public class StatueEnemyShoot : State
     [SerializeField] private float shootTime;
     [SerializeField] private float BreathTimeAfterFinishShoot;
     [SerializeField] private float faceTargetSpeed;
+    [SerializeField] private float rotateTowardsTargetSpeed;
     [SerializeField,ReadOnly] private bool startedAim, startedShoot, canAim, CanShoot;
     [SerializeField] private AudioSource m_audioSource;
     [SerializeField] private float faceTargetSpeedAttackMod = 0.5f; // facing target while attacking
-
+    [SerializeField] private LookAtHandler lookAtObject;
     private Vector3 stopAimPos;
+    [SerializeField] private float RotOffset = 25f;
+    [SerializeField] private Vector3 axis;
     protected override void OnStateDisabled()
     {
 
         aimLine.SetPosition(1, Vector3.zero);
         aimLine.gameObject.SetActive(true);
-        beamLine.gameObject.SetActive(false);
     }
 
     protected override void OnStateEnabled()
@@ -30,10 +32,15 @@ public class StatueEnemyShoot : State
         agent.isStopped = true;
         timeInState = 0;
         aimLine.gameObject.SetActive(true);
-        beamLine.gameObject.SetActive(false);
         stopAimPos = Vector3.zero;
         startedAim = false;
         startedShoot = false;
+        ResetRotations();
+    }
+    private void ResetRotations()
+    {
+        aimLine.transform.localRotation = Quaternion.identity;
+        beamLine.transform.localRotation = Quaternion.identity;
 
     }
     private void Update()
@@ -68,9 +75,14 @@ public class StatueEnemyShoot : State
                 }
                 if (CanShoot)
                 { 
+                    FaceTarget(faceTargetSpeedAttackMod);
                     ShootBeam();
                 }
-                
+                else
+                {
+                    FaceTarget(faceTargetSpeedAttackMod / 2);
+
+                }
             }
             else
             {
@@ -85,37 +97,38 @@ public class StatueEnemyShoot : State
                 }
             }
         }
-        stopAimPos = PlayerController.playerTransform.position;
-        stopAimPos.x = 0;
-        stopAimPos.y = -30;
+        //stopAimPos = PlayerController.playerTransform.position;
+        //stopAimPos.x = 0;
+        //stopAimPos.y = -30;
 
     }
     public void AimBeam()
     {
        
 
-        FaceTarget(faceTargetSpeed);
+        FaceTarget(1);
         aimLine.SetPosition(1, stopAimPos);
        
      
     }
-    void FaceTarget(float speed)
+    void FaceTarget(float speedMod)
     {
         var turnTowardNavSteeringTarget = PlayerController.playerTransform.position;
 
+
         Vector3 direction = (turnTowardNavSteeringTarget - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * speed);
+        stateHandler.body.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateTowardsTargetSpeed * speedMod);
+        float targetRot = lookAtObject.transform.rotation.eulerAngles.x;
+
+        beamLine.transform.localRotation = Quaternion.Euler(Mathf.MoveTowards(beamLine.transform.localRotation.eulerAngles.x, targetRot, faceTargetSpeed * speedMod * Time.deltaTime), 0, 0);
+        aimLine.transform.localRotation = Quaternion.Euler(Mathf.MoveTowards(aimLine.transform.localRotation.eulerAngles.x, targetRot, faceTargetSpeed * speedMod * Time.deltaTime), 0, 0);
     }
     public void ShootBeam()
     {
-        if (!beamLine.gameObject.activeInHierarchy)
-        {
-            beamLine.gameObject.SetActive(true);
-            beamLine.shootDirection = stopAimPos.normalized;
-            beamLine.Attack();
-        }
-        FaceTarget(faceTargetSpeed * faceTargetSpeedAttackMod);
+        beamLine.Attack();
+        //beamLine.shootDirection = stopAimPos.normalized;
+        
         aimLine.SetPosition(1, Vector3.zero);
         //  beamLine.SetPosition(1, stopAimPos);
 
