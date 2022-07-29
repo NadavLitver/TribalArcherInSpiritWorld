@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_Bow
-  m_Shader: {fileID: -6465566751694194690, guid: 2692e2955f511e64e8f453e68b81fcae, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: b1ab33bc98334dd429168380c38814e4, type: 3}
   m_ShaderKeywords: _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,11 +33,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MainTex:
-        m_Texture: {fileID: 2800000, guid: 91dae975989a0c94f9611d685539dc5f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e8cdd1dd6014cf4fb23841f82d7f4b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Mask_R_Emission:
-        m_Texture: {fileID: 2800000, guid: 91dae975989a0c94f9611d685539dc5f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3e8cdd1dd6014cf4fb23841f82d7f4b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_252e722d409b4804a6d10f742d52dd89:
@@ -46,6 +46,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_C8C9609E:
         m_Texture: {fileID: 2800000, guid: 91dae975989a0c94f9611d685539dc5f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_f8b6c372fb814c6c85ddace23b965a95:
+        m_Texture: {fileID: 2800000, guid: fcbe15e96a4f4834b93e877d7e207ac0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -105,17 +109,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Brightness_Rim: 1.64
-    - Rim_Power: 0.06
+    - Brightness_Rim: 0
+    - Rim_Power: 2.6
     - Toon_Ramp_Offset: 0.368
-    - Toon_Ramp_Smoothness: 0
+    - Toon_Ramp_Smoothness: 0.5
     - Vector1_018255ddbe1c4bfe8a12ecfcb79da250: 0.15
     - Vector1_4C850B07: 0.194
     - Vector1_64B788AD: 4
     - Vector1_67744406: 0.274
     - Vector1_a199e3e12f1b49049100eb4a71d02f18: 0.04
     - _AlphaClip: 0
-    - _Ambient: 0.99
+    - _Ambient: 2
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -125,6 +129,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionPower: 25
     - _EnvironmentReflections: 1
     - _FresnelPower: 1
     - _GlossMapScale: 0
@@ -149,10 +154,10 @@ Material:
     - Color_4B9AABFA: {r: 1, g: 1, b: 1, a: 1}
     - Color_A96C309B: {r: 0.37166595, g: 0.16030312, b: 0.09291649, a: 1}
     - Color_F150E237: {r: 1, g: 1, b: 1, a: 1}
-    - Toon_Ramp_Tint: {r: 0.9137255, g: 0.2346233, b: 0.11764703, a: 1}
+    - Toon_Ramp_Tint: {r: 0.9811321, g: 0.7119179, b: 0.040726196, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.30588233, g: 0.6465506, b: 1, a: 1}
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
