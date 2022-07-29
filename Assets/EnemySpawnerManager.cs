@@ -9,7 +9,7 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] List<Livebody> enemies;
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] List<Vector3> enemyPositions;
     [SerializeField, FoldoutGroup("Refrences")] private int distanceToActivate;
-    [SerializeField] bool spawn;
+    public bool spawn;
     private void Awake()
     {
         enemies.Clear();

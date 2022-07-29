@@ -9,5 +9,6 @@ public class EndingSceneActivator : InteractableBase
     {
         base.Interact();
         nightManager.Toggle();
+        EnemySpawnerManager.instance.spawn = false;
     }
 }
