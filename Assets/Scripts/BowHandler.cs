@@ -26,8 +26,8 @@ public class BowHandler : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+      //  Cursor.visible = false;
+      //  Cursor.lockState = CursorLockMode.Locked;
         cam = Camera.main;
         input = InputManager.Instance;
         input.OnPlayerStartShoot.AddListener(OnShoot);
