@@ -15221,9 +15221,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  HealEvent:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 6447827410249067046}
         m_TargetAssemblyTypeName: EliteSpawnEffect, Assembly-CSharp
         m_MethodName: Activate
@@ -15236,6 +15233,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  HealEvent:
+    m_PersistentCalls:
+      m_Calls: []
   updateUIBars:
     m_PersistentCalls:
       m_Calls: []
@@ -15451,6 +15451,7 @@ MonoBehaviour:
   - {fileID: 5119195664804517549}
   hitState: {fileID: 8853616803238628349}
   stunState: {fileID: 5119195664804517549}
+  addToEnemySpawner: 0
 --- !u!114 &3358458502106962800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15475,6 +15476,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 3358458502106962803}
   agent: {fileID: 3313223468216745101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   walkPointRange: 15
   sightRange: 1300
   playerInSight: 0
@@ -15505,9 +15508,11 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 3358458502106962807}
   agent: {fileID: 3313223468216745101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   SideStep: {fileID: 6367360277021315260}
   sightRange: 60
-  playerInSight: 0
+  TargetInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 2
   floatComponent: {fileID: 0}
@@ -15538,6 +15543,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 3358458502106962803}
   agent: {fileID: 3313223468216745101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   timeBetweenAttacks: 1
   BackStepLength: 10
   projectileForce: 1600
@@ -15584,6 +15591,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 3358458502106962803}
   agent: {fileID: 3313223468216745101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   hitStateLength: 1
 --- !u!114 &6367360277021315260
 MonoBehaviour:
@@ -15609,6 +15618,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 3358458502106962803}
   agent: {fileID: 3313223468216745101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   speed: 10
   Range: 4
 --- !u!114 &5119195664804517549
@@ -15635,6 +15646,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 3358458502106962803}
   agent: {fileID: 3313223468216745101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   stunDuration: 1
   stunEffect: {fileID: 2538934554213657871}
 --- !u!1 &3358458503019507577
