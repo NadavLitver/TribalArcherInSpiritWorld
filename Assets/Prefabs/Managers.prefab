@@ -89,6 +89,7 @@ MonoBehaviour:
   - {fileID: 0}
   enemyPositions: []
   distanceToActivate: 40
+  spawn: 1
 --- !u!1 &334569548
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +252,12 @@ MonoBehaviour:
     m_AudioClip: {fileID: 8300000, guid: a10c2bf8610136e4a9ef9841c5fb0b99, type: 3}
   - m_Sound: 34
     m_AudioClip: {fileID: 8300000, guid: c025930f8b4deba4394d3810b00517e6, type: 3}
+  - m_Sound: 35
+    m_AudioClip: {fileID: 8300000, guid: 5a8d8a6e460a8fd408cb555cd2f8df03, type: 3}
+  - m_Sound: 36
+    m_AudioClip: {fileID: 8300000, guid: a2c9a134b2e55104c80159ab9d27a189, type: 3}
+  - m_Sound: 37
+    m_AudioClip: {fileID: 8300000, guid: 777d0fe8774526c41b0a3a1d7b24df3a, type: 3}
   DeactivateAudioObjectsTime: 6
   m_pool: {fileID: 1234329349}
 --- !u!114 &1234329349

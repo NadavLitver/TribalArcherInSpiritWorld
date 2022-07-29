@@ -50,20 +50,24 @@ public class BowHandler : MonoBehaviour
         if (isShooting && isLoaded)
         {
             float soundModifier = Mathf.Clamp(shootHoldTime, 0.3f, 0.7f);
-            SoundManager.Play(SoundManager.Sound.BowReleaseFull, transform.position,soundModifier);
             PostProccessManipulator.ResetLensDistortion();
             m_audioSource.Stop();
             if (LightingBoltAbility.AbilityToggle)
             {
+                SoundManager.Play(SoundManager.Sound.BowReleaseFull, m_audioSource, soundModifier);
                 StartCoroutine(ReleaseLightingArrow());
                 return;
             }
             if (ScatterArrowAbilityRef.AbilityToggle)
             {
+                SoundManager.Play(SoundManager.Sound.ScatterRelease, m_audioSource, soundModifier);
+
                 StartCoroutine(ReleaseScatterArrow());
             }
             else
             {
+                SoundManager.Play(SoundManager.Sound.BowReleaseFull, m_audioSource, soundModifier);
+
                 StartCoroutine(ReleaseNormalArrow());
             }
           

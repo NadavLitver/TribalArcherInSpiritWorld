@@ -48,8 +48,9 @@ public class SoundManager : MonoBehaviour
       StatueHit,
       QuestStart,
       QuestFinish,
-
-
+      LightingBoltArrowHit2,
+      RelicPickup,
+      ScatterRelease
 
 
     }

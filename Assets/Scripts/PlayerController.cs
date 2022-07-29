@@ -100,9 +100,10 @@ public class PlayerController : MonoBehaviour
     {
         camFollow.rotation = new Quaternion(0, camTransform.rotation.y, 0, camTransform.rotation.w);
         Vector2 Inputmovement = input.GetPlayerMovement();
-        Vector3 move = new Vector3(Inputmovement.x, 0, Inputmovement.y);
+        Vector3 move = new Vector3(Inputmovement.x *(doSprint ? 0.5f : 1), 0, Inputmovement.y);
         move = camFollow.forward * move.z + camFollow.right * move.x;
         move.y = 0;
+        move.Normalize();
         return move;
     }
     //private Vector3 Direction()
@@ -150,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 m_audioSource.Play();
 
                 PostProccessManipulator.SetLensDistortion();
-                CinemachineCameraShaker.instance.ShakeCamera(60, 5f, 0.05f);
+                CinemachineCameraShaker.instance.ShakeCamera(60, 10f, 0.05f);
                 sprintMod = sprintSpeed;
             }
             m_breath.LoseBreath(sprintBreathCost * Time.deltaTime);

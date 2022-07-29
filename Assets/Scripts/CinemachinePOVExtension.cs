@@ -54,7 +54,7 @@ public class CinemachinePOVExtension : CinemachineExtension
                     overlayCam.fieldOfView = FOV;
                 }
 
-                MouseSensitivity += InputManager.Instance.GetPgUpPgDwnAxis();
+                MouseSensitivity += (InputManager.Instance.GetPgUpPgDwnAxis()/2);
                 MouseSensitivity = Mathf.Clamp(MouseSensitivity, 0, 100);
             }
         }

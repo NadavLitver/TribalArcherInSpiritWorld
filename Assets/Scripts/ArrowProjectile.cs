@@ -112,7 +112,9 @@ public class ArrowProjectile : MonoBehaviour
         if (lightingBolt != null)
         {
             lightingBolt.OnActivate(currentLivebody);
-            SoundManager.Play(SoundManager.Sound.LightingBoltArrowHit);
+            SoundManager.Play(SoundManager.Sound.LightingBoltArrowHit,transform.position);
+            SoundManager.Play(SoundManager.Sound.LightingBoltArrowHit2, transform.position);
+
         }
         else
         {

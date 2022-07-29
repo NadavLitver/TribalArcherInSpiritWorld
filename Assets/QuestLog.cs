@@ -11,7 +11,7 @@ public class QuestLog : MonoBehaviour
 
     void Start()
     {
-        TurnOnQuest(GoToTemple,1);
+        TurnOnQuest(GoToTemple,6);
     }
     public void TurnOnQuest(GameObject QuestToTurnOn,float delay)
     {

@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7795163102422760088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7795163103774826664}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 7795163102757083230}
   - component: {fileID: 7795163102757083229}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7795163102927808546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.014, y: -0.35, z: 0.588}
+  m_LocalPosition: {x: -0.05, y: -0.35, z: 0.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7007115882499504058}
@@ -458,8 +458,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7795163103655438847}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: 0.51918346, y: 0.04144518, z: -0.025217429, w: 0.85328484}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7795163102757083231}
@@ -499,7 +499,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 8087
+    m_Bits: 16279
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: 25ebb3e7d498f6d46b490373480fd669, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -800,7 +800,7 @@ MonoBehaviour:
   sprintMod: 1
   sprintBreathCost: 5
   jumpBreathCost: 4
-  SprintFOV: 100
+  SprintFOV: 85
   canLeap: 0
   leapForce: 7
   LeapCD: 0.5
@@ -1238,7 +1238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 978330266, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 978330268, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_animator
@@ -1246,7 +1246,7 @@ PrefabInstance:
       objectReference: {fileID: 8044071146096446681}
     - target: {fileID: 1593920049, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1997277843036759018, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_LocalScale.x
@@ -1278,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6803620044544205673, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8221350060279703167, guid: 68f543145e05a8b4581e95693c5fa852, type: 3}
       propertyPath: m_Icon

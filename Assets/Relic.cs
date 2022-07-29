@@ -26,6 +26,7 @@ public class Relic : InteractableBase
         if (!isConsumed)
         {
             isConsumed = true;
+            SoundManager.Play(SoundManager.Sound.RelicPickup, transform.position);
             Glow();
         }
     }
@@ -89,7 +90,7 @@ public class Relic : InteractableBase
             default: text = "ha";
                 break;
         }
-        TextBox.instance.Activate(text, 0f);
+        TextBox.instance.Activate(text, 4f);
         AbilityStackHandler.instance.GetAbility(m_ability).gameObject.SetActive(true);
         
         this.gameObject.SetActive(false);
