@@ -9,22 +9,47 @@ public class EndingSpawnPoint : MonoBehaviour
     [SerializeField] Livebody flyingEnemy;
     [SerializeField] Livebody SuicideEnemy;
     [SerializeField] Livebody StatueEnemy;
+    [SerializeField] Livebody StatueEliteEnemy;
+    [SerializeField] Livebody flyingEliteEnemy;
+
     [SerializeField] Transform positionToSpawn;
     public UnityEvent GroupFinishedSpawning;
     [FoldoutGroup("Phases")]
-    public List<Group> phases;
+    public List<Phase> phases;
     private int currentIndex;
-
-    public void Start()
+    [SerializeField] bool doShufflePhases;
+    public LayerMask GroundLayer;
+    private void Start()
     {
-        //CallFirstPhase();
+        GroundSelf();
     }
-
+    public void OnEnable()
+    {
+        if (doShufflePhases)
+        {
+            ShufflePhases();
+        }
+        CallFirstPhase();
+    }
+    [Button]
+    public void ShufflePhases()
+    {
+        phases.Shuffle();
+    }
+    [Button]
+    public void GroundSelf()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 50, GroundLayer))
+        {
+            transform.position = hit.point;
+        }
+    }
     private void CallFirstPhase()
     {
         currentIndex = 0;
         CallPhase(0);
     }
+   
 
     [Button]
     public void CallPhase(int phaseIndex)
@@ -32,7 +57,7 @@ public class EndingSpawnPoint : MonoBehaviour
         Debug.Log("Starting Phase" + phaseIndex);
         StartCoroutine(SpawnPhase(phases[phaseIndex]));
     }
-    IEnumerator SpawnPhase(Group currentPhase)
+    IEnumerator SpawnPhase(Phase currentPhase)
     {
         
         for (int i = 0; i < currentPhase.amountPhase_SuicideEnemy; i++)//SUICIDE
@@ -62,6 +87,30 @@ public class EndingSpawnPoint : MonoBehaviour
         for (int i = 0; i < currentPhase.amountPhase_FlyingEnemy; i++)//FLYING
         {
             var currentBody = Instantiate(flyingEnemy, positionToSpawn.position, Quaternion.identity);
+            currentBody.m_stateHandler.addToEnemySpawner = false;
+            yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
+            currentBody.m_stateHandler.ToggleAllStatesTarget();
+            currentBody.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
+        }
+        yield return new WaitForSeconds(currentPhase.timeBetweenType);
+        /////
+        for (int i = 0; i < currentPhase.amountPhase_FlyingElite; i++)//FLYING
+        {
+            var currentBody = Instantiate(flyingEliteEnemy, positionToSpawn.position, Quaternion.identity);
+            currentBody.m_stateHandler.addToEnemySpawner = false;
+            yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
+            currentBody.m_stateHandler.ToggleAllStatesTarget();
+            currentBody.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
+        }
+        yield return new WaitForSeconds(currentPhase.timeBetweenType);
+        /////
+        for (int i = 0; i < currentPhase.amountPhase_StatueElite; i++)//FLYING
+        {
+            var currentBody = Instantiate(StatueEliteEnemy, positionToSpawn.position, Quaternion.identity);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
@@ -101,9 +150,9 @@ public class EndingSpawnPoint : MonoBehaviour
 }
 
 [System.Serializable]
-public class Group
+public class Phase
 {
-    public int amountPhase_FlyingEnemy, amountPhase_SuicideEnemy, amountPhase_StatueEnemy;
+    public int amountPhase_FlyingEnemy, amountPhase_SuicideEnemy, amountPhase_StatueEnemy, amountPhase_StatueElite, amountPhase_FlyingElite;
     public float timeBetweenType;
     public float timeBetweenEachEnemy;
     public int TimeToNextGroup;    
@@ -116,4 +165,22 @@ public enum EnemyType
     flying,
     suicide,
     statue,
+}
+public static class IListExtensions
+{
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> cList)
+    {
+        var count = cList.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = cList[i];
+            cList[i] = cList[r];
+            cList[r] = tmp;
+        }
+    }
 }

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class TempleBody : Livebody
 {
-    public static Transform TempleTransform;
-    [SerializeField] Transform StaticTransform;
+    
+    [SerializeField] Transform[] hitPoints;
     private void Awake()
     {
         health = maxHealth;
-        TempleTransform = StaticTransform;
+       // TempleTransform = StaticTransform;
         isVulnerable = true;
+    }
+    public Transform GetRandomTransform()
+    {
+        return hitPoints[Random.Range(0, hitPoints.Length)];
     }
 }

@@ -77,6 +77,8 @@ MonoBehaviour:
   flyingEnemy: {fileID: 6279340190576987186, guid: 88849ada94c54454b90c3cb11a8c7fde, type: 3}
   SuicideEnemy: {fileID: 4359631608720208369, guid: 6492ad22cdae9a04ca0dbfe79b5eb86b, type: 3}
   StatueEnemy: {fileID: 5892183526249420142, guid: b03b6b504437f4844b78f4e57d9b4b1b, type: 3}
+  StatueEliteEnemy: {fileID: 2450411349166203075, guid: 8aa86ba036575fb4ea52e3de1a102b78, type: 3}
+  flyingEliteEnemy: {fileID: 3313223468216745103, guid: 2cb39b82c41554f4abdf5d67c04b94e0, type: 3}
   positionToSpawn: {fileID: 5494465010974116986}
   GroupFinishedSpawning:
     m_PersistentCalls:
@@ -85,12 +87,25 @@ MonoBehaviour:
   - amountPhase_FlyingEnemy: 0
     amountPhase_SuicideEnemy: 3
     amountPhase_StatueEnemy: 2
+    amountPhase_StatueElite: 0
+    amountPhase_FlyingElite: 0
     timeBetweenType: 0
     timeBetweenEachEnemy: 0.5
     TimeToNextGroup: 0
   - amountPhase_FlyingEnemy: 10
     amountPhase_SuicideEnemy: 0
     amountPhase_StatueEnemy: 0
+    amountPhase_StatueElite: 0
+    amountPhase_FlyingElite: 0
     timeBetweenType: 0
     timeBetweenEachEnemy: 0.5
     TimeToNextGroup: 0
+  - amountPhase_FlyingEnemy: 0
+    amountPhase_SuicideEnemy: 0
+    amountPhase_StatueEnemy: 0
+    amountPhase_StatueElite: 0
+    amountPhase_FlyingElite: 0
+    timeBetweenType: 0
+    timeBetweenEachEnemy: 0
+    TimeToNextGroup: 0
+  doShufflePhases: 1

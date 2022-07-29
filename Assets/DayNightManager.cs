@@ -37,8 +37,6 @@ public class DayNightManager : MonoBehaviour
     [SerializeField] private Material nightSky;
 
     //
-    [SerializeField] private bool doArena = true;
-    [SerializeField] private GameObject arena;
     [SerializeField] private bool startState;
     private void Start()
     {
@@ -69,10 +67,6 @@ public class DayNightManager : MonoBehaviour
     {
         float curDur;
         curDur = 0;
-        if (doArena)
-        {
-            arena.SetActive(!isDay);
-        }
         if (doRain)
         {
             rain.SetActive(!isDay);

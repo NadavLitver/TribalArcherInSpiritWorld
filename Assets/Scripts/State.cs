@@ -31,14 +31,14 @@ public abstract class State : MonoBehaviour
 
     private void OnEnable()
     {
-        Target = isTempleTarget ? TempleBody.TempleTransform : PlayerController.playerTransform;
+        Target = isTempleTarget ? EnemySpawnerManager.instance.getPointOnTempleToAttack() : PlayerController.playerTransform;
         OnStateEnabled();
 
     }
     public void ToggleTarget()
     {
         isTempleTarget = !isTempleTarget;
-        Target = isTempleTarget ? TempleBody.TempleTransform : PlayerController.playerTransform;
+        Target = isTempleTarget ? EnemySpawnerManager.instance.getPointOnTempleToAttack() : PlayerController.playerTransform;
 
     }
     protected abstract void OnStateEnabled();

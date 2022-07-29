@@ -10,6 +10,7 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] List<Vector3> enemyPositions;
     [SerializeField, FoldoutGroup("Refrences")] private int distanceToActivate;
     public bool spawn;
+    [SerializeField, FoldoutGroup("Refrences")] TempleBody templeBody;
     private void Awake()
     {
         enemies.Clear();
@@ -34,6 +35,10 @@ public class EnemySpawnerManager : MonoBehaviour
         }
        
 
+    }
+    public Transform getPointOnTempleToAttack()
+    {
+       return templeBody.GetRandomTransform();
     }
     public void AddMe(Livebody bodyToRemove)
     {
