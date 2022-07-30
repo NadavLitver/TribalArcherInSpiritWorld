@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerHandMat
-  m_Shader: {fileID: -6465566751694194690, guid: 2692e2955f511e64e8f453e68b81fcae, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5645896bb0bb998429e9ab3c2fdcd2e2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -84,12 +84,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Brightness_Rim: 2
-    - Rim_Power: 5
-    - Toon_Ramp_Offset: 0.5
-    - Toon_Ramp_Smoothness: 0
+    - Brightness_Rim: 0.46
+    - Rim_Power: 0.17
+    - Toon_Ramp_Offset: 0.264
+    - Toon_Ramp_Smoothness: 0.278
     - _AlphaClip: 0
-    - _Ambient: 0
+    - _Ambient: 1.5
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -114,7 +114,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Toon_Ramp_Offset_Point: 0.5
+    - _Toon_Ramp_Offset_Point: 0.368
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
