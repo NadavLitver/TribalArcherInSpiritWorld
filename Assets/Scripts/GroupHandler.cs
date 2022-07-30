@@ -7,8 +7,10 @@ public class GroupHandler : MonoBehaviour
 {
     CanvasGroup m_group;
     [SerializeField] private bool startState = true;
+    private bool isActive = false;
     private void Start()
     {
+        isActive = startState;
         m_group = GetComponent<CanvasGroup>();
         if (startState)
         {
@@ -26,6 +28,12 @@ public class GroupHandler : MonoBehaviour
     public void Disable()
     {
         StartCoroutine(FadeToCoru(false));
+    }
+
+    public void Toggle()
+    {
+        isActive = !isActive;
+        StartCoroutine(FadeToCoru(isActive));
     }
     private IEnumerator FadeToCoru(bool Active)
     {
