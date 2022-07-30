@@ -40,7 +40,7 @@ public class EndingSceneActivator : InteractableBase
             firstInteract = true;
             PhaseOneRelic.SetActive(true);
             StartCoroutine(MovePositionDelay());
-          //  PhaseOneFather.SetActive(true);
+            PhaseOneFather.SetActive(true);
             return;
         }
         if (!secondInteract)
@@ -73,6 +73,7 @@ public class EndingSceneActivator : InteractableBase
             Vector3 newPos = newPositionTransform.position;
             transform.position = newPos;
             OnNewPos?.Invoke();
+            PhaseOneFather.SetActive(true);
         }
     }
 }
