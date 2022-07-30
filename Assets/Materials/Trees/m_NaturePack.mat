@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Brightness_Rim: 1.34
+    - Brightness_Rim: 0.93
     - Rim_Power: 0
     - Toon_Ramp_Offset: 0.719
     - Toon_Ramp_Smoothness: 0
@@ -65,7 +65,7 @@ Material:
     - Vector1_64B788AD: 21.6
     - Vector1_67744406: 0.143
     - Vector1_a199e3e12f1b49049100eb4a71d02f18: 0
-    - _Ambient: 0.55
+    - _Ambient: 0.49
     - _FresnelPower: 1
     - _Toon_Ramp_Offset_Point: 0.5
     m_Colors:
@@ -74,10 +74,10 @@ Material:
     - Color_4B9AABFA: {r: 0.41509432, g: 0, b: 0.13207553, a: 0}
     - Color_A96C309B: {r: 1, g: 0.37376443, b: 0, a: 0}
     - Color_F150E237: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
-    - Toon_Ramp_Tint: {r: 0, g: 0, b: 0, a: 1}
+    - Toon_Ramp_Tint: {r: 0.9056604, g: 0.33663222, b: 0.48923442, a: 1}
     - Vector2_2553fda076bc44af8070f71c3ea8d1bd: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_92dfca70ac92439bbefd20338d48ec6d: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9245283, g: 0.70124596, b: 0.7412253, a: 1}
     - _EmissionColor: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 1}
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

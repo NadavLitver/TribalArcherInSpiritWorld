@@ -41,11 +41,11 @@ Material:
     - Vector1_30cca513ea31443f8e44af49684ae63d: 1
     - Vector1_90c25a19436a426caa9b496ab50a0717: 1.5
     - Vector1_cc341b7cd58541ea9b86754c501aaa6b: 3.14
-    - Vector1_dfaf7a903a49445caaa33e60b238b4fc: 0
+    - Vector1_dfaf7a903a49445caaa33e60b238b4fc: 0.93
     m_Colors:
     - Color_beeae2cca5fc439eab0c90d326dc2d79: {r: 0.3964136, g: 1.1692016, b: 3.441591, a: 1}
-    - Color_d02b805b14c74dd9b8a7cae8c265ce02: {r: 0.2901961, g: 0, b: 0, a: 1}
-    - Vector3_b0fe8847fa7347a1b9d75b16648d6c73: {r: 0, g: 0.83, b: 0.27, a: 0}
+    - Color_d02b805b14c74dd9b8a7cae8c265ce02: {r: 2.1517231, g: 0.29719934, b: 0.29719934, a: 1}
+    - Vector3_b0fe8847fa7347a1b9d75b16648d6c73: {r: 0, g: 4.13, b: -4.06, a: 0}
     - Vector3_fb05ad29191e48b3b84b3e652eb5c0fe: {r: 0.05, g: 0, b: 0, a: 0}
-    - _FresnelColor: {r: 0.823, g: 0.137441, b: 0.15416193, a: 1}
+    - _FresnelColor: {r: 4.5412054, g: 0.7370543, b: 0.45174295, a: 1}
   m_BuildTextureStacks: []
