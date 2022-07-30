@@ -63,4 +63,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lensDistortionOnShoot: 0
   lensDistortionOnSprint: 0
-  maxVignette: 0.6
+  maxVignette: 0.21
+  VignetteOnHitAddition: 0.05
