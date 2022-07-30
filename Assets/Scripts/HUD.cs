@@ -109,7 +109,7 @@ public class HUD : MonoBehaviour
             scatterIcon.color = idleIcon;
             index = 0;
         }
-        else
+        else//0
         {
             scatterCover.color = idleColor;
             scatterIcon.color = activeIcon;

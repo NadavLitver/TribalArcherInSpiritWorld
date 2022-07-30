@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isSliding)
             {
-                playerVelocity *= 0.5f;
+                playerVelocity *= (0.5f * sprintMod);
                 playerVelocity += (jumpHeight * hitPointNormal * 0.6f) + (Vector3.up * jumpHeight * 0.45f);
                 canLeap = false;
             }
@@ -326,8 +326,8 @@ public class PlayerController : MonoBehaviour
             CinemachineCameraShaker.instance.CameraReset();
             PostProccessManipulator.ResetLensDistortion();
         }
-        float FOVToSet = doSprint ? SprintFOV : m_CinematicCamera.StartingFOV;
-        if (m_CinematicCamera.FOV != FOVToSet)
+        float FOVToSet = (doSprint && input.GetPlayerMovement().y > 0) ? SprintFOV : m_CinematicCamera.StartingFOV;
+        if (m_CinematicCamera.FOV != FOVToSet )
         {
             StartCoroutine(m_CinematicCamera.FOVScalingRoutine(FOVToSet));
             OnBreathDepletedFlag = false;

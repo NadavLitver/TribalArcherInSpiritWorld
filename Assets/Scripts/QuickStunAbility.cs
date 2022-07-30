@@ -8,7 +8,6 @@ public class QuickStunAbility : Ability
     public GameObject ps_equipped;
     public ObjectPool ChainLightingArrowPool;
     public UnityEvent OnQuickShotToggle;
-    [SerializeField] Animator m_animator;
     //private Quaternion arrowToSpinStartingRotation;
     private void Awake()
     {
@@ -18,7 +17,6 @@ public class QuickStunAbility : Ability
     public override void ToggleAbility()
     {
         base.ToggleAbility();
-        m_animator.Play("LoadStunShot");
         ps_equipped.SetActive(AbilityToggle);
     }
 
