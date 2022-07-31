@@ -12,6 +12,7 @@ public class InteractableCheck : MonoBehaviour
     [ReadOnly, SerializeField]
     private List<GameObject> interactablesNearMe;
     public PlayerController PlayerRef;
+    InteractableBase currentInteractable;
     
     private void Awake()
     {
@@ -40,9 +41,10 @@ public class InteractableCheck : MonoBehaviour
 
     private void ExecuteInteract()
     {
-        GameObject GOToInteract = GetObjectToInteract();
-        if (GOToInteract != null)
-            GOToInteract.GetComponent<InteractableBase>()?.Interact();
+      //  GameObject GOToInteract = GetObjectToInteract();
+
+        currentInteractable?.Interact();
+
         //foreach (var gameObject in interactablesNearMe)
         //{
         //    gameObject.GetComponent<InteractableBase>()?.Interact();
@@ -66,7 +68,6 @@ public class InteractableCheck : MonoBehaviour
             }
 
         }
-
         return GOToInteract;
     }
 
@@ -77,6 +78,7 @@ public class InteractableCheck : MonoBehaviour
         var Ibase = collision.GetComponent<InteractableBase>() ?? collision.GetComponentInChildren<InteractableBase>();
         if (Ibase != null)
         {
+            currentInteractable = Ibase;
             Ibase.IsCloseToPlayer = true;
         }
     }
@@ -85,6 +87,7 @@ public class InteractableCheck : MonoBehaviour
         var Ibase = collision.GetComponent<InteractableBase>();
         if (Ibase != null)
         {
+          
             Ibase.IsCloseToPlayer = false;
 
         }

@@ -48,6 +48,7 @@ public class PlayerLivebody : Livebody
     {
         base.TakeDamage(damage);
         SoundManager.Play(SoundManager.Sound.PlayerHit, audioSource, 0.5f);
+        CinemachineCameraShaker.instance.ShakeCamera(0.3f,2,0.5f);
         PostProccessManipulator.SetVignette(health);
         PostProccessManipulator.OnHitVignette();
     }

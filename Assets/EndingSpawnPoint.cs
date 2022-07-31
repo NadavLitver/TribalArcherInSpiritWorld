@@ -70,10 +70,11 @@ public class EndingSpawnPoint : MonoBehaviour
             
             var currentBody = Instantiate(SuicideEnemy, GetRandomTransformPoint().position, Quaternion.identity);
             EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
-            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
+            yield return new WaitForSeconds(0.3f);
             currentBody.gameObject.SetActive(true);
            
         }
@@ -83,13 +84,13 @@ public class EndingSpawnPoint : MonoBehaviour
         {
             var currentBody = Instantiate(StatueEnemy, GetRandomTransformPoint().position, Quaternion.identity);
            // EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
-            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
-          //  currentBody.m_stateHandler.ToggleAllStatesTarget();
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
+            yield return new WaitForSeconds(0.3f);
             currentBody.gameObject.SetActive(true);
 
-          
+
         }
         yield return new WaitForSeconds(currentPhase.timeBetweenType);
         /////
@@ -97,10 +98,11 @@ public class EndingSpawnPoint : MonoBehaviour
         {
             var currentBody = Instantiate(flyingEnemy, GetRandomTransformPoint().position, Quaternion.identity);
             EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
-            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
+            yield return new WaitForSeconds(0.3f);
             currentBody.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
@@ -112,9 +114,10 @@ public class EndingSpawnPoint : MonoBehaviour
             var currentBody = Instantiate(flyingEliteEnemy, GetRandomTransformPoint().position, Quaternion.identity);
             EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
             currentBody.m_stateHandler.addToEnemySpawner = false;
-            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
+            yield return new WaitForSeconds(0.3f);
             currentBody.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
@@ -126,9 +129,9 @@ public class EndingSpawnPoint : MonoBehaviour
             var currentBody = Instantiate(StatueEliteEnemy, GetRandomTransformPoint().position, Quaternion.identity);
             //EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
             currentBody.m_stateHandler.addToEnemySpawner = false;
-            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
-           // currentBody.m_stateHandler.ToggleAllStatesTarget();
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
+            yield return new WaitForSeconds(0.3f);
             currentBody.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
