@@ -23,13 +23,13 @@ public class Relic : InteractableBase
     }
     public override void Interact()
     {
+        base.Interact();
         if (!isConsumed)
         {
             isConsumed = true;
             SoundManager.Play(SoundManager.Sound.RelicPickup, transform.position);
             Glow();
         }
-        base.Interact();
     }
     public override void OnPlayerEnter()
     {
