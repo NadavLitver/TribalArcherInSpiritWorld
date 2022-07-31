@@ -17,9 +17,11 @@ public class PlayerLivebody : Livebody
     }
     protected override void SummonDeadBody()
     {
-        
-      SceneMaster.instance.StartCoroutine(DeathRoutine());
-
+        CallDeathRoutine();
+    }
+    public void CallDeathRoutine()
+    {
+        SceneMaster.instance.StartCoroutine(DeathRoutine());
 
     }
     IEnumerator DeathRoutine()

@@ -533,7 +533,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   isTempleTarget: 0
   SideStep: {fileID: 4359631609399318987}
-  sightRange: 1
+  sightRange: 2
   TargetInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 20
@@ -600,7 +600,7 @@ MonoBehaviour:
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls: []
-  damage: 20
+  damage: 15
 --- !u!114 &2202982925557330375
 MonoBehaviour:
   m_ObjectHideFlags: 0

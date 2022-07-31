@@ -90,6 +90,7 @@ MonoBehaviour:
   enemyPositions: []
   distanceToActivate: 40
   spawn: 1
+  templeBody: {fileID: 0}
 --- !u!1 &334569548
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,27 +460,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abe759f52dc1544a9ca7fbcc2da4d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doRain: 1
+  doRain: 0
   rain: {fileID: 0}
-  doClouds: 1
+  doClouds: 0
   dayClouds: {fileID: 0}
   nightClouds: {fileID: 0}
-  doLight: 1
+  doLight: 0
   light: {fileID: 0}
-  dayLight: {r: 0.95686275, g: 0.76862746, b: 1, a: 1}
+  dayLight: {r: 0.60784316, g: 0.65882355, b: 1, a: 1}
   nightLight: {r: 0, g: 0, b: 0, a: 0}
-  dayLightIntensity: 0.3
+  dayLightIntensity: 0.6
   nightLightIntensity: 0
-  doFog: 1
+  doFog: 0
   dayFog: {r: 0.3764706, g: 0.4392157, b: 0.5019608, a: 0.5019608}
   nightFog: {r: 0.08627451, g: 0.09411766, b: 0.1254902, a: 1}
   dayDensity: 0.001
   nightDensity: 0.007
-  doSky: 1
+  doSky: 0
   daySky: {fileID: 2100000, guid: 9c202ace24e71c145bc291e8adfa139f, type: 2}
   nightSky: {fileID: 2100000, guid: ecde7e6f165b7224c93fba4207dc2ab5, type: 2}
-  doArena: 1
-  arena: {fileID: 0}
   startState: 1
 --- !u!1 &7599429657606171109
 GameObject:

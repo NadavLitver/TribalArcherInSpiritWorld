@@ -111,7 +111,7 @@ MonoBehaviour:
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls: []
-  damage: 15
+  damage: 10
 --- !u!1 &7109183572625793370
 GameObject:
   m_ObjectHideFlags: 0
