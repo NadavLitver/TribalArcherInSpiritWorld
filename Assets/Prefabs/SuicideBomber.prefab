@@ -500,8 +500,8 @@ MonoBehaviour:
   agent: {fileID: 4359631608720208371}
   Target: {fileID: 0}
   isTempleTarget: 0
-  walkPointRange: 12
-  sightRange: 120
+  walkPointRange: 15
+  sightRange: 135
   playerInSight: 0
   walkPoint: {x: 0, y: 0, z: 0}
   GroundInSight: 0
@@ -533,14 +533,14 @@ MonoBehaviour:
   Target: {fileID: 0}
   isTempleTarget: 0
   SideStep: {fileID: 4359631609399318987}
-  sightRange: 4
+  sightRange: 20
   TargetInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 20
   floatComponent: {fileID: 0}
   gfx: {fileID: 0}
   changeSpeed: 1
-  newSpeed: 50
+  newSpeed: 40
 --- !u!114 &4359631609399318987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,8 +567,8 @@ MonoBehaviour:
   agent: {fileID: 4359631608720208371}
   Target: {fileID: 0}
   isTempleTarget: 0
-  speed: 35
-  Range: 3.5
+  speed: 5
+  Range: 2
 --- !u!114 &4359631609399318986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls: []
-  damage: 33
+  damage: 20
 --- !u!114 &2202982925557330375
 MonoBehaviour:
   m_ObjectHideFlags: 0
