@@ -188,7 +188,7 @@ public class EndingSpawnPoint : MonoBehaviour
 [System.Serializable]
 public class Group
 {
-    public int amountPhase_FlyingEnemy, amountPhase_SuicideEnemy, amountPhase_StatueEnemy, amountPhase_StatueElite, amountPhase_FlyingElite;
+    public int amountPhase_FlyingEnemy, amountPhase_SuicideEnemy, amountPhase_StatueEnemy, amountPhase_FlyingElite, amountPhase_StatueElite;
     public float timeBetweenType;
     public float timeBetweenEachEnemy;
     public int TimeToNextGroup;    
