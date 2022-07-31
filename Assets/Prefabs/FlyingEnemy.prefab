@@ -454,8 +454,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   isTempleTarget: 0
   timeBetweenAttacks: 1
-  BackStepLength: 20
-  projectileForce: 1500
+  BackStepLength: 5
+  projectileForce: 1600
   faceTargetSpeed: 60
   pool: {fileID: 6072534156915436491}
   shootPos: {fileID: 6072534155734360003}
@@ -528,8 +528,8 @@ MonoBehaviour:
   agent: {fileID: 6279340190576987184}
   Target: {fileID: 0}
   isTempleTarget: 0
-  speed: 20
-  Range: 3.5
+  speed: 10
+  Range: 4
 --- !u!114 &4455560621232203280
 MonoBehaviour:
   m_ObjectHideFlags: 0

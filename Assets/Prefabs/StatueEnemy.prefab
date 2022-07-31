@@ -5140,10 +5140,10 @@ MonoBehaviour:
   isTempleTarget: 0
   aimLine: {fileID: 6184003488289637567}
   beamLine: {fileID: 5848391172641272491}
-  aimTime: 1.5
+  aimTime: 1.2
   shootTime: 3.5
   BreathTimeAfterFinishShoot: 5
-  faceTargetSpeed: 15
+  faceTargetSpeed: 22
   rotateTowardsTargetSpeed: 10
   startedAim: 0
   startedShoot: 0
