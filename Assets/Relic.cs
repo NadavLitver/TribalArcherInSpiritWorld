@@ -21,7 +21,7 @@ public class Relic : InteractableBase
     {
         consumeEffect.gameObject.SetActive(false);
     }
-    public override void OnPlayerEnter()
+    public override void Interact()
     {
         if (!isConsumed)
         {
@@ -29,6 +29,11 @@ public class Relic : InteractableBase
             SoundManager.Play(SoundManager.Sound.RelicPickup, transform.position);
             Glow();
         }
+        base.Interact();
+    }
+    public override void OnPlayerEnter()
+    {
+       
     }
     public override void OnPlayerExit()
     {

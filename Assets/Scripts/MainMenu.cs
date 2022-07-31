@@ -25,4 +25,14 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(ButtonPressDelay);
         Application.Quit();
     }
+    public void Button_Continue()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ContinueRoutine());
+    }
+    private IEnumerator ContinueRoutine()
+    {
+        yield return new WaitForSeconds(ButtonPressDelay);
+        SceneManager.LoadScene(2);
+    }
 }

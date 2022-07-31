@@ -15,6 +15,8 @@ public class LightingBoltAOEAbility : Ability
     }
     public override void ToggleAbility()
     {
+        Debug.Log(this.name + "ability toggle:" + AbilityToggle);
+
         base.ToggleAbility(); 
         ps_equipped.SetActive(AbilityToggle);
     }

@@ -32,9 +32,12 @@ public class BowHandler : MonoBehaviour
         input = InputManager.Instance;
         input.OnPlayerStartShoot.AddListener(OnShoot);
         input.OnPlayerReleaseShoot.AddListener(OnRelease);
-        input.OnPlayerClickAbilityF.AddListener(onAbilityQuickShot);
-        input.OnPlayerClickAbilityR.AddListener(onAbilityScatter);
-        input.OnPlayerClickAbilityQ.AddListener(onAbilityLighting);
+       // input.OnPlayerClickAbilityF.AddListener(onAbilityQuickShot);
+      /// input.OnPlayerClickAbilityR.AddListener(onAbilityScatter);
+       // input.OnPlayerClickAbilityQ.AddListener(onAbilityLighting);
+        QuickShotAbilityRef.onAbilityToggle.AddListener(onAbilityQuickShot);
+        ScatterArrowAbilityRef.onAbilityToggle.AddListener(onAbilityScatter);
+        LightingBoltAbility.onAbilityToggle.AddListener(onAbilityLighting);
 
 
         isLoaded = true;
@@ -266,6 +269,7 @@ public class BowHandler : MonoBehaviour
         {
             ScatterArrowAbilityRef.ToggleAbility();
         }
+      
         if (QuickShotAbilityRef.AbilityToggle)
         {
 
@@ -288,6 +292,7 @@ public class BowHandler : MonoBehaviour
         {
             QuickShotAbilityRef.ToggleAbility();
         }
+      
         if (ScatterArrowAbilityRef.AbilityToggle)
         {
             m_animator.Play("ScatterLoad");
@@ -309,6 +314,7 @@ public class BowHandler : MonoBehaviour
         {
             ScatterArrowAbilityRef.ToggleAbility();
         }
+     
         if (LightingBoltAbility.AbilityToggle)
         {
             m_animator.Play("LoadLightingStrike");

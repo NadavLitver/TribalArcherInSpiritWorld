@@ -10,7 +10,7 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences"), ReadOnly] List<Vector3> enemyPositions;
     [SerializeField, FoldoutGroup("Refrences")] private int distanceToActivate;
     public bool spawn;
-    [SerializeField, FoldoutGroup("Refrences")] TempleBody templeBody;
+    [SerializeField, FoldoutGroup("Refrences")] internal TempleBody templeBody;
     internal List<Livebody> endingSceneLiveBodies;
     private void Awake()
     {

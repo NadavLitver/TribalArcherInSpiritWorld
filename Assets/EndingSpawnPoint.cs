@@ -64,6 +64,7 @@ public class EndingSpawnPoint : MonoBehaviour
     }
     IEnumerator SpawnGroup(Group currentPhase)
     {
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < currentPhase.amountPhase_SuicideEnemy; i++)//SUICIDE
         {
             
@@ -81,7 +82,7 @@ public class EndingSpawnPoint : MonoBehaviour
         for (int i = 0; i < currentPhase.amountPhase_StatueEnemy; i++)//Statues
         {
             var currentBody = Instantiate(StatueEnemy, GetRandomTransformPoint().position, Quaternion.identity);
-            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
+           // EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
             VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
@@ -123,7 +124,7 @@ public class EndingSpawnPoint : MonoBehaviour
         for (int i = 0; i < currentPhase.amountPhase_StatueElite; i++)//Statue
         {
             var currentBody = Instantiate(StatueEliteEnemy, GetRandomTransformPoint().position, Quaternion.identity);
-            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
+            //EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
@@ -179,7 +180,7 @@ public class EndingSpawnPoint : MonoBehaviour
     {
         for (int i = 0; i < positionToSpawn.Length; i++)
         {
-            Gizmos.color = Color.blue;
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(positionToSpawn[i].position, 5);
         }
     }

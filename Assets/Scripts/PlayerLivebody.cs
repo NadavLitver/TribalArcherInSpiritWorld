@@ -27,7 +27,7 @@ public class PlayerLivebody : Livebody
         controller.Stop(2);
         SoundManager.Play(SoundManager.Sound.PlayerDead, audioSource, 1f);
         fadeToBlack.PlayFade();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2f);
         SceneMaster.instance.LoadLevel(SceneMaster.instance.GetCurrentIndex());
         
         //transform.position = startingWorldPos;
@@ -37,7 +37,7 @@ public class PlayerLivebody : Livebody
     void OnEnable()
     {
         isVulnerable = true;
-        SoundManager.Play(SoundManager.Sound.PlayerEnter, audioSource, 1f);
+        //SoundManager.Play(SoundManager.Sound.PlayerEnter, audioSource, 1f);
     }
     void OnDisable()
     {

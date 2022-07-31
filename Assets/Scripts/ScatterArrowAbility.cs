@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScatterArrowAbility : Ability
 {
+    
     private void Awake()
     {
         AbilityToggle = false;

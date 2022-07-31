@@ -705,6 +705,7 @@ MonoBehaviour:
   - {fileID: 2594886891483905460}
   hitState: {fileID: 0}
   stunState: {fileID: 2594886891483905460}
+  addToEnemySpawner: 0
 --- !u!114 &2450411349011597000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,6 +730,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 2450411349011597003}
   agent: {fileID: 2450411349166203101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   rangeToShoot: 100
   playerInShootRange: 0
 --- !u!114 &2450411349011597003
@@ -755,6 +758,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 2450411349011597000}
   agent: {fileID: 2450411349166203101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   aimLine: {fileID: 2744205074701332754}
   beamLine: {fileID: 5372517381933802702}
   aimTime: 1.5
@@ -768,9 +773,15 @@ MonoBehaviour:
   CanShoot: 0
   m_audioSource: {fileID: 8341970055697816241}
   faceTargetSpeedAttackMod: 0.55
-  lookAtObject: {fileID: 1034922147}
   RotOffset: 0
   axis: {x: 0, y: 0, z: 0}
+  aimEase:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ObjectToRotateBeam: {fileID: 1034922146}
 --- !u!114 &4188289477621543699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,6 +806,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 8341970053945688491}
   agent: {fileID: 2450411349166203101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   playerInSight: 0
   sightRange: 160
 --- !u!114 &2594886891483905460
@@ -821,6 +834,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 2450411349011597003}
   agent: {fileID: 2450411349166203101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   stunDuration: 1
   stunEffect: {fileID: 3992389730481541906}
 --- !u!114 &8341970053945688491
@@ -847,6 +862,8 @@ MonoBehaviour:
   stateHandler: {fileID: 0}
   nextState: {fileID: 2450411349011597000}
   agent: {fileID: 2450411349166203101}
+  Target: {fileID: 0}
+  isTempleTarget: 0
   timeToNextState: 1
 --- !u!1 &2450411349166203100
 GameObject:
