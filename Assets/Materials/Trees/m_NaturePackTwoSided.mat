@@ -136,12 +136,12 @@ Material:
     - Color_4B9AABFA: {r: 0.41509432, g: 0, b: 0.13207553, a: 0}
     - Color_A96C309B: {r: 1, g: 0.37376443, b: 0, a: 0}
     - Color_F150E237: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
-    - Toon_Ramp_Tint: {r: 0, g: 0, b: 0, a: 1}
+    - Toon_Ramp_Tint: {r: 0.37382454, g: 0.46226418, b: 0.084603034, a: 1}
     - Vector2_2553fda076bc44af8070f71c3ea8d1bd: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_92dfca70ac92439bbefd20338d48ec6d: {r: 1, g: 1, b: 0, a: 0}
     - _AlphaTintColor: {r: 23.96863, g: 1.254902, b: 23.96863, a: 0}
     - _BlackTintColor: {r: 1, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.24186541, g: 0.745283, b: 0.48048246, a: 1}
     - _CustomFadeNoiseScale: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 1}
     - _FresnelColor: {r: 0, g: 0, b: 0, a: 1}

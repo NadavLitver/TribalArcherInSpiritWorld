@@ -7,11 +7,10 @@ public class GroupHandler : MonoBehaviour
 {
     CanvasGroup m_group;
     [SerializeField] private bool startState = true;
-    private bool doCostumeTargets = false;
-    [SerializeField] private float costumeIdleTarget;
-    [SerializeField] private float costumeActiveTarget;
+    private bool isActive = false;
     private void Start()
     {
+        isActive = startState;
         m_group = GetComponent<CanvasGroup>();
         if (startState)
         {
@@ -26,14 +25,15 @@ public class GroupHandler : MonoBehaviour
     {
         StartCoroutine(FadeToCoru(true));
     }
-    public void Enable(bool activateCostumeTargets)
-    {
-        doCostumeTargets = true;
-        StartCoroutine(FadeToCoru(true));
-    }
     public void Disable()
     {
         StartCoroutine(FadeToCoru(false));
+    }
+
+    public void Toggle()
+    {
+        isActive = !isActive;
+        StartCoroutine(FadeToCoru(isActive));
     }
     private IEnumerator FadeToCoru(bool Active)
     {
@@ -42,17 +42,9 @@ public class GroupHandler : MonoBehaviour
         float currDurr = 0f;
         float duration = 0.25f;
         float target = Active ? 1 : 0;
-        if (doCostumeTargets)
-        {
-            target = Active ? costumeActiveTarget : costumeIdleTarget;
-        }
-        else
-        {
-            target = Active ? 1 : 0;
-        }
         while (currDurr < duration)
         {
-            currDurr += Time.deltaTime / duration;
+            currDurr += Time.deltaTime;
             m_group.alpha = Mathf.Lerp(m_group.alpha, target, currDurr / duration);
             yield return new WaitForEndOfFrame();
         }

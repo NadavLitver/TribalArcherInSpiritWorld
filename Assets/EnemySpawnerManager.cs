@@ -11,13 +11,15 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField, FoldoutGroup("Refrences")] private int distanceToActivate;
     public bool spawn;
     [SerializeField, FoldoutGroup("Refrences")] TempleBody templeBody;
+    internal List<Livebody> endingSceneLiveBodies;
     private void Awake()
     {
         enemies.Clear();
         enemyPositions.Clear();
         instance = this;
-        
-        
+        endingSceneLiveBodies = new List<Livebody>();
+
+
     }
     void Start()
     {
@@ -39,6 +41,24 @@ public class EnemySpawnerManager : MonoBehaviour
     public Transform getPointOnTempleToAttack()
     {
        return templeBody.GetRandomTransform();
+    }
+    public void ToggleRandomActiveEnemy()
+    {
+        int randomNum = Random.Range(0, 10);
+        if(randomNum  > 4)
+        {
+            return;
+        }
+        for (int i = 0; i < endingSceneLiveBodies.Count; i++)
+        {
+             int ranNum = Random.Range(0, endingSceneLiveBodies.Count);
+            if (endingSceneLiveBodies[ranNum].gameObject.activeInHierarchy)
+            {
+                endingSceneLiveBodies[ranNum].m_stateHandler.ToggleAllStatesTarget();
+                break;
+            }
+
+        }
     }
     public void AddMe(Livebody bodyToRemove)
     {

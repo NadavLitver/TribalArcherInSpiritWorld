@@ -12,58 +12,64 @@ public class EndingSpawnPoint : MonoBehaviour
     [SerializeField] Livebody StatueEliteEnemy;
     [SerializeField] Livebody flyingEliteEnemy;
 
-    [SerializeField] Transform positionToSpawn;
+    [SerializeField] Transform[] positionToSpawn;
     public UnityEvent GroupFinishedSpawning;
     [FoldoutGroup("Phases")]
-    public List<Phase> phases;
+    public List<Group> Groups;
     private int currentIndex;
-    [SerializeField] bool doShufflePhases;
+    [SerializeField] bool doShuffleGroups;
     public LayerMask GroundLayer;
+    bool finished;
     private void Start()
     {
         GroundSelf();
     }
     public void OnEnable()
     {
-        if (doShufflePhases)
+        if (doShuffleGroups)
         {
             ShufflePhases();
         }
-        CallFirstPhase();
+        CallFirstGroup();
     }
     [Button]
     public void ShufflePhases()
     {
-        phases.Shuffle();
+        Groups.Shuffle();
     }
     [Button]
     public void GroundSelf()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 50, GroundLayer))
+        for (int i = 0; i < positionToSpawn.Length; i++)
         {
-            transform.position = hit.point;
+            if (Physics.Raycast(positionToSpawn[i].position, Vector3.down, out RaycastHit hit, 50, GroundLayer))
+            {
+                positionToSpawn[i].position = hit.point;
+            }
         }
+       
     }
-    private void CallFirstPhase()
+    private void CallFirstGroup()
     {
         currentIndex = 0;
-        CallPhase(0);
+        CallGroup(0);
     }
    
 
     [Button]
-    public void CallPhase(int phaseIndex)
+    public void CallGroup(int phaseIndex)
     {
         Debug.Log("Starting Phase" + phaseIndex);
-        StartCoroutine(SpawnPhase(phases[phaseIndex]));
+        StartCoroutine(SpawnGroup(Groups[phaseIndex]));
     }
-    IEnumerator SpawnPhase(Phase currentPhase)
+    IEnumerator SpawnGroup(Group currentPhase)
     {
-        
         for (int i = 0; i < currentPhase.amountPhase_SuicideEnemy; i++)//SUICIDE
         {
             
-            var currentBody = Instantiate(SuicideEnemy, positionToSpawn.position, Quaternion.identity);
+            var currentBody = Instantiate(SuicideEnemy, GetRandomTransformPoint().position, Quaternion.identity);
+            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
@@ -74,10 +80,12 @@ public class EndingSpawnPoint : MonoBehaviour
         /////
         for (int i = 0; i < currentPhase.amountPhase_StatueEnemy; i++)//Statues
         {
-            var currentBody = Instantiate(StatueEnemy, positionToSpawn.position, Quaternion.identity);
+            var currentBody = Instantiate(StatueEnemy, GetRandomTransformPoint().position, Quaternion.identity);
+            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
-            currentBody.m_stateHandler.ToggleAllStatesTarget();
+          //  currentBody.m_stateHandler.ToggleAllStatesTarget();
             currentBody.gameObject.SetActive(true);
 
           
@@ -86,7 +94,9 @@ public class EndingSpawnPoint : MonoBehaviour
         /////
         for (int i = 0; i < currentPhase.amountPhase_FlyingEnemy; i++)//FLYING
         {
-            var currentBody = Instantiate(flyingEnemy, positionToSpawn.position, Quaternion.identity);
+            var currentBody = Instantiate(flyingEnemy, GetRandomTransformPoint().position, Quaternion.identity);
+            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             currentBody.m_stateHandler.addToEnemySpawner = false;
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
@@ -98,8 +108,10 @@ public class EndingSpawnPoint : MonoBehaviour
         /////
         for (int i = 0; i < currentPhase.amountPhase_FlyingElite; i++)//FLYING
         {
-            var currentBody = Instantiate(flyingEliteEnemy, positionToSpawn.position, Quaternion.identity);
+            var currentBody = Instantiate(flyingEliteEnemy, GetRandomTransformPoint().position, Quaternion.identity);
+            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
             currentBody.m_stateHandler.addToEnemySpawner = false;
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
             currentBody.m_stateHandler.ToggleAllStatesTarget();
             currentBody.gameObject.SetActive(true);
@@ -108,15 +120,22 @@ public class EndingSpawnPoint : MonoBehaviour
         }
         yield return new WaitForSeconds(currentPhase.timeBetweenType);
         /////
-        for (int i = 0; i < currentPhase.amountPhase_StatueElite; i++)//FLYING
+        for (int i = 0; i < currentPhase.amountPhase_StatueElite; i++)//Statue
         {
-            var currentBody = Instantiate(StatueEliteEnemy, positionToSpawn.position, Quaternion.identity);
+            var currentBody = Instantiate(StatueEliteEnemy, GetRandomTransformPoint().position, Quaternion.identity);
+            EnemySpawnerManager.instance.endingSceneLiveBodies.Add(currentBody);
             currentBody.m_stateHandler.addToEnemySpawner = false;
+            VFXManager.Play(VFXManager.Effect.SpawnEffect, currentBody.transform.position);
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
-            currentBody.m_stateHandler.ToggleAllStatesTarget();
+           // currentBody.m_stateHandler.ToggleAllStatesTarget();
             currentBody.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(currentPhase.timeBetweenEachEnemy);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            EnemySpawnerManager.instance.ToggleRandomActiveEnemy();
+
         }
         GroupFinishedSpawning?.Invoke();
         CallNextWave();
@@ -124,11 +143,20 @@ public class EndingSpawnPoint : MonoBehaviour
     void CallNextWave()
     {
         currentIndex++;
-        if (currentIndex < phases.Count - 1)
+        if (currentIndex < Groups.Count - 1)
         {
 
-           CallPhase(currentIndex);
+           CallGroup(currentIndex);
         }
+        else
+        {
+            finished = true;
+        }
+    }
+    public Transform GetRandomTransformPoint()
+    {
+        int randomNum = Random.Range(0, positionToSpawn.Length);
+        return positionToSpawn[randomNum];
     }
     public Livebody GetRandomEnemy()
     {
@@ -147,10 +175,18 @@ public class EndingSpawnPoint : MonoBehaviour
         }
 
     }
+    private void OnDrawGizmosSelected()
+    {
+        for (int i = 0; i < positionToSpawn.Length; i++)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(positionToSpawn[i].position, 5);
+        }
+    }
 }
 
 [System.Serializable]
-public class Phase
+public class Group
 {
     public int amountPhase_FlyingEnemy, amountPhase_SuicideEnemy, amountPhase_StatueEnemy, amountPhase_StatueElite, amountPhase_FlyingElite;
     public float timeBetweenType;
@@ -160,6 +196,7 @@ public class Phase
 
 
 }
+
 public enum EnemyType
 {
     flying,
