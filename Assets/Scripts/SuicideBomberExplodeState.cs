@@ -43,6 +43,7 @@ public class SuicideBomberExplodeState : State
                 }
             }
         }
+       
     }
     private void OnDrawGizmos()
     {

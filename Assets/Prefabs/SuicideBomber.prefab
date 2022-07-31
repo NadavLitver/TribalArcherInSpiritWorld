@@ -533,7 +533,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   isTempleTarget: 0
   SideStep: {fileID: 4359631609399318987}
-  sightRange: 20
+  sightRange: 1
   TargetInSight: 0
   timeInState: 0
   timeInSecondsToSideJump: 20

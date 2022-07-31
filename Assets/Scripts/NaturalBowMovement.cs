@@ -120,9 +120,7 @@ public class NaturalBowMovement : MonoBehaviour
     private IEnumerator LeapApplicationCoru()
     {
         isLeap = true;
-        Debug.Log("Leap");
         Vector2 dir = InputManager.Instance.GetPlayerMovement();
-        Debug.Log("Dir x: " + dir.x + "; Dir y: " + dir.y);
         Vector3 curPos = transform.localPosition;
         Vector3 curRot = transform.localRotation.eulerAngles;
         float curDur = 0;

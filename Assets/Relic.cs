@@ -7,19 +7,18 @@ public class Relic : InteractableBase
 {
     [SerializeField] AbilityEnum m_ability;
 
-    [SerializeField] private float idleEmission;
-    [SerializeField] private float activeEmission;
-    [SerializeField] private AnimationCurve emissionEase;
-    [SerializeField] private List<MeshRenderer> m_renderers;
-    [SerializeField] private List<ParticleSystem> auraEffects;
-    [SerializeField] private ParticleSystem consumeEffect;
-
+    //[SerializeField] private float idleEmission;
+    //[SerializeField] private float activeEmission;
+    //[SerializeField] private AnimationCurve emissionEase;
+    //[SerializeField] private List<MeshRenderer> m_renderers;
+    //[SerializeField] private List<ParticleSystem> auraEffects;
+    //[SerializeField] private ParticleSystem consumeEffect;
     [SerializeField] private Animation anim;
     private bool isConsumed = false;
 
     private void Start()
     {
-        consumeEffect.gameObject.SetActive(false);
+        //consumeEffect.gameObject.SetActive(false);
     }
     public override void Interact()
     {
@@ -28,7 +27,7 @@ public class Relic : InteractableBase
         {
             isConsumed = true;
             SoundManager.Play(SoundManager.Sound.RelicPickup, transform.position);
-            Glow();
+            GetAbility();
         }
     }
     public override void OnPlayerEnter()
@@ -39,65 +38,25 @@ public class Relic : InteractableBase
     {
         base.OnPlayerExit();
     }
-    public void Glow()
+    public void GetAbility()
     {
-        StartCoroutine(GlowRoutine());
+        StartCoroutine(GetAbilityRoutine());
     }
 
-    private IEnumerator GlowRoutine()
+    private IEnumerator GetAbilityRoutine()
     {
-        base.OnPlayerEnter();
         anim.Play();
-        consumeEffect.gameObject.SetActive(true);
-        consumeEffect.transform.parent = null;
-        foreach (ParticleSystem item in auraEffects)
+        yield return new WaitForSeconds(1.5f);
+        string text = m_ability switch
         {
-            ParticleSystem.EmissionModule em;
-            em = item.emission;
-            em.rateOverTime = 0f;
-        }
-
-        float curDur;
-        curDur = 0;
-        float duration = 1f;
-        string emissionRef = "_EmissionPower";
-
-        foreach (MeshRenderer item in m_renderers)
-        {
-            item.material.SetFloat(emissionRef, idleEmission);
-        }
-
-        while (curDur < 1)
-        {
-            curDur += Time.deltaTime / duration;
-            foreach (MeshRenderer item in m_renderers)
-            {
-                item.material.SetFloat(emissionRef, Mathf.Lerp(idleEmission, activeEmission, emissionEase.Evaluate(curDur)));
-            }
-            yield return null;
-        }
-        foreach (MeshRenderer item in m_renderers)
-        {
-            item.enabled = false;
-        }
-        duration = 0.5f;
-        curDur = 0;
-        yield return new WaitForSeconds(2.9f);
-        string text;
-        switch (m_ability)
-        {
-            case AbilityEnum.Scatter: text = "Scattershot Acquired";
-                break;
-            case AbilityEnum.QuickShot: text = "Lightningbolt Acquired";
-                break;
-            case AbilityEnum.LightingStrike: text = "Lighting Strike Acquired";
-                break;
-            default: text = "ha";
-                break;
-        }
-        TextBox.instance.Activate(text, 4f);
+            AbilityEnum.Scatter => "Scattershot Acquired",
+            AbilityEnum.QuickShot => "Lightningbolt Acquired",
+            AbilityEnum.LightingStrike => "Lighting Strike Acquired",
+            _ => "ha",
+        };
+        TextBox.instance.Activate(text, 2f);
         AbilityStackHandler.instance.GetAbility(m_ability).gameObject.SetActive(true);
-        
-        this.gameObject.SetActive(false);
+
+    
     }
 }

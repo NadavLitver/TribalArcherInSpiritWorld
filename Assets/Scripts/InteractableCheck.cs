@@ -43,6 +43,10 @@ public class InteractableCheck : MonoBehaviour
         GameObject GOToInteract = GetObjectToInteract();
         if (GOToInteract != null)
             GOToInteract.GetComponent<InteractableBase>()?.Interact();
+        //foreach (var gameObject in interactablesNearMe)
+        //{
+        //    gameObject.GetComponent<InteractableBase>()?.Interact();
+        //}
     }
 
     private GameObject GetObjectToInteract()
@@ -51,7 +55,7 @@ public class InteractableCheck : MonoBehaviour
         GameObject GOToInteract = null;
         for (int i = 0; i < interactablesNearMe.Count; i++)
         {
-            if (interactablesNearMe[i] == null)
+            if (!interactablesNearMe[i].activeInHierarchy || interactablesNearMe[i] == null)
                 continue;
             float currentDistance = (interactablesNearMe[i].transform.position - transform.position).magnitude;
             if (currentDistance > distance)
@@ -68,7 +72,6 @@ public class InteractableCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Interactor collided with " + collision.name);
         interactablesNearMe.Add(collision.gameObject);
         isNearInteractable = true;
         var Ibase = collision.GetComponent<InteractableBase>() ?? collision.GetComponentInChildren<InteractableBase>();
