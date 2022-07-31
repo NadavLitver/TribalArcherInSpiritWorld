@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private float ButtonPressDelay = 0.2f;
+
+    [SerializeField] private Animator m_animator;
+    private const string secondaryRef = "SecondaryOpen";
+    private bool isSecondary = false;
     public void Button_Start()
     {
         StopAllCoroutines();
@@ -20,9 +24,28 @@ public class MainMenu : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(ExitRoutine());
     }
+
     private IEnumerator ExitRoutine()
     {
         yield return new WaitForSeconds(ButtonPressDelay);
         Application.Quit();
+    }
+    public void OpenSecondary()
+    {
+        isSecondary = true;
+        m_animator.SetBool(secondaryRef, true);
+    }
+    public void CloseSecondary()
+    {
+        isSecondary = false;
+        m_animator.SetBool(secondaryRef, false);
+    }
+    public void Button_Options()
+    {
+
+    }
+    public void Button_Credits()
+    {
+
     }
 }
