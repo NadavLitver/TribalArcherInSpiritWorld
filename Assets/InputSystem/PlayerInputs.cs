@@ -113,6 +113,14 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""4294cb74-c582-486e-aa6b-64c599752aaa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -313,6 +321,17 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""925a55e7-4610-4c68-afe0-acc6630cb9a9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -360,6 +379,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         m_PlayerMap_Sens = m_PlayerMap.FindAction("Sens", throwIfNotFound: true);
         m_PlayerMap_Exit = m_PlayerMap.FindAction("Exit", throwIfNotFound: true);
         m_PlayerMap_Heal = m_PlayerMap.FindAction("Heal", throwIfNotFound: true);
+        m_PlayerMap_Escape = m_PlayerMap.FindAction("Escape", throwIfNotFound: true);
         // GeneralMap
         m_GeneralMap = asset.FindActionMap("GeneralMap", throwIfNotFound: true);
         m_GeneralMap_Pause = m_GeneralMap.FindAction("Pause", throwIfNotFound: true);
@@ -424,6 +444,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMap_Sens;
     private readonly InputAction m_PlayerMap_Exit;
     private readonly InputAction m_PlayerMap_Heal;
+    private readonly InputAction m_PlayerMap_Escape;
     public struct PlayerMapActions
     {
         private @PlayerInputs m_Wrapper;
@@ -440,6 +461,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         public InputAction @Sens => m_Wrapper.m_PlayerMap_Sens;
         public InputAction @Exit => m_Wrapper.m_PlayerMap_Exit;
         public InputAction @Heal => m_Wrapper.m_PlayerMap_Heal;
+        public InputAction @Escape => m_Wrapper.m_PlayerMap_Escape;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,6 +507,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Heal.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnHeal;
+                @Escape.started -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_PlayerMapActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_PlayerMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -525,6 +550,9 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -576,6 +604,7 @@ public class @PlayerInputs : IInputActionCollection, IDisposable
         void OnSens(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
     public interface IGeneralMapActions
     {

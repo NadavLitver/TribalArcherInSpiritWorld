@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour
     public UnityEvent OnPlayerStartedSprint;
     public UnityEvent OnPlayerCanceledSprint;
     public UnityEvent OnPlayerClickHeal;
+    public UnityEvent OnPlayerClickEscape;
+
     public float shootHoldTime;
 
     public UnityEvent OnPause;
@@ -71,6 +73,12 @@ public class InputManager : MonoBehaviour
         inputActions.PlayerMap.Exit.performed += OnExit;
         inputActions.PlayerMap.Heal.started += PlayerStartedHealThisFrame;
         inputActions.GeneralMap.Pause.started += Pause;
+        inputActions.PlayerMap.Escape.started += OnEscape;
+    }
+
+    private void OnEscape(InputAction.CallbackContext obj)
+    {
+        SceneMaster.instance.ReturnToMainMenu();
     }
 
     private void OnExit(InputAction.CallbackContext obj)

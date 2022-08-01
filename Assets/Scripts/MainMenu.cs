@@ -9,8 +9,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Animator m_animator;
     private const string secondaryRef = "SecondaryOpen";
     private bool isSecondary = false;
+    private void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
     public void Button_Start()
     {
+      
         StopAllCoroutines();
         StartCoroutine(StartRoutine());
     }

@@ -22,9 +22,10 @@ public class Relic : InteractableBase
     }
     public override void Interact()
     {
-        base.Interact();
+        
         if (!isConsumed)
         {
+            base.Interact();
             isConsumed = true;
             SoundManager.Play(SoundManager.Sound.RelicPickup, transform.position);
             GetAbility();

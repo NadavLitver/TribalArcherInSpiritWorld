@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -31,6 +32,7 @@ public class SceneMaster : MonoBehaviour
     }
     private void Start()
     {
+        
     }
 
     public void LoadLevel(int index)
@@ -78,4 +80,8 @@ public class SceneMaster : MonoBehaviour
         Application.Quit();
     }
 
+    internal void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
